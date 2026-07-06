@@ -8,9 +8,9 @@ description: Per-message energy and CO2e estimates for every model, shown as a s
 
 # This file is licensed under the Mozilla Public License 2.0 (MPL-2.0) because
 # the impact math below is derived from EcoLogits (https://ecologits.ai),
-# genai-impact/ecologits, which is MPL-2.0. See LICENSE and NOTICE.
+# mlco2/ecologits, which is MPL-2.0. See LICENSE and NOTICE.
 #
-# Impact math vendored from genai-impact/ecologits, commit
+# Impact math vendored from mlco2/ecologits, commit
 # 42154236c3b275346e8b97b04f49cd19877316e6, file ecologits/impacts/llm.py.
 # Re-sync constants when refreshing the registry (scripts/sync-eco-models.py).
 
@@ -98,7 +98,7 @@ def _impacts_single(
 
 DEFAULT_REGISTRY = {
     "version": 1,
-    "source": "embedded-fallback genai-impact/ecologits@4215423",
+    "source": "embedded-fallback mlco2/ecologits@4215423",
     "generated": "2026-07-06",
     "defaults": {
         "zone": "WOR",

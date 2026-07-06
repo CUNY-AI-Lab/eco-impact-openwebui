@@ -140,7 +140,7 @@ the vendored math is verified to reproduce upstream outputs exactly.
 This project is a thin, operator-facing wrapper around the work of
 **[EcoLogits](https://ecologits.ai)** by
 **[GenAI Impact](https://genai-impact.org)**
-([genai-impact/ecologits](https://github.com/genai-impact/ecologits)). The
+([mlco2/ecologits](https://github.com/mlco2/ecologits)). The
 environmental-impact methodology, its coefficients, and the model/electricity
 data all come from them. If you use these estimates in research, **cite
 EcoLogits**, not this repo.
