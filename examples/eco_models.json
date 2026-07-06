@@ -1,6 +1,6 @@
 {
  "version": 1,
- "source": "genai-impact/ecologits@local(/private/tmp/claude-501/-Users-veritas44-Downloads-github-owu/cc7ddd63-7eba-4dfb-9517-f890cc896d77/scratchpad/ecologits)",
+ "source": "mlco2/ecologits@42154236c3b275346e8b97b04f49cd19877316e6",
  "generated": "2026-07-06",
  "defaults": {
   "zone": "WOR",

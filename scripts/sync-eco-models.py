@@ -28,7 +28,7 @@ import time
 import urllib.request
 
 PINNED_REF = "42154236c3b275346e8b97b04f49cd19877316e6"
-RAW_URL = "https://raw.githubusercontent.com/genai-impact/ecologits/{ref}/ecologits/data/{name}"
+RAW_URL = "https://raw.githubusercontent.com/mlco2/ecologits/{ref}/ecologits/data/{name}"
 
 # Providers earlier in this list win pattern-name collisions.
 PROVIDER_PRIORITY = ["openai", "anthropic", "google_genai", "mistralai", "cohere",
@@ -163,11 +163,11 @@ def main():
         d = args.ecologits_dir
         eco_models = json.load(open(os.path.join(d, "ecologits/data/models.json")))
         mixes = json.load(open(os.path.join(d, "ecologits/data/electricity_mixes.json")))
-        source = f"genai-impact/ecologits@local({d})"
+        source = f"mlco2/ecologits@local({d})"
     else:
         eco_models = http_json(RAW_URL.format(ref=args.ref, name="models.json"))
         mixes = http_json(RAW_URL.format(ref=args.ref, name="electricity_mixes.json"))
-        source = f"genai-impact/ecologits@{args.ref}"
+        source = f"mlco2/ecologits@{args.ref}"
     print(f"EcoLogits: {len(eco_models['models'])} models, "
           f"{len(mixes['electricity_mixes'])} electricity zones ({source})")
 
