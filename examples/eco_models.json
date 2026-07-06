@@ -1,0 +1,8238 @@
+{
+ "version": 1,
+ "source": "genai-impact/ecologits@local(/private/tmp/claude-501/-Users-veritas44-Downloads-github-owu/cc7ddd63-7eba-4dfb-9517-f890cc896d77/scratchpad/ecologits)",
+ "generated": "2026-07-06",
+ "defaults": {
+  "zone": "WOR",
+  "pue": {
+   "min": 1.09,
+   "max": 1.2
+  },
+  "unknown_params": {
+   "total": {
+    "min": 8,
+    "max": 440
+   },
+   "active": {
+    "min": 8,
+    "max": 110
+   }
+  }
+ },
+ "zones": {
+  "ABW": {
+   "gwp": 0.55,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "AFG": {
+   "gwp": 0.13131,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "AGO": {
+   "gwp": 0.18538,
+   "adpe": 1.2407e-07,
+   "pe": 5.0407,
+   "wue": 3.908
+  },
+  "ALB": {
+   "gwp": 0.02518,
+   "adpe": 2.2956e-07,
+   "pe": 0.2005,
+   "wue": 3.908
+  },
+  "ARE": {
+   "gwp": 0.46751,
+   "adpe": 1.415e-08,
+   "pe": 18.9746,
+   "wue": 3.908
+  },
+  "ARG": {
+   "gwp": 0.346,
+   "adpe": 7.686e-08,
+   "pe": 7.8888,
+   "wue": 11.4558
+  },
+  "ARM": {
+   "gwp": 0.21193,
+   "adpe": 8.542e-08,
+   "pe": 9.0719,
+   "wue": 3.908
+  },
+  "ASM": {
+   "gwp": 0.61111,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "ATG": {
+   "gwp": 0.5946,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "AUS": {
+   "gwp": 0.52518,
+   "adpe": 7.908e-08,
+   "pe": 12.2247,
+   "wue": 4.7293
+  },
+  "AUT": {
+   "gwp": 0.11691,
+   "adpe": 1.4112e-07,
+   "pe": 2.8363,
+   "wue": 5.7222
+  },
+  "AZE": {
+   "gwp": 0.6319,
+   "adpe": 9.257e-08,
+   "pe": 11.7022,
+   "wue": 3.908
+  },
+  "BDI": {
+   "gwp": 0.18367,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "BEL": {
+   "gwp": 0.14982,
+   "adpe": 3.372e-08,
+   "pe": 8.9876,
+   "wue": 2.6198
+  },
+  "BEN": {
+   "gwp": 0.58416,
+   "adpe": 2.397e-08,
+   "pe": 13.8784,
+   "wue": 3.908
+  },
+  "BFA": {
+   "gwp": 0.56213,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "BGD": {
+   "gwp": 0.69613,
+   "adpe": 3.942e-08,
+   "pe": 12.702,
+   "wue": 3.908
+  },
+  "BGR": {
+   "gwp": 0.27555,
+   "adpe": 8.236e-08,
+   "pe": 12.118,
+   "wue": 4.6228
+  },
+  "BHR": {
+   "gwp": 0.90224,
+   "adpe": 1.35e-08,
+   "pe": 14.0361,
+   "wue": 3.908
+  },
+  "BHS": {
+   "gwp": 0.65333,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "BIH": {
+   "gwp": 0.57064,
+   "adpe": 1.4801e-07,
+   "pe": 14.868,
+   "wue": 3.908
+  },
+  "BLR": {
+   "gwp": 0.30925,
+   "adpe": 8.405e-08,
+   "pe": 13.0352,
+   "wue": 3.908
+  },
+  "BLZ": {
+   "gwp": 0.17021,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "BMU": {
+   "gwp": 0.63934,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "BOL": {
+   "gwp": 0.48129,
+   "adpe": 9.698e-08,
+   "pe": 9.2001,
+   "wue": 3.908
+  },
+  "BRA": {
+   "gwp": 0.10995,
+   "adpe": 1.0962e-07,
+   "pe": 1.7701,
+   "wue": 18.6033
+  },
+  "BRB": {
+   "gwp": 0.5946,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "BRN": {
+   "gwp": 0.89209,
+   "adpe": 1.856e-08,
+   "pe": 15.6889,
+   "wue": 3.908
+  },
+  "BTN": {
+   "gwp": 0.02364,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "BWA": {
+   "gwp": 0.85131,
+   "adpe": 8.66e-08,
+   "pe": 19.6029,
+   "wue": 3.908
+  },
+  "CAF": {
+   "gwp": 0.0,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "CAN": {
+   "gwp": 0.19072,
+   "adpe": 9.932e-08,
+   "pe": 4.1955,
+   "wue": 8.1662
+  },
+  "CHE": {
+   "gwp": 0.03922,
+   "adpe": 1.0047e-07,
+   "pe": 4.7362,
+   "wue": 5.6641
+  },
+  "CHL": {
+   "gwp": 0.28949,
+   "adpe": 1.0585e-07,
+   "pe": 6.434,
+   "wue": 10.5226
+  },
+  "CHN": {
+   "gwp": 0.52534,
+   "adpe": 8.516e-08,
+   "pe": 10.6736,
+   "wue": 6.0065
+  },
+  "CIV": {
+   "gwp": 0.40501,
+   "adpe": 9.49e-08,
+   "pe": 12.5653,
+   "wue": 3.908
+  },
+  "CMR": {
+   "gwp": 0.2259,
+   "adpe": 1.4631e-07,
+   "pe": 5.1439,
+   "wue": 3.908
+  },
+  "COD": {
+   "gwp": 0.02764,
+   "adpe": 1.7465e-07,
+   "pe": 0.097,
+   "wue": 3.908
+  },
+  "COG": {
+   "gwp": 0.71612,
+   "adpe": 2.6558e-07,
+   "pe": 11.4735,
+   "wue": 3.908
+  },
+  "COK": {
+   "gwp": 0.25,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "COL": {
+   "gwp": 0.18681,
+   "adpe": 1.2203e-07,
+   "pe": 2.7127,
+   "wue": 3.908
+  },
+  "COM": {
+   "gwp": 0.64286,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "CPV": {
+   "gwp": 0.46154,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "CRI": {
+   "gwp": 0.0242,
+   "adpe": 8.639e-08,
+   "pe": 1.0579,
+   "wue": 3.908
+  },
+  "CUB": {
+   "gwp": 0.64282,
+   "adpe": 2.995e-08,
+   "pe": 16.5378,
+   "wue": 3.908
+  },
+  "CYM": {
+   "gwp": 0.6338,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "CYP": {
+   "gwp": 0.489,
+   "adpe": 4.488e-08,
+   "pe": 11.9763,
+   "wue": 1.2947
+  },
+  "CZE": {
+   "gwp": 0.40146,
+   "adpe": 8.176e-08,
+   "pe": 11.103,
+   "wue": 3.2133
+  },
+  "DEU": {
+   "gwp": 0.32965,
+   "adpe": 8.787e-08,
+   "pe": 8.7477,
+   "wue": 1.947
+  },
+  "DJI": {
+   "gwp": 0.45,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "DMA": {
+   "gwp": 0.6,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "DNK": {
+   "gwp": 0.11441,
+   "adpe": 1.574e-08,
+   "pe": 6.6454,
+   "wue": 3.1935
+  },
+  "DOM": {
+   "gwp": 0.53748,
+   "adpe": 4.293e-08,
+   "pe": 11.121,
+   "wue": 3.908
+  },
+  "DZA": {
+   "gwp": 0.63294,
+   "adpe": 2.164e-08,
+   "pe": 16.2778,
+   "wue": 3.908
+  },
+  "ECU": {
+   "gwp": 0.15902,
+   "adpe": 1.2717e-07,
+   "pe": 8.3213,
+   "wue": 3.908
+  },
+  "EEE": {
+   "gwp": 0.28268,
+   "adpe": 6.423e-08,
+   "pe": 8.5477,
+   "wue": 3.908
+  },
+  "EGY": {
+   "gwp": 0.56323,
+   "adpe": 3.392e-08,
+   "pe": 9.3589,
+   "wue": 3.908
+  },
+  "ERI": {
+   "gwp": 0.57778,
+   "adpe": 5.124e-08,
+   "pe": 13.1822,
+   "wue": 3.908
+  },
+  "ESH": {
+   "gwp": 0.66667,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "ESP": {
+   "gwp": 0.1536,
+   "adpe": 5.183e-08,
+   "pe": 7.4839,
+   "wue": 6.2088
+  },
+  "EST": {
+   "gwp": 0.31915,
+   "adpe": 9.902e-08,
+   "pe": 14.2926,
+   "wue": 2.1986
+  },
+  "ETH": {
+   "gwp": 0.02308,
+   "adpe": 1.7416e-07,
+   "pe": 2.3125,
+   "wue": 3.908
+  },
+  "FIN": {
+   "gwp": 0.05747,
+   "adpe": 8.051e-08,
+   "pe": 6.2915,
+   "wue": 4.5289
+  },
+  "FJI": {
+   "gwp": 0.27826,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "FLK": {
+   "gwp": 1.0,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "FRA": {
+   "gwp": 0.04144,
+   "adpe": 4.858e-08,
+   "pe": 9.3135,
+   "wue": 3.6737
+  },
+  "FRO": {
+   "gwp": 0.34694,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "GAB": {
+   "gwp": 0.52308,
+   "adpe": 1.1384e-07,
+   "pe": 8.9556,
+   "wue": 3.908
+  },
+  "GBR": {
+   "gwp": 0.21741,
+   "adpe": 3.71e-08,
+   "pe": 9.0976,
+   "wue": 2.329
+  },
+  "GEO": {
+   "gwp": 0.14593,
+   "adpe": 1.38e-07,
+   "pe": 2.0119,
+   "wue": 3.908
+  },
+  "GHA": {
+   "gwp": 0.46889,
+   "adpe": 1.56e-07,
+   "pe": 5.7652,
+   "wue": 3.908
+  },
+  "GIB": {
+   "gwp": 0.59091,
+   "adpe": 2.862e-08,
+   "pe": 11.9066,
+   "wue": 3.908
+  },
+  "GIN": {
+   "gwp": 0.18114,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "GLP": {
+   "gwp": 0.49701,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "GMB": {
+   "gwp": 0.66667,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "GNB": {
+   "gwp": 0.625,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "GNQ": {
+   "gwp": 0.6443,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "GRC": {
+   "gwp": 0.31509,
+   "adpe": 6.916e-08,
+   "pe": 10.5179,
+   "wue": 5.1451
+  },
+  "GRD": {
+   "gwp": 0.66667,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "GRL": {
+   "gwp": 0.15,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "GTM": {
+   "gwp": 0.30146,
+   "adpe": 8.033e-08,
+   "pe": 6.9261,
+   "wue": 3.908
+  },
+  "GUF": {
+   "gwp": 0.2449,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "GUM": {
+   "gwp": 0.60753,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "GUY": {
+   "gwp": 0.64493,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "HKG": {
+   "gwp": 0.67548,
+   "adpe": 8.162e-08,
+   "pe": 10.8916,
+   "wue": 3.908
+  },
+  "HND": {
+   "gwp": 0.32212,
+   "adpe": 6.494e-08,
+   "pe": 7.8653,
+   "wue": 3.908
+  },
+  "HRV": {
+   "gwp": 0.1585,
+   "adpe": 1.5399e-07,
+   "pe": 6.4549,
+   "wue": 3.908
+  },
+  "HTI": {
+   "gwp": 0.53488,
+   "adpe": 9.371e-08,
+   "pe": 16.2948,
+   "wue": 3.908
+  },
+  "HUN": {
+   "gwp": 0.16302,
+   "adpe": 6.446e-08,
+   "pe": 10.5942,
+   "wue": 3.6874
+  },
+  "IDN": {
+   "gwp": 0.68025,
+   "adpe": 6.105e-08,
+   "pe": 9.7582,
+   "wue": 2.2554
+  },
+  "IND": {
+   "gwp": 0.67013,
+   "adpe": 1.001e-07,
+   "pe": 16.6775,
+   "wue": 3.4368
+  },
+  "IRL": {
+   "gwp": 0.25654,
+   "adpe": 2.193e-08,
+   "pe": 8.0614,
+   "wue": 1.4769
+  },
+  "IRN": {
+   "gwp": 0.65953,
+   "adpe": 2.203e-08,
+   "pe": 14.1505,
+   "wue": 3.908
+  },
+  "IRQ": {
+   "gwp": 0.6831,
+   "adpe": 4.043e-08,
+   "pe": 19.0682,
+   "wue": 3.908
+  },
+  "ISL": {
+   "gwp": 0.02782,
+   "adpe": 7.819e-08,
+   "pe": 0.0128,
+   "wue": 6.1409
+  },
+  "ISR": {
+   "gwp": 0.49269,
+   "adpe": 6.102e-08,
+   "pe": 9.7726,
+   "wue": 3.908
+  },
+  "ITA": {
+   "gwp": 0.28478,
+   "adpe": 5.439e-08,
+   "pe": 7.9351,
+   "wue": 4.8374
+  },
+  "JAM": {
+   "gwp": 0.56301,
+   "adpe": 1.96e-08,
+   "pe": 13.5858,
+   "wue": 3.908
+  },
+  "JOR": {
+   "gwp": 0.52979,
+   "adpe": 1.47e-08,
+   "pe": 13.0065,
+   "wue": 3.908
+  },
+  "JPN": {
+   "gwp": 0.47726,
+   "adpe": 5.966e-08,
+   "pe": 9.1105,
+   "wue": 2.3063
+  },
+  "KAZ": {
+   "gwp": 0.80532,
+   "adpe": 1.3539e-07,
+   "pe": 11.7616,
+   "wue": 3.908
+  },
+  "KEN": {
+   "gwp": 0.09544,
+   "adpe": 9.585e-08,
+   "pe": 6.4166,
+   "wue": 3.908
+  },
+  "KGZ": {
+   "gwp": 0.15273,
+   "adpe": 1.8183e-07,
+   "pe": 2.0456,
+   "wue": 3.908
+  },
+  "KHM": {
+   "gwp": 0.49887,
+   "adpe": 3.192e-08,
+   "pe": 18.2978,
+   "wue": 3.908
+  },
+  "KIR": {
+   "gwp": 0.5,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "KNA": {
+   "gwp": 0.6087,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "KOR": {
+   "gwp": 0.41706,
+   "adpe": 5.18e-08,
+   "pe": 9.9136,
+   "wue": 1.8877
+  },
+  "KWT": {
+   "gwp": 0.63531,
+   "adpe": 1.412e-08,
+   "pe": 12.7407,
+   "wue": 3.908
+  },
+  "LAO": {
+   "gwp": 0.23208,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "LBN": {
+   "gwp": 0.38951,
+   "adpe": 1.821e-08,
+   "pe": 11.995,
+   "wue": 3.908
+  },
+  "LBR": {
+   "gwp": 0.31579,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "LBY": {
+   "gwp": 0.82683,
+   "adpe": 2.066e-08,
+   "pe": 19.116,
+   "wue": 3.908
+  },
+  "LCA": {
+   "gwp": 0.65,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "LKA": {
+   "gwp": 0.32928,
+   "adpe": 9.869e-08,
+   "pe": 8.7599,
+   "wue": 3.908
+  },
+  "LSO": {
+   "gwp": 0.02083,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "LTU": {
+   "gwp": 0.13836,
+   "adpe": 2.946e-08,
+   "pe": 10.6476,
+   "wue": 5.8994
+  },
+  "LUX": {
+   "gwp": 0.12338,
+   "adpe": 1.0569e-07,
+   "pe": 8.0213,
+   "wue": 12.7784
+  },
+  "LVA": {
+   "gwp": 0.13876,
+   "adpe": 1.5376e-07,
+   "pe": 3.7781,
+   "wue": 2.5526
+  },
+  "MAC": {
+   "gwp": 0.47436,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "MAR": {
+   "gwp": 0.5964,
+   "adpe": 6.411e-08,
+   "pe": 9.9697,
+   "wue": 3.908
+  },
+  "MDA": {
+   "gwp": 0.63312,
+   "adpe": 1.1067e-07,
+   "pe": 17.4518,
+   "wue": 3.908
+  },
+  "MDG": {
+   "gwp": 0.4321,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "MDV": {
+   "gwp": 0.61177,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "MEX": {
+   "gwp": 0.47402,
+   "adpe": 5.784e-08,
+   "pe": 9.9732,
+   "wue": 5.3047
+  },
+  "MKD": {
+   "gwp": 0.44135,
+   "adpe": 1.1987e-07,
+   "pe": 12.1032,
+   "wue": 3.908
+  },
+  "MLI": {
+   "gwp": 0.53859,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "MLT": {
+   "gwp": 0.48402,
+   "adpe": 4.948e-08,
+   "pe": 16.3514,
+   "wue": 1.1185
+  },
+  "MMR": {
+   "gwp": 0.50299,
+   "adpe": 1.527e-07,
+   "pe": 6.6701,
+   "wue": 3.908
+  },
+  "MNE": {
+   "gwp": 0.26423,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "MNG": {
+   "gwp": 0.81631,
+   "adpe": 1.7636e-07,
+   "pe": 14.5244,
+   "wue": 3.908
+  },
+  "MOZ": {
+   "gwp": 0.12936,
+   "adpe": 1.4838e-07,
+   "pe": 0.0336,
+   "wue": 3.908
+  },
+  "MRT": {
+   "gwp": 0.51208,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "MSR": {
+   "gwp": 1.0,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "MTQ": {
+   "gwp": 0.5298,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "MUS": {
+   "gwp": 0.64223,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "MWI": {
+   "gwp": 0.05465,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "MYS": {
+   "gwp": 0.60197,
+   "adpe": 4.494e-08,
+   "pe": 10.5875,
+   "wue": 1.6778
+  },
+  "NAM": {
+   "gwp": 0.04878,
+   "adpe": 1.2828e-07,
+   "pe": 3.277,
+   "wue": 3.908
+  },
+  "NCL": {
+   "gwp": 0.5609,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "NER": {
+   "gwp": 0.67368,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "NGA": {
+   "gwp": 0.45571,
+   "adpe": 6.21e-08,
+   "pe": 9.1812,
+   "wue": 3.908
+  },
+  "NIC": {
+   "gwp": 0.30089,
+   "adpe": 4.15e-08,
+   "pe": 11.5328,
+   "wue": 3.908
+  },
+  "NLD": {
+   "gwp": 0.25356,
+   "adpe": 3.293e-08,
+   "pe": 7.4815,
+   "wue": 3.433
+  },
+  "NOR": {
+   "gwp": 0.02811,
+   "adpe": 1.2749e-07,
+   "pe": 0.1386,
+   "wue": 6.6633
+  },
+  "NPL": {
+   "gwp": 0.02426,
+   "adpe": 2.3827e-07,
+   "pe": 0.1367,
+   "wue": 3.908
+  },
+  "NRU": {
+   "gwp": 0.6,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "NZL": {
+   "gwp": 0.09276,
+   "adpe": 7.205e-08,
+   "pe": 3.9817,
+   "wue": 14.9681
+  },
+  "OMN": {
+   "gwp": 0.54447,
+   "adpe": 3.741e-08,
+   "pe": 22.3058,
+   "wue": 3.908
+  },
+  "PAK": {
+   "gwp": 0.34656,
+   "adpe": 8.43e-08,
+   "pe": 10.886,
+   "wue": 3.908
+  },
+  "PAN": {
+   "gwp": 0.22115,
+   "adpe": 7.906e-08,
+   "pe": 5.4656,
+   "wue": 3.908
+  },
+  "PER": {
+   "gwp": 0.23825,
+   "adpe": 9.527e-08,
+   "pe": 4.0973,
+   "wue": 3.908
+  },
+  "PHL": {
+   "gwp": 0.58829,
+   "adpe": 5.953e-08,
+   "pe": 8.4176,
+   "wue": 3.908
+  },
+  "PNG": {
+   "gwp": 0.51374,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "POL": {
+   "gwp": 0.5886,
+   "adpe": 1.0195e-07,
+   "pe": 11.1352,
+   "wue": 2.5135
+  },
+  "PRI": {
+   "gwp": 0.65466,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "PRK": {
+   "gwp": 0.34059,
+   "adpe": 1.1746e-07,
+   "pe": 7.9688,
+   "wue": 3.908
+  },
+  "PRT": {
+   "gwp": 0.12791,
+   "adpe": 3.419e-08,
+   "pe": 6.5813,
+   "wue": 9.5932
+  },
+  "PRY": {
+   "gwp": 0.0247,
+   "adpe": 1.4918e-07,
+   "pe": 0.0195,
+   "wue": 3.908
+  },
+  "PSE": {
+   "gwp": 0.41414,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "PYF": {
+   "gwp": 0.43056,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "QAT": {
+   "gwp": 0.58152,
+   "adpe": 1.324e-08,
+   "pe": 11.8805,
+   "wue": 3.908
+  },
+  "REU": {
+   "gwp": 0.39414,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "ROU": {
+   "gwp": 0.25075,
+   "adpe": 9.818e-08,
+   "pe": 9.1329,
+   "wue": 7.3563
+  },
+  "RUS": {
+   "gwp": 0.44973,
+   "adpe": 9.603e-08,
+   "pe": 10.9691,
+   "wue": 3.4595
+  },
+  "RWA": {
+   "gwp": 0.35398,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "SAU": {
+   "gwp": 0.69195,
+   "adpe": 1.342e-08,
+   "pe": 14.0581,
+   "wue": 3.908
+  },
+  "SDN": {
+   "gwp": 0.15369,
+   "adpe": 9.557e-08,
+   "pe": 12.8292,
+   "wue": 3.908
+  },
+  "SEN": {
+   "gwp": 0.53997,
+   "adpe": 4.707e-08,
+   "pe": 13.0059,
+   "wue": 3.908
+  },
+  "SGP": {
+   "gwp": 0.49709,
+   "adpe": 1.985e-08,
+   "pe": 10.3089,
+   "wue": 3.908
+  },
+  "SHN": {
+   "gwp": 1.0,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "SLB": {
+   "gwp": 0.63636,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "SLE": {
+   "gwp": 0.04762,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "SLV": {
+   "gwp": 0.13932,
+   "adpe": 4.721e-08,
+   "pe": 5.1138,
+   "wue": 3.908
+  },
+  "SOM": {
+   "gwp": 0.51163,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "SPM": {
+   "gwp": 0.6,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "SRB": {
+   "gwp": 0.6958,
+   "adpe": 1.3277e-07,
+   "pe": 10.311,
+   "wue": 3.908
+  },
+  "SSD": {
+   "gwp": 0.64286,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "STP": {
+   "gwp": 0.55556,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "SUR": {
+   "gwp": 0.32184,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "SVK": {
+   "gwp": 0.09485,
+   "adpe": 6.061e-08,
+   "pe": 8.8184,
+   "wue": 5.7952
+  },
+  "SVN": {
+   "gwp": 0.18329,
+   "adpe": 9.923e-08,
+   "pe": 8.4293,
+   "wue": 2.9769
+  },
+  "SWE": {
+   "gwp": 0.03526,
+   "adpe": 7.771e-08,
+   "pe": 4.73,
+   "wue": 6.0315
+  },
+  "SWZ": {
+   "gwp": 0.13115,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "SYC": {
+   "gwp": 0.55556,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "SYR": {
+   "gwp": 0.70619,
+   "adpe": 2.684e-08,
+   "pe": 16.0882,
+   "wue": 3.908
+  },
+  "TCA": {
+   "gwp": 0.62963,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "TCD": {
+   "gwp": 0.62162,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "TGO": {
+   "gwp": 0.42254,
+   "adpe": 1.3426e-07,
+   "pe": 5.912,
+   "wue": 3.908
+  },
+  "THA": {
+   "gwp": 0.54574,
+   "adpe": 5.696e-08,
+   "pe": 9.0495,
+   "wue": 2.8902
+  },
+  "TJK": {
+   "gwp": 0.07256,
+   "adpe": 1.5262e-07,
+   "pe": 0.4791,
+   "wue": 3.908
+  },
+  "TKM": {
+   "gwp": 1.30627,
+   "adpe": 1.3182e-07,
+   "pe": 23.3003,
+   "wue": 3.908
+  },
+  "TLS": {
+   "gwp": 0.66667,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "TON": {
+   "gwp": 0.57143,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "TTO": {
+   "gwp": 0.68168,
+   "adpe": 6.455e-08,
+   "pe": 14.289,
+   "wue": 3.908
+  },
+  "TUN": {
+   "gwp": 0.56029,
+   "adpe": 1.77e-08,
+   "pe": 12.5148,
+   "wue": 3.908
+  },
+  "TUR": {
+   "gwp": 0.47474,
+   "adpe": 7.498e-08,
+   "pe": 8.7855,
+   "wue": 4.9197
+  },
+  "TWN": {
+   "gwp": 0.63321,
+   "adpe": 5.781e-08,
+   "pe": 10.9587,
+   "wue": 1.4886
+  },
+  "TZA": {
+   "gwp": 0.34502,
+   "adpe": 1.3226e-07,
+   "pe": 5.8527,
+   "wue": 3.908
+  },
+  "UGA": {
+   "gwp": 0.05852,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "UKR": {
+   "gwp": 0.25047,
+   "adpe": 6.479e-08,
+   "pe": 12.2117,
+   "wue": 2.1306
+  },
+  "URY": {
+   "gwp": 0.0804,
+   "adpe": 1.0459e-07,
+   "pe": 3.765,
+   "wue": 3.908
+  },
+  "USA": {
+   "gwp": 0.3844,
+   "adpe": 9.855e-08,
+   "pe": 9.6884,
+   "wue": 3.1321
+  },
+  "UZB": {
+   "gwp": 1.0,
+   "adpe": 1.0368e-07,
+   "pe": 12.9214,
+   "wue": 3.908
+  },
+  "VCT": {
+   "gwp": 0.6,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "VEN": {
+   "gwp": 0.08586,
+   "adpe": 1.1281e-07,
+   "pe": 4.9129,
+   "wue": 3.908
+  },
+  "VGB": {
+   "gwp": 0.64706,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "VIR": {
+   "gwp": 0.63235,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "VNM": {
+   "gwp": 0.46073,
+   "adpe": 9.456e-08,
+   "pe": 6.9003,
+   "wue": 3.908
+  },
+  "VUT": {
+   "gwp": 0.5,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "WOR": {
+   "gwp": 0.45829,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "WSM": {
+   "gwp": 0.375,
+   "adpe": 1.349e-08,
+   "pe": 2.5871,
+   "wue": 3.908
+  },
+  "YEM": {
+   "gwp": 0.59238,
+   "adpe": 1.639e-08,
+   "pe": 14.4784,
+   "wue": 3.908
+  },
+  "ZAF": {
+   "gwp": 0.69929,
+   "adpe": 8.624e-08,
+   "pe": 11.357,
+   "wue": 3.908
+  },
+  "ZMB": {
+   "gwp": 0.11968,
+   "adpe": 1.6219e-07,
+   "pe": 0.0899,
+   "wue": 3.908
+  },
+  "ZWE": {
+   "gwp": 0.38402,
+   "adpe": 1.095e-07,
+   "pe": 7.7549,
+   "wue": 3.908
+  }
+ },
+ "zone_prefixes": [
+  {
+   "prefix": "us.",
+   "zone": "USA"
+  },
+  {
+   "prefix": "amazon.",
+   "zone": "USA"
+  },
+  {
+   "prefix": "anthropic.",
+   "zone": "USA"
+  },
+  {
+   "prefix": "meta.",
+   "zone": "USA"
+  },
+  {
+   "prefix": "mistral.",
+   "zone": "USA"
+  }
+ ],
+ "patterns": [
+  {
+   "match": "120b-a12b",
+   "total": {
+    "min": 120,
+    "max": 120
+   },
+   "active": {
+    "min": 12,
+    "max": 12
+   },
+   "confidence": "published",
+   "note": "self-describing MoE id (Nemotron-3 Super 120B-A12B)"
+  },
+  {
+   "match": "30b-a3b",
+   "total": {
+    "min": 30,
+    "max": 30
+   },
+   "active": {
+    "min": 3,
+    "max": 3
+   },
+   "confidence": "estimated",
+   "note": "generic self-describing 30B-A3B MoE shape"
+  },
+  {
+   "match": "550b-a55b",
+   "total": {
+    "min": 550,
+    "max": 550
+   },
+   "active": {
+    "min": 55,
+    "max": 55
+   },
+   "confidence": "published",
+   "note": "self-describing MoE id (Nemotron-3 Ultra 550B-A55B)"
+  },
+  {
+   "match": "aion-1-0",
+   "total": {
+    "min": 671,
+    "max": 671
+   },
+   "active": {
+    "min": 37,
+    "max": 37
+   },
+   "confidence": "estimated",
+   "note": "AionLabs: built on DeepSeek-R1 671B/37B"
+  },
+  {
+   "match": "aion-1-0-mini",
+   "total": {
+    "min": 32.5,
+    "max": 32.5
+   },
+   "active": {
+    "min": 32.5,
+    "max": 32.5
+   },
+   "confidence": "estimated",
+   "note": "AionLabs: distilled from DeepSeek-R1-Distill-Qwen-32B"
+  },
+  {
+   "match": "aion-2-0",
+   "total": {
+    "min": 400,
+    "max": 1000
+   },
+   "active": {
+    "min": 30,
+    "max": 60
+   },
+   "confidence": "estimated",
+   "note": "successor, anchored to Aion-1.0 / R1 base"
+  },
+  {
+   "match": "aya-23-35b",
+   "total": {
+    "min": 34.98,
+    "max": 34.98
+   },
+   "active": {
+    "min": 34.98,
+    "max": 34.98
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "aya-23-8b",
+   "total": {
+    "min": 8.03,
+    "max": 8.03
+   },
+   "active": {
+    "min": 8.03,
+    "max": 8.03
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "c4ai-aya-expanse-32b",
+   "total": {
+    "min": 32.3,
+    "max": 32.3
+   },
+   "active": {
+    "min": 32.3,
+    "max": 32.3
+   },
+   "confidence": "published",
+   "tps": 26.8,
+   "ttft": 0.59
+  },
+  {
+   "match": "c4ai-aya-vision-32b",
+   "total": {
+    "min": 33.1,
+    "max": 33.1
+   },
+   "active": {
+    "min": 33.1,
+    "max": 33.1
+   },
+   "confidence": "estimated",
+   "tps": 26.8,
+   "ttft": 0.59
+  },
+  {
+   "match": "c4ai-command-r-plus",
+   "total": {
+    "min": 103.81,
+    "max": 103.81
+   },
+   "active": {
+    "min": 103.81,
+    "max": 103.81
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "c4ai-command-r-plus-4bit",
+   "total": {
+    "min": 55.05,
+    "max": 55.05
+   },
+   "active": {
+    "min": 55.05,
+    "max": 55.05
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "c4ai-command-r-v01",
+   "total": {
+    "min": 34.98,
+    "max": 34.98
+   },
+   "active": {
+    "min": 34.98,
+    "max": 34.98
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "c4ai-command-r-v01-4bit",
+   "total": {
+    "min": 19.05,
+    "max": 19.05
+   },
+   "active": {
+    "min": 19.05,
+    "max": 19.05
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "chat-latest",
+   "total": {
+    "min": 900.0,
+    "max": 900.0
+   },
+   "active": {
+    "min": 90.0,
+    "max": 300.0
+   },
+   "confidence": "estimated",
+   "tps": 73.0,
+   "ttft": 1.01
+  },
+  {
+   "match": "claude-3-haiku",
+   "total": {
+    "min": 20,
+    "max": 70
+   },
+   "active": {
+    "min": 20,
+    "max": 70
+   },
+   "confidence": "estimated",
+   "note": "closed Anthropic, industry estimate"
+  },
+  {
+   "match": "claude-3-sonnet",
+   "total": {
+    "min": 70,
+    "max": 200
+   },
+   "active": {
+    "min": 70,
+    "max": 200
+   },
+   "confidence": "estimated",
+   "note": "closed Anthropic, industry estimate"
+  },
+  {
+   "match": "claude-fable-5",
+   "total": {
+    "min": 100,
+    "max": 500
+   },
+   "active": {
+    "min": 50,
+    "max": 250
+   },
+   "confidence": "estimated",
+   "note": "closed Anthropic, industry estimate"
+  },
+  {
+   "match": "claude-fable-latest",
+   "total": {
+    "min": 100,
+    "max": 500
+   },
+   "active": {
+    "min": 50,
+    "max": 250
+   },
+   "confidence": "estimated",
+   "note": "closed Anthropic, industry estimate"
+  },
+  {
+   "match": "claude-haiku-4-5",
+   "total": {
+    "min": 10.0,
+    "max": 35.0
+   },
+   "active": {
+    "min": 10.0,
+    "max": 35.0
+   },
+   "confidence": "estimated",
+   "tps": 71.1,
+   "ttft": 0.67
+  },
+  {
+   "match": "claude-haiku-4-5-20251001",
+   "total": {
+    "min": 10.0,
+    "max": 35.0
+   },
+   "active": {
+    "min": 10.0,
+    "max": 35.0
+   },
+   "confidence": "estimated",
+   "tps": 71.1,
+   "ttft": 0.67
+  },
+  {
+   "match": "claude-haiku-latest",
+   "total": {
+    "min": 20,
+    "max": 100
+   },
+   "active": {
+    "min": 20,
+    "max": 100
+   },
+   "confidence": "estimated",
+   "note": "closed Anthropic small tier, industry estimate"
+  },
+  {
+   "match": "claude-opus-4",
+   "total": {
+    "min": 300,
+    "max": 1000
+   },
+   "active": {
+    "min": 100,
+    "max": 500
+   },
+   "confidence": "estimated",
+   "note": "closed Anthropic flagship, industry estimate"
+  },
+  {
+   "match": "claude-opus-4-0",
+   "total": {
+    "min": 2000.0,
+    "max": 2000.0
+   },
+   "active": {
+    "min": 200.0,
+    "max": 600.0
+   },
+   "confidence": "estimated",
+   "tps": 15.9,
+   "ttft": 1.99
+  },
+  {
+   "match": "claude-opus-4-1",
+   "total": {
+    "min": 2000.0,
+    "max": 2000.0
+   },
+   "active": {
+    "min": 200.0,
+    "max": 600.0
+   },
+   "confidence": "estimated",
+   "tps": 12.1,
+   "ttft": 1.74
+  },
+  {
+   "match": "claude-opus-4-1-20250805",
+   "total": {
+    "min": 2000.0,
+    "max": 2000.0
+   },
+   "active": {
+    "min": 200.0,
+    "max": 600.0
+   },
+   "confidence": "estimated",
+   "tps": 12.1,
+   "ttft": 1.74
+  },
+  {
+   "match": "claude-opus-4-20250514",
+   "total": {
+    "min": 2000.0,
+    "max": 2000.0
+   },
+   "active": {
+    "min": 200.0,
+    "max": 600.0
+   },
+   "confidence": "estimated",
+   "tps": 15.9,
+   "ttft": 1.99
+  },
+  {
+   "match": "claude-opus-4-5",
+   "total": {
+    "min": 670.0,
+    "max": 670.0
+   },
+   "active": {
+    "min": 67.0,
+    "max": 200.0
+   },
+   "confidence": "estimated",
+   "tps": 39.6,
+   "ttft": 1.56
+  },
+  {
+   "match": "claude-opus-4-5-20251101",
+   "total": {
+    "min": 670.0,
+    "max": 670.0
+   },
+   "active": {
+    "min": 67.0,
+    "max": 200.0
+   },
+   "confidence": "estimated",
+   "tps": 39.6,
+   "ttft": 1.56
+  },
+  {
+   "match": "claude-opus-4-6",
+   "total": {
+    "min": 670.0,
+    "max": 670.0
+   },
+   "active": {
+    "min": 67.0,
+    "max": 200.0
+   },
+   "confidence": "estimated",
+   "tps": 37.0,
+   "ttft": 2.19
+  },
+  {
+   "match": "claude-opus-4-7",
+   "total": {
+    "min": 670.0,
+    "max": 670.0
+   },
+   "active": {
+    "min": 67.0,
+    "max": 200.0
+   },
+   "confidence": "estimated",
+   "tps": 47.4,
+   "ttft": 1.76
+  },
+  {
+   "match": "claude-opus-4-8",
+   "total": {
+    "min": 670.0,
+    "max": 670.0
+   },
+   "active": {
+    "min": 67.0,
+    "max": 200.0
+   },
+   "confidence": "estimated",
+   "tps": 58.0,
+   "ttft": 1.63
+  },
+  {
+   "match": "claude-opus-latest",
+   "total": {
+    "min": 300,
+    "max": 1000
+   },
+   "active": {
+    "min": 100,
+    "max": 500
+   },
+   "confidence": "estimated",
+   "note": "closed Anthropic flagship, industry estimate"
+  },
+  {
+   "match": "claude-sonnet-4",
+   "total": {
+    "min": 100,
+    "max": 400
+   },
+   "active": {
+    "min": 50,
+    "max": 200
+   },
+   "confidence": "estimated",
+   "note": "closed Anthropic, industry estimate"
+  },
+  {
+   "match": "claude-sonnet-4-0",
+   "total": {
+    "min": 440.0,
+    "max": 440.0
+   },
+   "active": {
+    "min": 44.0,
+    "max": 132.0
+   },
+   "confidence": "estimated",
+   "tps": 40.4,
+   "ttft": 0.94
+  },
+  {
+   "match": "claude-sonnet-4-20250514",
+   "total": {
+    "min": 440.0,
+    "max": 440.0
+   },
+   "active": {
+    "min": 44.0,
+    "max": 132.0
+   },
+   "confidence": "estimated",
+   "tps": 40.4,
+   "ttft": 0.94
+  },
+  {
+   "match": "claude-sonnet-4-5",
+   "total": {
+    "min": 440.0,
+    "max": 440.0
+   },
+   "active": {
+    "min": 44.0,
+    "max": 132.0
+   },
+   "confidence": "estimated",
+   "tps": 32.2,
+   "ttft": 1.33
+  },
+  {
+   "match": "claude-sonnet-4-5-20250929",
+   "total": {
+    "min": 440.0,
+    "max": 440.0
+   },
+   "active": {
+    "min": 44.0,
+    "max": 132.0
+   },
+   "confidence": "estimated",
+   "tps": 32.2,
+   "ttft": 1.33
+  },
+  {
+   "match": "claude-sonnet-4-6",
+   "total": {
+    "min": 440.0,
+    "max": 440.0
+   },
+   "active": {
+    "min": 44.0,
+    "max": 132.0
+   },
+   "confidence": "estimated",
+   "tps": 41.4,
+   "ttft": 1.56
+  },
+  {
+   "match": "claude-sonnet-5",
+   "total": {
+    "min": 100,
+    "max": 500
+   },
+   "active": {
+    "min": 50,
+    "max": 250
+   },
+   "confidence": "estimated",
+   "note": "closed Anthropic, industry estimate"
+  },
+  {
+   "match": "claude-sonnet-latest",
+   "total": {
+    "min": 100,
+    "max": 500
+   },
+   "active": {
+    "min": 50,
+    "max": 250
+   },
+   "confidence": "estimated",
+   "note": "closed Anthropic mid tier, industry estimate"
+  },
+  {
+   "match": "codegemma-1-1-2b",
+   "total": {
+    "min": 2.51,
+    "max": 2.51
+   },
+   "active": {
+    "min": 2.51,
+    "max": 2.51
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codegemma-1-1-2b-gguf",
+   "total": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "active": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codegemma-1-1-2b-pytorch",
+   "total": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "active": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codegemma-1-1-7b-it",
+   "total": {
+    "min": 8.54,
+    "max": 8.54
+   },
+   "active": {
+    "min": 8.54,
+    "max": 8.54
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codegemma-1-1-7b-it-gguf",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codegemma-1-1-7b-it-pytorch",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codegemma-2b",
+   "total": {
+    "min": 2.51,
+    "max": 2.51
+   },
+   "active": {
+    "min": 2.51,
+    "max": 2.51
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codegemma-2b-gguf",
+   "total": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "active": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codegemma-2b-keras",
+   "total": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "active": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codegemma-2b-pytorch",
+   "total": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "active": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codegemma-7b",
+   "total": {
+    "min": 8.54,
+    "max": 8.54
+   },
+   "active": {
+    "min": 8.54,
+    "max": 8.54
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codegemma-7b-gguf",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codegemma-7b-it",
+   "total": {
+    "min": 8.54,
+    "max": 8.54
+   },
+   "active": {
+    "min": 8.54,
+    "max": 8.54
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codegemma-7b-it-gguf",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codegemma-7b-it-keras",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codegemma-7b-it-pytorch",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codegemma-7b-keras",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codegemma-7b-pytorch",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codellama-13b-hf",
+   "total": {
+    "min": 13.0,
+    "max": 13.0
+   },
+   "active": {
+    "min": 13.0,
+    "max": 13.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codellama-13b-instruct-hf",
+   "total": {
+    "min": 13.0,
+    "max": 13.0
+   },
+   "active": {
+    "min": 13.0,
+    "max": 13.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codellama-13b-python-hf",
+   "total": {
+    "min": 13.0,
+    "max": 13.0
+   },
+   "active": {
+    "min": 13.0,
+    "max": 13.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codellama-34b-hf",
+   "total": {
+    "min": 34.0,
+    "max": 34.0
+   },
+   "active": {
+    "min": 34.0,
+    "max": 34.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codellama-34b-instruct-hf",
+   "total": {
+    "min": 34.0,
+    "max": 34.0
+   },
+   "active": {
+    "min": 34.0,
+    "max": 34.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codellama-34b-python-hf",
+   "total": {
+    "min": 34.0,
+    "max": 34.0
+   },
+   "active": {
+    "min": 34.0,
+    "max": 34.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codellama-70b-hf",
+   "total": {
+    "min": 70.0,
+    "max": 70.0
+   },
+   "active": {
+    "min": 70.0,
+    "max": 70.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codellama-70b-instruct-hf",
+   "total": {
+    "min": 70.0,
+    "max": 70.0
+   },
+   "active": {
+    "min": 70.0,
+    "max": 70.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codellama-70b-python-hf",
+   "total": {
+    "min": 70.0,
+    "max": 70.0
+   },
+   "active": {
+    "min": 70.0,
+    "max": 70.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codellama-7b-hf",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codellama-7b-instruct-hf",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codellama-7b-python-hf",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codestral-22b-v0-1",
+   "total": {
+    "min": 22.25,
+    "max": 22.25
+   },
+   "active": {
+    "min": 22.25,
+    "max": 22.25
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "codestral-2405",
+   "total": {
+    "min": 22.2,
+    "max": 22.2
+   },
+   "active": {
+    "min": 22.2,
+    "max": 22.2
+   },
+   "confidence": "published",
+   "tps": 57.2,
+   "ttft": 0.21
+  },
+  {
+   "match": "codestral-2411-rc5",
+   "total": {
+    "min": 22.2,
+    "max": 22.2
+   },
+   "active": {
+    "min": 22.2,
+    "max": 22.2
+   },
+   "confidence": "published",
+   "tps": 57.2,
+   "ttft": 0.21
+  },
+  {
+   "match": "codestral-2412",
+   "total": {
+    "min": 22.2,
+    "max": 22.2
+   },
+   "active": {
+    "min": 22.2,
+    "max": 22.2
+   },
+   "confidence": "published",
+   "tps": 39.4,
+   "ttft": 1.04
+  },
+  {
+   "match": "codestral-2501",
+   "total": {
+    "min": 22.2,
+    "max": 22.2
+   },
+   "active": {
+    "min": 22.2,
+    "max": 22.2
+   },
+   "confidence": "published",
+   "tps": 57.2,
+   "ttft": 0.21
+  },
+  {
+   "match": "codestral-2508",
+   "total": {
+    "min": 22.2,
+    "max": 22.2
+   },
+   "active": {
+    "min": 22.2,
+    "max": 22.2
+   },
+   "confidence": "published",
+   "tps": 57.2,
+   "ttft": 0.21
+  },
+  {
+   "match": "codestral-latest",
+   "total": {
+    "min": 22.2,
+    "max": 22.2
+   },
+   "active": {
+    "min": 22.2,
+    "max": 22.2
+   },
+   "confidence": "published",
+   "tps": 57.2,
+   "ttft": 0.21
+  },
+  {
+   "match": "cogito-v2-1-671b",
+   "total": {
+    "min": 671,
+    "max": 671
+   },
+   "active": {
+    "min": 37,
+    "max": 37
+   },
+   "confidence": "published",
+   "note": "DeepCogito v2.1 on DeepSeek-V3 base, HF card"
+  },
+  {
+   "match": "command-a",
+   "total": {
+    "min": 111,
+    "max": 111
+   },
+   "active": {
+    "min": 111,
+    "max": 111
+   },
+   "confidence": "published",
+   "note": "Cohere Command A 111B dense, HF card"
+  },
+  {
+   "match": "command-a-03-2025",
+   "total": {
+    "min": 111.0,
+    "max": 111.0
+   },
+   "active": {
+    "min": 111.0,
+    "max": 111.0
+   },
+   "confidence": "published",
+   "tps": 26.8,
+   "ttft": 0.59
+  },
+  {
+   "match": "command-a-plus-05-2026",
+   "total": {
+    "min": 218.0,
+    "max": 218.0
+   },
+   "active": {
+    "min": 25.0,
+    "max": 25.0
+   },
+   "confidence": "estimated",
+   "tps": 26.8,
+   "ttft": 0.59
+  },
+  {
+   "match": "command-a-reasoning-08-2025",
+   "total": {
+    "min": 111.0,
+    "max": 111.0
+   },
+   "active": {
+    "min": 111.0,
+    "max": 111.0
+   },
+   "confidence": "published",
+   "tps": 26.8,
+   "ttft": 0.59
+  },
+  {
+   "match": "command-a-translate-08-2025",
+   "total": {
+    "min": 111.0,
+    "max": 111.0
+   },
+   "active": {
+    "min": 111.0,
+    "max": 111.0
+   },
+   "confidence": "published",
+   "tps": 26.8,
+   "ttft": 0.59
+  },
+  {
+   "match": "command-a-vision-07-2025",
+   "total": {
+    "min": 112.0,
+    "max": 112.0
+   },
+   "active": {
+    "min": 112.0,
+    "max": 112.0
+   },
+   "confidence": "estimated",
+   "tps": 26.8,
+   "ttft": 0.59
+  },
+  {
+   "match": "command-r",
+   "total": {
+    "min": 35,
+    "max": 35
+   },
+   "active": {
+    "min": 35,
+    "max": 35
+   },
+   "confidence": "published",
+   "note": "Cohere Command R 35B dense, HF card"
+  },
+  {
+   "match": "command-r-08-2024",
+   "total": {
+    "min": 32.3,
+    "max": 32.3
+   },
+   "active": {
+    "min": 32.3,
+    "max": 32.3
+   },
+   "confidence": "published",
+   "tps": 47.4,
+   "ttft": 0.22
+  },
+  {
+   "match": "command-r-plus",
+   "total": {
+    "min": 104,
+    "max": 104
+   },
+   "active": {
+    "min": 104,
+    "max": 104
+   },
+   "confidence": "published",
+   "note": "Cohere Command R+ 104B dense, HF card"
+  },
+  {
+   "match": "command-r-plus-08-2024",
+   "total": {
+    "min": 104.0,
+    "max": 104.0
+   },
+   "active": {
+    "min": 104.0,
+    "max": 104.0
+   },
+   "confidence": "published",
+   "tps": 34.6,
+   "ttft": 0.32
+  },
+  {
+   "match": "command-r7b-12-2024",
+   "total": {
+    "min": 8.03,
+    "max": 8.03
+   },
+   "active": {
+    "min": 8.03,
+    "max": 8.03
+   },
+   "confidence": "published",
+   "tps": 55.0,
+   "ttft": 0.24
+  },
+  {
+   "match": "command-r7b-arabic-02-2025",
+   "total": {
+    "min": 8.03,
+    "max": 8.03
+   },
+   "active": {
+    "min": 8.03,
+    "max": 8.03
+   },
+   "confidence": "published",
+   "tps": 26.8,
+   "ttft": 0.59
+  },
+  {
+   "match": "cydonia-24b",
+   "total": {
+    "min": 24,
+    "max": 24
+   },
+   "active": {
+    "min": 24,
+    "max": 24
+   },
+   "confidence": "published",
+   "note": "Mistral Small 24B finetune, HF card"
+  },
+  {
+   "match": "dbrx-base",
+   "total": {
+    "min": 132.0,
+    "max": 132.0
+   },
+   "active": {
+    "min": 36.0,
+    "max": 36.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "dbrx-instruct",
+   "total": {
+    "min": 132.0,
+    "max": 132.0
+   },
+   "active": {
+    "min": 36.0,
+    "max": 36.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "deepseek-chat",
+   "total": {
+    "min": 671,
+    "max": 671
+   },
+   "active": {
+    "min": 37,
+    "max": 37
+   },
+   "confidence": "published",
+   "note": "DeepSeek-V3 chat 671B/37B MoE, HF card"
+  },
+  {
+   "match": "deepseek-r1",
+   "total": {
+    "min": 671,
+    "max": 671
+   },
+   "active": {
+    "min": 37,
+    "max": 37
+   },
+   "confidence": "published",
+   "note": "DeepSeek-R1 671B/37B MoE, HF card"
+  },
+  {
+   "match": "deepseek-r1-distill-llama-70b",
+   "total": {
+    "min": 70,
+    "max": 70
+   },
+   "active": {
+    "min": 70,
+    "max": 70
+   },
+   "confidence": "published",
+   "note": "R1 distill of Llama-3.3-70B, dense, HF card"
+  },
+  {
+   "match": "deepseek-r1-distill-qwen-32b",
+   "total": {
+    "min": 32.5,
+    "max": 32.5
+   },
+   "active": {
+    "min": 32.5,
+    "max": 32.5
+   },
+   "confidence": "published",
+   "note": "R1 distill of Qwen2.5-32B, dense, HF card"
+  },
+  {
+   "match": "deepseek-v3",
+   "total": {
+    "min": 671,
+    "max": 671
+   },
+   "active": {
+    "min": 37,
+    "max": 37
+   },
+   "confidence": "published",
+   "note": "DeepSeek-V3/V3.1/V3.2 671B/37B MoE, HF card"
+  },
+  {
+   "match": "deepseek-v4-flash",
+   "total": {
+    "min": 100,
+    "max": 400
+   },
+   "active": {
+    "min": 10,
+    "max": 40
+   },
+   "confidence": "estimated",
+   "note": "undisclosed, anchored below V3"
+  },
+  {
+   "match": "deepseek-v4-pro",
+   "total": {
+    "min": 600,
+    "max": 1200
+   },
+   "active": {
+    "min": 37,
+    "max": 80
+   },
+   "confidence": "estimated",
+   "note": "undisclosed, anchored above V3"
+  },
+  {
+   "match": "devstral-2-123b",
+   "total": {
+    "min": 123,
+    "max": 123
+   },
+   "active": {
+    "min": 123,
+    "max": 123
+   },
+   "confidence": "estimated",
+   "note": "Devstral 2 123B, dense assumed (Large-2-class)"
+  },
+  {
+   "match": "devstral-2512",
+   "total": {
+    "min": 125.0,
+    "max": 125.0
+   },
+   "active": {
+    "min": 125.0,
+    "max": 125.0
+   },
+   "confidence": "published",
+   "tps": 39.4,
+   "ttft": 1.04
+  },
+  {
+   "match": "devstral-latest",
+   "total": {
+    "min": 125.0,
+    "max": 125.0
+   },
+   "active": {
+    "min": 125.0,
+    "max": 125.0
+   },
+   "confidence": "published",
+   "tps": 39.4,
+   "ttft": 1.04
+  },
+  {
+   "match": "devstral-medium-latest",
+   "total": {
+    "min": 70.0,
+    "max": 120.0
+   },
+   "active": {
+    "min": 70.0,
+    "max": 120.0
+   },
+   "confidence": "estimated",
+   "tps": 39.4,
+   "ttft": 1.04
+  },
+  {
+   "match": "dolly-v1-6b",
+   "total": {
+    "min": 6.0,
+    "max": 6.0
+   },
+   "active": {
+    "min": 6.0,
+    "max": 6.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "dolly-v2-12b",
+   "total": {
+    "min": 12.0,
+    "max": 12.0
+   },
+   "active": {
+    "min": 12.0,
+    "max": 12.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "dolly-v2-3b",
+   "total": {
+    "min": 3.0,
+    "max": 3.0
+   },
+   "active": {
+    "min": 3.0,
+    "max": 3.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "dolly-v2-7b",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "dolphin-mistral-24b",
+   "total": {
+    "min": 24,
+    "max": 24
+   },
+   "active": {
+    "min": 24,
+    "max": 24
+   },
+   "confidence": "published",
+   "note": "Mistral Small 24B finetune, HF card"
+  },
+  {
+   "match": "ernie-4-5-vl-424b-a47b",
+   "total": {
+    "min": 424,
+    "max": 424
+   },
+   "active": {
+    "min": 47,
+    "max": 47
+   },
+   "confidence": "published",
+   "note": "ERNIE-4.5-VL-424B-A47B MoE, HF card"
+  },
+  {
+   "match": "gemini-2-0-flash",
+   "total": {
+    "min": 440.0,
+    "max": 440.0
+   },
+   "active": {
+    "min": 44.0,
+    "max": 132.0
+   },
+   "confidence": "estimated",
+   "tps": 64.6,
+   "ttft": 1.1
+  },
+  {
+   "match": "gemini-2-0-flash-001",
+   "total": {
+    "min": 440.0,
+    "max": 440.0
+   },
+   "active": {
+    "min": 44.0,
+    "max": 132.0
+   },
+   "confidence": "estimated",
+   "tps": 64.6,
+   "ttft": 1.1
+  },
+  {
+   "match": "gemini-2-0-flash-lite",
+   "total": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "active": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "confidence": "estimated",
+   "tps": 101.0,
+   "ttft": 0.5
+  },
+  {
+   "match": "gemini-2-0-flash-lite-001",
+   "total": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "active": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "confidence": "estimated",
+   "tps": 101.0,
+   "ttft": 0.5
+  },
+  {
+   "match": "gemini-2-5-flash",
+   "total": {
+    "min": 440.0,
+    "max": 440.0
+   },
+   "active": {
+    "min": 44.0,
+    "max": 132.0
+   },
+   "confidence": "estimated",
+   "tps": 64.6,
+   "ttft": 1.1
+  },
+  {
+   "match": "gemini-2-5-flash-image",
+   "total": {
+    "min": 440.0,
+    "max": 440.0
+   },
+   "active": {
+    "min": 44.0,
+    "max": 132.0
+   },
+   "confidence": "estimated",
+   "tps": 158.5,
+   "ttft": 7.2
+  },
+  {
+   "match": "gemini-2-5-flash-lite",
+   "total": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "active": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "confidence": "estimated",
+   "tps": 101.0,
+   "ttft": 0.5
+  },
+  {
+   "match": "gemini-2-5-pro",
+   "total": {
+    "min": 2000.0,
+    "max": 2000.0
+   },
+   "active": {
+    "min": 200.0,
+    "max": 600.0
+   },
+   "confidence": "estimated",
+   "tps": 89.6,
+   "ttft": 2.28
+  },
+  {
+   "match": "gemini-3-1-flash-image-preview",
+   "total": {
+    "min": 1200.0,
+    "max": 1200.0
+   },
+   "active": {
+    "min": 120.0,
+    "max": 360.0
+   },
+   "confidence": "estimated",
+   "tps": 80.9,
+   "ttft": 13.21
+  },
+  {
+   "match": "gemini-3-1-flash-lite",
+   "total": {
+    "min": 30.0,
+    "max": 105.0
+   },
+   "active": {
+    "min": 30.0,
+    "max": 105.0
+   },
+   "confidence": "estimated",
+   "tps": 115.4,
+   "ttft": 1.48
+  },
+  {
+   "match": "gemini-3-1-flash-lite-preview",
+   "total": {
+    "min": 30.0,
+    "max": 105.0
+   },
+   "active": {
+    "min": 30.0,
+    "max": 105.0
+   },
+   "confidence": "estimated",
+   "tps": 85.1,
+   "ttft": 0.95
+  },
+  {
+   "match": "gemini-3-1-pro-preview",
+   "total": {
+    "min": 1200.0,
+    "max": 1200.0
+   },
+   "active": {
+    "min": 120.0,
+    "max": 360.0
+   },
+   "confidence": "estimated",
+   "tps": 73.0,
+   "ttft": 4.32
+  },
+  {
+   "match": "gemini-3-1-pro-preview-customtools",
+   "total": {
+    "min": 1200.0,
+    "max": 1200.0
+   },
+   "active": {
+    "min": 120.0,
+    "max": 360.0
+   },
+   "confidence": "estimated"
+  },
+  {
+   "match": "gemini-3-5-flash",
+   "total": {
+    "min": 900.0,
+    "max": 900.0
+   },
+   "active": {
+    "min": 90.0,
+    "max": 240.0
+   },
+   "confidence": "estimated",
+   "tps": 130.6,
+   "ttft": 2.72
+  },
+  {
+   "match": "gemini-3-flash-preview",
+   "total": {
+    "min": 300.0,
+    "max": 300.0
+   },
+   "active": {
+    "min": 100.0,
+    "max": 300.0
+   },
+   "confidence": "estimated",
+   "tps": 73.9,
+   "ttft": 1.24
+  },
+  {
+   "match": "gemini-3-pro-image-preview",
+   "total": {
+    "min": 1200.0,
+    "max": 1200.0
+   },
+   "active": {
+    "min": 120.0,
+    "max": 360.0
+   },
+   "confidence": "estimated",
+   "tps": 55.2,
+   "ttft": 22.28
+  },
+  {
+   "match": "gemini-3-pro-preview",
+   "total": {
+    "min": 1200.0,
+    "max": 1200.0
+   },
+   "active": {
+    "min": 120.0,
+    "max": 360.0
+   },
+   "confidence": "estimated",
+   "tps": 73.0,
+   "ttft": 4.32
+  },
+  {
+   "match": "gemini-flash-latest",
+   "total": {
+    "min": 440.0,
+    "max": 440.0
+   },
+   "active": {
+    "min": 44.0,
+    "max": 132.0
+   },
+   "confidence": "estimated",
+   "tps": 85.1,
+   "ttft": 0.95
+  },
+  {
+   "match": "gemini-flash-lite-latest",
+   "total": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "active": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "confidence": "estimated",
+   "tps": 130.6,
+   "ttft": 2.72
+  },
+  {
+   "match": "gemini-pro-latest",
+   "total": {
+    "min": 2000.0,
+    "max": 2000.0
+   },
+   "active": {
+    "min": 200.0,
+    "max": 600.0
+   },
+   "confidence": "estimated"
+  },
+  {
+   "match": "gemma-1-1-2b-it",
+   "total": {
+    "min": 2.51,
+    "max": 2.51
+   },
+   "active": {
+    "min": 2.51,
+    "max": 2.51
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-1-1-2b-it-gguf",
+   "total": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "active": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-1-1-2b-it-keras",
+   "total": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "active": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-1-1-2b-it-pytorch",
+   "total": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "active": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-1-1-2b-it-tflite",
+   "total": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "active": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-1-1-7b-it",
+   "total": {
+    "min": 8.54,
+    "max": 8.54
+   },
+   "active": {
+    "min": 8.54,
+    "max": 8.54
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-1-1-7b-it-gguf",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-1-1-7b-it-keras",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-1-1-7b-it-pytorch",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-2-27b",
+   "total": {
+    "min": 27.23,
+    "max": 27.23
+   },
+   "active": {
+    "min": 27.23,
+    "max": 27.23
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-2-27b-it",
+   "total": {
+    "min": 27.23,
+    "max": 27.23
+   },
+   "active": {
+    "min": 27.23,
+    "max": 27.23
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-2-27b-it-pytorch",
+   "total": {
+    "min": 27.0,
+    "max": 27.0
+   },
+   "active": {
+    "min": 27.0,
+    "max": 27.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-2-27b-pytorch",
+   "total": {
+    "min": 27.0,
+    "max": 27.0
+   },
+   "active": {
+    "min": 27.0,
+    "max": 27.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-2-2b",
+   "total": {
+    "min": 2.61,
+    "max": 2.61
+   },
+   "active": {
+    "min": 2.61,
+    "max": 2.61
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-2-2b-it",
+   "total": {
+    "min": 2.61,
+    "max": 2.61
+   },
+   "active": {
+    "min": 2.61,
+    "max": 2.61
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-2-2b-it-pytorch",
+   "total": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "active": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-2-2b-pytorch",
+   "total": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "active": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-2-9b",
+   "total": {
+    "min": 9.24,
+    "max": 9.24
+   },
+   "active": {
+    "min": 9.24,
+    "max": 9.24
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-2-9b-it",
+   "total": {
+    "min": 9.24,
+    "max": 9.24
+   },
+   "active": {
+    "min": 9.24,
+    "max": 9.24
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-2-9b-it-pytorch",
+   "total": {
+    "min": 9.0,
+    "max": 9.0
+   },
+   "active": {
+    "min": 9.0,
+    "max": 9.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-2-9b-keras",
+   "total": {
+    "min": 9.0,
+    "max": 9.0
+   },
+   "active": {
+    "min": 9.0,
+    "max": 9.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-2-9b-pytorch",
+   "total": {
+    "min": 9.0,
+    "max": 9.0
+   },
+   "active": {
+    "min": 9.0,
+    "max": 9.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-2-instruct-9b-keras",
+   "total": {
+    "min": 9.0,
+    "max": 9.0
+   },
+   "active": {
+    "min": 9.0,
+    "max": 9.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-2b",
+   "total": {
+    "min": 2.51,
+    "max": 2.51
+   },
+   "active": {
+    "min": 2.51,
+    "max": 2.51
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-2b-cpp",
+   "total": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "active": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-2b-flax",
+   "total": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "active": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-2b-gguf",
+   "total": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "active": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-2b-it",
+   "total": {
+    "min": 2.51,
+    "max": 2.51
+   },
+   "active": {
+    "min": 2.51,
+    "max": 2.51
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-2b-it-cpp",
+   "total": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "active": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-2b-it-flax",
+   "total": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "active": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-2b-it-gguf",
+   "total": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "active": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-2b-it-keras",
+   "total": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "active": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-2b-it-pytorch",
+   "total": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "active": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-2b-it-sfp-cpp",
+   "total": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "active": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-2b-it-tflite",
+   "total": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "active": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-2b-keras",
+   "total": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "active": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-2b-pytorch",
+   "total": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "active": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-2b-sfp-cpp",
+   "total": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "active": {
+    "min": 2.0,
+    "max": 2.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-3-12b",
+   "total": {
+    "min": 12.2,
+    "max": 12.2
+   },
+   "active": {
+    "min": 12.2,
+    "max": 12.2
+   },
+   "confidence": "published",
+   "note": "Gemma 3 12B dense, HF card"
+  },
+  {
+   "match": "gemma-3-27b",
+   "total": {
+    "min": 27.4,
+    "max": 27.4
+   },
+   "active": {
+    "min": 27.4,
+    "max": 27.4
+   },
+   "confidence": "published",
+   "note": "Gemma 3 27B dense, HF card"
+  },
+  {
+   "match": "gemma-3-4b",
+   "total": {
+    "min": 4.3,
+    "max": 4.3
+   },
+   "active": {
+    "min": 4.3,
+    "max": 4.3
+   },
+   "confidence": "published",
+   "note": "Gemma 3 4B dense, HF card"
+  },
+  {
+   "match": "gemma-3n-e4b",
+   "total": {
+    "min": 8,
+    "max": 8
+   },
+   "active": {
+    "min": 4,
+    "max": 4
+   },
+   "confidence": "published",
+   "note": "Gemma 3n E4B, 8B raw / ~4B effective, HF card"
+  },
+  {
+   "match": "gemma-4-26b-a4b",
+   "total": {
+    "min": 26,
+    "max": 26
+   },
+   "active": {
+    "min": 4,
+    "max": 4
+   },
+   "confidence": "estimated",
+   "note": "self-describing MoE id"
+  },
+  {
+   "match": "gemma-4-26b-a4b-it",
+   "total": {
+    "min": 26.0,
+    "max": 26.0
+   },
+   "active": {
+    "min": 4.0,
+    "max": 4.0
+   },
+   "confidence": "estimated",
+   "tps": 61.5,
+   "ttft": 0.37
+  },
+  {
+   "match": "gemma-4-31b",
+   "total": {
+    "min": 31,
+    "max": 31
+   },
+   "active": {
+    "min": 31,
+    "max": 31
+   },
+   "confidence": "estimated",
+   "note": "self-describing dense id"
+  },
+  {
+   "match": "gemma-4-31b-it",
+   "total": {
+    "min": 31.0,
+    "max": 31.0
+   },
+   "active": {
+    "min": 31.0,
+    "max": 31.0
+   },
+   "confidence": "estimated"
+  },
+  {
+   "match": "gemma-4-e2b",
+   "total": {
+    "min": 4,
+    "max": 6
+   },
+   "active": {
+    "min": 2,
+    "max": 2
+   },
+   "confidence": "estimated",
+   "note": "Gemma 4 E2B, ~2B effective, anchored to 3n"
+  },
+  {
+   "match": "gemma-7b",
+   "total": {
+    "min": 8.54,
+    "max": 8.54
+   },
+   "active": {
+    "min": 8.54,
+    "max": 8.54
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-7b-cpp",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-7b-flax",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-7b-gguf",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-7b-it",
+   "total": {
+    "min": 8.54,
+    "max": 8.54
+   },
+   "active": {
+    "min": 8.54,
+    "max": 8.54
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-7b-it-cpp",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-7b-it-flax",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-7b-it-gguf",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-7b-it-keras",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-7b-it-pytorch",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-7b-it-quant-pytorch",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-7b-it-sfp-cpp",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-7b-keras",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-7b-pytorch",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-7b-quant-pytorch",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gemma-7b-sfp-cpp",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "glm-4-5",
+   "total": {
+    "min": 355,
+    "max": 355
+   },
+   "active": {
+    "min": 32,
+    "max": 32
+   },
+   "confidence": "published",
+   "note": "GLM-4.5 355B/32B MoE, HF card"
+  },
+  {
+   "match": "glm-4-5-air",
+   "total": {
+    "min": 106,
+    "max": 106
+   },
+   "active": {
+    "min": 12,
+    "max": 12
+   },
+   "confidence": "published",
+   "note": "GLM-4.5-Air 106B/12B MoE, HF card"
+  },
+  {
+   "match": "glm-4-5v",
+   "total": {
+    "min": 106,
+    "max": 106
+   },
+   "active": {
+    "min": 12,
+    "max": 12
+   },
+   "confidence": "published",
+   "note": "GLM-4.5V (Air-based) MoE, HF card"
+  },
+  {
+   "match": "glm-4-6",
+   "total": {
+    "min": 355,
+    "max": 357
+   },
+   "active": {
+    "min": 32,
+    "max": 32
+   },
+   "confidence": "published",
+   "note": "GLM-4.6 ~355B/32B MoE, Z.ai release"
+  },
+  {
+   "match": "glm-4-6v",
+   "total": {
+    "min": 106,
+    "max": 106
+   },
+   "active": {
+    "min": 12,
+    "max": 12
+   },
+   "confidence": "estimated",
+   "note": "GLM-4.6V, Air-class vision, anchored to 4.5V"
+  },
+  {
+   "match": "glm-4-7",
+   "total": {
+    "min": 355,
+    "max": 400
+   },
+   "active": {
+    "min": 32,
+    "max": 40
+   },
+   "confidence": "estimated",
+   "note": "GLM-4.7, anchored to 4.6"
+  },
+  {
+   "match": "glm-4-7-flash",
+   "total": {
+    "min": 100,
+    "max": 120
+   },
+   "active": {
+    "min": 12,
+    "max": 12
+   },
+   "confidence": "estimated",
+   "note": "GLM-4.7-Flash, Air-class, anchored to 4.5-Air"
+  },
+  {
+   "match": "glm-5",
+   "total": {
+    "min": 355,
+    "max": 600
+   },
+   "active": {
+    "min": 32,
+    "max": 60
+   },
+   "confidence": "estimated",
+   "note": "GLM-5 flagship, anchored above 4.6"
+  },
+  {
+   "match": "glm-5-turbo",
+   "total": {
+    "min": 100,
+    "max": 200
+   },
+   "active": {
+    "min": 12,
+    "max": 20
+   },
+   "confidence": "estimated",
+   "note": "GLM-5 turbo tier, anchored to Air-class"
+  },
+  {
+   "match": "glm-5v-turbo",
+   "total": {
+    "min": 100,
+    "max": 200
+   },
+   "active": {
+    "min": 12,
+    "max": 20
+   },
+   "confidence": "estimated",
+   "note": "GLM-5V turbo tier, anchored to Air-class"
+  },
+  {
+   "match": "gpt-3-5-turbo",
+   "total": {
+    "min": 20.0,
+    "max": 70.0
+   },
+   "active": {
+    "min": 20.0,
+    "max": 70.0
+   },
+   "confidence": "estimated",
+   "tps": 44.3,
+   "ttft": 0.43
+  },
+  {
+   "match": "gpt-3-5-turbo-0125",
+   "total": {
+    "min": 20.0,
+    "max": 70.0
+   },
+   "active": {
+    "min": 20.0,
+    "max": 70.0
+   },
+   "confidence": "estimated",
+   "tps": 44.3,
+   "ttft": 0.43
+  },
+  {
+   "match": "gpt-3-5-turbo-1106",
+   "total": {
+    "min": 20.0,
+    "max": 70.0
+   },
+   "active": {
+    "min": 20.0,
+    "max": 70.0
+   },
+   "confidence": "estimated",
+   "tps": 44.3,
+   "ttft": 0.43
+  },
+  {
+   "match": "gpt-3-5-turbo-16k",
+   "total": {
+    "min": 20.0,
+    "max": 70.0
+   },
+   "active": {
+    "min": 20.0,
+    "max": 70.0
+   },
+   "confidence": "estimated",
+   "tps": 37.2,
+   "ttft": 0.44
+  },
+  {
+   "match": "gpt-3-5-turbo-instruct",
+   "total": {
+    "min": 20.0,
+    "max": 70.0
+   },
+   "active": {
+    "min": 20.0,
+    "max": 70.0
+   },
+   "confidence": "estimated",
+   "tps": 79.4,
+   "ttft": 0.73
+  },
+  {
+   "match": "gpt-3-5-turbo-instruct-0914",
+   "total": {
+    "min": 20.0,
+    "max": 70.0
+   },
+   "active": {
+    "min": 20.0,
+    "max": 70.0
+   },
+   "confidence": "estimated",
+   "tps": 79.4,
+   "ttft": 0.73
+  },
+  {
+   "match": "gpt-35-turbo",
+   "total": {
+    "min": 20.0,
+    "max": 70.0
+   },
+   "active": {
+    "min": 20.0,
+    "max": 70.0
+   },
+   "confidence": "estimated",
+   "tps": 44.3,
+   "ttft": 0.43
+  },
+  {
+   "match": "gpt-35-turbo-0125",
+   "total": {
+    "min": 20.0,
+    "max": 70.0
+   },
+   "active": {
+    "min": 20.0,
+    "max": 70.0
+   },
+   "confidence": "estimated",
+   "tps": 44.3,
+   "ttft": 0.43
+  },
+  {
+   "match": "gpt-35-turbo-1106",
+   "total": {
+    "min": 20.0,
+    "max": 70.0
+   },
+   "active": {
+    "min": 20.0,
+    "max": 70.0
+   },
+   "confidence": "estimated",
+   "tps": 44.3,
+   "ttft": 0.43
+  },
+  {
+   "match": "gpt-35-turbo-16k",
+   "total": {
+    "min": 20.0,
+    "max": 70.0
+   },
+   "active": {
+    "min": 20.0,
+    "max": 70.0
+   },
+   "confidence": "estimated",
+   "tps": 37.2,
+   "ttft": 0.44
+  },
+  {
+   "match": "gpt-35-turbo-instruct",
+   "total": {
+    "min": 20.0,
+    "max": 70.0
+   },
+   "active": {
+    "min": 20.0,
+    "max": 70.0
+   },
+   "confidence": "estimated",
+   "tps": 79.4,
+   "ttft": 0.73
+  },
+  {
+   "match": "gpt-35-turbo-instruct-0914",
+   "total": {
+    "min": 20.0,
+    "max": 70.0
+   },
+   "active": {
+    "min": 20.0,
+    "max": 70.0
+   },
+   "confidence": "estimated",
+   "tps": 79.4,
+   "ttft": 0.73
+  },
+  {
+   "match": "gpt-4",
+   "total": {
+    "min": 1760.0,
+    "max": 1760.0
+   },
+   "active": {
+    "min": 176.0,
+    "max": 528.0
+   },
+   "confidence": "estimated",
+   "tps": 22.4,
+   "ttft": 0.85
+  },
+  {
+   "match": "gpt-4-0613",
+   "total": {
+    "min": 1760.0,
+    "max": 1760.0
+   },
+   "active": {
+    "min": 176.0,
+    "max": 528.0
+   },
+   "confidence": "estimated",
+   "tps": 22.4,
+   "ttft": 0.85
+  },
+  {
+   "match": "gpt-4-1",
+   "total": {
+    "min": 352.0,
+    "max": 352.0
+   },
+   "active": {
+    "min": 35.0,
+    "max": 106.0
+   },
+   "confidence": "estimated",
+   "tps": 42.5,
+   "ttft": 0.63
+  },
+  {
+   "match": "gpt-4-1-2025-04-14",
+   "total": {
+    "min": 352.0,
+    "max": 352.0
+   },
+   "active": {
+    "min": 35.0,
+    "max": 106.0
+   },
+   "confidence": "estimated",
+   "tps": 42.5,
+   "ttft": 0.63
+  },
+  {
+   "match": "gpt-4-1-mini",
+   "total": {
+    "min": 40.0,
+    "max": 112.0
+   },
+   "active": {
+    "min": 40.0,
+    "max": 112.0
+   },
+   "confidence": "estimated",
+   "tps": 34.4,
+   "ttft": 0.69
+  },
+  {
+   "match": "gpt-4-1-mini-2025-04-14",
+   "total": {
+    "min": 40.0,
+    "max": 112.0
+   },
+   "active": {
+    "min": 40.0,
+    "max": 112.0
+   },
+   "confidence": "estimated",
+   "tps": 42.5,
+   "ttft": 0.63
+  },
+  {
+   "match": "gpt-4-1-nano",
+   "total": {
+    "min": 10.0,
+    "max": 37.0
+   },
+   "active": {
+    "min": 10.0,
+    "max": 37.0
+   },
+   "confidence": "estimated",
+   "tps": 26.1,
+   "ttft": 0.48
+  },
+  {
+   "match": "gpt-4-1-nano-2025-04-14",
+   "total": {
+    "min": 10.0,
+    "max": 37.0
+   },
+   "active": {
+    "min": 10.0,
+    "max": 37.0
+   },
+   "confidence": "estimated",
+   "tps": 42.5,
+   "ttft": 0.63
+  },
+  {
+   "match": "gpt-4-turbo",
+   "total": {
+    "min": 880.0,
+    "max": 880.0
+   },
+   "active": {
+    "min": 88.0,
+    "max": 264.0
+   },
+   "confidence": "estimated",
+   "tps": 14.9,
+   "ttft": 1.17
+  },
+  {
+   "match": "gpt-4-turbo-2024-04-09",
+   "total": {
+    "min": 880.0,
+    "max": 880.0
+   },
+   "active": {
+    "min": 88.0,
+    "max": 264.0
+   },
+   "confidence": "estimated",
+   "tps": 14.9,
+   "ttft": 1.17
+  },
+  {
+   "match": "gpt-4o",
+   "total": {
+    "min": 440.0,
+    "max": 440.0
+   },
+   "active": {
+    "min": 44.0,
+    "max": 132.0
+   },
+   "confidence": "estimated",
+   "tps": 46.2,
+   "ttft": 0.53
+  },
+  {
+   "match": "gpt-4o-2024-05-13",
+   "total": {
+    "min": 440.0,
+    "max": 440.0
+   },
+   "active": {
+    "min": 44.0,
+    "max": 132.0
+   },
+   "confidence": "estimated",
+   "tps": 47.8,
+   "ttft": 0.35
+  },
+  {
+   "match": "gpt-4o-2024-08-06",
+   "total": {
+    "min": 440.0,
+    "max": 440.0
+   },
+   "active": {
+    "min": 44.0,
+    "max": 132.0
+   },
+   "confidence": "estimated",
+   "tps": 29.1,
+   "ttft": 1.23
+  },
+  {
+   "match": "gpt-4o-2024-11-20",
+   "total": {
+    "min": 440.0,
+    "max": 440.0
+   },
+   "active": {
+    "min": 44.0,
+    "max": 132.0
+   },
+   "confidence": "estimated",
+   "tps": 77.8,
+   "ttft": 0.43
+  },
+  {
+   "match": "gpt-4o-mini",
+   "total": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "active": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "confidence": "estimated",
+   "tps": 33.0,
+   "ttft": 0.6
+  },
+  {
+   "match": "gpt-4o-mini-2024-07-18",
+   "total": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "active": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "confidence": "estimated",
+   "tps": 45.5,
+   "ttft": 0.58
+  },
+  {
+   "match": "gpt-4o-mini-search-preview",
+   "total": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "active": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "confidence": "estimated",
+   "tps": 47.1,
+   "ttft": 1.82
+  },
+  {
+   "match": "gpt-4o-mini-search-preview-2025-03-11",
+   "total": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "active": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "confidence": "estimated",
+   "tps": 47.1,
+   "ttft": 1.82
+  },
+  {
+   "match": "gpt-4o-mini-transcribe",
+   "total": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "active": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "confidence": "estimated"
+  },
+  {
+   "match": "gpt-4o-mini-transcribe-2025-03-20",
+   "total": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "active": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "confidence": "estimated"
+  },
+  {
+   "match": "gpt-4o-mini-transcribe-2025-12-15",
+   "total": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "active": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "confidence": "estimated"
+  },
+  {
+   "match": "gpt-4o-mini-tts",
+   "total": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "active": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "confidence": "estimated",
+   "tps": 32.9,
+   "ttft": 0.6
+  },
+  {
+   "match": "gpt-4o-mini-tts-2025-03-20",
+   "total": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "active": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "confidence": "estimated",
+   "tps": 32.9,
+   "ttft": 0.6
+  },
+  {
+   "match": "gpt-4o-mini-tts-2025-12-15",
+   "total": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "active": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "confidence": "estimated"
+  },
+  {
+   "match": "gpt-4o-search-preview",
+   "total": {
+    "min": 440.0,
+    "max": 440.0
+   },
+   "active": {
+    "min": 44.0,
+    "max": 132.0
+   },
+   "confidence": "estimated",
+   "tps": 46.0,
+   "ttft": 2.17
+  },
+  {
+   "match": "gpt-4o-search-preview-2025-03-11",
+   "total": {
+    "min": 440.0,
+    "max": 440.0
+   },
+   "active": {
+    "min": 44.0,
+    "max": 132.0
+   },
+   "confidence": "estimated",
+   "tps": 46.0,
+   "ttft": 2.17
+  },
+  {
+   "match": "gpt-5",
+   "total": {
+    "min": 300.0,
+    "max": 300.0
+   },
+   "active": {
+    "min": 30.0,
+    "max": 90.0
+   },
+   "confidence": "estimated",
+   "tps": 53.6,
+   "ttft": 1.57
+  },
+  {
+   "match": "gpt-5-1",
+   "total": {
+    "min": 300.0,
+    "max": 300.0
+   },
+   "active": {
+    "min": 30.0,
+    "max": 90.0
+   },
+   "confidence": "estimated",
+   "tps": 60.6,
+   "ttft": 1.85
+  },
+  {
+   "match": "gpt-5-1-2025-11-13",
+   "total": {
+    "min": 300.0,
+    "max": 300.0
+   },
+   "active": {
+    "min": 30.0,
+    "max": 90.0
+   },
+   "confidence": "estimated",
+   "tps": 60.6,
+   "ttft": 1.85
+  },
+  {
+   "match": "gpt-5-1-chat-latest",
+   "total": {
+    "min": 300.0,
+    "max": 300.0
+   },
+   "active": {
+    "min": 30.0,
+    "max": 90.0
+   },
+   "confidence": "estimated",
+   "tps": 73.0,
+   "ttft": 1.01
+  },
+  {
+   "match": "gpt-5-1-codex",
+   "total": {
+    "min": 300.0,
+    "max": 300.0
+   },
+   "active": {
+    "min": 30.0,
+    "max": 90.0
+   },
+   "confidence": "estimated",
+   "tps": 59.1,
+   "ttft": 2.15
+  },
+  {
+   "match": "gpt-5-1-codex-max",
+   "total": {
+    "min": 300.0,
+    "max": 300.0
+   },
+   "active": {
+    "min": 30.0,
+    "max": 90.0
+   },
+   "confidence": "estimated",
+   "tps": 83.9,
+   "ttft": 2.68
+  },
+  {
+   "match": "gpt-5-1-codex-mini",
+   "total": {
+    "min": 25.0,
+    "max": 70.0
+   },
+   "active": {
+    "min": 25.0,
+    "max": 70.0
+   },
+   "confidence": "estimated",
+   "tps": 71.6,
+   "ttft": 1.7
+  },
+  {
+   "match": "gpt-5-2",
+   "total": {
+    "min": 420.0,
+    "max": 420.0
+   },
+   "active": {
+    "min": 42.0,
+    "max": 126.0
+   },
+   "confidence": "estimated",
+   "tps": 43.8,
+   "ttft": 2.29
+  },
+  {
+   "match": "gpt-5-2-2025-12-11",
+   "total": {
+    "min": 420.0,
+    "max": 420.0
+   },
+   "active": {
+    "min": 42.0,
+    "max": 126.0
+   },
+   "confidence": "estimated",
+   "tps": 43.8,
+   "ttft": 2.29
+  },
+  {
+   "match": "gpt-5-2-chat-latest",
+   "total": {
+    "min": 420.0,
+    "max": 420.0
+   },
+   "active": {
+    "min": 42.0,
+    "max": 126.0
+   },
+   "confidence": "estimated",
+   "tps": 73.0,
+   "ttft": 1.01
+  },
+  {
+   "match": "gpt-5-2-codex",
+   "total": {
+    "min": 420.0,
+    "max": 420.0
+   },
+   "active": {
+    "min": 42.0,
+    "max": 126.0
+   },
+   "confidence": "estimated",
+   "tps": 58.8,
+   "ttft": 2.04
+  },
+  {
+   "match": "gpt-5-2-pro",
+   "total": {
+    "min": 5040.0,
+    "max": 5040.0
+   },
+   "active": {
+    "min": 504.0,
+    "max": 1512.0
+   },
+   "confidence": "estimated",
+   "tps": 8.1,
+   "ttft": 15.82
+  },
+  {
+   "match": "gpt-5-2-pro-2025-12-11",
+   "total": {
+    "min": 5040.0,
+    "max": 5040.0
+   },
+   "active": {
+    "min": 504.0,
+    "max": 1512.0
+   },
+   "confidence": "estimated",
+   "tps": 8.1,
+   "ttft": 15.82
+  },
+  {
+   "match": "gpt-5-2025-08-07",
+   "total": {
+    "min": 300.0,
+    "max": 300.0
+   },
+   "active": {
+    "min": 30.0,
+    "max": 90.0
+   },
+   "confidence": "estimated",
+   "tps": 43.8,
+   "ttft": 2.29
+  },
+  {
+   "match": "gpt-5-3-chat-latest",
+   "total": {
+    "min": 420.0,
+    "max": 420.0
+   },
+   "active": {
+    "min": 42.0,
+    "max": 126.0
+   },
+   "confidence": "estimated",
+   "tps": 73.0,
+   "ttft": 1.01
+  },
+  {
+   "match": "gpt-5-3-codex",
+   "total": {
+    "min": 420.0,
+    "max": 420.0
+   },
+   "active": {
+    "min": 42.0,
+    "max": 126.0
+   },
+   "confidence": "estimated",
+   "tps": 48.8,
+   "ttft": 3.01
+  },
+  {
+   "match": "gpt-5-4",
+   "total": {
+    "min": 450.0,
+    "max": 450.0
+   },
+   "active": {
+    "min": 45.0,
+    "max": 150.0
+   },
+   "confidence": "estimated",
+   "tps": 45.5,
+   "ttft": 1.01
+  },
+  {
+   "match": "gpt-5-4-2026-03-05",
+   "total": {
+    "min": 450.0,
+    "max": 450.0
+   },
+   "active": {
+    "min": 45.0,
+    "max": 150.0
+   },
+   "confidence": "estimated",
+   "tps": 45.5,
+   "ttft": 1.01
+  },
+  {
+   "match": "gpt-5-4-mini",
+   "total": {
+    "min": 56.0,
+    "max": 158.0
+   },
+   "active": {
+    "min": 56.0,
+    "max": 158.0
+   },
+   "confidence": "estimated",
+   "tps": 73.0,
+   "ttft": 0.67
+  },
+  {
+   "match": "gpt-5-4-mini-2026-03-17",
+   "total": {
+    "min": 56.0,
+    "max": 158.0
+   },
+   "active": {
+    "min": 56.0,
+    "max": 158.0
+   },
+   "confidence": "estimated",
+   "tps": 73.0,
+   "ttft": 0.67
+  },
+  {
+   "match": "gpt-5-4-nano",
+   "total": {
+    "min": 15.0,
+    "max": 58.0
+   },
+   "active": {
+    "min": 15.0,
+    "max": 58.0
+   },
+   "confidence": "estimated",
+   "tps": 70.8,
+   "ttft": 0.54
+  },
+  {
+   "match": "gpt-5-4-nano-2026-03-17",
+   "total": {
+    "min": 15.0,
+    "max": 58.0
+   },
+   "active": {
+    "min": 15.0,
+    "max": 58.0
+   },
+   "confidence": "estimated",
+   "tps": 70.8,
+   "ttft": 0.54
+  },
+  {
+   "match": "gpt-5-4-pro",
+   "total": {
+    "min": 5400.0,
+    "max": 5400.0
+   },
+   "active": {
+    "min": 540.0,
+    "max": 1800.0
+   },
+   "confidence": "estimated",
+   "tps": 4.0,
+   "ttft": 26.59
+  },
+  {
+   "match": "gpt-5-4-pro-2026-03-05",
+   "total": {
+    "min": 5400.0,
+    "max": 5400.0
+   },
+   "active": {
+    "min": 540.0,
+    "max": 1800.0
+   },
+   "confidence": "estimated",
+   "tps": 4.0,
+   "ttft": 26.59
+  },
+  {
+   "match": "gpt-5-5",
+   "total": {
+    "min": 900.0,
+    "max": 900.0
+   },
+   "active": {
+    "min": 90.0,
+    "max": 300.0
+   },
+   "confidence": "estimated",
+   "tps": 40.4,
+   "ttft": 3.38
+  },
+  {
+   "match": "gpt-5-5-2026-04-23",
+   "total": {
+    "min": 900.0,
+    "max": 900.0
+   },
+   "active": {
+    "min": 90.0,
+    "max": 300.0
+   },
+   "confidence": "estimated",
+   "tps": 40.4,
+   "ttft": 3.38
+  },
+  {
+   "match": "gpt-5-5-pro",
+   "total": {
+    "min": 5400.0,
+    "max": 5400.0
+   },
+   "active": {
+    "min": 540.0,
+    "max": 1800.0
+   },
+   "confidence": "estimated",
+   "tps": 14.4,
+   "ttft": 46.04
+  },
+  {
+   "match": "gpt-5-5-pro-2026-04-23",
+   "total": {
+    "min": 5400.0,
+    "max": 5400.0
+   },
+   "active": {
+    "min": 540.0,
+    "max": 1800.0
+   },
+   "confidence": "estimated",
+   "tps": 14.4,
+   "ttft": 46.04
+  },
+  {
+   "match": "gpt-5-chat-latest",
+   "total": {
+    "min": 300.0,
+    "max": 300.0
+   },
+   "active": {
+    "min": 30.0,
+    "max": 90.0
+   },
+   "confidence": "estimated",
+   "tps": 73.0,
+   "ttft": 1.01
+  },
+  {
+   "match": "gpt-5-codex",
+   "total": {
+    "min": 300.0,
+    "max": 300.0
+   },
+   "active": {
+    "min": 30.0,
+    "max": 90.0
+   },
+   "confidence": "estimated",
+   "tps": 53.1,
+   "ttft": 2.32
+  },
+  {
+   "match": "gpt-5-mini",
+   "total": {
+    "min": 25.0,
+    "max": 70.0
+   },
+   "active": {
+    "min": 25.0,
+    "max": 70.0
+   },
+   "confidence": "estimated",
+   "tps": 71.0,
+   "ttft": 4.28
+  },
+  {
+   "match": "gpt-5-mini-2025-08-07",
+   "total": {
+    "min": 25.0,
+    "max": 70.0
+   },
+   "active": {
+    "min": 25.0,
+    "max": 70.0
+   },
+   "confidence": "estimated",
+   "tps": 53.6,
+   "ttft": 1.57
+  },
+  {
+   "match": "gpt-5-nano",
+   "total": {
+    "min": 5.0,
+    "max": 18.5
+   },
+   "active": {
+    "min": 5.0,
+    "max": 18.5
+   },
+   "confidence": "estimated",
+   "tps": 96.1,
+   "ttft": 2.29
+  },
+  {
+   "match": "gpt-5-nano-2025-08-07",
+   "total": {
+    "min": 5.0,
+    "max": 18.5
+   },
+   "active": {
+    "min": 5.0,
+    "max": 18.5
+   },
+   "confidence": "estimated",
+   "tps": 53.6,
+   "ttft": 1.57
+  },
+  {
+   "match": "gpt-5-pro",
+   "total": {
+    "min": 3600.0,
+    "max": 3600.0
+   },
+   "active": {
+    "min": 360.0,
+    "max": 1080.0
+   },
+   "confidence": "estimated",
+   "tps": 12.2,
+   "ttft": 59.54
+  },
+  {
+   "match": "gpt-5-pro-2025-10-06",
+   "total": {
+    "min": 3600.0,
+    "max": 3600.0
+   },
+   "active": {
+    "min": 360.0,
+    "max": 1080.0
+   },
+   "confidence": "estimated",
+   "tps": 12.2,
+   "ttft": 59.54
+  },
+  {
+   "match": "gpt-5-search-api",
+   "total": {
+    "min": 300.0,
+    "max": 300.0
+   },
+   "active": {
+    "min": 30.0,
+    "max": 90.0
+   },
+   "confidence": "estimated",
+   "tps": 53.6,
+   "ttft": 1.57
+  },
+  {
+   "match": "gpt-5-search-api-2025-10-14",
+   "total": {
+    "min": 300.0,
+    "max": 300.0
+   },
+   "active": {
+    "min": 30.0,
+    "max": 90.0
+   },
+   "confidence": "estimated",
+   "tps": 53.6,
+   "ttft": 1.57
+  },
+  {
+   "match": "gpt-oss-120b",
+   "total": {
+    "min": 117.0,
+    "max": 117.0
+   },
+   "active": {
+    "min": 5.1,
+    "max": 5.1
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gpt-oss-20b",
+   "total": {
+    "min": 21.0,
+    "max": 21.0
+   },
+   "active": {
+    "min": 3.6,
+    "max": 3.6
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "gpt-oss-safeguard-120b",
+   "total": {
+    "min": 117,
+    "max": 117
+   },
+   "active": {
+    "min": 5.1,
+    "max": 5.1
+   },
+   "confidence": "published",
+   "note": "same arch as gpt-oss-120b (117B/5.1B MoE), OpenAI card"
+  },
+  {
+   "match": "gpt-oss-safeguard-20b",
+   "total": {
+    "min": 21,
+    "max": 21
+   },
+   "active": {
+    "min": 3.6,
+    "max": 3.6
+   },
+   "confidence": "published",
+   "note": "same arch as gpt-oss-20b (21B/3.6B MoE), OpenAI card"
+  },
+  {
+   "match": "granite-4-0-h-micro",
+   "total": {
+    "min": 3,
+    "max": 3
+   },
+   "active": {
+    "min": 3,
+    "max": 3
+   },
+   "confidence": "published",
+   "note": "IBM Granite 4.0 H Micro 3B dense, HF card"
+  },
+  {
+   "match": "granite-4-1-8b",
+   "total": {
+    "min": 8,
+    "max": 8
+   },
+   "active": {
+    "min": 8,
+    "max": 8
+   },
+   "confidence": "estimated",
+   "note": "self-describing id, dense assumed"
+  },
+  {
+   "match": "grok-4",
+   "total": {
+    "min": 300,
+    "max": 600
+   },
+   "active": {
+    "min": 40,
+    "max": 120
+   },
+   "confidence": "estimated",
+   "note": "closed xAI Grok 4.x, undisclosed MoE"
+  },
+  {
+   "match": "grok-build",
+   "total": {
+    "min": 50,
+    "max": 300
+   },
+   "active": {
+    "min": 20,
+    "max": 80
+   },
+   "confidence": "estimated",
+   "note": "closed xAI coding model, undisclosed"
+  },
+  {
+   "match": "hermes-4-405b",
+   "total": {
+    "min": 405,
+    "max": 405
+   },
+   "active": {
+    "min": 405,
+    "max": 405
+   },
+   "confidence": "published",
+   "note": "Llama-3.1-405B base dense, HF card"
+  },
+  {
+   "match": "hermes-4-70b",
+   "total": {
+    "min": 70,
+    "max": 70
+   },
+   "active": {
+    "min": 70,
+    "max": 70
+   },
+   "confidence": "published",
+   "note": "Llama-3.1-70B base dense, HF card"
+  },
+  {
+   "match": "hunyuan-a13b",
+   "total": {
+    "min": 80,
+    "max": 80
+   },
+   "active": {
+    "min": 13,
+    "max": 13
+   },
+   "confidence": "published",
+   "note": "Tencent Hunyuan-A13B 80B/13B MoE, HF card"
+  },
+  {
+   "match": "hy3",
+   "total": {
+    "min": 80,
+    "max": 400
+   },
+   "active": {
+    "min": 13,
+    "max": 40
+   },
+   "confidence": "estimated",
+   "note": "Tencent Hunyuan 3, undisclosed MoE"
+  },
+  {
+   "match": "jamba",
+   "total": {
+    "min": 52,
+    "max": 398
+   },
+   "active": {
+    "min": 12,
+    "max": 94
+   },
+   "confidence": "estimated",
+   "note": "AI21 Jamba family fallback"
+  },
+  {
+   "match": "jamba-1-5-large",
+   "total": {
+    "min": 398,
+    "max": 398
+   },
+   "active": {
+    "min": 94,
+    "max": 94
+   },
+   "confidence": "published",
+   "note": "AI21 Jamba 1.5 Large 398B/94B MoE, HF card"
+  },
+  {
+   "match": "jamba-1-5-mini",
+   "total": {
+    "min": 52,
+    "max": 52
+   },
+   "active": {
+    "min": 12,
+    "max": 12
+   },
+   "confidence": "published",
+   "note": "AI21 Jamba 1.5 Mini 52B/12B MoE, HF card"
+  },
+  {
+   "match": "jamba-large",
+   "total": {
+    "min": 398,
+    "max": 398
+   },
+   "active": {
+    "min": 94,
+    "max": 94
+   },
+   "confidence": "published",
+   "note": "AI21 Jamba Large 1.7, same arch as 1.5 Large, HF card"
+  },
+  {
+   "match": "kimi-k2",
+   "total": {
+    "min": 1000,
+    "max": 1000
+   },
+   "active": {
+    "min": 32,
+    "max": 32
+   },
+   "confidence": "published",
+   "note": "Kimi K2 1T/32B MoE, Moonshot HF card"
+  },
+  {
+   "match": "kimi-k2-5",
+   "total": {
+    "min": 1000,
+    "max": 1000
+   },
+   "active": {
+    "min": 32,
+    "max": 32
+   },
+   "confidence": "estimated",
+   "note": "Kimi K2.5, anchored to K2 arch"
+  },
+  {
+   "match": "kimi-k2-6",
+   "total": {
+    "min": 1000,
+    "max": 1000
+   },
+   "active": {
+    "min": 32,
+    "max": 32
+   },
+   "confidence": "estimated",
+   "note": "Kimi K2.6, anchored to K2 arch"
+  },
+  {
+   "match": "kimi-k2-7",
+   "total": {
+    "min": 1000,
+    "max": 1000
+   },
+   "active": {
+    "min": 32,
+    "max": 32
+   },
+   "confidence": "estimated",
+   "note": "Kimi K2.7, anchored to K2 arch"
+  },
+  {
+   "match": "lfm-2-24b-a2b",
+   "total": {
+    "min": 24,
+    "max": 24
+   },
+   "active": {
+    "min": 2,
+    "max": 2
+   },
+   "confidence": "published",
+   "note": "self-describing MoE id, Liquid release"
+  },
+  {
+   "match": "lfm-2-5-1-2b",
+   "total": {
+    "min": 1.2,
+    "max": 1.2
+   },
+   "active": {
+    "min": 1.2,
+    "max": 1.2
+   },
+   "confidence": "published",
+   "note": "Liquid LFM 2.5 1.2B dense, HF card"
+  },
+  {
+   "match": "ling-2-6-1t",
+   "total": {
+    "min": 1000,
+    "max": 1000
+   },
+   "active": {
+    "min": 30,
+    "max": 80
+   },
+   "confidence": "estimated",
+   "note": "InclusionAI Ling 1T-class MoE, active anchored to Ling-1T (~50B)"
+  },
+  {
+   "match": "ling-2-6-flash",
+   "total": {
+    "min": 100,
+    "max": 100
+   },
+   "active": {
+    "min": 6,
+    "max": 10
+   },
+   "confidence": "estimated",
+   "note": "anchored to Ling-flash-2.0 100B/6B MoE"
+  },
+  {
+   "match": "llama-2-13b",
+   "total": {
+    "min": 13.0,
+    "max": 13.0
+   },
+   "active": {
+    "min": 13.0,
+    "max": 13.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "llama-2-13b-chat",
+   "total": {
+    "min": 13.0,
+    "max": 13.0
+   },
+   "active": {
+    "min": 13.0,
+    "max": 13.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "llama-2-13b-chat-hf",
+   "total": {
+    "min": 13.02,
+    "max": 13.02
+   },
+   "active": {
+    "min": 13.02,
+    "max": 13.02
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "llama-2-13b-hf",
+   "total": {
+    "min": 13.02,
+    "max": 13.02
+   },
+   "active": {
+    "min": 13.02,
+    "max": 13.02
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "llama-2-70b",
+   "total": {
+    "min": 70.0,
+    "max": 70.0
+   },
+   "active": {
+    "min": 70.0,
+    "max": 70.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "llama-2-70b-chat",
+   "total": {
+    "min": 70.0,
+    "max": 70.0
+   },
+   "active": {
+    "min": 70.0,
+    "max": 70.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "llama-2-70b-chat-hf",
+   "total": {
+    "min": 68.98,
+    "max": 68.98
+   },
+   "active": {
+    "min": 68.98,
+    "max": 68.98
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "llama-2-70b-hf",
+   "total": {
+    "min": 68.98,
+    "max": 68.98
+   },
+   "active": {
+    "min": 68.98,
+    "max": 68.98
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "llama-2-7b",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "llama-2-7b-chat",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "llama-2-7b-chat-hf",
+   "total": {
+    "min": 6.74,
+    "max": 6.74
+   },
+   "active": {
+    "min": 6.74,
+    "max": 6.74
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "llama-2-7b-hf",
+   "total": {
+    "min": 6.74,
+    "max": 6.74
+   },
+   "active": {
+    "min": 6.74,
+    "max": 6.74
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "llama-3-1-405b",
+   "total": {
+    "min": 405.85,
+    "max": 405.85
+   },
+   "active": {
+    "min": 405.85,
+    "max": 405.85
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "llama-3-1-405b-fp8",
+   "total": {
+    "min": 405.87,
+    "max": 405.87
+   },
+   "active": {
+    "min": 405.87,
+    "max": 405.87
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "llama-3-1-405b-instruct",
+   "total": {
+    "min": 405.85,
+    "max": 405.85
+   },
+   "active": {
+    "min": 405.85,
+    "max": 405.85
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "llama-3-1-405b-instruct-fp8",
+   "total": {
+    "min": 405.87,
+    "max": 405.87
+   },
+   "active": {
+    "min": 405.87,
+    "max": 405.87
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "llama-3-1-70b",
+   "total": {
+    "min": 70.55,
+    "max": 70.55
+   },
+   "active": {
+    "min": 70.55,
+    "max": 70.55
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "llama-3-1-70b-instruct",
+   "total": {
+    "min": 70.55,
+    "max": 70.55
+   },
+   "active": {
+    "min": 70.55,
+    "max": 70.55
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "llama-3-1-8b",
+   "total": {
+    "min": 8.03,
+    "max": 8.03
+   },
+   "active": {
+    "min": 8.03,
+    "max": 8.03
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "llama-3-1-8b-instruct",
+   "total": {
+    "min": 8.03,
+    "max": 8.03
+   },
+   "active": {
+    "min": 8.03,
+    "max": 8.03
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "llama-3-2-11b",
+   "total": {
+    "min": 10.6,
+    "max": 10.6
+   },
+   "active": {
+    "min": 10.6,
+    "max": 10.6
+   },
+   "confidence": "published",
+   "note": "Llama-3.2-11B-Vision dense, HF card"
+  },
+  {
+   "match": "llama-3-2-1b",
+   "total": {
+    "min": 1.23,
+    "max": 1.23
+   },
+   "active": {
+    "min": 1.23,
+    "max": 1.23
+   },
+   "confidence": "published",
+   "note": "Llama-3.2-1B dense, HF card"
+  },
+  {
+   "match": "llama-3-2-3b",
+   "total": {
+    "min": 3.21,
+    "max": 3.21
+   },
+   "active": {
+    "min": 3.21,
+    "max": 3.21
+   },
+   "confidence": "published",
+   "note": "Llama-3.2-3B dense, HF card"
+  },
+  {
+   "match": "llama-3-3-70b",
+   "total": {
+    "min": 70,
+    "max": 70
+   },
+   "active": {
+    "min": 70,
+    "max": 70
+   },
+   "confidence": "published",
+   "note": "Llama-3.3-70B dense, HF card"
+  },
+  {
+   "match": "llama-3-70b",
+   "total": {
+    "min": 70.55,
+    "max": 70.55
+   },
+   "active": {
+    "min": 70.55,
+    "max": 70.55
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "llama-3-70b-instruct",
+   "total": {
+    "min": 70.55,
+    "max": 70.55
+   },
+   "active": {
+    "min": 70.55,
+    "max": 70.55
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "llama-3-8b",
+   "total": {
+    "min": 8.03,
+    "max": 8.03
+   },
+   "active": {
+    "min": 8.03,
+    "max": 8.03
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "llama-3-8b-instruct",
+   "total": {
+    "min": 8.03,
+    "max": 8.03
+   },
+   "active": {
+    "min": 8.03,
+    "max": 8.03
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "llama-4-maverick",
+   "total": {
+    "min": 400,
+    "max": 400
+   },
+   "active": {
+    "min": 17,
+    "max": 17
+   },
+   "confidence": "published",
+   "note": "Llama-4 Maverick 400B/17B MoE, HF card"
+  },
+  {
+   "match": "llama-4-scout",
+   "total": {
+    "min": 109,
+    "max": 109
+   },
+   "active": {
+    "min": 17,
+    "max": 17
+   },
+   "confidence": "published",
+   "note": "Llama-4 Scout 109B/17B MoE, HF card"
+  },
+  {
+   "match": "llama-guard-2-8b",
+   "total": {
+    "min": 8.03,
+    "max": 8.03
+   },
+   "active": {
+    "min": 8.03,
+    "max": 8.03
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "llama-guard-3-8b",
+   "total": {
+    "min": 8.03,
+    "max": 8.03
+   },
+   "active": {
+    "min": 8.03,
+    "max": 8.03
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "llama-guard-3-8b-int8",
+   "total": {
+    "min": 8.03,
+    "max": 8.03
+   },
+   "active": {
+    "min": 8.03,
+    "max": 8.03
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "llama-guard-4-12b",
+   "total": {
+    "min": 12,
+    "max": 12
+   },
+   "active": {
+    "min": 12,
+    "max": 12
+   },
+   "confidence": "published",
+   "note": "Llama Guard 4 12B dense, HF card"
+  },
+  {
+   "match": "llama3-1-70b",
+   "total": {
+    "min": 70,
+    "max": 70
+   },
+   "active": {
+    "min": 70,
+    "max": 70
+   },
+   "confidence": "published",
+   "note": "Llama-3.1-70B dense (Bedrock naming), HF card"
+  },
+  {
+   "match": "llama3-1-8b",
+   "total": {
+    "min": 8,
+    "max": 8
+   },
+   "active": {
+    "min": 8,
+    "max": 8
+   },
+   "confidence": "published",
+   "note": "Llama-3.1-8B dense (Bedrock naming), HF card"
+  },
+  {
+   "match": "llama3-2-11b",
+   "total": {
+    "min": 10.6,
+    "max": 10.6
+   },
+   "active": {
+    "min": 10.6,
+    "max": 10.6
+   },
+   "confidence": "published",
+   "note": "Llama-3.2-11B-Vision dense (Bedrock naming), HF card"
+  },
+  {
+   "match": "llama3-2-1b",
+   "total": {
+    "min": 1.23,
+    "max": 1.23
+   },
+   "active": {
+    "min": 1.23,
+    "max": 1.23
+   },
+   "confidence": "published",
+   "note": "Llama-3.2-1B dense (Bedrock naming), HF card"
+  },
+  {
+   "match": "llama3-2-3b",
+   "total": {
+    "min": 3.21,
+    "max": 3.21
+   },
+   "active": {
+    "min": 3.21,
+    "max": 3.21
+   },
+   "confidence": "published",
+   "note": "Llama-3.2-3B dense (Bedrock naming), HF card"
+  },
+  {
+   "match": "llama3-2-90b",
+   "total": {
+    "min": 88.6,
+    "max": 88.6
+   },
+   "active": {
+    "min": 88.6,
+    "max": 88.6
+   },
+   "confidence": "published",
+   "note": "Llama-3.2-90B-Vision dense (Bedrock naming), HF card"
+  },
+  {
+   "match": "llama3-3-70b",
+   "total": {
+    "min": 70,
+    "max": 70
+   },
+   "active": {
+    "min": 70,
+    "max": 70
+   },
+   "confidence": "published",
+   "note": "Llama-3.3-70B dense (Bedrock naming), HF card"
+  },
+  {
+   "match": "llama3-70b",
+   "total": {
+    "min": 70,
+    "max": 70
+   },
+   "active": {
+    "min": 70,
+    "max": 70
+   },
+   "confidence": "published",
+   "note": "Llama-3-70B dense (Bedrock naming), HF card"
+  },
+  {
+   "match": "llama3-8b",
+   "total": {
+    "min": 8,
+    "max": 8
+   },
+   "active": {
+    "min": 8,
+    "max": 8
+   },
+   "confidence": "published",
+   "note": "Llama-3-8B dense (Bedrock naming), HF card"
+  },
+  {
+   "match": "llama4-maverick",
+   "total": {
+    "min": 400,
+    "max": 400
+   },
+   "active": {
+    "min": 17,
+    "max": 17
+   },
+   "confidence": "published",
+   "note": "Llama-4 Maverick 400B/17B MoE (Bedrock naming), HF card"
+  },
+  {
+   "match": "llama4-scout",
+   "total": {
+    "min": 109,
+    "max": 109
+   },
+   "active": {
+    "min": 17,
+    "max": 17
+   },
+   "confidence": "published",
+   "note": "Llama-4 Scout 109B/17B MoE (Bedrock naming), HF card"
+  },
+  {
+   "match": "llamaguard-7b",
+   "total": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "active": {
+    "min": 7.0,
+    "max": 7.0
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "magistral-medium-2509",
+   "total": {
+    "min": 70.0,
+    "max": 120.0
+   },
+   "active": {
+    "min": 70.0,
+    "max": 120.0
+   },
+   "confidence": "estimated",
+   "tps": 48.1,
+   "ttft": 1.83
+  },
+  {
+   "match": "magistral-medium-latest",
+   "total": {
+    "min": 70.0,
+    "max": 120.0
+   },
+   "active": {
+    "min": 70.0,
+    "max": 120.0
+   },
+   "confidence": "estimated",
+   "tps": 34.2,
+   "ttft": 0.47
+  },
+  {
+   "match": "magistral-small-2509",
+   "total": {
+    "min": 23.6,
+    "max": 23.6
+   },
+   "active": {
+    "min": 23.6,
+    "max": 23.6
+   },
+   "confidence": "published",
+   "tps": 98.8,
+   "ttft": 0.29
+  },
+  {
+   "match": "magistral-small-latest",
+   "total": {
+    "min": 23.6,
+    "max": 23.6
+   },
+   "active": {
+    "min": 23.6,
+    "max": 23.6
+   },
+   "confidence": "published",
+   "tps": 55.9,
+   "ttft": 0.36
+  },
+  {
+   "match": "magnum-v4-72b",
+   "total": {
+    "min": 72.7,
+    "max": 72.7
+   },
+   "active": {
+    "min": 72.7,
+    "max": 72.7
+   },
+   "confidence": "published",
+   "note": "Qwen2.5-72B finetune, HF card"
+  },
+  {
+   "match": "mathstral-7b-v0-1",
+   "total": {
+    "min": 7.25,
+    "max": 7.25
+   },
+   "active": {
+    "min": 7.25,
+    "max": 7.25
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "minimax-01",
+   "total": {
+    "min": 456,
+    "max": 456
+   },
+   "active": {
+    "min": 45.9,
+    "max": 45.9
+   },
+   "confidence": "published",
+   "note": "MiniMax-Text-01 456B/45.9B MoE, HF card"
+  },
+  {
+   "match": "minimax-m1",
+   "total": {
+    "min": 456,
+    "max": 456
+   },
+   "active": {
+    "min": 45.9,
+    "max": 45.9
+   },
+   "confidence": "published",
+   "note": "MiniMax-M1 456B/45.9B MoE, HF card"
+  },
+  {
+   "match": "minimax-m2",
+   "total": {
+    "min": 230,
+    "max": 230
+   },
+   "active": {
+    "min": 10,
+    "max": 10
+   },
+   "confidence": "published",
+   "note": "MiniMax-M2 230B/10B MoE, HF card"
+  },
+  {
+   "match": "minimax-m2-1",
+   "total": {
+    "min": 230,
+    "max": 230
+   },
+   "active": {
+    "min": 10,
+    "max": 10
+   },
+   "confidence": "estimated",
+   "note": "MiniMax M2.1, anchored to M2 arch"
+  },
+  {
+   "match": "minimax-m2-5",
+   "total": {
+    "min": 230,
+    "max": 230
+   },
+   "active": {
+    "min": 10,
+    "max": 10
+   },
+   "confidence": "estimated",
+   "note": "MiniMax M2.5, anchored to M2 arch"
+  },
+  {
+   "match": "minimax-m2-7",
+   "total": {
+    "min": 230,
+    "max": 230
+   },
+   "active": {
+    "min": 10,
+    "max": 10
+   },
+   "confidence": "estimated",
+   "note": "MiniMax M2.7, anchored to M2 arch"
+  },
+  {
+   "match": "minimax-m3",
+   "total": {
+    "min": 230,
+    "max": 456
+   },
+   "active": {
+    "min": 10,
+    "max": 46
+   },
+   "confidence": "estimated",
+   "note": "MiniMax M3, anchored to M1/M2 range"
+  },
+  {
+   "match": "ministral-14b-2512",
+   "total": {
+    "min": 14.0,
+    "max": 14.0
+   },
+   "active": {
+    "min": 14.0,
+    "max": 14.0
+   },
+   "confidence": "published",
+   "tps": 48.1,
+   "ttft": 0.27
+  },
+  {
+   "match": "ministral-14b-latest",
+   "total": {
+    "min": 14.0,
+    "max": 14.0
+   },
+   "active": {
+    "min": 14.0,
+    "max": 14.0
+   },
+   "confidence": "published",
+   "tps": 48.1,
+   "ttft": 0.27
+  },
+  {
+   "match": "ministral-3-14b",
+   "total": {
+    "min": 14,
+    "max": 14
+   },
+   "active": {
+    "min": 14,
+    "max": 14
+   },
+   "confidence": "estimated",
+   "note": "self-describing dense id"
+  },
+  {
+   "match": "ministral-3-3b",
+   "total": {
+    "min": 3,
+    "max": 3
+   },
+   "active": {
+    "min": 3,
+    "max": 3
+   },
+   "confidence": "estimated",
+   "note": "self-describing dense id"
+  },
+  {
+   "match": "ministral-3-8b",
+   "total": {
+    "min": 8,
+    "max": 8
+   },
+   "active": {
+    "min": 8,
+    "max": 8
+   },
+   "confidence": "estimated",
+   "note": "self-describing dense id"
+  },
+  {
+   "match": "ministral-3b-2512",
+   "total": {
+    "min": 3.32,
+    "max": 3.32
+   },
+   "active": {
+    "min": 3.32,
+    "max": 3.32
+   },
+   "confidence": "published",
+   "tps": 35.0,
+   "ttft": 0.2
+  },
+  {
+   "match": "ministral-3b-latest",
+   "total": {
+    "min": 3.32,
+    "max": 3.32
+   },
+   "active": {
+    "min": 3.32,
+    "max": 3.32
+   },
+   "confidence": "published",
+   "tps": 35.0,
+   "ttft": 0.2
+  },
+  {
+   "match": "ministral-8b-2512",
+   "total": {
+    "min": 8.02,
+    "max": 8.02
+   },
+   "active": {
+    "min": 8.02,
+    "max": 8.02
+   },
+   "confidence": "published",
+   "tps": 42.4,
+   "ttft": 0.23
+  },
+  {
+   "match": "ministral-8b-latest",
+   "total": {
+    "min": 8.02,
+    "max": 8.02
+   },
+   "active": {
+    "min": 8.02,
+    "max": 8.02
+   },
+   "confidence": "published",
+   "tps": 42.4,
+   "ttft": 0.23
+  },
+  {
+   "match": "mistral-7b",
+   "total": {
+    "min": 7.25,
+    "max": 7.25
+   },
+   "active": {
+    "min": 7.25,
+    "max": 7.25
+   },
+   "confidence": "published",
+   "note": "Mistral 7B dense, HF card"
+  },
+  {
+   "match": "mistral-7b-instruct-v0-1",
+   "total": {
+    "min": 7.24,
+    "max": 7.24
+   },
+   "active": {
+    "min": 7.24,
+    "max": 7.24
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "mistral-7b-instruct-v0-2",
+   "total": {
+    "min": 7.24,
+    "max": 7.24
+   },
+   "active": {
+    "min": 7.24,
+    "max": 7.24
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "mistral-7b-instruct-v0-3",
+   "total": {
+    "min": 7.25,
+    "max": 7.25
+   },
+   "active": {
+    "min": 7.25,
+    "max": 7.25
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "mistral-7b-v0-1",
+   "total": {
+    "min": 7.24,
+    "max": 7.24
+   },
+   "active": {
+    "min": 7.24,
+    "max": 7.24
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "mistral-7b-v0-2",
+   "total": {
+    "min": 7.24,
+    "max": 7.24
+   },
+   "active": {
+    "min": 7.24,
+    "max": 7.24
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "mistral-7b-v0-3",
+   "total": {
+    "min": 7.25,
+    "max": 7.25
+   },
+   "active": {
+    "min": 7.25,
+    "max": 7.25
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "mistral-large",
+   "total": {
+    "min": 123,
+    "max": 123
+   },
+   "active": {
+    "min": 123,
+    "max": 123
+   },
+   "confidence": "published",
+   "note": "Mistral Large 2 123B dense, HF card"
+  },
+  {
+   "match": "mistral-large-2512",
+   "total": {
+    "min": 123.0,
+    "max": 123.0
+   },
+   "active": {
+    "min": 123.0,
+    "max": 123.0
+   },
+   "confidence": "published",
+   "tps": 41.5,
+   "ttft": 0.68
+  },
+  {
+   "match": "mistral-large-3-675b",
+   "total": {
+    "min": 675,
+    "max": 675
+   },
+   "active": {
+    "min": 37,
+    "max": 88
+   },
+   "confidence": "estimated",
+   "note": "Mistral Large 3 675B MoE, active undisclosed"
+  },
+  {
+   "match": "mistral-large-instruct-2407",
+   "total": {
+    "min": 122.61,
+    "max": 122.61
+   },
+   "active": {
+    "min": 122.61,
+    "max": 122.61
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "mistral-large-latest",
+   "total": {
+    "min": 123.0,
+    "max": 123.0
+   },
+   "active": {
+    "min": 123.0,
+    "max": 123.0
+   },
+   "confidence": "published",
+   "tps": 35.6,
+   "ttft": 0.54
+  },
+  {
+   "match": "mistral-medium",
+   "total": {
+    "min": 70.0,
+    "max": 120.0
+   },
+   "active": {
+    "min": 70.0,
+    "max": 120.0
+   },
+   "confidence": "estimated",
+   "tps": 48.1,
+   "ttft": 1.83
+  },
+  {
+   "match": "mistral-medium-2505",
+   "total": {
+    "min": 70.0,
+    "max": 120.0
+   },
+   "active": {
+    "min": 70.0,
+    "max": 120.0
+   },
+   "confidence": "estimated",
+   "tps": 34.5,
+   "ttft": 0.47
+  },
+  {
+   "match": "mistral-medium-2508",
+   "total": {
+    "min": 70.0,
+    "max": 120.0
+   },
+   "active": {
+    "min": 70.0,
+    "max": 120.0
+   },
+   "confidence": "estimated",
+   "tps": 34.5,
+   "ttft": 0.47
+  },
+  {
+   "match": "mistral-medium-2604",
+   "total": {
+    "min": 128.0,
+    "max": 128.0
+   },
+   "active": {
+    "min": 128.0,
+    "max": 128.0
+   },
+   "confidence": "estimated",
+   "tps": 34.5,
+   "ttft": 0.47
+  },
+  {
+   "match": "mistral-medium-3",
+   "total": {
+    "min": 128.0,
+    "max": 128.0
+   },
+   "active": {
+    "min": 128.0,
+    "max": 128.0
+   },
+   "confidence": "estimated",
+   "tps": 34.5,
+   "ttft": 0.47
+  },
+  {
+   "match": "mistral-medium-3-5",
+   "total": {
+    "min": 128.0,
+    "max": 128.0
+   },
+   "active": {
+    "min": 128.0,
+    "max": 128.0
+   },
+   "confidence": "estimated",
+   "tps": 48.1,
+   "ttft": 1.83
+  },
+  {
+   "match": "mistral-medium-latest",
+   "total": {
+    "min": 70.0,
+    "max": 120.0
+   },
+   "active": {
+    "min": 70.0,
+    "max": 120.0
+   },
+   "confidence": "estimated",
+   "tps": 34.5,
+   "ttft": 0.47
+  },
+  {
+   "match": "mistral-nemo",
+   "total": {
+    "min": 12.2,
+    "max": 12.2
+   },
+   "active": {
+    "min": 12.2,
+    "max": 12.2
+   },
+   "confidence": "published",
+   "note": "Mistral NeMo 12B dense, HF card"
+  },
+  {
+   "match": "mistral-nemo-base-2407",
+   "total": {
+    "min": 12.25,
+    "max": 12.25
+   },
+   "active": {
+    "min": 12.25,
+    "max": 12.25
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "mistral-nemo-instruct-2407",
+   "total": {
+    "min": 12.25,
+    "max": 12.25
+   },
+   "active": {
+    "min": 12.25,
+    "max": 12.25
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "mistral-saba",
+   "total": {
+    "min": 24,
+    "max": 24
+   },
+   "active": {
+    "min": 24,
+    "max": 24
+   },
+   "confidence": "published",
+   "note": "Mistral Saba 24B, Mistral release"
+  },
+  {
+   "match": "mistral-small-2402",
+   "total": {
+    "min": 20,
+    "max": 24
+   },
+   "active": {
+    "min": 20,
+    "max": 24
+   },
+   "confidence": "estimated",
+   "note": "Mistral Small 2402, undisclosed"
+  },
+  {
+   "match": "mistral-small-24b",
+   "total": {
+    "min": 23.6,
+    "max": 23.6
+   },
+   "active": {
+    "min": 23.6,
+    "max": 23.6
+   },
+   "confidence": "published",
+   "note": "Mistral Small 3 24B dense, HF card"
+  },
+  {
+   "match": "mistral-small-2506",
+   "total": {
+    "min": 23.6,
+    "max": 23.6
+   },
+   "active": {
+    "min": 23.6,
+    "max": 23.6
+   },
+   "confidence": "published",
+   "tps": 116.9,
+   "ttft": 0.46
+  },
+  {
+   "match": "mistral-small-2603",
+   "total": {
+    "min": 119.0,
+    "max": 119.0
+   },
+   "active": {
+    "min": 8.0,
+    "max": 8.0
+   },
+   "confidence": "published",
+   "tps": 116.9,
+   "ttft": 0.46
+  },
+  {
+   "match": "mistral-small-3-1-24b",
+   "total": {
+    "min": 24,
+    "max": 24
+   },
+   "active": {
+    "min": 24,
+    "max": 24
+   },
+   "confidence": "published",
+   "note": "Mistral Small 3.1 24B dense, HF card"
+  },
+  {
+   "match": "mistral-small-3-2-24b",
+   "total": {
+    "min": 24,
+    "max": 24
+   },
+   "active": {
+    "min": 24,
+    "max": 24
+   },
+   "confidence": "published",
+   "note": "Mistral Small 3.2 24B dense, HF card"
+  },
+  {
+   "match": "mistral-small-latest",
+   "total": {
+    "min": 119.0,
+    "max": 119.0
+   },
+   "active": {
+    "min": 8.0,
+    "max": 8.0
+   },
+   "confidence": "published",
+   "tps": 98.8,
+   "ttft": 0.29
+  },
+  {
+   "match": "mistral-tiny-2407",
+   "total": {
+    "min": 7.3,
+    "max": 7.3
+   },
+   "active": {
+    "min": 7.3,
+    "max": 7.3
+   },
+   "confidence": "estimated",
+   "tps": 98.8,
+   "ttft": 0.29
+  },
+  {
+   "match": "mistral-tiny-latest",
+   "total": {
+    "min": 7.3,
+    "max": 7.3
+   },
+   "active": {
+    "min": 7.3,
+    "max": 7.3
+   },
+   "confidence": "estimated",
+   "tps": 98.8,
+   "ttft": 0.29
+  },
+  {
+   "match": "mixtral-8x22b",
+   "total": {
+    "min": 141,
+    "max": 141
+   },
+   "active": {
+    "min": 39,
+    "max": 39
+   },
+   "confidence": "published",
+   "note": "Mixtral 8x22B MoE, HF card"
+  },
+  {
+   "match": "mixtral-8x22b-instruct-v0-1",
+   "total": {
+    "min": 140.6,
+    "max": 140.6
+   },
+   "active": {
+    "min": 39.1,
+    "max": 39.1
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "mixtral-8x22b-instruct-v0-1-4bit",
+   "total": {
+    "min": 140.6,
+    "max": 140.6
+   },
+   "active": {
+    "min": 39.1,
+    "max": 39.1
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "mixtral-8x22b-instruct-v0-3-original",
+   "total": {
+    "min": 140.6,
+    "max": 140.6
+   },
+   "active": {
+    "min": 39.1,
+    "max": 39.1
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "mixtral-8x22b-v0-1",
+   "total": {
+    "min": 140.6,
+    "max": 140.6
+   },
+   "active": {
+    "min": 39.1,
+    "max": 39.1
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "mixtral-8x22b-v0-1-4bit",
+   "total": {
+    "min": 140.6,
+    "max": 140.6
+   },
+   "active": {
+    "min": 39.1,
+    "max": 39.1
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "mixtral-8x22b-v0-1-awq",
+   "total": {
+    "min": 140.6,
+    "max": 140.6
+   },
+   "active": {
+    "min": 39.1,
+    "max": 39.1
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "mixtral-8x22b-v0-1-original",
+   "total": {
+    "min": 140.6,
+    "max": 140.6
+   },
+   "active": {
+    "min": 39.1,
+    "max": 39.1
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "mixtral-8x22b-v0-3",
+   "total": {
+    "min": 140.6,
+    "max": 140.6
+   },
+   "active": {
+    "min": 39.1,
+    "max": 39.1
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "mixtral-8x22b-v0-3-original",
+   "total": {
+    "min": 140.6,
+    "max": 140.6
+   },
+   "active": {
+    "min": 39.1,
+    "max": 39.1
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "mixtral-8x7b",
+   "total": {
+    "min": 46.7,
+    "max": 46.7
+   },
+   "active": {
+    "min": 12.9,
+    "max": 12.9
+   },
+   "confidence": "published",
+   "note": "Mixtral 8x7B MoE, HF card"
+  },
+  {
+   "match": "mixtral-8x7b-instruct-v0-1",
+   "total": {
+    "min": 46.7,
+    "max": 46.7
+   },
+   "active": {
+    "min": 12.9,
+    "max": 12.9
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "mixtral-8x7b-v0-1",
+   "total": {
+    "min": 46.7,
+    "max": 46.7
+   },
+   "active": {
+    "min": 12.9,
+    "max": 12.9
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "mythomax-l2-13b",
+   "total": {
+    "min": 13,
+    "max": 13
+   },
+   "active": {
+    "min": 13,
+    "max": 13
+   },
+   "confidence": "published",
+   "note": "Llama-2 13B merge, HF card"
+  },
+  {
+   "match": "nemotron-3-5-content-safety",
+   "total": {
+    "min": 8,
+    "max": 12
+   },
+   "active": {
+    "min": 8,
+    "max": 12
+   },
+   "confidence": "estimated",
+   "note": "NVIDIA guard model, undisclosed"
+  },
+  {
+   "match": "nemotron-3-nano-30b",
+   "total": {
+    "min": 30,
+    "max": 30
+   },
+   "active": {
+    "min": 3,
+    "max": 3
+   },
+   "confidence": "published",
+   "note": "Nemotron-3 Nano 30B-A3B, self-describing id"
+  },
+  {
+   "match": "nemotron-nano-12b",
+   "total": {
+    "min": 12,
+    "max": 12
+   },
+   "active": {
+    "min": 12,
+    "max": 12
+   },
+   "confidence": "published",
+   "note": "Nemotron Nano 12B v2 dense, HF card"
+  },
+  {
+   "match": "nemotron-nano-3-30b",
+   "total": {
+    "min": 30,
+    "max": 30
+   },
+   "active": {
+    "min": 3,
+    "max": 3
+   },
+   "confidence": "estimated",
+   "note": "Bedrock alias of Nemotron-3 Nano 30B-A3B"
+  },
+  {
+   "match": "nemotron-nano-9b",
+   "total": {
+    "min": 8.9,
+    "max": 8.9
+   },
+   "active": {
+    "min": 8.9,
+    "max": 8.9
+   },
+   "confidence": "published",
+   "note": "Nemotron Nano 9B v2 dense, HF card"
+  },
+  {
+   "match": "nemotron-super-3-120b",
+   "total": {
+    "min": 120,
+    "max": 120
+   },
+   "active": {
+    "min": 12,
+    "max": 12
+   },
+   "confidence": "estimated",
+   "note": "Bedrock alias of Nemotron-3 Super 120B-A12B"
+  },
+  {
+   "match": "nemotron-super-49b",
+   "total": {
+    "min": 49,
+    "max": 49
+   },
+   "active": {
+    "min": 49,
+    "max": 49
+   },
+   "confidence": "published",
+   "note": "Llama-3.3-Nemotron-Super-49B dense, HF card"
+  },
+  {
+   "match": "north-mini",
+   "total": {
+    "min": 8,
+    "max": 40
+   },
+   "active": {
+    "min": 8,
+    "max": 40
+   },
+   "confidence": "estimated",
+   "note": "Cohere North Mini, undisclosed"
+  },
+  {
+   "match": "nova-2-lite",
+   "total": {
+    "min": 8,
+    "max": 40
+   },
+   "active": {
+    "min": 8,
+    "max": 40
+   },
+   "confidence": "estimated",
+   "note": "Amazon Nova 2 Lite, undisclosed"
+  },
+  {
+   "match": "nova-lite",
+   "total": {
+    "min": 8,
+    "max": 30
+   },
+   "active": {
+    "min": 8,
+    "max": 30
+   },
+   "confidence": "estimated",
+   "note": "Amazon Nova Lite, undisclosed"
+  },
+  {
+   "match": "nova-micro",
+   "total": {
+    "min": 3,
+    "max": 12
+   },
+   "active": {
+    "min": 3,
+    "max": 12
+   },
+   "confidence": "estimated",
+   "note": "Amazon Nova Micro, undisclosed"
+  },
+  {
+   "match": "nova-premier",
+   "total": {
+    "min": 100,
+    "max": 400
+   },
+   "active": {
+    "min": 100,
+    "max": 400
+   },
+   "confidence": "estimated",
+   "note": "Amazon Nova Premier, undisclosed"
+  },
+  {
+   "match": "nova-pro",
+   "total": {
+    "min": 30,
+    "max": 200
+   },
+   "active": {
+    "min": 30,
+    "max": 200
+   },
+   "confidence": "estimated",
+   "note": "Amazon Nova Pro, undisclosed"
+  },
+  {
+   "match": "o1",
+   "total": {
+    "min": 440.0,
+    "max": 440.0
+   },
+   "active": {
+    "min": 44.0,
+    "max": 132.0
+   },
+   "confidence": "estimated",
+   "tps": 136.6,
+   "ttft": 3.2
+  },
+  {
+   "match": "o1-2024-12-17",
+   "total": {
+    "min": 440.0,
+    "max": 440.0
+   },
+   "active": {
+    "min": 44.0,
+    "max": 132.0
+   },
+   "confidence": "estimated",
+   "tps": 136.6,
+   "ttft": 3.2
+  },
+  {
+   "match": "o3-mini",
+   "total": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "active": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "confidence": "estimated",
+   "tps": 170.6,
+   "ttft": 4.13
+  },
+  {
+   "match": "o3-mini-2025-01-31",
+   "total": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "active": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "confidence": "estimated",
+   "tps": 170.6,
+   "ttft": 4.13
+  },
+  {
+   "match": "o4-mini",
+   "total": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "active": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "confidence": "estimated",
+   "tps": 95.6,
+   "ttft": 3.93
+  },
+  {
+   "match": "o4-mini-2025-04-16",
+   "total": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "active": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "confidence": "estimated",
+   "tps": 95.6,
+   "ttft": 3.93
+  },
+  {
+   "match": "o4-mini-deep-research",
+   "total": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "active": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "confidence": "estimated",
+   "tps": 91.9,
+   "ttft": 17.34
+  },
+  {
+   "match": "o4-mini-deep-research-2025-06-26",
+   "total": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "active": {
+    "min": 8.0,
+    "max": 28.0
+   },
+   "confidence": "estimated",
+   "tps": 91.9,
+   "ttft": 17.34
+  },
+  {
+   "match": "olmo-3-32b",
+   "total": {
+    "min": 32,
+    "max": 32
+   },
+   "active": {
+    "min": 32,
+    "max": 32
+   },
+   "confidence": "published",
+   "note": "OLMo 3 32B dense, AllenAI release"
+  },
+  {
+   "match": "open-mistral-7b",
+   "total": {
+    "min": 7.3,
+    "max": 7.3
+   },
+   "active": {
+    "min": 7.3,
+    "max": 7.3
+   },
+   "confidence": "published",
+   "tps": 98.8,
+   "ttft": 0.29
+  },
+  {
+   "match": "open-mistral-nemo",
+   "total": {
+    "min": 12.2,
+    "max": 12.2
+   },
+   "active": {
+    "min": 12.2,
+    "max": 12.2
+   },
+   "confidence": "published",
+   "tps": 81.0,
+   "ttft": 0.3
+  },
+  {
+   "match": "open-mistral-nemo-2407",
+   "total": {
+    "min": 12.2,
+    "max": 12.2
+   },
+   "active": {
+    "min": 12.2,
+    "max": 12.2
+   },
+   "confidence": "published",
+   "tps": 81.0,
+   "ttft": 0.3
+  },
+  {
+   "match": "openai/o3",
+   "total": {
+    "min": 100,
+    "max": 440
+   },
+   "active": {
+    "min": 20,
+    "max": 110
+   },
+   "confidence": "estimated",
+   "note": "closed OpenAI o3 family, undisclosed"
+  },
+  {
+   "match": "palmyra-vision-7b",
+   "total": {
+    "min": 7,
+    "max": 7
+   },
+   "active": {
+    "min": 7,
+    "max": 7
+   },
+   "confidence": "estimated",
+   "note": "self-describing id, dense assumed"
+  },
+  {
+   "match": "palmyra-x4",
+   "total": {
+    "min": 100,
+    "max": 400
+   },
+   "active": {
+    "min": 100,
+    "max": 400
+   },
+   "confidence": "estimated",
+   "note": "Writer Palmyra X4, undisclosed"
+  },
+  {
+   "match": "palmyra-x5",
+   "total": {
+    "min": 100,
+    "max": 400
+   },
+   "active": {
+    "min": 100,
+    "max": 400
+   },
+   "confidence": "estimated",
+   "note": "Writer Palmyra X5, undisclosed"
+  },
+  {
+   "match": "phi-1",
+   "total": {
+    "min": 1.42,
+    "max": 1.42
+   },
+   "active": {
+    "min": 1.42,
+    "max": 1.42
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "phi-1_5",
+   "total": {
+    "min": 1.42,
+    "max": 1.42
+   },
+   "active": {
+    "min": 1.42,
+    "max": 1.42
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "phi-3-medium-128k-instruct",
+   "total": {
+    "min": 13.96,
+    "max": 13.96
+   },
+   "active": {
+    "min": 13.96,
+    "max": 13.96
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "phi-3-medium-128k-instruct-onnx-cpu",
+   "total": {
+    "min": 13.96,
+    "max": 13.96
+   },
+   "active": {
+    "min": 13.96,
+    "max": 13.96
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "phi-3-medium-128k-instruct-onnx-cuda",
+   "total": {
+    "min": 13.96,
+    "max": 13.96
+   },
+   "active": {
+    "min": 13.96,
+    "max": 13.96
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "phi-3-medium-128k-instruct-onnx-directml",
+   "total": {
+    "min": 13.96,
+    "max": 13.96
+   },
+   "active": {
+    "min": 13.96,
+    "max": 13.96
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "phi-3-medium-4k-instruct",
+   "total": {
+    "min": 13.96,
+    "max": 13.96
+   },
+   "active": {
+    "min": 13.96,
+    "max": 13.96
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "phi-3-medium-4k-instruct-onnx-cpu",
+   "total": {
+    "min": 13.96,
+    "max": 13.96
+   },
+   "active": {
+    "min": 13.96,
+    "max": 13.96
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "phi-3-medium-4k-instruct-onnx-cuda",
+   "total": {
+    "min": 13.96,
+    "max": 13.96
+   },
+   "active": {
+    "min": 13.96,
+    "max": 13.96
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "phi-3-medium-4k-instruct-onnx-directml",
+   "total": {
+    "min": 13.96,
+    "max": 13.96
+   },
+   "active": {
+    "min": 13.96,
+    "max": 13.96
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "phi-3-mini-128k-instruct",
+   "total": {
+    "min": 3.82,
+    "max": 3.82
+   },
+   "active": {
+    "min": 3.82,
+    "max": 3.82
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "phi-3-mini-128k-instruct-onnx",
+   "total": {
+    "min": 3.82,
+    "max": 3.82
+   },
+   "active": {
+    "min": 3.82,
+    "max": 3.82
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "phi-3-mini-4k-instruct",
+   "total": {
+    "min": 3.82,
+    "max": 3.82
+   },
+   "active": {
+    "min": 3.82,
+    "max": 3.82
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "phi-3-mini-4k-instruct-gguf",
+   "total": {
+    "min": 3.82,
+    "max": 3.82
+   },
+   "active": {
+    "min": 3.82,
+    "max": 3.82
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "phi-3-mini-4k-instruct-onnx",
+   "total": {
+    "min": 3.82,
+    "max": 3.82
+   },
+   "active": {
+    "min": 3.82,
+    "max": 3.82
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "phi-3-mini-4k-instruct-onnx-web",
+   "total": {
+    "min": 3.82,
+    "max": 3.82
+   },
+   "active": {
+    "min": 3.82,
+    "max": 3.82
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "phi-3-small-128k-instruct",
+   "total": {
+    "min": 7.39,
+    "max": 7.39
+   },
+   "active": {
+    "min": 7.39,
+    "max": 7.39
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "phi-3-small-128k-instruct-onnx-cuda",
+   "total": {
+    "min": 7.39,
+    "max": 7.39
+   },
+   "active": {
+    "min": 7.39,
+    "max": 7.39
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "phi-3-small-8k-instruct",
+   "total": {
+    "min": 7.39,
+    "max": 7.39
+   },
+   "active": {
+    "min": 7.39,
+    "max": 7.39
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "phi-3-small-8k-instruct-onnx-cuda",
+   "total": {
+    "min": 7.39,
+    "max": 7.39
+   },
+   "active": {
+    "min": 7.39,
+    "max": 7.39
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "phi-3-vision-128k-instruct",
+   "total": {
+    "min": 4.15,
+    "max": 4.15
+   },
+   "active": {
+    "min": 4.15,
+    "max": 4.15
+   },
+   "confidence": "estimated"
+  },
+  {
+   "match": "phi-3-vision-128k-instruct-onnx-cpu",
+   "total": {
+    "min": 4.15,
+    "max": 4.15
+   },
+   "active": {
+    "min": 4.15,
+    "max": 4.15
+   },
+   "confidence": "estimated"
+  },
+  {
+   "match": "phi-3-vision-128k-instruct-onnx-cuda",
+   "total": {
+    "min": 4.15,
+    "max": 4.15
+   },
+   "active": {
+    "min": 4.15,
+    "max": 4.15
+   },
+   "confidence": "estimated"
+  },
+  {
+   "match": "phi-3-vision-128k-instruct-onnx-directml",
+   "total": {
+    "min": 4.15,
+    "max": 4.15
+   },
+   "active": {
+    "min": 4.15,
+    "max": 4.15
+   },
+   "confidence": "estimated"
+  },
+  {
+   "match": "phi-4",
+   "total": {
+    "min": 14.7,
+    "max": 14.7
+   },
+   "active": {
+    "min": 14.7,
+    "max": 14.7
+   },
+   "confidence": "published",
+   "note": "Phi-4 14.7B dense, HF card"
+  },
+  {
+   "match": "pixtral-12b",
+   "total": {
+    "min": 12.0,
+    "max": 12.0
+   },
+   "active": {
+    "min": 12.0,
+    "max": 12.0
+   },
+   "confidence": "estimated",
+   "tps": 98.5,
+   "ttft": 0.39
+  },
+  {
+   "match": "pixtral-12b-2409",
+   "total": {
+    "min": 12.0,
+    "max": 12.0
+   },
+   "active": {
+    "min": 12.0,
+    "max": 12.0
+   },
+   "confidence": "estimated",
+   "tps": 48.1,
+   "ttft": 0.27
+  },
+  {
+   "match": "pixtral-12b-latest",
+   "total": {
+    "min": 12.0,
+    "max": 12.0
+   },
+   "active": {
+    "min": 12.0,
+    "max": 12.0
+   },
+   "confidence": "estimated",
+   "tps": 41.5,
+   "ttft": 0.68
+  },
+  {
+   "match": "pixtral-large",
+   "total": {
+    "min": 124,
+    "max": 124
+   },
+   "active": {
+    "min": 124,
+    "max": 124
+   },
+   "confidence": "published",
+   "note": "Pixtral Large 124B dense, HF card"
+  },
+  {
+   "match": "prompt-guard-86m",
+   "total": {
+    "min": 0.28,
+    "max": 0.28
+   },
+   "active": {
+    "min": 0.28,
+    "max": 0.28
+   },
+   "confidence": "published"
+  },
+  {
+   "match": "qwen-2-5-72b",
+   "total": {
+    "min": 72.7,
+    "max": 72.7
+   },
+   "active": {
+    "min": 72.7,
+    "max": 72.7
+   },
+   "confidence": "published",
+   "note": "Qwen2.5-72B dense, HF card"
+  },
+  {
+   "match": "qwen-2-5-7b",
+   "total": {
+    "min": 7.6,
+    "max": 7.6
+   },
+   "active": {
+    "min": 7.6,
+    "max": 7.6
+   },
+   "confidence": "published",
+   "note": "Qwen2.5-7B dense, HF card"
+  },
+  {
+   "match": "qwen-2-5-coder-32b",
+   "total": {
+    "min": 32.5,
+    "max": 32.5
+   },
+   "active": {
+    "min": 32.5,
+    "max": 32.5
+   },
+   "confidence": "published",
+   "note": "Qwen2.5-Coder-32B dense, HF card"
+  },
+  {
+   "match": "qwen-plus",
+   "total": {
+    "min": 50,
+    "max": 200
+   },
+   "active": {
+    "min": 10,
+    "max": 40
+   },
+   "confidence": "estimated",
+   "note": "closed Qwen API, undisclosed"
+  },
+  {
+   "match": "qwen2-5-coder-32b",
+   "total": {
+    "min": 32.5,
+    "max": 32.5
+   },
+   "active": {
+    "min": 32.5,
+    "max": 32.5
+   },
+   "confidence": "published",
+   "note": "Qwen2.5-Coder-32B dense (CF naming), HF card"
+  },
+  {
+   "match": "qwen2-5-vl-72b",
+   "total": {
+    "min": 72.7,
+    "max": 72.7
+   },
+   "active": {
+    "min": 72.7,
+    "max": 72.7
+   },
+   "confidence": "published",
+   "note": "Qwen2.5-VL-72B dense, HF card"
+  },
+  {
+   "match": "qwen3-14b",
+   "total": {
+    "min": 14.8,
+    "max": 14.8
+   },
+   "active": {
+    "min": 14.8,
+    "max": 14.8
+   },
+   "confidence": "published",
+   "note": "Qwen3-14B dense, HF card"
+  },
+  {
+   "match": "qwen3-235b-a22b",
+   "total": {
+    "min": 235,
+    "max": 235
+   },
+   "active": {
+    "min": 22,
+    "max": 22
+   },
+   "confidence": "published",
+   "note": "Qwen3-235B-A22B MoE, HF card"
+  },
+  {
+   "match": "qwen3-30b-a3b",
+   "total": {
+    "min": 30.5,
+    "max": 30.5
+   },
+   "active": {
+    "min": 3.3,
+    "max": 3.3
+   },
+   "confidence": "published",
+   "note": "Qwen3-30B-A3B MoE, HF card"
+  },
+  {
+   "match": "qwen3-32b",
+   "total": {
+    "min": 32.8,
+    "max": 32.8
+   },
+   "active": {
+    "min": 32.8,
+    "max": 32.8
+   },
+   "confidence": "published",
+   "note": "Qwen3-32B dense, HF card"
+  },
+  {
+   "match": "qwen3-5-122b-a10b",
+   "total": {
+    "min": 122,
+    "max": 122
+   },
+   "active": {
+    "min": 10,
+    "max": 10
+   },
+   "confidence": "estimated",
+   "note": "self-describing MoE id"
+  },
+  {
+   "match": "qwen3-5-27b",
+   "total": {
+    "min": 27,
+    "max": 27
+   },
+   "active": {
+    "min": 27,
+    "max": 27
+   },
+   "confidence": "estimated",
+   "note": "self-describing dense id"
+  },
+  {
+   "match": "qwen3-5-35b-a3b",
+   "total": {
+    "min": 35,
+    "max": 35
+   },
+   "active": {
+    "min": 3,
+    "max": 3
+   },
+   "confidence": "estimated",
+   "note": "self-describing MoE id"
+  },
+  {
+   "match": "qwen3-5-397b-a17b",
+   "total": {
+    "min": 397,
+    "max": 397
+   },
+   "active": {
+    "min": 17,
+    "max": 17
+   },
+   "confidence": "estimated",
+   "note": "self-describing MoE id"
+  },
+  {
+   "match": "qwen3-5-9b",
+   "total": {
+    "min": 9,
+    "max": 9
+   },
+   "active": {
+    "min": 9,
+    "max": 9
+   },
+   "confidence": "estimated",
+   "note": "self-describing dense id"
+  },
+  {
+   "match": "qwen3-5-flash",
+   "total": {
+    "min": 30,
+    "max": 122
+   },
+   "active": {
+    "min": 3,
+    "max": 10
+   },
+   "confidence": "estimated",
+   "note": "closed Qwen API tier, anchored to 3.5 open sizes"
+  },
+  {
+   "match": "qwen3-5-plus",
+   "total": {
+    "min": 122,
+    "max": 400
+   },
+   "active": {
+    "min": 10,
+    "max": 40
+   },
+   "confidence": "estimated",
+   "note": "closed Qwen API tier, anchored to 3.5 open sizes"
+  },
+  {
+   "match": "qwen3-6-27b",
+   "total": {
+    "min": 27,
+    "max": 27
+   },
+   "active": {
+    "min": 27,
+    "max": 27
+   },
+   "confidence": "estimated",
+   "note": "self-describing dense id"
+  },
+  {
+   "match": "qwen3-6-35b-a3b",
+   "total": {
+    "min": 35,
+    "max": 35
+   },
+   "active": {
+    "min": 3,
+    "max": 3
+   },
+   "confidence": "estimated",
+   "note": "self-describing MoE id"
+  },
+  {
+   "match": "qwen3-6-flash",
+   "total": {
+    "min": 30,
+    "max": 122
+   },
+   "active": {
+    "min": 3,
+    "max": 10
+   },
+   "confidence": "estimated",
+   "note": "closed Qwen API tier, anchored to predecessors"
+  },
+  {
+   "match": "qwen3-6-max",
+   "total": {
+    "min": 600,
+    "max": 1200
+   },
+   "active": {
+    "min": 40,
+    "max": 100
+   },
+   "confidence": "estimated",
+   "note": "closed Qwen flagship tier, anchored to qwen3-max"
+  },
+  {
+   "match": "qwen3-6-plus",
+   "total": {
+    "min": 122,
+    "max": 400
+   },
+   "active": {
+    "min": 10,
+    "max": 40
+   },
+   "confidence": "estimated",
+   "note": "closed Qwen API tier, anchored to predecessors"
+  },
+  {
+   "match": "qwen3-7-max",
+   "total": {
+    "min": 600,
+    "max": 1200
+   },
+   "active": {
+    "min": 40,
+    "max": 100
+   },
+   "confidence": "estimated",
+   "note": "closed Qwen flagship tier, anchored to qwen3-max"
+  },
+  {
+   "match": "qwen3-7-plus",
+   "total": {
+    "min": 122,
+    "max": 400
+   },
+   "active": {
+    "min": 10,
+    "max": 40
+   },
+   "confidence": "estimated",
+   "note": "closed Qwen API tier, anchored to predecessors"
+  },
+  {
+   "match": "qwen3-8b",
+   "total": {
+    "min": 8.2,
+    "max": 8.2
+   },
+   "active": {
+    "min": 8.2,
+    "max": 8.2
+   },
+   "confidence": "published",
+   "note": "Qwen3-8B dense, HF card"
+  },
+  {
+   "match": "qwen3-coder",
+   "total": {
+    "min": 480,
+    "max": 480
+   },
+   "active": {
+    "min": 35,
+    "max": 35
+   },
+   "confidence": "published",
+   "note": "Qwen3-Coder-480B-A35B MoE, HF card"
+  },
+  {
+   "match": "qwen3-coder-30b-a3b",
+   "total": {
+    "min": 30.5,
+    "max": 30.5
+   },
+   "active": {
+    "min": 3.3,
+    "max": 3.3
+   },
+   "confidence": "published",
+   "note": "Qwen3-Coder-30B-A3B MoE, HF card"
+  },
+  {
+   "match": "qwen3-coder-flash",
+   "total": {
+    "min": 30.5,
+    "max": 30.5
+   },
+   "active": {
+    "min": 3.3,
+    "max": 3.3
+   },
+   "confidence": "published",
+   "note": "Qwen3-Coder-Flash = 30B-A3B, Qwen release blog"
+  },
+  {
+   "match": "qwen3-coder-next",
+   "total": {
+    "min": 400,
+    "max": 600
+   },
+   "active": {
+    "min": 35,
+    "max": 50
+   },
+   "confidence": "estimated",
+   "note": "closed Qwen API tier, anchored to Coder-480B"
+  },
+  {
+   "match": "qwen3-coder-plus",
+   "total": {
+    "min": 400,
+    "max": 600
+   },
+   "active": {
+    "min": 35,
+    "max": 50
+   },
+   "confidence": "estimated",
+   "note": "closed Qwen API tier, anchored to Coder-480B"
+  },
+  {
+   "match": "qwen3-max",
+   "total": {
+    "min": 600,
+    "max": 1200
+   },
+   "active": {
+    "min": 40,
+    "max": 100
+   },
+   "confidence": "estimated",
+   "note": "closed Qwen flagship (announced >1T), undisclosed"
+  },
+  {
+   "match": "qwen3-next-80b-a3b",
+   "total": {
+    "min": 80,
+    "max": 80
+   },
+   "active": {
+    "min": 3,
+    "max": 3
+   },
+   "confidence": "published",
+   "note": "Qwen3-Next-80B-A3B MoE, HF card"
+  },
+  {
+   "match": "qwen3-vl-235b-a22b",
+   "total": {
+    "min": 235,
+    "max": 235
+   },
+   "active": {
+    "min": 22,
+    "max": 22
+   },
+   "confidence": "published",
+   "note": "Qwen3-VL-235B-A22B MoE, HF card"
+  },
+  {
+   "match": "qwen3-vl-30b-a3b",
+   "total": {
+    "min": 30.5,
+    "max": 30.5
+   },
+   "active": {
+    "min": 3.3,
+    "max": 3.3
+   },
+   "confidence": "published",
+   "note": "Qwen3-VL-30B-A3B MoE, HF card"
+  },
+  {
+   "match": "qwen3-vl-32b",
+   "total": {
+    "min": 32.8,
+    "max": 32.8
+   },
+   "active": {
+    "min": 32.8,
+    "max": 32.8
+   },
+   "confidence": "published",
+   "note": "Qwen3-VL-32B dense, HF card"
+  },
+  {
+   "match": "qwen3-vl-8b",
+   "total": {
+    "min": 8.2,
+    "max": 8.2
+   },
+   "active": {
+    "min": 8.2,
+    "max": 8.2
+   },
+   "confidence": "published",
+   "note": "Qwen3-VL-8B dense, HF card"
+  },
+  {
+   "match": "reka-edge",
+   "total": {
+    "min": 7,
+    "max": 7
+   },
+   "active": {
+    "min": 7,
+    "max": 7
+   },
+   "confidence": "published",
+   "note": "Reka Edge 7B dense, Reka release"
+  },
+  {
+   "match": "reka-flash-3",
+   "total": {
+    "min": 21,
+    "max": 21
+   },
+   "active": {
+    "min": 21,
+    "max": 21
+   },
+   "confidence": "published",
+   "note": "Reka Flash 3 21B dense, HF card"
+  },
+  {
+   "match": "remm-slerp-l2-13b",
+   "total": {
+    "min": 13,
+    "max": 13
+   },
+   "active": {
+    "min": 13,
+    "max": 13
+   },
+   "confidence": "published",
+   "note": "Llama-2 13B merge, HF card"
+  },
+  {
+   "match": "ring-2-6-1t",
+   "total": {
+    "min": 1000,
+    "max": 1000
+   },
+   "active": {
+    "min": 30,
+    "max": 80
+   },
+   "confidence": "estimated",
+   "note": "InclusionAI Ring 1T-class MoE, active anchored to Ling-1T"
+  },
+  {
+   "match": "rocinante-12b",
+   "total": {
+    "min": 12.2,
+    "max": 12.2
+   },
+   "active": {
+    "min": 12.2,
+    "max": 12.2
+   },
+   "confidence": "published",
+   "note": "Mistral NeMo 12B finetune, HF card"
+  },
+  {
+   "match": "skyfall-36b",
+   "total": {
+    "min": 36,
+    "max": 36
+   },
+   "active": {
+    "min": 36,
+    "max": 36
+   },
+   "confidence": "published",
+   "note": "Mistral-Small upscale 36B, HF card"
+  },
+  {
+   "match": "solar-pro-3",
+   "total": {
+    "min": 22,
+    "max": 70
+   },
+   "active": {
+    "min": 22,
+    "max": 70
+   },
+   "confidence": "estimated",
+   "note": "Upstage Solar Pro 3, undisclosed (Pro 2 was 31B dense)"
+  },
+  {
+   "match": "sonar",
+   "total": {
+    "min": 70,
+    "max": 400
+   },
+   "active": {
+    "min": 70,
+    "max": 400
+   },
+   "confidence": "estimated",
+   "note": "Perplexity Sonar (base is Llama-3.3-70B; pro/reasoning undisclosed)"
+  },
+  {
+   "match": "step-3-5-flash",
+   "total": {
+    "min": 100,
+    "max": 321
+   },
+   "active": {
+    "min": 10,
+    "max": 38
+   },
+   "confidence": "estimated",
+   "note": "StepFun flash tier, anchored to Step-3 (321B/38B MoE)"
+  },
+  {
+   "match": "step-3-7-flash",
+   "total": {
+    "min": 100,
+    "max": 321
+   },
+   "active": {
+    "min": 10,
+    "max": 38
+   },
+   "confidence": "estimated",
+   "note": "StepFun flash tier, anchored to Step-3 (321B/38B MoE)"
+  },
+  {
+   "match": "ui-tars-1-5-7b",
+   "total": {
+    "min": 7.6,
+    "max": 7.6
+   },
+   "active": {
+    "min": 7.6,
+    "max": 7.6
+   },
+   "confidence": "published",
+   "note": "UI-TARS-1.5-7B on Qwen2.5-VL-7B dense, HF card"
+  },
+  {
+   "match": "unslopnemo-12b",
+   "total": {
+    "min": 12.2,
+    "max": 12.2
+   },
+   "active": {
+    "min": 12.2,
+    "max": 12.2
+   },
+   "confidence": "published",
+   "note": "Mistral NeMo 12B finetune, HF card"
+  },
+  {
+   "match": "voxtral-mini-2507",
+   "total": {
+    "min": 4.68,
+    "max": 4.68
+   },
+   "active": {
+    "min": 4.68,
+    "max": 4.68
+   },
+   "confidence": "estimated"
+  },
+  {
+   "match": "voxtral-mini-2509",
+   "total": {
+    "min": 4.68,
+    "max": 4.68
+   },
+   "active": {
+    "min": 4.68,
+    "max": 4.68
+   },
+   "confidence": "estimated"
+  },
+  {
+   "match": "voxtral-mini-2602",
+   "total": {
+    "min": 4.68,
+    "max": 4.68
+   },
+   "active": {
+    "min": 4.68,
+    "max": 4.68
+   },
+   "confidence": "estimated"
+  },
+  {
+   "match": "voxtral-mini-latest",
+   "total": {
+    "min": 4.68,
+    "max": 4.68
+   },
+   "active": {
+    "min": 4.68,
+    "max": 4.68
+   },
+   "confidence": "estimated"
+  },
+  {
+   "match": "voxtral-small-2507",
+   "total": {
+    "min": 24.3,
+    "max": 24.3
+   },
+   "active": {
+    "min": 24.3,
+    "max": 24.3
+   },
+   "confidence": "estimated",
+   "tps": 79.9,
+   "ttft": 0.31
+  },
+  {
+   "match": "voxtral-small-latest",
+   "total": {
+    "min": 24.3,
+    "max": 24.3
+   },
+   "active": {
+    "min": 24.3,
+    "max": 24.3
+   },
+   "confidence": "estimated",
+   "tps": 98.8,
+   "ttft": 0.29
+  },
+  {
+   "match": "wizardlm-2-8x22b",
+   "total": {
+    "min": 141,
+    "max": 141
+   },
+   "active": {
+    "min": 39,
+    "max": 39
+   },
+   "confidence": "published",
+   "note": "WizardLM-2 on Mixtral 8x22B base, HF card"
+  }
+ ]
+}

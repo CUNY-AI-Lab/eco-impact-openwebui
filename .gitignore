@@ -1,0 +1,15 @@
+# Local build artifacts
+eco_models.json
+eco_models_*.json
+!examples/eco_models.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/

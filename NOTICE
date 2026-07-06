@@ -1,0 +1,36 @@
+Eco Impact Estimator for Open WebUI
+Copyright (c) 2026 CUNY AI Lab
+
+This product includes software and data derived from EcoLogits
+(https://ecologits.ai, https://github.com/genai-impact/ecologits), developed by
+GenAI Impact and licensed under the Mozilla Public License 2.0 (MPL-2.0).
+
+Specifically:
+
+  * The environmental-impact methodology and its numeric coefficients used in
+    eco_impact_filter.py (the GPU/server energy and embodied-impact model) are
+    vendored from EcoLogits, file ecologits/impacts/llm.py, at commit
+    42154236c3b275346e8b97b04f49cd19877316e6.
+
+  * scripts/sync-eco-models.py downloads, and the generated registry
+    (examples/eco_models.json) redistributes, EcoLogits' model-parameter data
+    (models.json) and electricity-mix data (electricity_mixes.json) from the
+    same source.
+
+The EcoLogits methodology is described in their documentation and publications;
+please cite EcoLogits if you use these estimates in research. If EcoLogits'
+coefficients, data, or method change upstream, re-run scripts/sync-eco-models.py
+and refresh the vendored coefficients in eco_impact_filter.py accordingly.
+
+Because this derived material is MPL-2.0, this project is released under
+MPL-2.0 as well (see LICENSE).
+
+Original contributions by CUNY AI Lab (also MPL-2.0):
+  * the Open WebUI Filter integration and status-line presentation,
+  * the model-id matching + registry-loading + graceful-fallback logic,
+  * scripts/sync-eco-models.py (the sync/coverage tooling) and
+    scripts/eco-extra-patterns.json (curated parameter estimates for models
+    not covered by EcoLogits).
+
+This project is not affiliated with or endorsed by EcoLogits / GenAI Impact,
+nor by Open WebUI.
