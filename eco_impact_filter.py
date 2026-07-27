@@ -1,7 +1,7 @@
 """
 title: Eco Impact Estimator
 author: CUNY AI Lab
-version: 1.0.0
+version: 1.0.1
 license: MPL-2.0
 description: Per-message energy and CO2e estimates for every model, shown as a status line. Methodology and constants vendored from EcoLogits (https://ecologits.ai).
 """
@@ -325,13 +325,18 @@ class Filter:
 
     def _get_output_tokens(self, body: dict) -> int:
         usage = body.get("usage") or {}
-        ct = usage.get("completion_tokens") or usage.get("output_tokens")
+        # output_tokens FIRST: as of OWU v0.11.0 completion_tokens carries only
+        # the most recent model call, while output_tokens stays cumulative across
+        # every call made for the response (tool loops, sub-agents). Carbon has to
+        # count all of them. Pre-0.11 the two keys were equal, so this is a no-op
+        # on older versions.
+        ct = usage.get("output_tokens") or usage.get("completion_tokens")
         if ct:
             return int(ct)
         for msg in reversed(body.get("messages") or []):
             if msg.get("role") == "assistant":
                 mu = msg.get("usage") or {}
-                ct = mu.get("completion_tokens") or mu.get("output_tokens")
+                ct = mu.get("output_tokens") or mu.get("completion_tokens")
                 if ct:
                     return int(ct)
                 content = msg.get("content") or ""
