@@ -1,7 +1,7 @@
 """
 title: Eco Impact Estimator
 author: CUNY AI Lab
-version: 1.0.1
+version: 1.1.0
 license: MPL-2.0
 description: Per-message energy and CO2e estimates for every model, shown as a status line. Methodology and constants vendored from EcoLogits (https://ecologits.ai).
 """
@@ -14,9 +14,12 @@ description: Per-message energy and CO2e estimates for every model, shown as a s
 # 42154236c3b275346e8b97b04f49cd19877316e6, file ecologits/impacts/llm.py.
 # Re-sync constants when refreshing the registry (scripts/sync-eco-models.py).
 
+import asyncio
 import json
 import math
 import os
+import time
+import urllib.request
 from typing import Any, Optional
 
 from pydantic import BaseModel, Field
@@ -91,10 +94,17 @@ def _impacts_single(
 # ============================================================
 # Model registry
 # ============================================================
-# The live registry is a JSON file on EFS written by scripts/sync-eco-models.py.
-# This embedded copy is only the fallback when that file is missing or has
-# never been pushed. Parameter data from EcoLogits models.json at the pinned
+# The live registry is published weekly to this repo's `registry` branch by a
+# GitHub Action (scripts/sync-eco-models.py) and fetched from REGISTRY_URL; the last good copy
+# is cached at registry_path. This embedded copy is only the fallback when
+# neither has ever been available. Parameter data from EcoLogits models.json at the pinned
 # commit; entries whose architecture is not publicly released are estimates.
+
+REGISTRY_URL = (
+    "https://raw.githubusercontent.com/CUNY-AI-Lab/eco-impact-openwebui/"
+    "registry/eco_models.json"
+)
+FETCH_RETRY_SECONDS = 3600  # after a failed fetch
 
 DEFAULT_REGISTRY = {
     "version": 1,
@@ -186,17 +196,71 @@ def find_entry(model_id: str, registry: dict) -> Optional[dict]:
     return best
 
 
-def zone_for(model_id: str, registry: dict) -> dict:
-    """Electricity mix for the model's zone (raw-id prefix match, e.g. Bedrock
-    'us.' ids run in us-east-1)."""
+def find_id_entry(model_id: str, registry: dict) -> Optional[dict]:
+    """Exact lookup in the registry's "ids" map (Gateway ids, upstream ids, model
+    groups). Also matches when the id carries a connection prefix ending in '.'
+    or '/' (e.g. 'gateway.glm-4.7'). Never matches a different version: the key
+    has to be the whole id or a whole trailing segment."""
+    ids = registry.get("ids") or {}
+    mid = model_id.lower().strip()
+    if mid in ids:
+        return ids[mid]
+    best = None
+    for key in ids:
+        if (mid.endswith("." + key) or mid.endswith("/" + key)) and (
+                best is None or len(key) > len(best)):
+            best = key
+    return ids[best] if best else None
+
+
+def resolve_entry(model_ids: "list[str]", registry: dict) -> Optional[dict]:
+    """Registry entry for the first candidate id that resolves: exact ids first
+    (for every candidate), then legacy substring patterns. Gateway models the
+    weekly sync could not resolve are listed in "unresolved_ids" and get the
+    flagged generic estimate, never a look-alike pattern (glm-5.3 is not glm-5)."""
+    for mid in model_ids:
+        e = find_id_entry(mid, registry)
+        if e is not None:
+            return e
+    unresolved = {"ids": {u: True for u in registry.get("unresolved_ids") or []}}
+    if any(find_id_entry(mid, unresolved) for mid in model_ids):
+        return None
+    for mid in model_ids:
+        e = find_entry(mid, registry)
+        if e is not None:
+            return e
+    return None
+
+
+def zone_for(model_id: str, registry: dict, entry: Optional[dict] = None) -> dict:
+    """Electricity mix for a request: the entry's own zone (Gateway rows carry
+    one per provider), else a raw-id prefix match for legacy direct-provider ids
+    (e.g. Bedrock 'us.' ids run in us-east-1), else the registry default."""
+    zones = registry.get("zones", {})
+    if entry and entry.get("zone") in zones:
+        return zones[entry["zone"]]
     mid = model_id.lower().strip()
     zone_name = registry.get("defaults", {}).get("zone", "WOR")
     for zp in registry.get("zone_prefixes", []):
         if mid.startswith(zp["prefix"]):
             zone_name = zp["zone"]
             break
-    zones = registry.get("zones", {})
     return zones.get(zone_name) or zones.get("WOR") or DEFAULT_REGISTRY["zones"]["WOR"]
+
+
+def _valid_registry(data: Any) -> bool:
+    return (
+        isinstance(data, dict)
+        and isinstance(data.get("defaults"), dict)
+        and isinstance(data.get("zones"), dict) and bool(data["zones"])
+        and (bool(data.get("patterns")) or bool(data.get("ids")))
+    )
+
+
+def _fetch_json(url: str, timeout: float = 5.0) -> Any:
+    req = urllib.request.Request(url, headers={"User-Agent": "eco-impact-filter/1.1"})
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return json.loads(r.read().decode())
 
 
 def compute_impacts(entry: dict, output_tokens: int, zone: dict, defaults: dict) -> dict:
@@ -279,10 +343,17 @@ def format_status(imp: dict, unknown: bool, show_energy: bool, show_comparison: 
 class Filter:
     class Valves(BaseModel):
         enabled: bool = Field(default=True, description="Master on/off switch.")
+        registry_url: str = Field(
+            default=REGISTRY_URL,
+            description="Where to fetch the weekly registry. Empty disables "
+            "fetching and uses registry_path only.",
+        )
+        registry_refresh_hours: float = Field(
+            default=12, description="How often to re-fetch registry_url.")
         registry_path: str = Field(
             default="/app/backend/data/eco_models.json",
-            description="Path to the model registry JSON (EFS). Falls back to "
-            "the embedded registry when missing.",
+            description="Local registry JSON; also caches the last good fetch so "
+            "restarts start warm. Embedded registry is the last resort.",
         )
         show_energy: bool = Field(default=True, description="Show Wh alongside CO2e.")
         show_comparison: bool = Field(
@@ -296,6 +367,8 @@ class Filter:
         self.valves = self.Valves()
         self._reg_mtime: Optional[float] = None
         self._reg_data: Optional[dict] = None
+        self._next_fetch = 0.0  # time.monotonic() when a fetch is next due
+        self._refresh_task: Optional["asyncio.Task"] = None
 
     def _registry(self) -> dict:
         """Load the EFS registry with an mtime cache; embedded fallback."""
@@ -305,13 +378,45 @@ class Filter:
             if mtime != self._reg_mtime:
                 with open(path) as fh:
                     data = json.load(fh)
-                if isinstance(data, dict) and data.get("patterns"):
+                if _valid_registry(data):
                     self._reg_data = data
                 self._reg_mtime = mtime  # only reached on successful parse; a corrupt file keeps the last good copy and retries next message
         except Exception as e:
             if self.valves.debug_logging:
                 print(f"[EcoImpact] registry load failed ({e}); using fallback")
         return self._reg_data or DEFAULT_REGISTRY
+
+    def _refresh_due(self) -> bool:
+        if not self.valves.registry_url:
+            return False
+        running = self._refresh_task is not None and not self._refresh_task.done()
+        return not running and time.monotonic() >= self._next_fetch
+
+    async def _refresh(self) -> None:
+        """Fetch registry_url; on success swap it in and cache it to
+        registry_path. Any failure keeps the last good copy."""
+        url = self.valves.registry_url
+        if not url:
+            return
+        ok = False
+        try:
+            data = await asyncio.get_running_loop().run_in_executor(None, _fetch_json, url)
+            if not _valid_registry(data):
+                raise ValueError("fetched registry failed validation")
+            self._reg_data = data
+            ok = True
+            path = self.valves.registry_path
+            tmp = f"{path}.tmp"
+            with open(tmp, "w") as fh:
+                json.dump(data, fh)
+            os.replace(tmp, path)
+            self._reg_mtime = os.path.getmtime(path)
+        except Exception as e:
+            if self.valves.debug_logging:
+                print(f"[EcoImpact] registry {'cache write' if ok else 'fetch'} failed: {e}")
+        finally:
+            hours = max(0.1, float(self.valves.registry_refresh_hours or 12))
+            self._next_fetch = time.monotonic() + (hours * 3600 if ok else FETCH_RETRY_SECONDS)
 
     def _get_model_id(self, body: dict) -> str:
         model = body.get("model")
@@ -351,6 +456,7 @@ class Filter:
         body: dict,
         __event_emitter__: Any = None,
         __user__: Optional[dict] = None,
+        __model__: Optional[dict] = None,
     ) -> dict:
         try:
             if not self.valves.enabled or __event_emitter__ is None:
@@ -363,16 +469,27 @@ class Filter:
             if output_tokens <= 0:
                 return body
 
-            model_id = self._get_model_id(body)
             reg = self._registry()
-            entry = find_entry(model_id, reg)
+            if self._refresh_due():
+                # Background only: this reply uses the registry already loaded.
+                self._refresh_task = asyncio.create_task(self._refresh())
+
+            model_id = self._get_model_id(body)
+            candidates = [model_id]
+            base = ((__model__ or {}).get("info") or {}).get("base_model_id")
+            if base:
+                candidates.append(base)
+            entry = resolve_entry(candidates, reg)
+            if entry is not None and entry.get("skip"):
+                return body
             unknown = entry is None
             if unknown:
                 up = reg["defaults"]["unknown_params"]
                 entry = {"match": "", "total": up["total"], "active": up["active"],
                          "confidence": "unknown"}
 
-            imp = compute_impacts(entry, output_tokens, zone_for(model_id, reg),
+            imp = compute_impacts(entry, output_tokens,
+                                  zone_for(base or model_id, reg, entry),
                                   reg.get("defaults", {}))
             line = format_status(imp, unknown, self.valves.show_energy,
                                  self.valves.show_comparison)

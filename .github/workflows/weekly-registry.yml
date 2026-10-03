@@ -1,0 +1,103 @@
+name: weekly registry
+
+# Rebuilds eco_models.json from CAIL Gateway's public catalog, EcoLogits' latest
+# release, and Hugging Face configs, and publishes it to the `registry` branch
+# (the filter fetches it from there). `main` is protected, so the data lives on
+# its own branch. When the validation gate holds a change for review, the build
+# goes to a review branch and the tracking issue (label "eco-registry") links
+# the diff. Unresolved models are listed in the same issue.
+
+on:
+  schedule:
+    - cron: "0 6 * * 1" # Mondays 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: weekly-registry
+  cancel-in-progress: false
+
+env:
+  GATEWAY_URL: https://tools.ailab.gc.cuny.edu
+  DATA_BRANCH: registry
+  REVIEW_BRANCH: registry-review
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: registry
+          path: data
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install pydantic pytest
+      - run: python -m pytest -q
+
+      - name: Build registry
+        id: sync
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }} # optional: lets gated HF repos resolve
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set +e
+          python scripts/sync-eco-models.py --gateway-url "$GATEWAY_URL" \
+            --previous data/eco_models.json -o data/eco_models.json \
+            --report report.md
+          code=$?
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          if [ "$code" != 0 ] && [ "$code" != 3 ]; then exit "$code"; fi
+          ECO_REGISTRY=data/eco_models.json python -m pytest -q test_sync_eco_models.py -k committed_registry
+
+      - name: Publish to the registry branch
+        if: steps.sync.outputs.code == '0'
+        working-directory: data
+        run: |
+          if git diff --quiet -- eco_models.json; then
+            echo "Registry unchanged."; exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add eco_models.json
+          git commit -m "chore(registry): weekly sync $(date -u +%F)"
+          git push origin "HEAD:$DATA_BRANCH"
+
+      - name: Push build held for review
+        if: steps.sync.outputs.code == '3'
+        working-directory: data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -C "$REVIEW_BRANCH"
+          git add eco_models.json
+          git commit -m "chore(registry): weekly sync $(date -u +%F) (held for review)"
+          git push --force origin "$REVIEW_BRANCH"
+          {
+            echo
+            echo "Held build: https://github.com/$GITHUB_REPOSITORY/compare/$DATA_BRANCH...$REVIEW_BRANCH"
+            echo "To accept it: \`git push origin origin/$REVIEW_BRANCH:$DATA_BRANCH\` (or fix scripts/eco-extra-patterns.json on main and re-run this workflow)."
+          } >> ../report.md
+
+      - name: Track unresolved models
+        if: always() && steps.sync.outputs.code != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create eco-registry --color 2da44e --description "Eco registry sync" 2>/dev/null || true
+          issue=$(gh issue list --label eco-registry --state open --json number --jq '.[0].number')
+          if grep -q "^## Unresolved\|^## ⚠️\|^## Held for review" report.md; then
+            if [ -n "$issue" ]; then
+              gh issue edit "$issue" --body-file report.md
+            else
+              gh issue create --label eco-registry \
+                --title "Eco registry: models need attention" --body-file report.md
+            fi
+          elif [ -n "$issue" ]; then
+            gh issue close "$issue" --comment "All Gateway models resolved in the $(date -u +%F) sync."
+          fi

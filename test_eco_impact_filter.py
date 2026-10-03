@@ -204,3 +204,190 @@ def test_outlet_never_raises():
 
     out = asyncio.run(go())
     assert out["model"] == "openai/gpt-4o"  # body still returned
+
+
+# ============================================================
+# v1.1.0: Gateway ids, per-entry zones, remote registry refresh
+# ============================================================
+
+GW_REG = {
+    "version": 2,
+    "defaults": {"zone": "WOR", "pue": {"min": 1.09, "max": 1.2},
+                 "unknown_params": {"total": {"min": 8, "max": 440},
+                                    "active": {"min": 8, "max": 110}}},
+    "zones": {"WOR": {"gwp": 0.45829}, "USA": {"gwp": 0.3844}},
+    "zone_prefixes": [],
+    "ids": {
+        "glm-4.7": {"total": {"min": 358, "max": 358}, "active": {"min": 31, "max": 39},
+                    "confidence": "derived", "zone": "USA"},
+        "glm-4.7-flash": {"total": {"min": 31, "max": 31}, "active": {"min": 4, "max": 5},
+                          "confidence": "derived", "zone": "USA"},
+        "zhipuai/glm-4.7": {"total": {"min": 358, "max": 358},
+                            "active": {"min": 31, "max": 39},
+                            "confidence": "derived", "zone": "USA"},
+        "whisper": {"skip": True},
+    },
+    "patterns": [{"match": "glm-4", "total": {"min": 9, "max": 9},
+                  "active": {"min": 9, "max": 9}, "confidence": "published"}],
+}
+
+
+@pytest.fixture(autouse=True)
+def _no_network(monkeypatch):
+    """No test may reach GitHub; remote fetches fail unless a test overrides this."""
+    import eco_impact_filter
+
+    def boom(url, timeout=5.0):
+        raise OSError("network disabled in tests")
+
+    monkeypatch.setattr(eco_impact_filter, "_fetch_json", boom)
+
+
+def test_find_id_entry_exact_beats_legacy_pattern():
+    from eco_impact_filter import find_id_entry, resolve_entry
+    assert find_id_entry("glm-4.7", GW_REG)["active"]["max"] == 39
+    assert find_id_entry("glm-4.7-flash", GW_REG)["active"]["max"] == 5
+    assert find_id_entry("GLM-4.7", GW_REG) is not None
+    # exact ids win over the legacy substring "glm-4"
+    assert resolve_entry(["glm-4.7"], GW_REG)["confidence"] == "derived"
+    # unknown id falls back to the legacy pattern
+    assert resolve_entry(["openrouter/glm-4-9b"], GW_REG)["match"] == "glm-4"
+
+
+def test_find_id_entry_connection_prefix_and_no_version_bleed():
+    from eco_impact_filter import find_id_entry
+    assert find_id_entry("gateway.glm-4.7", GW_REG)["active"]["max"] == 39
+    assert find_id_entry("cail/glm-4.7-flash", GW_REG)["active"]["max"] == 5
+    # a newer version must NOT silently reuse an older model's numbers
+    assert find_id_entry("glm-4.7.1", GW_REG) is None
+    assert find_id_entry("glm-4.70", GW_REG) is None
+    # the prefix has to end at a separator, not mid-name
+    assert find_id_entry("superglm-4.7", GW_REG) is None
+
+
+def test_unresolved_gateway_id_never_falls_back_to_patterns():
+    from eco_impact_filter import resolve_entry
+    reg = dict(GW_REG, unresolved_ids=["glm-4.9"])
+    assert resolve_entry(["openrouter/glm-4.9"], GW_REG)["match"] == "glm-4"
+    assert resolve_entry(["glm-4.9"], reg) is None
+    assert resolve_entry(["gateway.glm-4.9"], reg) is None
+
+
+def test_resolve_entry_uses_model_card_base_model():
+    from eco_impact_filter import resolve_entry
+    e = resolve_entry(["course-card-uuid-123", "zhipuai/glm-4.7"], GW_REG)
+    assert e is not None and e["active"]["max"] == 39
+    assert resolve_entry(["course-card-uuid-123"], GW_REG) is None
+
+
+def test_zone_from_entry_beats_default():
+    from eco_impact_filter import zone_for
+    entry = GW_REG["ids"]["glm-4.7"]
+    assert zone_for("glm-4.7", GW_REG, entry)["gwp"] == 0.3844
+    assert zone_for("glm-4.7", GW_REG, None)["gwp"] == 0.45829
+
+
+def _filter_with(tmp_path, reg=None):
+    from eco_impact_filter import Filter
+    f = Filter()
+    p = tmp_path / "eco_models.json"
+    if reg is not None:
+        p.write_text(json.dumps(reg))
+    f.valves.registry_path = str(p)
+    return f
+
+
+def test_outlet_gateway_model_uses_ids_and_card_base(tmp_path):
+    f = _filter_with(tmp_path, GW_REG)
+    out, events = _run_outlet(f, _mk_body(model="glm-4.7"))
+    assert "generic estimate" not in events[0]["data"]["description"]
+    # model card whose base is a Gateway model
+    events = []
+
+    async def emitter(ev):
+        events.append(ev)
+
+    asyncio.run(f.outlet(_mk_body(model="my-course-card"), __event_emitter__=emitter,
+                         __model__={"id": "my-course-card",
+                                    "info": {"base_model_id": "glm-4.7"}}))
+    assert "generic estimate" not in events[0]["data"]["description"]
+
+
+def test_outlet_skip_entry_emits_nothing(tmp_path):
+    f = _filter_with(tmp_path, GW_REG)
+    out, events = _run_outlet(f, _mk_body(model="whisper"))
+    assert events == []
+
+
+def test_remote_refresh_success_updates_and_caches(tmp_path, monkeypatch):
+    import eco_impact_filter
+    f = _filter_with(tmp_path)  # no file on disk yet -> embedded
+    calls = []
+
+    def fake_fetch(url, timeout=5.0):
+        calls.append(url)
+        return GW_REG
+
+    monkeypatch.setattr(eco_impact_filter, "_fetch_json", fake_fetch)
+    f.valves.registry_url = "https://example.test/eco_models.json"
+    asyncio.run(f._refresh())
+    assert calls == ["https://example.test/eco_models.json"]
+    assert "glm-4.7" in f._registry()["ids"]
+    # written to registry_path as the warm cache for restarts
+    assert json.loads((tmp_path / "eco_models.json").read_text())["ids"]
+    # not due again until the refresh interval passes
+    assert f._refresh_due() is False
+
+
+def test_remote_refresh_failure_keeps_last_good(tmp_path, monkeypatch):
+    import eco_impact_filter
+    f = _filter_with(tmp_path, GW_REG)
+    f.valves.registry_url = "https://example.test/eco_models.json"
+    assert "ids" in f._registry()
+    asyncio.run(f._refresh())  # autouse fixture makes the fetch fail
+    assert "glm-4.7" in f._registry()["ids"]
+    # an invalid payload is rejected too
+    monkeypatch.setattr(eco_impact_filter, "_fetch_json",
+                        lambda url, timeout=5.0: {"nope": True})
+    asyncio.run(f._refresh())
+    assert "glm-4.7" in f._registry()["ids"]
+
+
+def test_remote_refresh_disabled_when_url_empty(tmp_path, monkeypatch):
+    import eco_impact_filter
+    f = _filter_with(tmp_path)
+    f.valves.registry_url = ""
+    called = []
+    monkeypatch.setattr(eco_impact_filter, "_fetch_json",
+                        lambda url, timeout=5.0: called.append(url))
+    assert f._refresh_due() is False
+    asyncio.run(f._refresh())
+    assert called == []
+
+
+def test_outlet_does_not_wait_for_remote_fetch(tmp_path, monkeypatch):
+    import time
+    import eco_impact_filter
+    f = _filter_with(tmp_path, GW_REG)
+    f.valves.registry_url = "https://example.test/eco_models.json"
+
+    def slow_fetch(url, timeout=5.0):
+        time.sleep(0.5)
+        return GW_REG
+
+    monkeypatch.setattr(eco_impact_filter, "_fetch_json", slow_fetch)
+    events = []
+
+    async def emitter(ev):
+        events.append(ev)
+
+    async def go():
+        t0 = time.monotonic()
+        await f.outlet(_mk_body(model="glm-4.7"), __event_emitter__=emitter)
+        elapsed = time.monotonic() - t0
+        if f._refresh_task is not None:
+            await f._refresh_task
+        return elapsed
+
+    assert asyncio.run(go()) < 0.3
+    assert len(events) == 1
