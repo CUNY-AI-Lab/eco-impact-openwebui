@@ -42,7 +42,9 @@ a sidecar, or a source-code patch.
   rather than nothing).
 - **Self-contained.** One `.py` file, standard library + `pydantic` (already an
   Open WebUI dependency). Nothing to `pip install` into the image, no schema
-  changes — it survives Open WebUI upgrades untouched.
+  changes — it survives Open WebUI upgrades untouched. Its only network call is
+  the background registry fetch (one small HTTPS GET every 12 h, which you can
+  turn off).
 
 ## Install (2 minutes)
 
@@ -56,44 +58,57 @@ That's it — send a message and you'll see the status line. Out of the box it
 uses a small **embedded registry** covering common model families, so it works
 before you do anything else.
 
-## Sharpen the numbers: the model registry
+## The model registry
 
-The filter estimates from a model's parameter counts. It reads them from a JSON
-registry file inside the container (default
-`/app/backend/data/eco_models.json`, which persists across restarts) and
-**auto-reloads it whenever the file changes** — no restart required. If the file
-is missing, the embedded fallback is used.
+The filter estimates from a model's parameter counts, which it reads from a JSON
+registry. Out of the box it uses a small **embedded registry** covering common
+model families, so it works before you do anything else.
 
-Build a registry tailored to *your* served models with the included tool:
+### Weekly registry (CUNY AI Lab default)
+
+A GitHub Action in this repo ([`weekly-registry.yml`](.github/workflows/weekly-registry.yml))
+rebuilds the registry every Monday and publishes it to the
+[`registry` branch](../../tree/registry). The filter fetches it from there every
+12 hours in the background and caches the last good copy at `registry_path`, so
+**models added to CAIL Gateway pick up parameters without anyone touching Open
+WebUI**. The job:
+
+1. reads every model CAIL Gateway serves from its public `GET /v1/catalog`;
+2. resolves each model's total and active parameters, in this order:
+   published numbers from the curated list or EcoLogits (exact name only), an
+   `NNNb-aNb` size in the model name, the model's Hugging Face config (MoE
+   active parameters are computed from the expert counts and shown as a range),
+   and only then an older *estimated* guess;
+3. writes exact-id entries with the electricity zone of the serving provider
+   (US grid for Workers AI and Bedrock Mantle);
+4. checks the result against last week's (no served model may lose coverage, no
+   active-parameter count may jump more than 3×, and EcoLogits' methodology must
+   still match the math vendored here) and publishes only if it passes;
+5. keeps one open issue labelled `eco-registry` listing models it could not
+   resolve, with a stub to fill in.
+
+Those unresolved models keep working with the flagged generic estimate. To fix
+one, add an entry to [`scripts/eco-extra-patterns.json`](scripts/eco-extra-patterns.json)
+on `main` (use `"exact_only": true` for ids too generic for substring matching)
+and re-run the workflow from the Actions tab. If Hugging Face repos you serve are
+gated, add an `HF_TOKEN` repository secret so the job can read their configs.
+
+### Your own instance
+
+Point the filter's `registry_url` valve at your own copy, or set it empty and
+build a file locally:
 
 ```bash
-# Point it at your instance; needs an Open WebUI API key with model-list access.
+# From an OpenAI-compatible catalog shaped like CAIL Gateway's /v1/catalog:
+python3 scripts/sync-eco-models.py --gateway-url https://gateway.example.com -o eco_models.json
+# Or a coverage report against an Open WebUI instance (admin API key):
 export OWUI_API_KEY=<your key>
 python3 scripts/sync-eco-models.py --owui-url https://your-openwebui.example.com -o eco_models.json
 ```
 
-`sync-eco-models.py`:
-
-1. downloads EcoLogits' current model-parameter and electricity-mix data,
-2. fetches your instance's live model list,
-3. matches them and prints a **coverage report**, explicitly flagging any served
-   model it couldn't match (with a ready-to-fill stub), and
-4. merges your manual additions from
-   [`scripts/eco-extra-patterns.json`](scripts/eco-extra-patterns.json) — where
-   you can add parameter counts for models EcoLogits doesn't cover (this repo
-   ships a starter set of ~180 curated entries: Qwen, DeepSeek, GLM, Kimi,
-   Llama, Nova, Gemma, and more).
-
 Then copy `eco_models.json` to the filter's `registry_path` inside your
-container. How you copy a file in depends on your deployment (docker cp,
-kubectl cp, a mounted volume, …); see
-[`scripts/install-registry.example.sh`](scripts/install-registry.example.sh)
-for the common shapes. **When you add new models to your instance, just re-run
-the sync, review the coverage report, and copy the file over.** Unmatched models
-keep working via the flagged generic estimate, so nothing breaks if you forget —
-the sync just tightens the numbers.
-
-A ready-to-use example registry is in
+container (see [`scripts/install-registry.example.sh`](scripts/install-registry.example.sh));
+the filter re-reads it whenever the file changes. A ready-to-use example is in
 [`examples/eco_models.json`](examples/eco_models.json).
 
 ## Configuration (valves)
@@ -103,12 +118,17 @@ Set in the function's settings in the Admin UI:
 | Valve | Default | Meaning |
 |---|---|---|
 | `enabled` | `true` | Master on/off. |
-| `registry_path` | `/app/backend/data/eco_models.json` | Where to read the model registry. |
+| `registry_url` | this repo's `registry` branch | Where to fetch the registry. Empty = use `registry_path` only. |
+| `registry_refresh_hours` | `12` | How often to re-fetch `registry_url` (failed fetches retry after 1 h). |
+| `registry_path` | `/app/backend/data/eco_models.json` | Local registry file; also caches the last good fetch across restarts. |
 | `show_energy` | `true` | Show Wh alongside CO₂e. |
 | `show_comparison` | `true` | Show a real-world equivalence (breaths / walking / driving). |
 | `debug_logging` | `false` | Log calculations to the server console. |
 
 Per-user: each user can hide the line via their own `enabled` UserValve.
+
+Model cards (custom models built on a base model) are estimated from their base
+model. Speech-to-text models get no status line.
 
 ## How the estimate is computed
 
@@ -116,8 +136,9 @@ Vendored directly from EcoLogits (see [Attribution](#attribution--license)):
 energy per request is derived from the model's **active** parameter count and
 output token count through a GPU-energy regression, plus server overhead and
 data-center PUE; CO₂e is that energy times the **electricity-mix** carbon
-intensity (world average by default; the registry can map provider id prefixes
-to region mixes, e.g. AWS Bedrock `us.*` ids → US grid). Embodied
+intensity of the zone the registry assigns the model (the serving provider's
+zone for Gateway models; world average by default; legacy direct-provider ids
+can be mapped by prefix, e.g. AWS Bedrock `us.*` ids → US grid). Embodied
 (hardware-manufacturing) impact is amortized in as well. For models whose exact
 architecture isn't public, EcoLogits provides estimated parameter ranges, which
 is why closed models show a wider min–max band.
@@ -129,7 +150,7 @@ ranges as order-of-magnitude guidance.
 
 ```bash
 python3 -m venv .venv && .venv/bin/pip install pydantic pytest
-.venv/bin/python -m pytest test_eco_impact_filter.py -v
+.venv/bin/python -m pytest -v
 ```
 
 The tests include golden values computed with the real EcoLogits library, so
