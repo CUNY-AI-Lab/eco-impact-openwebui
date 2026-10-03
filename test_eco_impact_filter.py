@@ -391,3 +391,24 @@ def test_outlet_does_not_wait_for_remote_fetch(tmp_path, monkeypatch):
 
     assert asyncio.run(go()) < 0.3
     assert len(events) == 1
+
+
+def test_malformed_entry_treated_as_unknown(tmp_path):
+    reg = json.loads(json.dumps(GW_REG))
+    del reg["ids"]["glm-4.7"]["active"]
+    f = _filter_with(tmp_path, reg)
+    out, events = _run_outlet(f, _mk_body(model="glm-4.7"))
+    assert len(events) == 1 and "generic estimate" in events[0]["data"]["description"]
+
+
+def test_cache_write_uses_unique_temp_and_cleans_up(tmp_path, monkeypatch):
+    import eco_impact_filter
+    f = _filter_with(tmp_path)
+    f.valves.registry_url = "https://example.test/eco_models.json"
+    monkeypatch.setattr(eco_impact_filter, "_fetch_json", lambda url, timeout=5.0: GW_REG)
+    (tmp_path / "eco_models.json.tmp").write_text("another worker's half-written file")
+    asyncio.run(f._refresh())
+    assert json.loads((tmp_path / "eco_models.json").read_text())["ids"]
+    # did not clobber or reuse the shared-name temp file, and left no temp of its own
+    assert (tmp_path / "eco_models.json.tmp").read_text() == "another worker's half-written file"
+    assert sorted(p.name for p in tmp_path.iterdir()) == ["eco_models.json", "eco_models.json.tmp"]

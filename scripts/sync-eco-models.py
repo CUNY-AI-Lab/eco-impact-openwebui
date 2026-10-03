@@ -50,6 +50,9 @@ EXIT_NEEDS_REVIEW = 3
 # A weekly change in a model's max active parameters beyond this factor is held
 # for review rather than published.
 MAX_ACTIVE_CHANGE = 3.0
+# Hold the build if fewer than this share of last run's covered ids are still in
+# the catalog (an empty or truncated catalog response looks like mass retirement).
+MIN_CATALOG_KEPT = 0.5
 
 # Electricity zone per Gateway provider. Mantle runs in AWS us-east-1; Workers AI
 # serves from the nearest Cloudflare GPU location, which for CUNY users is the US.
@@ -185,18 +188,20 @@ def _gh_headers():
     return {"Authorization": f"Bearer {tok}"} if tok else {}
 
 
-def choose_ecologits_ref(requested, fetch=http_json):
+def choose_ecologits_ref(requested, fetch=http_json, previous_ref=None):
     """Resolve 'latest' to EcoLogits' newest release tag, unless that release
-    changed the impact methodology the filter vendors. Returns (ref, warning)."""
+    changed the impact methodology the filter vendors; then keep the ref the
+    previous registry used (or the pin). Returns (ref, warning)."""
     if requested != "latest":
         return requested, None
     tag = fetch(f"{GH_API}/releases/latest", _gh_headers())["tag_name"]
     blob = fetch(f"{GH_API}/contents/ecologits/impacts/llm.py?ref={tag}",
                  _gh_headers())["sha"]
     if blob != VENDORED_LLM_BLOB:
-        return PINNED_REF, (
+        keep = previous_ref or PINNED_REF
+        return keep, (
             f"EcoLogits {tag} changed ecologits/impacts/llm.py (blob {blob[:10]}, "
-            f"vendored {VENDORED_LLM_BLOB[:10]}). Kept data at {PINNED_REF[:10]}; "
+            f"vendored {VENDORED_LLM_BLOB[:10]}). Kept data at {keep}; "
             "re-vendor the math in eco_impact_filter.py, update VENDORED_LLM_BLOB, "
             "and refresh the golden tests.")
     return tag, None
@@ -419,7 +424,7 @@ def build_ids(catalog_rows, extras, eco_patterns, hf_lookup):
 
 def validate(registry, previous, catalog_ids):
     """Problems that should stop an unattended publish. Returns a list of str."""
-    problems = []
+    problems, invalid = [], set()
     for key, e in registry.get("ids", {}).items():
         if e.get("skip"):
             continue
@@ -430,12 +435,17 @@ def validate(registry, previous, catalog_ids):
             assert e.get("zone") in registry["zones"]
         except (AssertionError, KeyError, TypeError):
             problems.append(f"`{key}`: invalid entry {json.dumps(e)}")
+            invalid.add(key)
     if not previous:
         return problems
-    old_ids = previous.get("ids") or {}
+    old_ids = {k: v for k, v in (previous.get("ids") or {}).items() if not v.get("skip")}
     live = {c.lower() for c in catalog_ids}
+    # An empty or truncated catalog response must not wipe last week's coverage.
+    if old_ids and len(live & set(old_ids)) < MIN_CATALOG_KEPT * len(old_ids):
+        problems.append(f"catalog shrank: only {len(live & set(old_ids))} of "
+                        f"{len(old_ids)} previously covered ids are still served")
     for key, old in old_ids.items():
-        if old.get("skip") or key not in live:
+        if key not in live or key in invalid:
             continue
         new = registry["ids"].get(key)
         if new is None:
@@ -530,7 +540,10 @@ def main():
         mixes = load_json(os.path.join(d, "ecologits/data/electricity_mixes.json"))
         source = f"mlco2/ecologits@local({d})"
     else:
-        ref, warning = choose_ecologits_ref(args.ref)
+        prev_src = (previous or {}).get("source", "")
+        prev_ref = prev_src.split("@", 1)[1] if prev_src.startswith(
+            "mlco2/ecologits@") and "(" not in prev_src else None
+        ref, warning = choose_ecologits_ref(args.ref, previous_ref=prev_ref)
         eco_models = http_json(RAW_URL.format(ref=ref, name="models.json"))
         mixes = http_json(RAW_URL.format(ref=ref, name="electricity_mixes.json"))
         source = f"mlco2/ecologits@{ref}"

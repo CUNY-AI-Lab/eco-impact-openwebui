@@ -18,6 +18,7 @@ import asyncio
 import json
 import math
 import os
+import tempfile
 import time
 import urllib.request
 from typing import Any, Optional
@@ -221,15 +222,29 @@ def resolve_entry(model_ids: "list[str]", registry: dict) -> Optional[dict]:
     for mid in model_ids:
         e = find_id_entry(mid, registry)
         if e is not None:
-            return e
+            return e if _usable(e) else None
     unresolved = {"ids": {u: True for u in registry.get("unresolved_ids") or []}}
     if any(find_id_entry(mid, unresolved) for mid in model_ids):
         return None
     for mid in model_ids:
         e = find_entry(mid, registry)
         if e is not None:
-            return e
+            return e if _usable(e) else None
     return None
+
+
+def _usable(entry: Any) -> bool:
+    """A skip marker, or an entry with positive numeric total/active ranges. A
+    malformed entry is treated as unknown (generic estimate), not as an error."""
+    if not isinstance(entry, dict):
+        return False
+    if entry.get("skip"):
+        return True
+    try:
+        return all(0 < float(entry[k]["min"]) <= float(entry[k]["max"])
+                   for k in ("total", "active"))
+    except (KeyError, TypeError, ValueError):
+        return False
 
 
 def zone_for(model_id: str, registry: dict, entry: Optional[dict] = None) -> dict:
@@ -255,6 +270,25 @@ def _valid_registry(data: Any) -> bool:
         and isinstance(data.get("zones"), dict) and bool(data["zones"])
         and (bool(data.get("patterns")) or bool(data.get("ids")))
     )
+
+
+def _write_cache(path: str, data: dict) -> float:
+    """Atomically replace path with data; returns the new mtime. The temp name is
+    unique so workers and replicas sharing the EFS directory never write the
+    same temp file."""
+    fd, tmp = tempfile.mkstemp(dir=os.path.dirname(path) or ".",
+                               prefix=os.path.basename(path) + ".", suffix=".tmp")
+    try:
+        with os.fdopen(fd, "w") as fh:
+            json.dump(data, fh)
+        os.replace(tmp, path)
+    except BaseException:
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
+        raise
+    return os.path.getmtime(path)
 
 
 def _fetch_json(url: str, timeout: float = 5.0) -> Any:
@@ -400,17 +434,14 @@ class Filter:
             return
         ok = False
         try:
-            data = await asyncio.get_running_loop().run_in_executor(None, _fetch_json, url)
+            loop = asyncio.get_running_loop()
+            data = await loop.run_in_executor(None, _fetch_json, url)
             if not _valid_registry(data):
                 raise ValueError("fetched registry failed validation")
             self._reg_data = data
             ok = True
-            path = self.valves.registry_path
-            tmp = f"{path}.tmp"
-            with open(tmp, "w") as fh:
-                json.dump(data, fh)
-            os.replace(tmp, path)
-            self._reg_mtime = os.path.getmtime(path)
+            self._reg_mtime = await loop.run_in_executor(
+                None, _write_cache, self.valves.registry_path, data)
         except Exception as e:
             if self.valves.debug_logging:
                 print(f"[EcoImpact] registry {'cache write' if ok else 'fetch'} failed: {e}")

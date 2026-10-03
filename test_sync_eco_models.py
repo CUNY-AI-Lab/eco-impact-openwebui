@@ -306,3 +306,29 @@ def test_committed_registry_is_valid_for_the_filter():
     import eco_impact_filter as f
     assert f._valid_registry(reg)
     assert sync.validate(reg, None, list(reg["ids"])) == []
+
+
+# ---------- review follow-ups ----------
+
+def test_validate_malformed_live_entry_is_held_not_crash():
+    bad = {"total": {"min": 1, "max": 1}, "zone": "USA"}  # no "active"
+    problems = sync.validate(_reg({"a": bad}), _reg({"a": _e(10)}), ["a"])
+    assert any("invalid entry" in p for p in problems)
+
+
+def test_validate_holds_empty_or_shrunken_catalog():
+    prev = _reg({k: _e(10) for k in "abcdefghij"})
+    assert any("catalog" in p for p in sync.validate(_reg({}), prev, []))
+    assert any("catalog" in p for p in sync.validate(_reg({"a": _e(10)}), prev, ["a", "b"]))
+    # normal churn (a couple of models retired) is fine
+    keep = {k: _e(10) for k in "abcdefgh"}
+    assert sync.validate(_reg(keep), prev, list(keep)) == []
+
+
+def test_choose_ref_falls_back_to_previous_ref_on_drift():
+    def fetch(url, headers=None):
+        if url.endswith("/releases/latest"):
+            return {"tag_name": "9.9.9"}
+        return {"sha": "0" * 40}
+    ref, warning = sync.choose_ecologits_ref("latest", fetch, previous_ref="0.11.2")
+    assert ref == "0.11.2" and "0.11.2" in warning

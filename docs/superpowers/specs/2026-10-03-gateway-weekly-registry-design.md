@@ -54,17 +54,21 @@ Curated entries may set `"exact_only": true` (e.g. Mantle's bare `v3.2`) to stay
 the legacy substring patterns. Output adds an `ids` map (exact Gateway id / upstream id / model_group → entry with
 `zone`). `patterns` and `zone_prefixes` stay for legacy direct-provider connections.
 
-**Gate (else open a PR instead of committing):** schema valid; no id that was covered
-last week loses coverage; no active-param max moves by more than 3×; methodology guard —
-if `ecologits/impacts/llm.py` at the new EcoLogits tag differs from the vendored blob
-(`aef8473e…`), keep the previous EcoLogits ref and open an issue.
+**Gate (else hold the build on `registry-review`):** every entry valid; no id that was
+covered last week and is still served loses coverage; at least half of last week's
+covered ids are still in the catalog (an empty or truncated response must not wipe
+coverage); no active-param max moves by more than 3×. Methodology guard: if
+`ecologits/impacts/llm.py` at the new EcoLogits tag differs from the vendored blob
+(`aef8473e…`), keep the EcoLogits ref the previous registry used and raise the issue.
+The filter also treats any malformed entry as unknown (generic estimate).
 
 ## Filter (v1.1.0)
 
-- New valves: `registry_url` (default: this repo's raw `main` URL; empty disables),
+- New valves: `registry_url` (default: this repo's `registry` branch raw URL; empty disables),
   `registry_refresh_hours` (12).
-- Fetch runs via `asyncio.to_thread` with a 5 s timeout; a good fetch replaces the
-  in-memory registry and is written atomically to `registry_path`, which doubles as the
+- Fetch and cache write run in the default executor (`run_in_executor`, 5 s fetch
+  timeout); a good fetch replaces the in-memory registry and is written atomically
+  (unique temp file, `os.replace`) to `registry_path`, which doubles as the
   warm cache across restarts. Failures keep the last good copy. Fallback chain: memory →
   `registry_path` → embedded.
 - Lookup: exact `ids` (also matching a connection prefix such as `gateway.<id>`), for

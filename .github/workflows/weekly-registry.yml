@@ -6,6 +6,9 @@ name: weekly registry
 # its own branch. When the validation gate holds a change for review, the build
 # goes to a review branch and the tracking issue (label "eco-registry") links
 # the diff. Unresolved models are listed in the same issue.
+#
+# Bootstrap (once): the `registry` branch must exist and contain eco_models.json,
+# e.g. an orphan branch seeded from examples/eco_models.json.
 
 on:
   schedule:
@@ -59,12 +62,12 @@ jobs:
         if: steps.sync.outputs.code == '0'
         working-directory: data
         run: |
-          if git diff --quiet -- eco_models.json; then
+          git add eco_models.json
+          if git diff --cached --quiet; then
             echo "Registry unchanged."; exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add eco_models.json
           git commit -m "chore(registry): weekly sync $(date -u +%F)"
           git push origin "HEAD:$DATA_BRANCH"
 
@@ -85,10 +88,12 @@ jobs:
           } >> ../report.md
 
       - name: Track unresolved models
-        if: always() && steps.sync.outputs.code != ''
+        # Only after a completed build: a crashed sync must not close the issue.
+        if: always() && (steps.sync.outputs.code == '0' || steps.sync.outputs.code == '3')
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          [ -f report.md ] || { echo "No report written."; exit 1; }
           gh label create eco-registry --color 2da44e --description "Eco registry sync" 2>/dev/null || true
           issue=$(gh issue list --label eco-registry --state open --json number --jq '.[0].number')
           if grep -q "^## Unresolved\|^## ⚠️\|^## Held for review" report.md; then
