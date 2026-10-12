@@ -1,7 +1,7 @@
 {
  "version": 2,
  "source": "mlco2/ecologits@0.11.2",
- "generated": "2026-10-03",
+ "generated": "2026-10-12",
  "defaults": {
   "zone": "WOR",
   "pue": {
@@ -2507,6 +2507,7 @@
  "unresolved_ids": [
   "glm-5.3",
   "glm-5.3-flash",
+  "melotts",
   "zhipuai/glm-5.3",
   "zhipuai/glm-5.3-flash"
  ],
