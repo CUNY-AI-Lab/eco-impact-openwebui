@@ -1,0 +1,18 @@
+{
+  "name": "@cuny-ai-lab/cail-eco",
+  "version": "0.1.0",
+  "description": "EcoLogits inference-impact chain and CAIL model-registry lookup, shared by the Open WebUI Eco Impact filter and the CAIL dashboards.",
+  "type": "module",
+  "license": "MPL-2.0",
+  "sideEffects": false,
+  "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js", "default": "./dist/index.js" } },
+  "types": "./dist/index.d.ts",
+  "files": ["dist", "src", "README.md"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "check": "bun run typecheck && bun run test"
+  },
+  "devDependencies": { "typescript": "5.9.3", "vitest": "4.1.11" }
+}

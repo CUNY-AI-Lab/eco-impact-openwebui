@@ -15,3 +15,14 @@ jobs:
           python-version: "3.11"
       - run: pip install pydantic pytest
       - run: python -m pytest -v
+  cail-eco:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+      - run: bun install --frozen-lockfile --ignore-scripts
+        working-directory: packages/cail-eco
+      - run: bun run check
+        working-directory: packages/cail-eco
