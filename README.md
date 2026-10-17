@@ -156,6 +156,16 @@ python3 -m venv .venv && .venv/bin/pip install pydantic pytest
 The tests include golden values computed with the real EcoLogits library, so
 the vendored math is verified to reproduce upstream outputs exactly.
 
+## TypeScript package
+
+[`packages/cail-eco`](packages/cail-eco) (`@cuny-ai-lab/cail-eco`) is a
+TypeScript port of the same impact chain and registry lookup, used by CAIL
+services that estimate cumulative footprints from Gateway token counts. Both
+test suites check the impact chain against the shared fixture
+`fixtures/ecologits-golden.json`. Registry lookup and formatting parity rest on
+TypeScript tests that mirror the Python ones. See the package README for the
+API and the integer unit convention.
+
 ## Attribution & license
 
 This project is a thin, operator-facing wrapper around the work of

@@ -36,6 +36,20 @@ def test_golden_moe_range_extremes():
     assert g_hi == pytest.approx(0.0004869695882942235, rel=REL)
 
 
+def test_golden_fixture_shared_with_typescript():
+    import json, os
+    path = os.path.join(os.path.dirname(__file__), "fixtures", "ecologits-golden.json")
+    with open(path) as fh:
+        golden = json.load(fh)
+    for case in golden["cases"]:
+        energy_kwh, gwp_kg = _impacts_single(
+            active_params_b=case["active_params_b"], total_params_b=case["total_params_b"],
+            output_tokens=case["output_tokens"], mix_gwp=case["mix_gwp"], pue=case["pue"],
+            tps=case["tps"], ttft=case["ttft"])
+        assert energy_kwh == pytest.approx(case["energy_kwh"], rel=golden["relative_tolerance"])
+        assert gwp_kg == pytest.approx(case["gwp_kg"], rel=golden["relative_tolerance"])
+
+
 def test_monotonic_in_tokens():
     e1, g1 = _impacts_single(8.0, 8.0, 100, mix_gwp=0.45829, pue=1.2)
     e2, g2 = _impacts_single(8.0, 8.0, 1000, mix_gwp=0.45829, pue=1.2)

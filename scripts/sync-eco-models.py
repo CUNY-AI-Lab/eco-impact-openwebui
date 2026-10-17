@@ -44,6 +44,8 @@ GH_API = "https://api.github.com/repos/mlco2/ecologits"
 # Git blob sha of ecologits/impacts/llm.py that eco_impact_filter.py vendors. If a
 # newer EcoLogits release changes that file, the vendored math is stale: keep the
 # old data ref and flag it for a human instead of mixing new data with old math.
+# When this guard trips, re-vendor packages/cail-eco/src/impacts.ts alongside
+# eco_impact_filter.py and refresh fixtures/ecologits-golden.json for both.
 VENDORED_LLM_BLOB = "aef8473e3cab495999b1ed3c8489be30c378effa"
 
 EXIT_NEEDS_REVIEW = 3
