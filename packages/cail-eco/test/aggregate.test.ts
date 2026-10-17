@@ -5,6 +5,8 @@ import { genericEntry, type ModelEntry, type Registry, type Zone } from "../src/
 
 const knownId = "glm-4.7";
 const known: ModelEntry = { total: { min: 355, max: 355 }, active: { min: 32, max: 32 }, zone: "USA" };
+const timedId = "glm-5.2";
+const timed: ModelEntry = { total: { min: 744, max: 744 }, active: { min: 40, max: 40 }, tps: 57.5, ttft: 0.64, zone: "USA" };
 const usa: Zone = { gwp: 0.3844 };
 const wor: Zone = { gwp: 0.45829 };
 
@@ -14,7 +16,7 @@ const registry: Registry = {
   zones: { WOR: wor, USA: usa },
   zone_prefixes: [],
   provider_zones: {},
-  ids: { [knownId]: known, whisper: { skip: true } },
+  ids: { [knownId]: known, [timedId]: timed, whisper: { skip: true } },
   unresolved_ids: ["glm-5.3"],
   patterns: [{ match: "glm-5", total: { min: 1, max: 1 }, active: { min: 1, max: 1 } }],
 };
@@ -50,6 +52,32 @@ describe("estimateRows", () => {
     const e = estimateRows([{ tool: "sandbox", model: knownId, requests: 2, output_tokens: 0 }], registry);
     expect(e.totals.gwp_ug).toEqual({ min: 0, max: 0 });
     expect(e.totals.requests).toBe(2);
+  });
+  it("charges a ttft entry's per-request time once per request, like summing per-message estimates", () => {
+    const requests = 10;
+    const e = estimateRows([{ tool: "sandbox", model: timedId, requests, output_tokens: 5000 }], registry);
+    let sum = { gwpMin: 0, gwpMax: 0, energyMin: 0, energyMax: 0 };
+    for (let i = 0; i < requests; i++) {
+      const one = computeImpacts(timed, 500, usa, registry.defaults);
+      const [gwpMin, gwpMax] = one.gwpG;
+      const [energyMin, energyMax] = one.energyWh;
+      sum = { gwpMin: sum.gwpMin + gwpMin, gwpMax: sum.gwpMax + gwpMax, energyMin: sum.energyMin + energyMin, energyMax: sum.energyMax + energyMax };
+    }
+    // The chain is affine in latency, so one evaluation with ttft scaled by the request count equals the sum.
+    const scaled = computeImpacts({ ...timed, ttft: 0.64 * requests }, 5000, usa, registry.defaults);
+    const relative = (a: number, b: number): number => Math.abs(a / b - 1);
+    expect(relative(scaled.gwpG[0], sum.gwpMin)).toBeLessThan(1e-9);
+    expect(relative(scaled.gwpG[1], sum.gwpMax)).toBeLessThan(1e-9);
+    expect(relative(scaled.energyWh[0], sum.energyMin)).toBeLessThan(1e-9);
+    expect(relative(scaled.energyWh[1], sum.energyMax)).toBeLessThan(1e-9);
+    // Rounding the summed floats once and rounding the single evaluation once can differ by at most 1 µg (or 1 mWh)
+    // from floating-point summation order; within 1e-9 relative they are the same number.
+    const pairs: Array<[number, number]> = [
+      [e.totals.gwp_ug.min, Math.round(sum.gwpMin * 1e6)], [e.totals.gwp_ug.max, Math.round(sum.gwpMax * 1e6)],
+      [e.totals.energy_mwh.min, Math.round(sum.energyMin * 1e3)], [e.totals.energy_mwh.max, Math.round(sum.energyMax * 1e3)],
+    ];
+    for (const [actual, want] of pairs) expect(Math.abs(actual - want)).toBeLessThanOrEqual(Math.max(1, want * 1e-9));
+    expect(registry.ids[timedId]).toEqual({ total: { min: 744, max: 744 }, active: { min: 40, max: 40 }, tps: 57.5, ttft: 0.64, zone: "USA" });
   });
   it("orders tools by gwp max descending", () => {
     const e = estimateRows([

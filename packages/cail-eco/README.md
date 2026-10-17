@@ -58,10 +58,36 @@ formatRange(estimate.totals.gwp_ug.min / 1e6, estimate.totals.gwp_ug.max / 1e6, 
   `generic_models`. It throws a `RangeError` naming the field when a row's
   `tool` is outside the enum, `model` is not a string, or `requests` or
   `output_tokens` is not a safe nonnegative integer. Validate rows first.
+  It does not guard against results beyond `Number.MAX_SAFE_INTEGER` for
+  absurd inputs (for example an `output_tokens` near the safe-integer limit);
+  consumers validate rows with their own schema before calling it, as
+  Admission does.
 - `addTotals`, `formatRange` and `comparison` combine totals and render them.
+  `formatRange` picks the display unit after rounding, so `999.6 g` prints
+  `~1.00 kg`, `0.09996 g` prints `~0.10 g` rather than `100.0 mg`, and a zero
+  range prints `0 g` or `0 Wh`. The Python filter's `_fmt_range` has no kg
+  tier and never sees a zero estimate, so it can still print `100.0 mg` at that
+  boundary; the TypeScript behavior matches the Model Access page.
 
 The tool enum is fixed: `sandbox`, `agent-studio`, `site-studio`,
 `media-tools`, `workbench`, `api-key`, `unattributed`.
+
+## Per-request latency
+
+Some registry entries carry a measured time to first token (`ttft`, seconds),
+which the EcoLogits chain adds once to each request's latency. Latency enters
+the server-energy and embodied terms linearly, so N requests with the same
+model equal one evaluation over their summed output tokens with `ttft * N`.
+`estimateRows` does exactly that: for a `ttft` entry it evaluates a copy of the
+entry with `ttft` multiplied by the row's `requests`, which matches summing the
+filter's per-message estimates to within floating-point error.
+
+Every request in a row with output tokens pays the per-request term, including
+requests that produced zero output tokens (the Python filter skips those
+messages). An aggregate cannot tell those requests apart, so the estimate runs
+slightly high for them, and that overcount is deliberate. A row whose
+`output_tokens` is zero still estimates zero. Entries without `ttft` have no
+per-request term, so this does not affect them.
 
 ## Integer units
 
@@ -72,7 +98,10 @@ stored without floating-point drift:
 - `energy_mwh`: milliwatt-hours
 
 Each is a `{ min, max }` pair of safe nonnegative integers with
-`min <= max`. Each row is rounded once, then rows are summed. Convert back for
+`min <= max`. Each row is rounded once, then rows are summed. Rounding a
+row once rather than rounding each request separately can shift a total by up
+to half a unit per request; comparing a row against the summed per-request
+floats rounded once, the two agree to within 1 µg (or 1 mWh). Convert back for
 display (`gwp_ug / 1e6` grams, `energy_mwh / 1e3` Wh) and pass the result to
 `formatRange`, which scales to mg/mWh or kg/kWh as needed.
 

@@ -1,6 +1,6 @@
 import { computeImpacts } from "./impacts.js";
 import { isString } from "./json.js";
-import { genericEntry, isSkip, resolveEntry, zoneFor, type Registry } from "./registry.js";
+import { genericEntry, isSkip, resolveEntry, zoneFor, type ModelEntry, type Registry } from "./registry.js";
 
 export const TOOLS = ["sandbox", "agent-studio", "site-studio", "media-tools", "workbench", "api-key", "unattributed"] as const;
 export type Tool = (typeof TOOLS)[number];
@@ -32,7 +32,10 @@ function rowTotals(row: UsageRow, registry: Registry): CarbonTotals {
   const entry = resolved ?? genericEntry(registry);
   if (row.output_tokens <= 0) return { ...base, generic_models: generic ? 1 : 0 };
   const zone = zoneFor(row.model, registry, resolved);
-  const impact = computeImpacts(entry, row.output_tokens, zone, registry.defaults);
+  // The chain is affine in latency and ttft is paid once per request, so N requests with the same model equal
+  // one evaluation over the summed tokens with ttft * N. Copy the entry; the registry entry stays untouched.
+  const scaled: ModelEntry = entry.ttft === undefined ? entry : { ...entry, ttft: entry.ttft * row.requests };
+  const impact = computeImpacts(scaled, row.output_tokens, zone, registry.defaults);
   return {
     ...base,
     gwp_ug: { min: Math.round(impact.gwpG[0] * 1e6), max: Math.round(impact.gwpG[1] * 1e6) },
