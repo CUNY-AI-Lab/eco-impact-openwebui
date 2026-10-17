@@ -1,0 +1,46 @@
+name: publish cail-eco
+
+# Publishes @cuny-ai-lab/cail-eco to npm when a GitHub release tagged
+# cail-eco-v<version> is published. Uses npm trusted publishing (OIDC), so no
+# npm token is stored in this repository.
+#
+# Prerequisite: an npm org owner must first configure trusted publishing for
+# @cuny-ai-lab/cail-eco (repository CUNY-AI-Lab/eco-impact-openwebui, workflow
+# publish-cail-eco.yml). Until then this workflow fails at `npm publish` and
+# consumers vendor a copy of packages/cail-eco/src.
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/cail-eco
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+      - run: npm install --global npm@11
+      - name: Check the release tag matches the package version
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: test "$RELEASE_TAG" = "cail-eco-v$(jq -r .version package.json)"
+      - run: bun install --frozen-lockfile --ignore-scripts
+      - run: bun run check
+      - run: bun run build
+      - name: Pack and publish
+        run: |
+          tarball="$(npm pack | tail -n 1)"
+          npm publish "$tarball" --access public
