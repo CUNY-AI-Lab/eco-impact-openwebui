@@ -3,7 +3,7 @@ import { genericEntry, isSkip, resolveEntry, zoneFor, type Registry } from "./re
 
 export const TOOLS = ["sandbox", "agent-studio", "site-studio", "media-tools", "workbench", "api-key", "unattributed"] as const;
 export type Tool = (typeof TOOLS)[number];
-export const isTool = (value: unknown): value is Tool => typeof value === "string" && (TOOLS as readonly string[]).includes(value);
+export const isTool = (value: unknown): value is Tool => TOOLS.some((tool) => tool === value);
 
 export interface UsageRow { tool: Tool; model: string; requests: number; output_tokens: number }
 /** Integer transport range: `gwp_ug` is micrograms CO2e, `energy_mwh` is milliwatt-hours. */
@@ -45,6 +45,7 @@ const isCount = (v: unknown): v is number => typeof v === "number" && Number.isS
 /** Throws a RangeError naming the first invalid field; callers are expected to validate rows before this point. */
 function assertRow(row: UsageRow): void {
   if (!isTool(row.tool)) throw new RangeError(`tool must be one of the CAIL tools, got ${JSON.stringify(row.tool)}`);
+  if (typeof row.model !== "string") throw new RangeError(`model must be a string, got ${JSON.stringify(row.model)}`);
   if (!isCount(row.requests)) throw new RangeError(`requests must be a safe nonnegative integer, got ${String(row.requests)}`);
   if (!isCount(row.output_tokens)) throw new RangeError(`output_tokens must be a safe nonnegative integer, got ${String(row.output_tokens)}`);
 }

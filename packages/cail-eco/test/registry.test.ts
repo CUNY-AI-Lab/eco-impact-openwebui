@@ -36,6 +36,15 @@ describe("resolveEntry", () => {
   it("malformed entry is unknown", () => {
     expect(resolveEntry(["broken"], registry)).toBeNull();
   });
+  it("ignores inherited object properties such as constructor and __proto__", () => {
+    expect(resolveEntry(["constructor", "__proto__", "hasownproperty", "glm-4.7"], registry)).toMatchObject({ zone: "USA" });
+    expect(resolveEntry(["constructor"], registry)).toBeNull();
+  });
+  it("a null-valued id does not stop resolution (mirrors Python find_id_entry returning None)", () => {
+    const withNull: Registry = { ...registry, ids: { ...registry.ids, orphan: null, "glm-5-x": null } };
+    expect(resolveEntry(["orphan", "glm-4.7"], withNull)).toMatchObject({ zone: "USA" });
+    expect(resolveEntry(["glm-5-x"], withNull)).toMatchObject({ total: { min: 1, max: 1 } });
+  });
   it("generic entry uses unknown_params", () => {
     expect(genericEntry(registry)).toEqual({ total: { min: 8, max: 440 }, active: { min: 8, max: 110 } });
   });
@@ -46,6 +55,11 @@ describe("zoneFor", () => {
     expect(zoneFor("glm-4.7", registry, resolveEntry(["glm-4.7"], registry)).gwp).toBe(0.3844);
     expect(zoneFor("us.anything", registry, null).gwp).toBe(0.3844);
     expect(zoneFor("anything", registry, null).gwp).toBe(0.45829);
+  });
+  it("ignores inherited object properties as zone names", () => {
+    const entry = { total: { min: 1, max: 1 }, active: { min: 1, max: 1 }, zone: "constructor" };
+    expect(zoneFor("anything", registry, entry).gwp).toBe(0.45829);
+    expect(zoneFor("anything", { ...registry, defaults: { ...registry.defaults, zone: "toString" } }, null).gwp).toBe(0.45829);
   });
 });
 
@@ -60,6 +74,14 @@ describe("isRegistry", () => {
   });
   it("rejects a registry missing defaults.unknown_params", () => {
     expect(isRegistry({ ...registry, defaults: { zone: "WOR", pue: { min: 1.09, max: 1.2 } } })).toBe(false);
+  });
+  it("rejects a reversed or non-positive pue range", () => {
+    expect(isRegistry({ ...registry, defaults: { ...registry.defaults, pue: { min: 1.2, max: 1.09 } } })).toBe(false);
+    expect(isRegistry({ ...registry, defaults: { ...registry.defaults, pue: { min: 0, max: 1.2 } } })).toBe(false);
+  });
+  it("rejects a negative or non-finite zone gwp", () => {
+    expect(isRegistry({ ...registry, zones: { ...registry.zones, BAD: { gwp: -0.1 } } })).toBe(false);
+    expect(isRegistry({ ...registry, zones: { ...registry.zones, BAD: { gwp: Number.POSITIVE_INFINITY } } })).toBe(false);
   });
   it("rejects a registry whose patterns is not an array", () => {
     expect(isRegistry({ ...registry, patterns: { match: "glm-5" } })).toBe(false);

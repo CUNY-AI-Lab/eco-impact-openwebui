@@ -1,36 +1,53 @@
 import { describe, expect, it } from "vitest";
 import { addTotals, estimateRows, type UsageRow } from "../src/aggregate.js";
 import { computeImpacts } from "../src/impacts.js";
-import { EMBEDDED_REGISTRY } from "../src/embedded-registry.js";
+import { genericEntry, type ModelEntry, type Registry, type Zone } from "../src/registry.js";
 
-// SAFETY: the embedded registry has non-skip ids; entries are objects (asserted by isRegistry and the generator).
-const knownId = Object.keys(EMBEDDED_REGISTRY.ids).find((id) => !("skip" in (EMBEDDED_REGISTRY.ids[id] as object)))!;
+const knownId = "glm-4.7";
+const known: ModelEntry = { total: { min: 355, max: 355 }, active: { min: 32, max: 32 }, zone: "USA" };
+const usa: Zone = { gwp: 0.3844 };
+const wor: Zone = { gwp: 0.45829 };
+
+const registry: Registry = {
+  version: 2, source: "test", generated: "2026-10-12",
+  defaults: { zone: "WOR", pue: { min: 1.09, max: 1.2 }, unknown_params: { total: { min: 8, max: 440 }, active: { min: 8, max: 110 } } },
+  zones: { WOR: wor, USA: usa },
+  zone_prefixes: [],
+  provider_zones: {},
+  ids: { [knownId]: known, whisper: { skip: true } },
+  unresolved_ids: ["glm-5.3"],
+  patterns: [{ match: "glm-5", total: { min: 1, max: 1 }, active: { min: 1, max: 1 } }],
+};
 
 describe("estimateRows", () => {
   it("sums per tool and matches computeImpacts for one row", () => {
-    const rows = [{ tool: "sandbox" as const, model: knownId, requests: 3, output_tokens: 1200 }];
-    const e = estimateRows(rows, EMBEDDED_REGISTRY);
-    // SAFETY: knownId is a non-skip registry entry with total/active ranges; its zone exists in the registry.
-    const entry = EMBEDDED_REGISTRY.ids[knownId] as { total: { min: number; max: number }; active: { min: number; max: number }; zone?: string };
-    const zone = EMBEDDED_REGISTRY.zones[entry.zone ?? "USA"]!;
-    const direct = computeImpacts(entry, 1200, zone, EMBEDDED_REGISTRY.defaults);
+    const e = estimateRows([{ tool: "sandbox", model: knownId, requests: 3, output_tokens: 1200 }], registry);
+    const direct = computeImpacts(known, 1200, usa, registry.defaults);
     expect(e.totals.gwp_ug.min).toBe(Math.round(direct.gwpG[0] * 1e6));
     expect(e.totals.gwp_ug.max).toBe(Math.round(direct.gwpG[1] * 1e6));
     expect(e.totals.energy_mwh.min).toBe(Math.round(direct.energyWh[0] * 1e3));
+    expect(e.totals.energy_mwh.max).toBe(Math.round(direct.energyWh[1] * 1e3));
     expect(e.tools).toEqual([{ tool: "sandbox", ...e.totals }]);
     expect(e.totals.generic_models).toBe(0);
   });
   it("unknown model uses the generic estimate and is counted", () => {
-    const e = estimateRows([{ tool: "api-key", model: "no-such-model", requests: 1, output_tokens: 100 }], EMBEDDED_REGISTRY);
+    const e = estimateRows([{ tool: "api-key", model: "no-such-model", requests: 1, output_tokens: 100 }], registry);
     expect(e.totals.generic_models).toBe(1);
     expect(e.totals.gwp_ug.max).toBeGreaterThan(e.totals.gwp_ug.min);
   });
-  it("skip and unresolved models add requests but no impact", () => {
-    const e = estimateRows([{ tool: "media-tools", model: "whisper", requests: 4, output_tokens: 0 }], EMBEDDED_REGISTRY);
+  it("unresolved gateway id gets the generic estimate, not a look-alike pattern", () => {
+    const e = estimateRows([{ tool: "workbench", model: "glm-5.3", requests: 1, output_tokens: 100 }], registry);
+    const generic = computeImpacts(genericEntry(registry), 100, wor, registry.defaults);
+    expect(e.totals.generic_models).toBe(1);
+    expect(e.totals.gwp_ug.min).toBeGreaterThan(0);
+    expect(e.totals.gwp_ug).toEqual({ min: Math.round(generic.gwpG[0] * 1e6), max: Math.round(generic.gwpG[1] * 1e6) });
+  });
+  it("skip entries add requests but no impact", () => {
+    const e = estimateRows([{ tool: "media-tools", model: "whisper", requests: 4, output_tokens: 0 }], registry);
     expect(e.totals).toEqual({ requests: 4, output_tokens: 0, gwp_ug: { min: 0, max: 0 }, energy_mwh: { min: 0, max: 0 }, generic_models: 0 });
   });
   it("zero tokens estimate zero", () => {
-    const e = estimateRows([{ tool: "sandbox", model: knownId, requests: 2, output_tokens: 0 }], EMBEDDED_REGISTRY);
+    const e = estimateRows([{ tool: "sandbox", model: knownId, requests: 2, output_tokens: 0 }], registry);
     expect(e.totals.gwp_ug).toEqual({ min: 0, max: 0 });
     expect(e.totals.requests).toBe(2);
   });
@@ -38,24 +55,29 @@ describe("estimateRows", () => {
     const e = estimateRows([
       { tool: "api-key", model: knownId, requests: 1, output_tokens: 10 },
       { tool: "sandbox", model: knownId, requests: 1, output_tokens: 1000 },
-    ], EMBEDDED_REGISTRY);
+    ], registry);
     expect(e.tools.map((t) => t.tool)).toEqual(["sandbox", "api-key"]);
   });
 });
 
 describe("estimateRows input checks", () => {
   it("rejects a negative token count", () => {
-    expect(() => estimateRows([{ tool: "sandbox", model: knownId, requests: 1, output_tokens: -5 }], EMBEDDED_REGISTRY))
+    expect(() => estimateRows([{ tool: "sandbox", model: knownId, requests: 1, output_tokens: -5 }], registry))
       .toThrow(new RangeError("output_tokens must be a safe nonnegative integer, got -5"));
   });
   it("rejects a non-integer request count", () => {
-    expect(() => estimateRows([{ tool: "sandbox", model: knownId, requests: 1.5, output_tokens: 10 }], EMBEDDED_REGISTRY))
+    expect(() => estimateRows([{ tool: "sandbox", model: knownId, requests: 1.5, output_tokens: 10 }], registry))
       .toThrow(new RangeError("requests must be a safe nonnegative integer, got 1.5"));
   });
   it("rejects a tool outside the enum", () => {
     // SAFETY: deliberately invalid row, standing in for unvalidated caller data.
     const row = { tool: "chat", model: knownId, requests: 1, output_tokens: 10 } as unknown as UsageRow;
-    expect(() => estimateRows([row], EMBEDDED_REGISTRY)).toThrow(new RangeError('tool must be one of the CAIL tools, got "chat"'));
+    expect(() => estimateRows([row], registry)).toThrow(new RangeError('tool must be one of the CAIL tools, got "chat"'));
+  });
+  it("rejects a non-string model", () => {
+    // SAFETY: deliberately invalid row, standing in for unvalidated caller data.
+    const row = { tool: "sandbox", model: 42, requests: 1, output_tokens: 10 } as unknown as UsageRow;
+    expect(() => estimateRows([row], registry)).toThrow(new RangeError("model must be a string, got 42"));
   });
 });
 

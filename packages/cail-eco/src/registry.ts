@@ -4,7 +4,6 @@ export interface RegistryDefaults { zone: string; pue: Range; unknown_params: { 
 export interface ModelEntry { total: Range; active: Range; tps?: number; ttft?: number; zone?: string; confidence?: string; source?: string; provider?: string }
 export interface SkipEntry { skip: true; source?: string }
 export type RegistryEntry = ModelEntry | SkipEntry;
-export interface Pattern extends ModelEntry { match: string }
 export interface Registry {
   version: 2; source: string; generated: string; defaults: RegistryDefaults;
   zones: Record<string, Zone>; zone_prefixes: Array<{ prefix: string; zone: string }>;
@@ -14,6 +13,8 @@ export interface Registry {
 const isObject = (v: unknown): v is Record<string, unknown> => typeof v === "object" && v !== null && !Array.isArray(v);
 const isRange = (v: unknown): v is Range => isObject(v) && typeof v.min === "number" && typeof v.max === "number";
 const positiveRange = (v: unknown): v is Range => isRange(v) && v.min > 0 && v.min <= v.max && Number.isFinite(v.max);
+/** Own-property lookup, so inherited names such as `constructor` or `__proto__` never match. */
+const own = <T>(record: Record<string, T>, key: string): T | undefined => (Object.hasOwn(record, key) ? record[key] : undefined);
 
 export function isSkip(entry: RegistryEntry): entry is SkipEntry { return "skip" in entry && entry.skip === true; }
 
@@ -32,11 +33,11 @@ function usable(value: unknown): RegistryEntry | null {
 
 const isString = (v: unknown): v is string => typeof v === "string";
 const isStringArray = (v: unknown): v is string[] => Array.isArray(v) && v.every(isString);
-const isZone = (v: unknown): v is Zone => isObject(v) && typeof v.gwp === "number";
+const isZone = (v: unknown): v is Zone => isObject(v) && typeof v.gwp === "number" && Number.isFinite(v.gwp) && v.gwp >= 0;
 const isZonePrefix = (v: unknown): v is { prefix: string; zone: string } => isObject(v) && isString(v.prefix) && isString(v.zone);
 
 function isDefaults(v: unknown): v is RegistryDefaults {
-  return isObject(v) && isString(v.zone) && isRange(v.pue)
+  return isObject(v) && isString(v.zone) && positiveRange(v.pue)
     && isObject(v.unknown_params) && positiveRange(v.unknown_params.total) && positiveRange(v.unknown_params.active);
 }
 
@@ -57,7 +58,7 @@ export function isRegistry(value: unknown): value is Registry {
 /** Mirrors Python `find_id_entry`: exact key, else the longest key that is a whole trailing segment after '.' or '/'. */
 function findIdKey(modelId: string, ids: Record<string, unknown>): string | null {
   const mid = modelId.toLowerCase().trim();
-  if (mid in ids) return mid;
+  if (Object.hasOwn(ids, mid)) return mid;
   let best: string | null = null;
   for (const key of Object.keys(ids)) {
     if ((mid.endsWith(`.${key}`) || mid.endsWith(`/${key}`)) && (best === null || key.length > best.length)) best = key;
@@ -81,7 +82,11 @@ function findPattern(modelId: string, patterns: unknown[]): unknown {
 export function resolveEntry(modelIds: readonly string[], registry: Registry): RegistryEntry | null {
   for (const mid of modelIds) {
     const key = findIdKey(mid, registry.ids);
-    if (key !== null) return usable(registry.ids[key]);
+    if (key === null) continue;
+    const value = registry.ids[key];
+    // Python `find_id_entry` returns None for a null value and `resolve_entry` moves on to the next candidate.
+    if (value === null) continue;
+    return usable(value);
   }
   const unresolved: Record<string, unknown> = Object.fromEntries(registry.unresolved_ids.map((id) => [id, true]));
   if (modelIds.some((mid) => findIdKey(mid, unresolved) !== null)) return null;
@@ -98,10 +103,10 @@ export function genericEntry(registry: Registry): ModelEntry {
 
 /** Mirrors Python `zone_for`. */
 export function zoneFor(modelId: string, registry: Registry, entry: RegistryEntry | null): Zone {
-  // SAFETY: the `in` check on the same key guarantees the lookup is defined.
-  if (entry !== null && !isSkip(entry) && entry.zone !== undefined && entry.zone in registry.zones) return registry.zones[entry.zone]!;
+  const entryZone = entry !== null && !isSkip(entry) && entry.zone !== undefined ? own(registry.zones, entry.zone) : undefined;
+  if (entryZone !== undefined) return entryZone;
   const mid = modelId.toLowerCase().trim();
   let zoneName = registry.defaults.zone;
   for (const zp of registry.zone_prefixes) { if (mid.startsWith(zp.prefix)) { zoneName = zp.zone; break; } }
-  return registry.zones[zoneName] ?? registry.zones.WOR ?? { gwp: 0.45829 };
+  return own(registry.zones, zoneName) ?? own(registry.zones, "WOR") ?? { gwp: 0.45829 };
 }

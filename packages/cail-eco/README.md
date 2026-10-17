@@ -17,10 +17,15 @@ repository. Cite EcoLogits, not this package.
 `fixtures/ecologits-golden.json` at the repository root holds golden values
 computed with the real EcoLogits library. Both test suites load it:
 `test_eco_impact_filter.py::test_golden_fixture_shared_with_typescript` in
-Python and `test/impacts.test.ts` here, at a relative tolerance of `1e-9`. If
-either implementation drifts, CI fails. When EcoLogits changes its methodology
-(the sync job's `VENDORED_LLM_BLOB` guard trips), re-vendor `src/impacts.ts`
-together with `eco_impact_filter.py` and refresh the fixture.
+Python and `test/impacts.test.ts` here, at a relative tolerance of `1e-9`. The
+shared fixture pins the impact chain (`impactsSingle`), so drift in either
+language fails CI. Registry lookup and formatting are not pinned by a shared
+fixture: their parity rests on TypeScript tests that mirror the Python suite's
+cases, and a change to one side has to be mirrored on the other by hand.
+
+When EcoLogits changes its methodology (the sync job's `VENDORED_LLM_BLOB`
+guard trips), re-vendor `src/impacts.ts` together with `eco_impact_filter.py`
+and refresh the fixture.
 
 ## API
 
@@ -40,14 +45,19 @@ formatRange(estimate.totals.gwp_ug.min / 1e6, estimate.totals.gwp_ug.max / 1e6, 
   `{ energyKwh, gwpKg }`.
 - `computeImpacts(entry, outputTokens, zone, defaults)` returns the min/max
   range in Wh and g, like the Python `compute_impacts`.
-- `resolveEntry`, `zoneFor`, `genericEntry` and `isRegistry` mirror the
-  filter's registry lookup: exact ids first, connection prefixes ending in `.`
-  or `/`, no fallback to look-alike patterns for unresolved Gateway ids, and a
-  generic estimate for unknown or malformed entries.
+- `resolveEntry`, `zoneFor` and `genericEntry` mirror the filter's registry
+  lookup: exact ids first, connection prefixes ending in `.` or `/`, no
+  fallback to look-alike patterns for unresolved Gateway ids, and a generic
+  estimate for unknown or malformed entries.
+- `isRegistry` accepts only a version-2 registry in which every field the
+  lookup reads is present and well-typed, so a malformed fetch is rejected
+  rather than failing later.
 - `estimateRows(rows, registry)` aggregates `{ tool, model, requests,
   output_tokens }` rows per tool. Skip entries (speech, embeddings) add requests
   but no impact. Rows estimated from the generic entry are counted in
-  `generic_models`.
+  `generic_models`. It throws a `RangeError` naming the field when a row's
+  `tool` is outside the enum, `model` is not a string, or `requests` or
+  `output_tokens` is not a safe nonnegative integer. Validate rows first.
 - `addTotals`, `formatRange` and `comparison` combine totals and render them.
 
 The tool enum is fixed: `sandbox`, `agent-studio`, `site-studio`,
@@ -84,7 +94,7 @@ bun run embed-registry
 ```bash
 cd packages/cail-eco
 bun install
-bun run check   # typecheck + vitest
+bun run check   # typecheck (src and tests) + vitest
 bun run build   # emits dist/
 ```
 

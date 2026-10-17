@@ -160,9 +160,10 @@ the vendored math is verified to reproduce upstream outputs exactly.
 
 [`packages/cail-eco`](packages/cail-eco) (`@cuny-ai-lab/cail-eco`) is a
 TypeScript port of the same impact chain and registry lookup, used by CAIL
-services that estimate cumulative footprints from Gateway token counts. The
-shared fixture `fixtures/ecologits-golden.json` is checked by both test suites,
-so the two implementations cannot drift apart. See the package README for the
+services that estimate cumulative footprints from Gateway token counts. Both
+test suites check the impact chain against the shared fixture
+`fixtures/ecologits-golden.json`. Registry lookup and formatting parity rest on
+TypeScript tests that mirror the Python ones. See the package README for the
 API and the integer unit convention.
 
 ## Attribution & license

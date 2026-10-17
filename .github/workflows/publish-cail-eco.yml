@@ -19,6 +19,8 @@ permissions:
 
 jobs:
   publish:
+    # Other releases in this repository (the Python filter) must not trigger an npm publish.
+    if: startsWith(github.event.release.tag_name, 'cail-eco-v')
     runs-on: ubuntu-latest
     defaults:
       run:

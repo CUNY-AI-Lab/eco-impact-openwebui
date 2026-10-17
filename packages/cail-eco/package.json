@@ -7,13 +7,13 @@
   "sideEffects": false,
   "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js", "default": "./dist/index.js" } },
   "types": "./dist/index.d.ts",
-  "files": ["dist", "src", "README.md"],
+  "files": ["dist", "src", "README.md", "LICENSE"],
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.test.json",
     "test": "vitest run",
     "check": "bun run typecheck && bun run test",
     "embed-registry": "bun run scripts/embed-registry.ts"
   },
-  "devDependencies": { "typescript": "5.9.3", "vitest": "4.1.11" }
+  "devDependencies": { "@types/node": "24.19.2", "typescript": "5.9.3", "vitest": "4.1.11" }
 }
