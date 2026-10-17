@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { impactsSingle } from "../src/impacts.js";
+import { computeImpacts, impactsSingle } from "../src/impacts.js";
 
 interface GoldenCase {
   name: string; active_params_b: number; total_params_b: number; output_tokens: number;
@@ -38,5 +38,17 @@ describe("impactsSingle", () => {
     const r = impactsSingle({ activeParamsB: 8, totalParamsB: 8, outputTokens: 0, mixGwp: 0.45829, pue: 1.2 });
     expect(r.energyKwh).toBe(0);
     expect(r.gwpKg).toBe(0);
+  });
+});
+
+describe("computeImpacts", () => {
+  it("returns the EcoLogits min/max range in Wh and g", () => {
+    const entry = { total: { min: 440, max: 440 }, active: { min: 44, max: 132 }, tps: 46.2, ttft: 0.53 };
+    const defaults = { zone: "WOR", pue: { min: 1.09, max: 1.14 }, unknown_params: { total: { min: 8, max: 440 }, active: { min: 8, max: 110 } } };
+    const imp = computeImpacts(entry, 500, { gwp: 0.3844 }, defaults);
+    close(imp.energyWh[0], 0.7007863545514568);
+    close(imp.energyWh[1], 1.1899213268139132);
+    close(imp.gwpG[0], 0.29894610495653524);
+    close(imp.gwpG[1], 0.4869695882942235);
   });
 });

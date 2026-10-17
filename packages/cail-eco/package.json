@@ -12,7 +12,8 @@
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run",
-    "check": "bun run typecheck && bun run test"
+    "check": "bun run typecheck && bun run test",
+    "embed-registry": "bun run scripts/embed-registry.ts"
   },
   "devDependencies": { "typescript": "5.9.3", "vitest": "4.1.11" }
 }
