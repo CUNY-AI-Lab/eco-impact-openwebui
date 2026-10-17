@@ -94,9 +94,14 @@ bun run embed-registry
 ```bash
 cd packages/cail-eco
 bun install
-bun run check   # typecheck (src and tests) + vitest
+bun run check   # oxlint anti-slop rules + typecheck (src and tests) + vitest
 bun run build   # emits dist/
 ```
+
+`bun run lint` applies the CUNY AI Lab fleet's anti-slop oxlint rules
+(`oxlint.config.ts`, plugin copied verbatim from `cail-tools-admission` into
+`tools/oxlint/anti-slop/`), so a vendored copy of `src/` passes the consuming
+repository's lint unchanged.
 
 ## Distribution
 

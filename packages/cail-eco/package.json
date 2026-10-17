@@ -12,8 +12,9 @@
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.test.json",
     "test": "vitest run",
-    "check": "bun run typecheck && bun run test",
+    "lint": "oxlint",
+    "check": "bun run lint && bun run typecheck && bun run test",
     "embed-registry": "bun run scripts/embed-registry.ts"
   },
-  "devDependencies": { "@types/node": "24.19.2", "typescript": "5.9.3", "vitest": "4.1.11" }
+  "devDependencies": { "@oxlint/plugins": "1.79.0", "@types/node": "24.19.2", "oxlint": "1.79.0", "typescript": "5.9.3", "vitest": "4.1.11" }
 }

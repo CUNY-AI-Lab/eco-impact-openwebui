@@ -59,7 +59,9 @@ export interface ImpactRange { energyWh: [number, number]; gwpG: [number, number
 /** Mirrors Python `compute_impacts`: min/max impacts for a registry entry, in Wh and g CO2e. */
 export function computeImpacts(entry: ModelEntry, outputTokens: number, zone: Zone, defaults: RegistryDefaults): ImpactRange {
   const pue = defaults.pue;
-  const extra = { ...(entry.tps === undefined ? {} : { tps: entry.tps }), ...(entry.ttft === undefined ? {} : { ttft: entry.ttft }) };
+  const extra: Pick<ImpactInput, "tps" | "ttft"> = {};
+  if (entry.tps !== undefined) extra.tps = entry.tps;
+  if (entry.ttft !== undefined) extra.ttft = entry.ttft;
   const lo = impactsSingle({ activeParamsB: entry.active.min, totalParamsB: entry.total.min, outputTokens, mixGwp: zone.gwp, pue: pue.min, ...extra });
   const hi = impactsSingle({ activeParamsB: entry.active.max, totalParamsB: entry.total.max, outputTokens, mixGwp: zone.gwp, pue: pue.max, ...extra });
   return { energyWh: [lo.energyKwh * 1000, hi.energyKwh * 1000], gwpG: [lo.gwpKg * 1000, hi.gwpKg * 1000] };

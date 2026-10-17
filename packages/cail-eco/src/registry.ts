@@ -1,44 +1,44 @@
-export interface Range { min: number; max: number }
-export interface Zone { gwp: number; adpe?: number; pe?: number; wue?: number }
-export interface RegistryDefaults { zone: string; pue: Range; unknown_params: { total: Range; active: Range } }
-export interface ModelEntry { total: Range; active: Range; tps?: number; ttft?: number; zone?: string; confidence?: string; source?: string; provider?: string }
-export interface SkipEntry { skip: true; source?: string }
+import { isJsonObject, isNumber, isString, type JsonObject, type JsonValue } from "./json.js";
+
+export type Range = { min: number; max: number };
+export type Zone = { gwp: number; adpe?: number; pe?: number; wue?: number };
+export type RegistryDefaults = { zone: string; pue: Range; unknown_params: { total: Range; active: Range } };
+export type ModelEntry = { total: Range; active: Range; tps?: number; ttft?: number; zone?: string; confidence?: string; source?: string; provider?: string };
+export type SkipEntry = { skip: true; source?: string };
 export type RegistryEntry = ModelEntry | SkipEntry;
-export interface Registry {
+export type Registry = {
   version: 2; source: string; generated: string; defaults: RegistryDefaults;
   zones: Record<string, Zone>; zone_prefixes: Array<{ prefix: string; zone: string }>;
-  provider_zones: Record<string, string>; ids: Record<string, unknown>; unresolved_ids: string[]; patterns: unknown[];
-}
+  provider_zones: Record<string, string>; ids: Record<string, JsonValue>; unresolved_ids: string[]; patterns: JsonValue[];
+};
 
-const isObject = (v: unknown): v is Record<string, unknown> => typeof v === "object" && v !== null && !Array.isArray(v);
-const isRange = (v: unknown): v is Range => isObject(v) && typeof v.min === "number" && typeof v.max === "number";
-const positiveRange = (v: unknown): v is Range => isRange(v) && v.min > 0 && v.min <= v.max && Number.isFinite(v.max);
+const isRange = (v: JsonValue | undefined): v is Range => isJsonObject(v) && isNumber(v.min) && isNumber(v.max);
+const positiveRange = (v: JsonValue | undefined): v is Range => isRange(v) && v.min > 0 && v.min <= v.max && Number.isFinite(v.max);
 /** Own-property lookup, so inherited names such as `constructor` or `__proto__` never match. */
 const own = <T>(record: Record<string, T>, key: string): T | undefined => (Object.hasOwn(record, key) ? record[key] : undefined);
 
 export function isSkip(entry: RegistryEntry): entry is SkipEntry { return "skip" in entry && entry.skip === true; }
 
 /** Mirrors Python `_usable`: a skip marker, or positive numeric total/active ranges. */
-function usable(value: unknown): RegistryEntry | null {
-  if (!isObject(value)) return null;
+function usable(value: JsonValue | undefined): RegistryEntry | null {
+  if (!isJsonObject(value)) return null;
   if (value.skip === true) return { skip: true };
   if (!positiveRange(value.total) || !positiveRange(value.active)) return null;
   const entry: ModelEntry = { total: value.total, active: value.active };
-  if (typeof value.tps === "number") entry.tps = value.tps;
-  if (typeof value.ttft === "number") entry.ttft = value.ttft;
-  if (typeof value.zone === "string") entry.zone = value.zone;
-  if (typeof value.confidence === "string") entry.confidence = value.confidence;
+  if (isNumber(value.tps)) entry.tps = value.tps;
+  if (isNumber(value.ttft)) entry.ttft = value.ttft;
+  if (isString(value.zone)) entry.zone = value.zone;
+  if (isString(value.confidence)) entry.confidence = value.confidence;
   return entry;
 }
 
-const isString = (v: unknown): v is string => typeof v === "string";
-const isStringArray = (v: unknown): v is string[] => Array.isArray(v) && v.every(isString);
-const isZone = (v: unknown): v is Zone => isObject(v) && typeof v.gwp === "number" && Number.isFinite(v.gwp) && v.gwp >= 0;
-const isZonePrefix = (v: unknown): v is { prefix: string; zone: string } => isObject(v) && isString(v.prefix) && isString(v.zone);
+const isStringArray = (v: JsonValue | undefined): v is string[] => Array.isArray(v) && v.every(isString);
+const isZone = (v: JsonValue | undefined): v is Zone => isJsonObject(v) && isNumber(v.gwp) && Number.isFinite(v.gwp) && v.gwp >= 0;
+const isZonePrefix = (v: JsonValue | undefined): v is { prefix: string; zone: string } => isJsonObject(v) && isString(v.prefix) && isString(v.zone);
 
-function isDefaults(v: unknown): v is RegistryDefaults {
-  return isObject(v) && isString(v.zone) && positiveRange(v.pue)
-    && isObject(v.unknown_params) && positiveRange(v.unknown_params.total) && positiveRange(v.unknown_params.active);
+function isDefaults(v: JsonValue | undefined): v is RegistryDefaults {
+  return isJsonObject(v) && isString(v.zone) && positiveRange(v.pue)
+    && isJsonObject(v.unknown_params) && positiveRange(v.unknown_params.total) && positiveRange(v.unknown_params.active);
 }
 
 /**
@@ -46,17 +46,17 @@ function isDefaults(v: unknown): v is RegistryDefaults {
  * so a malformed fetch is rejected (and the caller falls back) instead of throwing during lookup.
  * Individual `ids` and `patterns` entries stay unchecked here: `resolveEntry` treats a malformed one as unknown.
  */
-export function isRegistry(value: unknown): value is Registry {
-  return isObject(value) && value.version === 2 && isString(value.source) && isString(value.generated)
+export function isRegistry<Value>(value: Value): value is Value & Registry {
+  return isJsonObject(value) && value.version === 2 && isString(value.source) && isString(value.generated)
     && isDefaults(value.defaults)
-    && isObject(value.zones) && Object.values(value.zones).every(isZone)
+    && isJsonObject(value.zones) && Object.values(value.zones).every(isZone)
     && Array.isArray(value.zone_prefixes) && value.zone_prefixes.every(isZonePrefix)
-    && isObject(value.provider_zones) && Object.values(value.provider_zones).every(isString)
-    && isObject(value.ids) && isStringArray(value.unresolved_ids) && Array.isArray(value.patterns);
+    && isJsonObject(value.provider_zones) && Object.values(value.provider_zones).every(isString)
+    && isJsonObject(value.ids) && isStringArray(value.unresolved_ids) && Array.isArray(value.patterns);
 }
 
 /** Mirrors Python `find_id_entry`: exact key, else the longest key that is a whole trailing segment after '.' or '/'. */
-function findIdKey(modelId: string, ids: Record<string, unknown>): string | null {
+function findIdKey(modelId: string, ids: JsonObject): string | null {
   const mid = modelId.toLowerCase().trim();
   if (Object.hasOwn(ids, mid)) return mid;
   let best: string | null = null;
@@ -68,11 +68,11 @@ function findIdKey(modelId: string, ids: Record<string, unknown>): string | null
 
 const normalize = (modelId: string): string => modelId.toLowerCase().trim().replaceAll(".", "-");
 
-function findPattern(modelId: string, patterns: unknown[]): unknown {
+function findPattern(modelId: string, patterns: readonly JsonValue[]): JsonObject | undefined {
   const norm = normalize(modelId);
-  let best: { match: string; entry: unknown } | null = null;
+  let best: { match: string; entry: JsonObject } | null = null;
   for (const p of patterns) {
-    if (!isObject(p) || typeof p.match !== "string" || p.match === "") continue;
+    if (!isJsonObject(p) || !isString(p.match) || p.match === "") continue;
     if (norm.includes(p.match) && (best === null || p.match.length > best.match.length)) best = { match: p.match, entry: p };
   }
   return best?.entry;
@@ -88,7 +88,7 @@ export function resolveEntry(modelIds: readonly string[], registry: Registry): R
     if (value === null) continue;
     return usable(value);
   }
-  const unresolved: Record<string, unknown> = Object.fromEntries(registry.unresolved_ids.map((id) => [id, true]));
+  const unresolved: Record<string, boolean> = Object.fromEntries(registry.unresolved_ids.map((id) => [id, true]));
   if (modelIds.some((mid) => findIdKey(mid, unresolved) !== null)) return null;
   for (const mid of modelIds) {
     const entry = findPattern(mid, registry.patterns);

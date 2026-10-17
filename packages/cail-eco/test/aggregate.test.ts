@@ -70,13 +70,13 @@ describe("estimateRows input checks", () => {
       .toThrow(new RangeError("requests must be a safe nonnegative integer, got 1.5"));
   });
   it("rejects a tool outside the enum", () => {
-    // SAFETY: deliberately invalid row, standing in for unvalidated caller data.
-    const row = { tool: "chat", model: knownId, requests: 1, output_tokens: 10 } as unknown as UsageRow;
+    // Deliberately invalid row: JSON.parse returns `any`, standing in for unvalidated caller data.
+    const row: UsageRow = JSON.parse(JSON.stringify({ tool: "chat", model: knownId, requests: 1, output_tokens: 10 }));
     expect(() => estimateRows([row], registry)).toThrow(new RangeError('tool must be one of the CAIL tools, got "chat"'));
   });
   it("rejects a non-string model", () => {
-    // SAFETY: deliberately invalid row, standing in for unvalidated caller data.
-    const row = { tool: "sandbox", model: 42, requests: 1, output_tokens: 10 } as unknown as UsageRow;
+    // Deliberately invalid row: JSON.parse returns `any`, standing in for unvalidated caller data.
+    const row: UsageRow = JSON.parse(JSON.stringify({ tool: "sandbox", model: 42, requests: 1, output_tokens: 10 }));
     expect(() => estimateRows([row], registry)).toThrow(new RangeError("model must be a string, got 42"));
   });
 });
