@@ -55,6 +55,15 @@ describe("isRegistry", () => {
     expect(isRegistry({ ...registry, version: 1 })).toBe(false);
     expect(isRegistry({ ...registry, ids: undefined })).toBe(false);
   });
+  it("rejects a registry missing unresolved_ids", () => {
+    expect(isRegistry({ ...registry, unresolved_ids: undefined })).toBe(false);
+  });
+  it("rejects a registry missing defaults.unknown_params", () => {
+    expect(isRegistry({ ...registry, defaults: { zone: "WOR", pue: { min: 1.09, max: 1.2 } } })).toBe(false);
+  });
+  it("rejects a registry whose patterns is not an array", () => {
+    expect(isRegistry({ ...registry, patterns: { match: "glm-5" } })).toBe(false);
+  });
 });
 
 describe("EMBEDDED_REGISTRY", () => {

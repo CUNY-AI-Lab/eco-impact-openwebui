@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { addTotals, estimateRows } from "../src/aggregate.js";
+import { addTotals, estimateRows, type UsageRow } from "../src/aggregate.js";
 import { computeImpacts } from "../src/impacts.js";
 import { EMBEDDED_REGISTRY } from "../src/embedded-registry.js";
 
@@ -40,6 +40,22 @@ describe("estimateRows", () => {
       { tool: "sandbox", model: knownId, requests: 1, output_tokens: 1000 },
     ], EMBEDDED_REGISTRY);
     expect(e.tools.map((t) => t.tool)).toEqual(["sandbox", "api-key"]);
+  });
+});
+
+describe("estimateRows input checks", () => {
+  it("rejects a negative token count", () => {
+    expect(() => estimateRows([{ tool: "sandbox", model: knownId, requests: 1, output_tokens: -5 }], EMBEDDED_REGISTRY))
+      .toThrow(new RangeError("output_tokens must be a safe nonnegative integer, got -5"));
+  });
+  it("rejects a non-integer request count", () => {
+    expect(() => estimateRows([{ tool: "sandbox", model: knownId, requests: 1.5, output_tokens: 10 }], EMBEDDED_REGISTRY))
+      .toThrow(new RangeError("requests must be a safe nonnegative integer, got 1.5"));
+  });
+  it("rejects a tool outside the enum", () => {
+    // SAFETY: deliberately invalid row, standing in for unvalidated caller data.
+    const row = { tool: "chat", model: knownId, requests: 1, output_tokens: 10 } as unknown as UsageRow;
+    expect(() => estimateRows([row], EMBEDDED_REGISTRY)).toThrow(new RangeError('tool must be one of the CAIL tools, got "chat"'));
   });
 });
 

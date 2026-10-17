@@ -30,9 +30,28 @@ function usable(value: unknown): RegistryEntry | null {
   return entry;
 }
 
+const isString = (v: unknown): v is string => typeof v === "string";
+const isStringArray = (v: unknown): v is string[] => Array.isArray(v) && v.every(isString);
+const isZone = (v: unknown): v is Zone => isObject(v) && typeof v.gwp === "number";
+const isZonePrefix = (v: unknown): v is { prefix: string; zone: string } => isObject(v) && isString(v.prefix) && isString(v.zone);
+
+function isDefaults(v: unknown): v is RegistryDefaults {
+  return isObject(v) && isString(v.zone) && isRange(v.pue)
+    && isObject(v.unknown_params) && positiveRange(v.unknown_params.total) && positiveRange(v.unknown_params.active);
+}
+
+/**
+ * Accepts only a version-2 registry whose every field the lookup consumes is present and well-typed,
+ * so a malformed fetch is rejected (and the caller falls back) instead of throwing during lookup.
+ * Individual `ids` and `patterns` entries stay unchecked here: `resolveEntry` treats a malformed one as unknown.
+ */
 export function isRegistry(value: unknown): value is Registry {
-  return isObject(value) && value.version === 2 && isObject(value.ids) && isObject(value.zones)
-    && isObject(value.defaults) && isRange(value.defaults.pue);
+  return isObject(value) && value.version === 2 && isString(value.source) && isString(value.generated)
+    && isDefaults(value.defaults)
+    && isObject(value.zones) && Object.values(value.zones).every(isZone)
+    && Array.isArray(value.zone_prefixes) && value.zone_prefixes.every(isZonePrefix)
+    && isObject(value.provider_zones) && Object.values(value.provider_zones).every(isString)
+    && isObject(value.ids) && isStringArray(value.unresolved_ids) && Array.isArray(value.patterns);
 }
 
 /** Mirrors Python `find_id_entry`: exact key, else the longest key that is a whole trailing segment after '.' or '/'. */

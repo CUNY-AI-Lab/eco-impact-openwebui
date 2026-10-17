@@ -40,7 +40,18 @@ function rowTotals(row: UsageRow, registry: Registry): CarbonTotals {
   };
 }
 
+const isCount = (v: unknown): v is number => typeof v === "number" && Number.isSafeInteger(v) && v >= 0;
+
+/** Throws a RangeError naming the first invalid field; callers are expected to validate rows before this point. */
+function assertRow(row: UsageRow): void {
+  if (!isTool(row.tool)) throw new RangeError(`tool must be one of the CAIL tools, got ${JSON.stringify(row.tool)}`);
+  if (!isCount(row.requests)) throw new RangeError(`requests must be a safe nonnegative integer, got ${String(row.requests)}`);
+  if (!isCount(row.output_tokens)) throw new RangeError(`output_tokens must be a safe nonnegative integer, got ${String(row.output_tokens)}`);
+}
+
+/** Validates every row up front (RangeError on bad input), then sums per-tool totals, largest gwp_ug.max first. */
 export function estimateRows(rows: readonly UsageRow[], registry: Registry): CarbonEstimate {
+  for (const row of rows) assertRow(row);
   const byTool = new Map<Tool, CarbonTotals>();
   for (const row of rows) byTool.set(row.tool, addTotals(byTool.get(row.tool) ?? zeroTotals(), rowTotals(row, registry)));
   const tools = [...byTool.entries()].map(([tool, totals]) => ({ tool, ...totals })).sort((a, b) => b.gwp_ug.max - a.gwp_ug.max);
