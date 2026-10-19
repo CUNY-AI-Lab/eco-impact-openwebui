@@ -1,7 +1,7 @@
 {
  "version": 2,
- "source": "mlco2/ecologits@0.11.2",
- "generated": "2026-10-12",
+ "source": "mlco2/ecologits@0.11.3",
+ "generated": "2026-10-19",
  "defaults": {
   "zone": "WOR",
   "pue": {
@@ -1493,6 +1493,10 @@
    "zone": "USA",
    "provider": "bedrock-mantle"
   },
+  "flux-1-schnell": {
+   "skip": true,
+   "source": "task:Text-to-Image"
+  },
   "gemma-2b-it-lora": {
    "total": {
     "min": 2.51,
@@ -1643,8 +1647,8 @@
     "max": 40.0
    },
    "confidence": "published",
-   "tps": 57.5,
-   "ttft": 0.64,
+   "tps": 79.8,
+   "ttft": 2.24,
    "source": "ecologits:glm-5-2",
    "zone": "USA",
    "provider": "workers-ai"
@@ -2497,8 +2501,8 @@
     "max": 40.0
    },
    "confidence": "published",
-   "tps": 57.5,
-   "ttft": 0.64,
+   "tps": 79.8,
+   "ttft": 2.24,
    "source": "ecologits:glm-5-2",
    "zone": "USA",
    "provider": "workers-ai"
@@ -2748,8 +2752,8 @@
     "max": 400.0
    },
    "confidence": "estimated",
-   "tps": 53.0,
-   "ttft": 5.96
+   "tps": 51.0,
+   "ttft": 3.89
   },
   {
    "match": "claude-fable-latest",
@@ -2775,8 +2779,8 @@
     "max": 35.0
    },
    "confidence": "estimated",
-   "tps": 60.0,
-   "ttft": 0.61
+   "tps": 79.0,
+   "ttft": 0.5
   },
   {
    "match": "claude-haiku-4-5-20251001",
@@ -2789,8 +2793,22 @@
     "max": 35.0
    },
    "confidence": "estimated",
-   "tps": 60.0,
-   "ttft": 0.61
+   "tps": 79.0,
+   "ttft": 0.5
+  },
+  {
+   "match": "claude-haiku-5-5",
+   "total": {
+    "min": 10.0,
+    "max": 35.0
+   },
+   "active": {
+    "min": 10.0,
+    "max": 35.0
+   },
+   "confidence": "estimated",
+   "tps": 147.0,
+   "ttft": 1.75
   },
   {
    "match": "claude-haiku-latest",
@@ -2829,8 +2847,8 @@
     "max": 200.0
    },
    "confidence": "estimated",
-   "tps": 33.0,
-   "ttft": 1.24
+   "tps": 30.5,
+   "ttft": 5.03
   },
   {
    "match": "claude-opus-4-5-20251101",
@@ -2843,8 +2861,8 @@
     "max": 200.0
    },
    "confidence": "estimated",
-   "tps": 33.0,
-   "ttft": 1.24
+   "tps": 30.5,
+   "ttft": 5.03
   },
   {
    "match": "claude-opus-4-6",
@@ -2857,8 +2875,8 @@
     "max": 200.0
    },
    "confidence": "estimated",
-   "tps": 36.0,
-   "ttft": 1.69
+   "tps": 35.0,
+   "ttft": 1.95
   },
   {
    "match": "claude-opus-4-7",
@@ -2871,8 +2889,8 @@
     "max": 200.0
    },
    "confidence": "estimated",
-   "tps": 53.0,
-   "ttft": 1.35
+   "tps": 42.0,
+   "ttft": 1.75
   },
   {
    "match": "claude-opus-4-8",
@@ -2885,8 +2903,8 @@
     "max": 200.0
    },
    "confidence": "estimated",
-   "tps": 108.5,
-   "ttft": 1.01
+   "tps": 110.8,
+   "ttft": 0.87
   },
   {
    "match": "claude-opus-5",
@@ -2899,8 +2917,8 @@
     "max": 200.0
    },
    "confidence": "estimated",
-   "tps": 20.5,
-   "ttft": 1.96
+   "tps": 89.5,
+   "ttft": 1.84
   },
   {
    "match": "claude-opus-5-5",
@@ -2913,8 +2931,8 @@
     "max": 200.0
    },
    "confidence": "estimated",
-   "tps": 75.5,
-   "ttft": 3.43
+   "tps": 102.8,
+   "ttft": 2.68
   },
   {
    "match": "claude-opus-latest",
@@ -2953,8 +2971,8 @@
     "max": 132.0
    },
    "confidence": "estimated",
-   "tps": 44.0,
-   "ttft": 1.18
+   "tps": 42.0,
+   "ttft": 1.15
   },
   {
    "match": "claude-sonnet-4-5-20250929",
@@ -2967,8 +2985,8 @@
     "max": 132.0
    },
    "confidence": "estimated",
-   "tps": 44.0,
-   "ttft": 1.18
+   "tps": 42.0,
+   "ttft": 1.15
   },
   {
    "match": "claude-sonnet-4-6",
@@ -2981,8 +2999,8 @@
     "max": 132.0
    },
    "confidence": "estimated",
-   "tps": 39.0,
-   "ttft": 1.37
+   "tps": 40.0,
+   "ttft": 1.15
   },
   {
    "match": "claude-sonnet-5",
@@ -3008,8 +3026,8 @@
     "max": 88.0
    },
    "confidence": "estimated",
-   "tps": 91.0,
-   "ttft": 3.35
+   "tps": 102.0,
+   "ttft": 2.21
   },
   {
    "match": "claude-sonnet-latest",
@@ -3407,8 +3425,8 @@
     "max": 22.2
    },
    "confidence": "published",
-   "tps": 44.5,
-   "ttft": 0.31
+   "tps": 98.0,
+   "ttft": 0.38
   },
   {
    "match": "codestral-latest",
@@ -3459,8 +3477,8 @@
     "max": 111.0
    },
    "confidence": "published",
-   "tps": 63.0,
-   "ttft": 0.95
+   "tps": 51.5,
+   "ttft": 0.32
   },
   {
    "match": "command-a-plus-05-2026",
@@ -3473,8 +3491,8 @@
     "max": 25.0
    },
    "confidence": "estimated",
-   "tps": 139.5,
-   "ttft": 0.23
+   "tps": 141.0,
+   "ttft": 0.26
   },
   {
    "match": "command-a-reasoning-08-2025",
@@ -3536,8 +3554,8 @@
     "max": 32.3
    },
    "confidence": "published",
-   "tps": 23.5,
-   "ttft": 0.32
+   "tps": 38.5,
+   "ttft": 0.25
   },
   {
    "match": "command-r-plus",
@@ -3563,8 +3581,8 @@
     "max": 104.0
    },
    "confidence": "published",
-   "tps": 8.0,
-   "ttft": 0.65
+   "tps": 6.0,
+   "ttft": 0.62
   },
   {
    "match": "command-r7b-12-2024",
@@ -3577,8 +3595,8 @@
     "max": 8.03
    },
    "confidence": "published",
-   "tps": 49.0,
-   "ttft": 0.35
+   "tps": 57.0,
+   "ttft": 0.24
   },
   {
    "match": "command-r7b-arabic-02-2025",
@@ -3818,8 +3836,8 @@
     "max": 132.0
    },
    "confidence": "estimated",
-   "tps": 70.5,
-   "ttft": 0.87
+   "tps": 68.5,
+   "ttft": 1.14
   },
   {
    "match": "gemini-2-5-flash-image",
@@ -3832,7 +3850,7 @@
     "max": 132.0
    },
    "confidence": "estimated",
-   "ttft": 13.48
+   "ttft": 15.05
   },
   {
    "match": "gemini-2-5-flash-lite",
@@ -3845,8 +3863,8 @@
     "max": 28.0
    },
    "confidence": "estimated",
-   "tps": 87.5,
-   "ttft": 0.78
+   "tps": 131.5,
+   "ttft": 0.92
   },
   {
    "match": "gemini-2-5-pro",
@@ -3859,8 +3877,8 @@
     "max": 600.0
    },
    "confidence": "estimated",
-   "tps": 88.0,
-   "ttft": 2.45
+   "tps": 91.8,
+   "ttft": 2.67
   },
   {
    "match": "gemini-3-1-flash-image-preview",
@@ -3885,8 +3903,8 @@
     "max": 105.0
    },
    "confidence": "estimated",
-   "tps": 36.0,
-   "ttft": 1.02
+   "tps": 107.0,
+   "ttft": 0.82
   },
   {
    "match": "gemini-3-1-flash-lite-preview",
@@ -3911,8 +3929,8 @@
     "max": 360.0
    },
    "confidence": "estimated",
-   "tps": 56.0,
-   "ttft": 48.34
+   "tps": 77.0,
+   "ttft": 3.12
   },
   {
    "match": "gemini-3-1-pro-preview-customtools",
@@ -3937,8 +3955,8 @@
     "max": 240.0
    },
    "confidence": "estimated",
-   "tps": 84.5,
-   "ttft": 1.82
+   "tps": 73.0,
+   "ttft": 4.18
   },
   {
    "match": "gemini-3-5-flash-lite",
@@ -3951,8 +3969,8 @@
     "max": 105.0
    },
    "confidence": "estimated",
-   "tps": 62.0,
-   "ttft": 1.11
+   "tps": 137.0,
+   "ttft": 1.05
   },
   {
    "match": "gemini-3-6-flash",
@@ -3965,8 +3983,8 @@
     "max": 200.0
    },
    "confidence": "estimated",
-   "tps": 106.0,
-   "ttft": 2.06
+   "tps": 110.5,
+   "ttft": 1.74
   },
   {
    "match": "gemini-3-7-flash",
@@ -3979,8 +3997,8 @@
     "max": 200.0
    },
    "confidence": "estimated",
-   "tps": 86.0,
-   "ttft": 2.39
+   "tps": 71.0,
+   "ttft": 3.01
   },
   {
    "match": "gemini-3-8-flash",
@@ -3993,8 +4011,8 @@
     "max": 200.0
    },
    "confidence": "estimated",
-   "tps": 37.0,
-   "ttft": 2.64
+   "tps": 74.0,
+   "ttft": 2.7
   },
   {
    "match": "gemini-3-flash-preview",
@@ -4007,8 +4025,8 @@
     "max": 300.0
    },
    "confidence": "estimated",
-   "tps": 67.0,
-   "ttft": 2.04
+   "tps": 86.0,
+   "ttft": 1.64
   },
   {
    "match": "gemini-3-pro-image-preview",
@@ -4590,8 +4608,8 @@
     "max": 4.0
    },
    "confidence": "estimated",
-   "tps": 24.0,
-   "ttft": 0.86
+   "tps": 20.0,
+   "ttft": 1.09
   },
   {
    "match": "gemma-4-31b",
@@ -4938,8 +4956,8 @@
     "max": 40.0
    },
    "confidence": "published",
-   "tps": 57.5,
-   "ttft": 0.64
+   "tps": 79.8,
+   "ttft": 2.24
   },
   {
    "match": "glm-5-turbo",
@@ -4978,8 +4996,8 @@
     "max": 70.0
    },
    "confidence": "estimated",
-   "tps": 20.0,
-   "ttft": 0.67
+   "tps": 88.0,
+   "ttft": 0.71
   },
   {
    "match": "gpt-3-5-turbo-0125",
@@ -5016,8 +5034,8 @@
     "max": 70.0
    },
    "confidence": "estimated",
-   "tps": 7.5,
-   "ttft": 1.07
+   "tps": 95.0,
+   "ttft": 0.81
   },
   {
    "match": "gpt-3-5-turbo-instruct",
@@ -5054,8 +5072,8 @@
     "max": 70.0
    },
    "confidence": "estimated",
-   "tps": 20.0,
-   "ttft": 0.67
+   "tps": 88.0,
+   "ttft": 0.71
   },
   {
    "match": "gpt-35-turbo-0125",
@@ -5092,8 +5110,8 @@
     "max": 70.0
    },
    "confidence": "estimated",
-   "tps": 7.5,
-   "ttft": 1.07
+   "tps": 95.0,
+   "ttft": 0.81
   },
   {
    "match": "gpt-35-turbo-instruct",
@@ -5130,8 +5148,8 @@
     "max": 528.0
    },
    "confidence": "estimated",
-   "tps": 38.0,
-   "ttft": 0.92
+   "tps": 46.0,
+   "ttft": 0.89
   },
   {
    "match": "gpt-4-0613",
@@ -5156,8 +5174,8 @@
     "max": 106.0
    },
    "confidence": "estimated",
-   "tps": 45.0,
-   "ttft": 0.95
+   "tps": 81.0,
+   "ttft": 1.02
   },
   {
    "match": "gpt-4-1-2025-04-14",
@@ -5170,8 +5188,8 @@
     "max": 106.0
    },
    "confidence": "estimated",
-   "tps": 45.0,
-   "ttft": 0.95
+   "tps": 81.0,
+   "ttft": 1.02
   },
   {
    "match": "gpt-4-1-mini",
@@ -5184,8 +5202,8 @@
     "max": 112.0
    },
    "confidence": "estimated",
-   "tps": 49.0,
-   "ttft": 0.95
+   "tps": 79.0,
+   "ttft": 0.93
   },
   {
    "match": "gpt-4-1-mini-2025-04-14",
@@ -5198,8 +5216,8 @@
     "max": 112.0
    },
    "confidence": "estimated",
-   "tps": 49.0,
-   "ttft": 0.95
+   "tps": 79.0,
+   "ttft": 0.93
   },
   {
    "match": "gpt-4-1-nano",
@@ -5212,8 +5230,8 @@
     "max": 37.0
    },
    "confidence": "estimated",
-   "tps": 69.0,
-   "ttft": 0.97
+   "tps": 83.0,
+   "ttft": 0.83
   },
   {
    "match": "gpt-4-1-nano-2025-04-14",
@@ -5226,8 +5244,8 @@
     "max": 37.0
    },
    "confidence": "estimated",
-   "tps": 69.0,
-   "ttft": 0.98
+   "tps": 83.0,
+   "ttft": 0.83
   },
   {
    "match": "gpt-4-turbo",
@@ -5240,8 +5258,8 @@
     "max": 264.0
    },
    "confidence": "estimated",
-   "tps": 7.5,
-   "ttft": 1.17
+   "tps": 23.0,
+   "ttft": 1.25
   },
   {
    "match": "gpt-4-turbo-2024-04-09",
@@ -5254,8 +5272,8 @@
     "max": 264.0
    },
    "confidence": "estimated",
-   "tps": 7.5,
-   "ttft": 1.17
+   "tps": 23.0,
+   "ttft": 1.25
   },
   {
    "match": "gpt-4o",
@@ -5268,8 +5286,8 @@
     "max": 132.0
    },
    "confidence": "estimated",
-   "tps": 41.0,
-   "ttft": 0.65
+   "tps": 74.0,
+   "ttft": 0.61
   },
   {
    "match": "gpt-4o-2024-05-13",
@@ -5282,8 +5300,8 @@
     "max": 132.0
    },
    "confidence": "estimated",
-   "tps": 70.0,
-   "ttft": 1.33
+   "tps": 44.5,
+   "ttft": 1.1
   },
   {
    "match": "gpt-4o-2024-08-06",
@@ -5296,8 +5314,8 @@
     "max": 132.0
    },
    "confidence": "estimated",
-   "tps": 10.0,
-   "ttft": 2.21
+   "tps": 40.0,
+   "ttft": 2.03
   },
   {
    "match": "gpt-4o-2024-11-20",
@@ -5310,8 +5328,8 @@
     "max": 132.0
    },
    "confidence": "estimated",
-   "tps": 34.0,
-   "ttft": 0.86
+   "tps": 95.0,
+   "ttft": 0.67
   },
   {
    "match": "gpt-4o-mini",
@@ -5324,8 +5342,8 @@
     "max": 28.0
    },
    "confidence": "estimated",
-   "tps": 58.0,
-   "ttft": 0.53
+   "tps": 79.0,
+   "ttft": 0.54
   },
   {
    "match": "gpt-4o-mini-2024-07-18",
@@ -5338,8 +5356,8 @@
     "max": 28.0
    },
    "confidence": "estimated",
-   "tps": 43.0,
-   "ttft": 0.65
+   "tps": 63.0,
+   "ttft": 0.53
   },
   {
    "match": "gpt-4o-mini-search-preview",
@@ -5473,7 +5491,7 @@
    },
    "confidence": "estimated",
    "tps": 59.0,
-   "ttft": 3.02
+   "ttft": 5.13
   },
   {
    "match": "gpt-5-1",
@@ -5486,8 +5504,8 @@
     "max": 90.0
    },
    "confidence": "estimated",
-   "tps": 37.8,
-   "ttft": 1.15
+   "tps": 74.5,
+   "ttft": 0.97
   },
   {
    "match": "gpt-5-1-2025-11-13",
@@ -5500,8 +5518,8 @@
     "max": 90.0
    },
    "confidence": "estimated",
-   "tps": 37.8,
-   "ttft": 1.15
+   "tps": 74.5,
+   "ttft": 0.97
   },
   {
    "match": "gpt-5-1-chat-latest",
@@ -5562,8 +5580,8 @@
     "max": 126.0
    },
    "confidence": "estimated",
-   "tps": 48.0,
-   "ttft": 3.45
+   "tps": 68.0,
+   "ttft": 2.41
   },
   {
    "match": "gpt-5-2-2025-12-11",
@@ -5576,8 +5594,8 @@
     "max": 126.0
    },
    "confidence": "estimated",
-   "tps": 48.0,
-   "ttft": 3.45
+   "tps": 68.0,
+   "ttft": 2.41
   },
   {
    "match": "gpt-5-2-chat-latest",
@@ -5614,8 +5632,8 @@
     "max": 1512.0
    },
    "confidence": "estimated",
-   "tps": 15.0,
-   "ttft": 11.3
+   "tps": 19.0,
+   "ttft": 3.71
   },
   {
    "match": "gpt-5-2-pro-2025-12-11",
@@ -5628,8 +5646,8 @@
     "max": 1512.0
    },
    "confidence": "estimated",
-   "tps": 15.0,
-   "ttft": 11.3
+   "tps": 19.0,
+   "ttft": 3.71
   },
   {
    "match": "gpt-5-2025-08-07",
@@ -5643,7 +5661,7 @@
    },
    "confidence": "estimated",
    "tps": 59.0,
-   "ttft": 3.02
+   "ttft": 5.13
   },
   {
    "match": "gpt-5-3-chat-latest",
@@ -5668,8 +5686,8 @@
     "max": 126.0
    },
    "confidence": "estimated",
-   "tps": 32.2,
-   "ttft": 2.11
+   "tps": 70.0,
+   "ttft": 2.29
   },
   {
    "match": "gpt-5-4",
@@ -5682,8 +5700,8 @@
     "max": 150.0
    },
    "confidence": "estimated",
-   "tps": 58.0,
-   "ttft": 1.69
+   "tps": 51.0,
+   "ttft": 1.56
   },
   {
    "match": "gpt-5-4-2026-03-05",
@@ -5696,8 +5714,8 @@
     "max": 150.0
    },
    "confidence": "estimated",
-   "tps": 58.0,
-   "ttft": 1.69
+   "tps": 51.0,
+   "ttft": 1.56
   },
   {
    "match": "gpt-5-4-mini",
@@ -5710,8 +5728,8 @@
     "max": 158.0
    },
    "confidence": "estimated",
-   "tps": 71.0,
-   "ttft": 0.8
+   "tps": 106.0,
+   "ttft": 1.04
   },
   {
    "match": "gpt-5-4-mini-2026-03-17",
@@ -5724,8 +5742,8 @@
     "max": 158.0
    },
    "confidence": "estimated",
-   "tps": 71.0,
-   "ttft": 0.8
+   "tps": 106.0,
+   "ttft": 1.04
   },
   {
    "match": "gpt-5-4-nano",
@@ -5738,8 +5756,8 @@
     "max": 58.0
    },
    "confidence": "estimated",
-   "tps": 51.2,
-   "ttft": 1.28
+   "tps": 95.5,
+   "ttft": 1.1
   },
   {
    "match": "gpt-5-4-nano-2026-03-17",
@@ -5752,8 +5770,8 @@
     "max": 58.0
    },
    "confidence": "estimated",
-   "tps": 51.2,
-   "ttft": 1.28
+   "tps": 95.5,
+   "ttft": 1.1
   },
   {
    "match": "gpt-5-4-pro",
@@ -5766,8 +5784,8 @@
     "max": 1800.0
    },
    "confidence": "estimated",
-   "tps": 2.0,
-   "ttft": 5.57
+   "tps": 9.0,
+   "ttft": 7.12
   },
   {
    "match": "gpt-5-4-pro-2026-03-05",
@@ -5780,8 +5798,8 @@
     "max": 1800.0
    },
    "confidence": "estimated",
-   "tps": 2.0,
-   "ttft": 5.57
+   "tps": 9.0,
+   "ttft": 7.12
   },
   {
    "match": "gpt-5-5",
@@ -5794,8 +5812,8 @@
     "max": 300.0
    },
    "confidence": "estimated",
-   "tps": 47.0,
-   "ttft": 2.16
+   "tps": 96.0,
+   "ttft": 4.03
   },
   {
    "match": "gpt-5-5-2026-04-23",
@@ -5808,8 +5826,8 @@
     "max": 300.0
    },
    "confidence": "estimated",
-   "tps": 47.0,
-   "ttft": 2.16
+   "tps": 96.0,
+   "ttft": 4.03
   },
   {
    "match": "gpt-5-5-pro",
@@ -5821,9 +5839,7 @@
     "min": 540.0,
     "max": 1800.0
    },
-   "confidence": "estimated",
-   "tps": 5.0,
-   "ttft": 3.45
+   "confidence": "estimated"
   },
   {
    "match": "gpt-5-5-pro-2026-04-23",
@@ -5835,9 +5851,7 @@
     "min": 540.0,
     "max": 1800.0
    },
-   "confidence": "estimated",
-   "tps": 5.0,
-   "ttft": 3.45
+   "confidence": "estimated"
   },
   {
    "match": "gpt-5-6-luna",
@@ -5850,8 +5864,8 @@
     "max": 60.0
    },
    "confidence": "estimated",
-   "tps": 55.0,
-   "ttft": 1.99
+   "tps": 60.0,
+   "ttft": 2.0
   },
   {
    "match": "gpt-5-6-sol",
@@ -5864,8 +5878,8 @@
     "max": 300.0
    },
    "confidence": "estimated",
-   "tps": 44.0,
-   "ttft": 2.98
+   "tps": 71.0,
+   "ttft": 3.26
   },
   {
    "match": "gpt-5-6-terra",
@@ -5878,8 +5892,8 @@
     "max": 150.0
    },
    "confidence": "estimated",
-   "tps": 52.0,
-   "ttft": 2.26
+   "tps": 75.0,
+   "ttft": 2.15
   },
   {
    "match": "gpt-5-chat-latest",
@@ -5916,8 +5930,8 @@
     "max": 70.0
    },
    "confidence": "estimated",
-   "tps": 76.5,
-   "ttft": 4.57
+   "tps": 101.0,
+   "ttft": 3.72
   },
   {
    "match": "gpt-5-mini-2025-08-07",
@@ -5930,8 +5944,8 @@
     "max": 70.0
    },
    "confidence": "estimated",
-   "tps": 76.5,
-   "ttft": 4.57
+   "tps": 101.0,
+   "ttft": 3.72
   },
   {
    "match": "gpt-5-nano",
@@ -5944,8 +5958,8 @@
     "max": 18.5
    },
    "confidence": "estimated",
-   "tps": 84.5,
-   "ttft": 1.57
+   "tps": 62.5,
+   "ttft": 6.93
   },
   {
    "match": "gpt-5-nano-2025-08-07",
@@ -5958,8 +5972,8 @@
     "max": 18.5
    },
    "confidence": "estimated",
-   "tps": 84.5,
-   "ttft": 1.57
+   "tps": 62.5,
+   "ttft": 6.93
   },
   {
    "match": "gpt-5-pro",
@@ -5972,8 +5986,8 @@
     "max": 1080.0
    },
    "confidence": "estimated",
-   "tps": 2.0,
-   "ttft": 17.77
+   "tps": 12.0,
+   "ttft": 21.83
   },
   {
    "match": "gpt-5-pro-2025-10-06",
@@ -5986,8 +6000,8 @@
     "max": 1080.0
    },
    "confidence": "estimated",
-   "tps": 2.0,
-   "ttft": 17.77
+   "tps": 12.0,
+   "ttft": 21.83
   },
   {
    "match": "gpt-5-search-api",
@@ -6024,8 +6038,8 @@
     "max": 112.0
    },
    "confidence": "estimated",
-   "tps": 46.0,
-   "ttft": 3.45
+   "tps": 57.0,
+   "ttft": 4.07
   },
   {
    "match": "gpt-6-astra",
@@ -6038,8 +6052,8 @@
     "max": 500.0
    },
    "confidence": "estimated",
-   "tps": 35.0,
-   "ttft": 4.2
+   "tps": 35.8,
+   "ttft": 2.94
   },
   {
    "match": "gpt-6-luna",
@@ -6052,8 +6066,8 @@
     "max": 11.0
    },
    "confidence": "estimated",
-   "tps": 68.0,
-   "ttft": 2.17
+   "tps": 65.0,
+   "ttft": 2.6
   },
   {
    "match": "gpt-6-sol",
@@ -6066,8 +6080,8 @@
     "max": 112.0
    },
    "confidence": "estimated",
-   "tps": 60.0,
-   "ttft": 2.04
+   "tps": 74.0,
+   "ttft": 1.93
   },
   {
    "match": "gpt-oss-120b",
@@ -7124,8 +7138,8 @@
     "max": 14.0
    },
    "confidence": "published",
-   "tps": 24.5,
-   "ttft": 0.6
+   "tps": 77.0,
+   "ttft": 0.38
   },
   {
    "match": "ministral-14b-latest",
@@ -7189,8 +7203,8 @@
     "max": 3.32
    },
    "confidence": "published",
-   "tps": 33.0,
-   "ttft": 0.36
+   "tps": 131.0,
+   "ttft": 0.32
   },
   {
    "match": "ministral-3b-latest",
@@ -7215,8 +7229,8 @@
     "max": 8.02
    },
    "confidence": "published",
-   "tps": 42.5,
-   "ttft": 0.34
+   "tps": 81.5,
+   "ttft": 0.32
   },
   {
    "match": "ministral-8b-latest",
@@ -7351,8 +7365,8 @@
     "max": 41.0
    },
    "confidence": "estimated",
-   "tps": 16.0,
-   "ttft": 0.64
+   "tps": 59.2,
+   "ttft": 0.63
   },
   {
    "match": "mistral-large-3-675b",
@@ -7366,6 +7380,34 @@
    },
    "confidence": "estimated",
    "note": "Mistral Large 3 675B MoE, active undisclosed"
+  },
+  {
+   "match": "mistral-large-4",
+   "total": {
+    "min": 1050.0,
+    "max": 1050.0
+   },
+   "active": {
+    "min": 52.0,
+    "max": 52.0
+   },
+   "confidence": "estimated",
+   "tps": 51.0,
+   "ttft": 1.11
+  },
+  {
+   "match": "mistral-large-4-0",
+   "total": {
+    "min": 1050.0,
+    "max": 1050.0
+   },
+   "active": {
+    "min": 52.0,
+    "max": 52.0
+   },
+   "confidence": "estimated",
+   "tps": 51.0,
+   "ttft": 1.11
   },
   {
    "match": "mistral-large-instruct-2407",
@@ -7390,8 +7432,8 @@
     "max": 41.0
    },
    "confidence": "estimated",
-   "tps": 42.5,
-   "ttft": 0.64
+   "tps": 52.0,
+   "ttft": 0.68
   },
   {
    "match": "mistral-medium",
@@ -7428,8 +7470,8 @@
     "max": 128.0
    },
    "confidence": "estimated",
-   "tps": 103.2,
-   "ttft": 0.36
+   "tps": 78.5,
+   "ttft": 0.41
   },
   {
    "match": "mistral-medium-3-5",
@@ -7442,7 +7484,7 @@
     "max": 128.0
    },
    "confidence": "estimated",
-   "tps": 27.0,
+   "tps": 93.5,
    "ttft": 0.36
   },
   {
@@ -7544,8 +7586,8 @@
     "max": 8.0
    },
    "confidence": "published",
-   "tps": 94.2,
-   "ttft": 0.39
+   "tps": 110.2,
+   "ttft": 0.44
   },
   {
    "match": "mistral-small-3-1-24b",
@@ -7936,8 +7978,8 @@
     "max": 132.0
    },
    "confidence": "estimated",
-   "tps": 6.0,
-   "ttft": 1.09
+   "tps": 111.5,
+   "ttft": 0.96
   },
   {
    "match": "o1-2024-12-17",
@@ -7950,8 +7992,8 @@
     "max": 132.0
    },
    "confidence": "estimated",
-   "tps": 6.0,
-   "ttft": 1.09
+   "tps": 111.5,
+   "ttft": 0.96
   },
   {
    "match": "o3-mini",
@@ -7964,8 +8006,8 @@
     "max": 28.0
    },
    "confidence": "estimated",
-   "tps": 92.0,
-   "ttft": 3.06
+   "tps": 142.0,
+   "ttft": 4.49
   },
   {
    "match": "o3-mini-2025-01-31",
@@ -7978,8 +8020,8 @@
     "max": 28.0
    },
    "confidence": "estimated",
-   "tps": 92.0,
-   "ttft": 3.06
+   "tps": 142.0,
+   "ttft": 4.49
   },
   {
    "match": "o4-mini",
@@ -7992,8 +8034,8 @@
     "max": 28.0
    },
    "confidence": "estimated",
-   "tps": 92.0,
-   "ttft": 2.93
+   "tps": 93.0,
+   "ttft": 3.4
   },
   {
    "match": "o4-mini-2025-04-16",
@@ -8006,8 +8048,8 @@
     "max": 28.0
    },
    "confidence": "estimated",
-   "tps": 92.0,
-   "ttft": 2.93
+   "tps": 93.0,
+   "ttft": 3.4
   },
   {
    "match": "o4-mini-deep-research",
