@@ -169,9 +169,11 @@ def build_patterns(eco_models):
             "confidence": "published" if not m.get("warnings") else "estimated",
         }
         dep = m.get("deployment") or {}
-        if dep.get("tps"):
+        # Copy by key presence so timing_ok sees falsey values (0, null) as
+        # malformed instead of having them dropped, and keeps a valid ttft of 0.
+        if "tps" in dep:
             entry["tps"] = dep["tps"]
-        if dep.get("ttft"):
+        if "ttft" in dep:
             entry["ttft"] = dep["ttft"]
         if not timing_ok(entry):
             bad_timing += 1

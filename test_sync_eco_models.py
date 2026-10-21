@@ -399,11 +399,20 @@ def test_build_patterns_drops_upstream_entries_with_invalid_timing(capsys):
         {"provider": "p", "name": "bad-model", "architecture": arch,
          "deployment": {"tps": 1, "ttft": -1000}},
         {"provider": "p", "name": "inf-model", "architecture": arch,
-         "deployment": {"tps": float("inf")}}]}
+         "deployment": {"tps": float("inf")}},
+        {"provider": "p", "name": "zero-tps-model", "architecture": arch,
+         "deployment": {"tps": 0, "ttft": 0.4}},
+        {"provider": "p", "name": "null-tps-model", "architecture": arch,
+         "deployment": {"tps": None}},
+        {"provider": "p", "name": "null-ttft-model", "architecture": arch,
+         "deployment": {"tps": 50, "ttft": None}},
+        {"provider": "p", "name": "zero-ttft-model", "architecture": arch,
+         "deployment": {"tps": 50, "ttft": 0}}]}
     patterns = sync.build_patterns(eco)
-    assert set(patterns) == {"good-model"}
+    assert set(patterns) == {"good-model", "zero-ttft-model"}
     assert patterns["good-model"]["tps"] == 50 and patterns["good-model"]["ttft"] == 0.4
-    assert "skipped 2 EcoLogits entries with invalid tps/ttft" in capsys.readouterr().out
+    assert patterns["zero-ttft-model"]["tps"] == 50 and patterns["zero-ttft-model"]["ttft"] == 0
+    assert "skipped 5 EcoLogits entries with invalid tps/ttft" in capsys.readouterr().out
 
 
 def test_cli_never_publishes_upstream_invalid_timing(tmp_path, eco_dir):
