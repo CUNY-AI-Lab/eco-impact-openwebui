@@ -142,6 +142,23 @@ def test_no_version_bleed():
     assert e is None and "no curated entry" in why
 
 
+def test_published_glm_5_3_variants_are_curated():
+    with open(os.path.join(HERE, "scripts", "eco-extra-patterns.json")) as fh:
+        extras = {sync.normalize(e["match"]): e for e in json.load(fh)}
+
+    standard, why = sync.resolve_row(row("glm-5.3"), extras, {}, no_hf)
+    assert why is None
+    assert standard["total"] == {"min": 753.33, "max": 753.33}
+    assert standard["active"] == {"min": 40, "max": 40}
+    assert standard["confidence"] == "published"
+
+    flash, why = sync.resolve_row(row("glm-5.3-flash"), extras, {}, no_hf)
+    assert why is None
+    assert flash["total"] == {"min": 321.323, "max": 321.323}
+    assert flash["active"] == {"min": 18, "max": 18}
+    assert flash["confidence"] == "published"
+
+
 def test_gated_hf_reports_reason():
     r = row("llama-3.2-11b-vision-instruct", hf=("meta-llama/Llama-3.2-11B-Vision", "abc1234"))
     e, why = sync.resolve_row(r, {}, {}, no_hf)
@@ -160,6 +177,12 @@ def test_build_ids_keys_zone_and_skip():
     assert ids["whisper"]["skip"] is True
     assert [u["id"] for u in unresolved] == ["glm-5.3"]
     assert [r for r, _ in resolved] == ["glm-4.7"]
+
+
+def test_skip_task_accepts_catalog_separator_variants():
+    assert sync.is_skip(row("melotts", task="Text-to-Speech"))
+    assert sync.is_skip(row("melotts", task="Text to Speech"))
+    assert sync.is_skip(row("melotts", task="Text_to_Speech"))
 
 
 # ---------- validation gate ----------
@@ -276,8 +299,9 @@ def test_cli_end_to_end_and_filter_reads_output(tmp_path, eco_dir):
     assert p.returncode == 0, p.stdout + p.stderr
     reg = json.loads(out.read_text())
     assert reg["version"] == 2 and reg["ids"]["gpt-oss-120b"]["active"]["max"] == 5.1
-    assert "`glm-5.3`" in report.read_text()
-    assert reg["unresolved_ids"] == ["glm-5.3"]
+    assert "No unresolved models." in report.read_text()
+    assert reg["ids"]["glm-5.3"]["active"]["max"] == 40
+    assert reg["unresolved_ids"] == []
 
     sys.path.insert(0, HERE)
     import eco_impact_filter as f
@@ -286,12 +310,12 @@ def test_cli_end_to_end_and_filter_reads_output(tmp_path, eco_dir):
     imp = f.compute_impacts(e, 500, f.zone_for("gpt-oss-120b", reg, e), reg["defaults"])
     assert imp["gwp_g"][0] > 0
     assert f.resolve_entry(["whisper"], reg)["skip"] is True
-    assert f.resolve_entry(["glm-5.3"], reg) is None  # not the legacy "glm-5" pattern
+    assert f.resolve_entry(["glm-5.3"], reg)["active"]["max"] == 40
 
 
 def test_cli_exits_3_and_still_writes_when_gate_fails(tmp_path, eco_dir):
-    rows = [row("glm-5.3")]
-    previous = {"generated": "2026-09-01", "ids": {"glm-5.3": _e(40)}}
+    rows = [row("future-model-9.9")]
+    previous = {"generated": "2026-09-01", "ids": {"future-model-9.9": _e(40)}}
     p, out, report = _run_cli(tmp_path, eco_dir, rows, previous)
     assert p.returncode == sync.EXIT_NEEDS_REVIEW, p.stdout + p.stderr
     assert out.exists() and "Held for review" in report.read_text()
@@ -332,3 +356,76 @@ def test_choose_ref_falls_back_to_previous_ref_on_drift():
         return {"sha": "0" * 40}
     ref, warning = sync.choose_ecologits_ref("latest", fetch, previous_ref="0.11.2")
     assert ref == "0.11.2" and "0.11.2" in warning
+
+
+# ---------- timing validation (review regression) ----------
+
+_TIMINGS = [{}, {"tps": 33.0}, {"tps": 33, "ttft": 0}, {"ttft": 0.5},
+            {"tps": 1, "ttft": -1000}, {"tps": 0}, {"tps": -1}, {"tps": float("nan")},
+            {"tps": float("inf")}, {"tps": "33"}, {"tps": None}, {"tps": True},
+            {"ttft": -0.01}, {"ttft": float("nan")}, {"ttft": float("inf")},
+            {"ttft": "0.5"}, {"ttft": None}]
+
+
+@pytest.mark.parametrize("timing", _TIMINGS)
+def test_timing_rule_matches_the_filter(timing):
+    sys.path.insert(0, HERE)
+    import eco_impact_filter as f
+    entry = dict(_e(10), **timing)
+    assert sync.timing_ok(entry) == f._usable(entry)
+
+
+def test_validate_flags_invalid_timing_in_ids():
+    bad = dict(_e(10), tps=1, ttft=-1000)
+    problems = sync.validate(_reg({"a": bad}), None, ["a"])
+    assert len(problems) == 1 and "`a`: invalid entry" in problems[0]
+    assert sync.validate(_reg({"a": dict(_e(10), tps=1, ttft=0)}), None, ["a"]) == []
+
+
+def test_validate_flags_invalid_timing_in_patterns():
+    ok = {"match": "m", "total": {"min": 8, "max": 8}, "active": {"min": 8, "max": 8}}
+    reg = dict(_reg({}), patterns=[ok, dict(ok, match="bad", tps=0)])
+    problems = sync.validate(reg, None, [])
+    assert len(problems) == 1 and "pattern `bad`" in problems[0]
+    assert sync.validate(dict(_reg({}), patterns=[dict(ok, tps=5, ttft=0.2)]), None, []) == []
+
+
+def test_build_patterns_drops_upstream_entries_with_invalid_timing(capsys):
+    arch = {"type": "dense", "parameters": 8}
+    eco = {"aliases": [{"provider": "p", "alias": "bad-model", "name": "bad-alias"}],
+           "models": [
+        {"provider": "p", "name": "good-model", "architecture": arch,
+         "deployment": {"tps": 50, "ttft": 0.4}},
+        {"provider": "p", "name": "bad-model", "architecture": arch,
+         "deployment": {"tps": 1, "ttft": -1000}},
+        {"provider": "p", "name": "inf-model", "architecture": arch,
+         "deployment": {"tps": float("inf")}},
+        {"provider": "p", "name": "zero-tps-model", "architecture": arch,
+         "deployment": {"tps": 0, "ttft": 0.4}},
+        {"provider": "p", "name": "null-tps-model", "architecture": arch,
+         "deployment": {"tps": None}},
+        {"provider": "p", "name": "null-ttft-model", "architecture": arch,
+         "deployment": {"tps": 50, "ttft": None}},
+        {"provider": "p", "name": "zero-ttft-model", "architecture": arch,
+         "deployment": {"tps": 50, "ttft": 0}}]}
+    patterns = sync.build_patterns(eco)
+    assert set(patterns) == {"good-model", "zero-ttft-model"}
+    assert patterns["good-model"]["tps"] == 50 and patterns["good-model"]["ttft"] == 0.4
+    assert patterns["zero-ttft-model"]["tps"] == 50 and patterns["zero-ttft-model"]["ttft"] == 0
+    assert "skipped 5 EcoLogits entries with invalid tps/ttft" in capsys.readouterr().out
+
+
+def test_cli_never_publishes_upstream_invalid_timing(tmp_path, eco_dir):
+    models = eco_dir / "ecologits" / "data" / "models.json"
+    data = json.loads(models.read_text())
+    data["models"].append({"provider": "huggingface_hub", "name": "acme/broken-timing-7b",
+                           "architecture": {"type": "dense", "parameters": 7},
+                           "deployment": {"tps": 1, "ttft": -1000}})
+    models.write_text(json.dumps(data))
+    p, out, report = _run_cli(tmp_path, eco_dir, [row("broken-timing-7b")])
+    assert p.returncode == 0, p.stdout + p.stderr
+    reg = json.loads(out.read_text())
+    assert all(sync.timing_ok(e) for e in list(reg["ids"].values()) + reg["patterns"])
+    assert "broken-timing-7b" not in reg["ids"]
+    assert reg["unresolved_ids"] == ["broken-timing-7b"]
+    assert "broken-timing-7b" in report.read_text()

@@ -36,6 +36,20 @@ def test_golden_moe_range_extremes():
     assert g_hi == pytest.approx(0.0004869695882942235, rel=REL)
 
 
+def test_golden_fixture_shared_with_typescript():
+    import json, os
+    path = os.path.join(os.path.dirname(__file__), "fixtures", "ecologits-golden.json")
+    with open(path) as fh:
+        golden = json.load(fh)
+    for case in golden["cases"]:
+        energy_kwh, gwp_kg = _impacts_single(
+            active_params_b=case["active_params_b"], total_params_b=case["total_params_b"],
+            output_tokens=case["output_tokens"], mix_gwp=case["mix_gwp"], pue=case["pue"],
+            tps=case["tps"], ttft=case["ttft"])
+        assert energy_kwh == pytest.approx(case["energy_kwh"], rel=golden["relative_tolerance"])
+        assert gwp_kg == pytest.approx(case["gwp_kg"], rel=golden["relative_tolerance"])
+
+
 def test_monotonic_in_tokens():
     e1, g1 = _impacts_single(8.0, 8.0, 100, mix_gwp=0.45829, pue=1.2)
     e2, g2 = _impacts_single(8.0, 8.0, 1000, mix_gwp=0.45829, pue=1.2)
@@ -399,6 +413,48 @@ def test_malformed_entry_treated_as_unknown(tmp_path):
     f = _filter_with(tmp_path, reg)
     out, events = _run_outlet(f, _mk_body(model="glm-4.7"))
     assert len(events) == 1 and "generic estimate" in events[0]["data"]["description"]
+
+
+# ---------- timing validation (review regression) ----------
+
+_SIZED = {"total": {"min": 8, "max": 8}, "active": {"min": 8, "max": 8}, "zone": "USA"}
+
+
+@pytest.mark.parametrize("timing", [
+    {"tps": 1, "ttft": -1000},  # the reviewed case: negative totals with min > max
+    {"tps": 0}, {"tps": -1}, {"tps": float("nan")}, {"tps": float("inf")},
+    {"tps": "33"}, {"tps": None}, {"tps": True},
+    {"ttft": -0.01}, {"ttft": float("nan")}, {"ttft": float("inf")},
+    {"ttft": "0.5"}, {"ttft": None},
+])
+def test_invalid_timing_is_malformed(timing):
+    from eco_impact_filter import _usable, resolve_entry
+    entry = dict(_SIZED, **timing)
+    assert not _usable(entry)
+    reg = {"ids": {"bad": entry}, "patterns": [dict(entry, match="slow-model")]}
+    assert resolve_entry(["bad"], reg) is None
+    assert resolve_entry(["slow-model"], reg) is None
+
+
+@pytest.mark.parametrize("timing", [{}, {"tps": 33.0}, {"tps": 33, "ttft": 0}, {"ttft": 0.5}])
+def test_valid_timing_is_kept(timing):
+    from eco_impact_filter import _usable
+    assert _usable(dict(_SIZED, **timing))
+
+
+def test_negative_ttft_entry_gets_generic_estimate_with_ordered_range(tmp_path):
+    reg = json.loads(json.dumps(GW_REG))
+    reg["ids"]["glm-4.7"].update(tps=1, ttft=-1000)
+    f = _filter_with(tmp_path, reg)
+    out, events = _run_outlet(f, _mk_body(model="glm-4.7", completion_tokens=1))
+    assert len(events) == 1 and "generic estimate" in events[0]["data"]["description"]
+
+    from eco_impact_filter import compute_impacts, zone_for
+    generic = {"total": reg["defaults"]["unknown_params"]["total"],
+               "active": reg["defaults"]["unknown_params"]["active"]}
+    imp = compute_impacts(generic, 1, zone_for("glm-4.7", reg), reg["defaults"])
+    for lo, hi in (imp["energy_wh"], imp["gwp_g"]):
+        assert 0 < lo <= hi
 
 
 def test_cache_write_uses_unique_temp_and_cleans_up(tmp_path, monkeypatch):

@@ -233,18 +233,35 @@ def resolve_entry(model_ids: "list[str]", registry: dict) -> Optional[dict]:
     return None
 
 
+def _finite_number(v: Any) -> bool:
+    return isinstance(v, (int, float)) and not isinstance(v, bool) and math.isfinite(v)
+
+
+def _timing_ok(entry: dict) -> bool:
+    """Optional timing feeds the latency term (tokens / tps + ttft). When present,
+    tps must be a finite number > 0 and ttft a finite number >= 0; anything else
+    makes latency negative or infinite and inverts the min/max range."""
+    if "tps" in entry and not (_finite_number(entry["tps"]) and entry["tps"] > 0):
+        return False
+    if "ttft" in entry and not (_finite_number(entry["ttft"]) and entry["ttft"] >= 0):
+        return False
+    return True
+
+
 def _usable(entry: Any) -> bool:
-    """A skip marker, or an entry with positive numeric total/active ranges. A
-    malformed entry is treated as unknown (generic estimate), not as an error."""
+    """A skip marker, or an entry with positive numeric total/active ranges and
+    valid optional timing (see _timing_ok). A malformed entry is treated as
+    unknown (generic estimate), not as an error."""
     if not isinstance(entry, dict):
         return False
     if entry.get("skip"):
         return True
     try:
-        return all(0 < float(entry[k]["min"]) <= float(entry[k]["max"])
-                   for k in ("total", "active"))
+        ranges_ok = all(0 < float(entry[k]["min"]) <= float(entry[k]["max"])
+                        for k in ("total", "active"))
     except (KeyError, TypeError, ValueError):
         return False
+    return ranges_ok and _timing_ok(entry)
 
 
 def zone_for(model_id: str, registry: dict, entry: Optional[dict] = None) -> dict:

@@ -83,7 +83,10 @@ WebUI**. The job:
    (US grid for Workers AI and Bedrock Mantle);
 4. checks the result against last week's (no served model may lose coverage, no
    active-parameter count may jump more than 3×, and EcoLogits' methodology must
-   still match the math vendored here) and publishes only if it passes;
+   still match the math vendored here), checks that every id and pattern entry
+   has positive ranges and valid timing (`tps` finite and above 0, `ttft` finite
+   and at least 0, when present; EcoLogits rows with invalid timing are dropped),
+   and publishes only if it passes;
 5. keeps one open issue labelled `eco-registry` listing models it could not
    resolve, with a stub to fill in.
 
@@ -149,12 +152,24 @@ ranges as order-of-magnitude guidance.
 ## Development
 
 ```bash
-python3 -m venv .venv && .venv/bin/pip install pydantic pytest
+python3.11 -m venv .venv
+.venv/bin/pip install --require-hashes -r requirements-dev.lock
+.venv/bin/python -m pip_audit -r requirements-dev.lock
 .venv/bin/python -m pytest -v
 ```
 
 The tests include golden values computed with the real EcoLogits library, so
 the vendored math is verified to reproduce upstream outputs exactly.
+
+## TypeScript package
+
+[`packages/cail-eco`](packages/cail-eco) (`@cuny-ai-lab/cail-eco`) is a
+TypeScript port of the same impact chain and registry lookup, used by CAIL
+services that estimate cumulative footprints from Gateway token counts. Both
+test suites check the impact chain against the shared fixture
+`fixtures/ecologits-golden.json`. Registry lookup and formatting parity rest on
+TypeScript tests that mirror the Python ones. See the package README for the
+API and the integer unit convention.
 
 ## Attribution & license
 

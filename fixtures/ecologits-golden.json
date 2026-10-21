@@ -1,0 +1,24 @@
+{
+  "source": "mlco2/ecologits@42154236c3b275346e8b97b04f49cd19877316e6 ecologits/impacts/llm.py",
+  "relative_tolerance": 1e-9,
+  "cases": [
+    {
+      "name": "dense_8b_200_tokens_wor",
+      "active_params_b": 8.0, "total_params_b": 8.0, "output_tokens": 200,
+      "mix_gwp": 0.45829, "pue": 1.2, "tps": null, "ttft": null,
+      "energy_kwh": 1.7830516910617744e-05, "gwp_kg": 9.632008989816002e-06
+    },
+    {
+      "name": "moe_low_44b_of_440b_500_tokens_usa",
+      "active_params_b": 44.0, "total_params_b": 440.0, "output_tokens": 500,
+      "mix_gwp": 0.3844, "pue": 1.09, "tps": 46.2, "ttft": 0.53,
+      "energy_kwh": 0.0007007863545514568, "gwp_kg": 0.00029894610495653524
+    },
+    {
+      "name": "moe_high_132b_of_440b_500_tokens_usa",
+      "active_params_b": 132.0, "total_params_b": 440.0, "output_tokens": 500,
+      "mix_gwp": 0.3844, "pue": 1.14, "tps": 46.2, "ttft": 0.53,
+      "energy_kwh": 0.0011899213268139132, "gwp_kg": 0.0004869695882942235
+    }
+  ]
+}
