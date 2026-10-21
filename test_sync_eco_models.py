@@ -142,6 +142,23 @@ def test_no_version_bleed():
     assert e is None and "no curated entry" in why
 
 
+def test_published_glm_5_3_variants_are_curated():
+    with open(os.path.join(HERE, "scripts", "eco-extra-patterns.json")) as fh:
+        extras = {sync.normalize(e["match"]): e for e in json.load(fh)}
+
+    standard, why = sync.resolve_row(row("glm-5.3"), extras, {}, no_hf)
+    assert why is None
+    assert standard["total"] == {"min": 753.33, "max": 753.33}
+    assert standard["active"] == {"min": 40, "max": 40}
+    assert standard["confidence"] == "published"
+
+    flash, why = sync.resolve_row(row("glm-5.3-flash"), extras, {}, no_hf)
+    assert why is None
+    assert flash["total"] == {"min": 321.323, "max": 321.323}
+    assert flash["active"] == {"min": 18, "max": 18}
+    assert flash["confidence"] == "published"
+
+
 def test_gated_hf_reports_reason():
     r = row("llama-3.2-11b-vision-instruct", hf=("meta-llama/Llama-3.2-11B-Vision", "abc1234"))
     e, why = sync.resolve_row(r, {}, {}, no_hf)
@@ -160,6 +177,12 @@ def test_build_ids_keys_zone_and_skip():
     assert ids["whisper"]["skip"] is True
     assert [u["id"] for u in unresolved] == ["glm-5.3"]
     assert [r for r, _ in resolved] == ["glm-4.7"]
+
+
+def test_skip_task_accepts_catalog_separator_variants():
+    assert sync.is_skip(row("melotts", task="Text-to-Speech"))
+    assert sync.is_skip(row("melotts", task="Text to Speech"))
+    assert sync.is_skip(row("melotts", task="Text_to_Speech"))
 
 
 # ---------- validation gate ----------
@@ -276,8 +299,9 @@ def test_cli_end_to_end_and_filter_reads_output(tmp_path, eco_dir):
     assert p.returncode == 0, p.stdout + p.stderr
     reg = json.loads(out.read_text())
     assert reg["version"] == 2 and reg["ids"]["gpt-oss-120b"]["active"]["max"] == 5.1
-    assert "`glm-5.3`" in report.read_text()
-    assert reg["unresolved_ids"] == ["glm-5.3"]
+    assert "No unresolved models." in report.read_text()
+    assert reg["ids"]["glm-5.3"]["active"]["max"] == 40
+    assert reg["unresolved_ids"] == []
 
     sys.path.insert(0, HERE)
     import eco_impact_filter as f
@@ -286,12 +310,12 @@ def test_cli_end_to_end_and_filter_reads_output(tmp_path, eco_dir):
     imp = f.compute_impacts(e, 500, f.zone_for("gpt-oss-120b", reg, e), reg["defaults"])
     assert imp["gwp_g"][0] > 0
     assert f.resolve_entry(["whisper"], reg)["skip"] is True
-    assert f.resolve_entry(["glm-5.3"], reg) is None  # not the legacy "glm-5" pattern
+    assert f.resolve_entry(["glm-5.3"], reg)["active"]["max"] == 40
 
 
 def test_cli_exits_3_and_still_writes_when_gate_fails(tmp_path, eco_dir):
-    rows = [row("glm-5.3")]
-    previous = {"generated": "2026-09-01", "ids": {"glm-5.3": _e(40)}}
+    rows = [row("future-model-9.9")]
+    previous = {"generated": "2026-09-01", "ids": {"future-model-9.9": _e(40)}}
     p, out, report = _run_cli(tmp_path, eco_dir, rows, previous)
     assert p.returncode == sync.EXIT_NEEDS_REVIEW, p.stdout + p.stderr
     assert out.exists() and "Held for review" in report.read_text()

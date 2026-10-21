@@ -62,7 +62,7 @@ PROVIDER_ZONES = {"bedrock-mantle": "USA", "workers-ai": "USA", "openrouter": "U
 
 # Catalog tasks that are not text generation get a "skip" entry (no status line).
 SKIP_TASKS = {"automatic speech recognition", "text embeddings", "translation",
-              "text-to-image", "text to speech", "image classification"}
+              "text to image", "text to speech", "image classification"}
 
 # Trailing name tokens that do not change a model's weights.
 VARIANT_SUFFIXES = ("instruct", "it", "chat", "fp8", "fast", "lora", "hf", "awq",
@@ -393,7 +393,8 @@ def resolve_row(row, extras, eco_patterns, hf_lookup):
 
 
 def is_skip(row):
-    return (row.get("task") or "").strip().lower() in SKIP_TASKS
+    task = re.sub(r"[-_]+", " ", (row.get("task") or "").strip().lower())
+    return " ".join(task.split()) in SKIP_TASKS
 
 
 def build_ids(catalog_rows, extras, eco_patterns, hf_lookup):

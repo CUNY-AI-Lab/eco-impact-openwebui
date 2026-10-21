@@ -149,7 +149,9 @@ ranges as order-of-magnitude guidance.
 ## Development
 
 ```bash
-python3 -m venv .venv && .venv/bin/pip install pydantic pytest
+python3.11 -m venv .venv
+.venv/bin/pip install --require-hashes -r requirements-dev.lock
+.venv/bin/python -m pip_audit -r requirements-dev.lock
 .venv/bin/python -m pytest -v
 ```
 

@@ -57,6 +57,8 @@
  {"match": "glm-5-turbo", "total": {"min": 100, "max": 200}, "active": {"min": 12, "max": 20}, "confidence": "estimated", "note": "GLM-5 turbo tier, anchored to Air-class"},
  {"match": "glm-5v-turbo", "total": {"min": 100, "max": 200}, "active": {"min": 12, "max": 20}, "confidence": "estimated", "note": "GLM-5V turbo tier, anchored to Air-class"},
  {"match": "glm-5", "total": {"min": 744, "max": 754}, "active": {"min": 40, "max": 40}, "confidence": "published", "note": "GLM-5 744B-A40B MoE, HF card; 754B safetensors incl. MTP"},
+ {"match": "glm-5-3", "total": {"min": 753.33, "max": 753.33}, "active": {"min": 40, "max": 40}, "confidence": "published", "note": "GLM-5.3 uses the same base model as GLM-5.2; 753.33B safetensors and 40B active, official Z.ai HF card"},
+ {"match": "glm-5-3-flash", "total": {"min": 321.323, "max": 321.323}, "active": {"min": 18, "max": 18}, "confidence": "published", "note": "GLM-5.3-Flash 320B/18B MoE, official Z.ai HF card; 321.323B safetensors"},
 
  {"match": "kimi-k2", "total": {"min": 1000, "max": 1000}, "active": {"min": 32, "max": 32}, "confidence": "published", "note": "Kimi K2 1T/32B MoE, Moonshot HF card"},
  {"match": "kimi-k2-5", "total": {"min": 1000, "max": 1000}, "active": {"min": 32, "max": 32}, "confidence": "estimated", "note": "Kimi K2.5, anchored to K2 arch"},
