@@ -4,6 +4,7 @@
   "description": "EcoLogits inference-impact chain and CAIL model-registry lookup, shared by the Open WebUI Eco Impact filter and the CAIL dashboards.",
   "type": "module",
   "license": "MPL-2.0",
+  "repository": { "type": "git", "url": "git+https://github.com/CUNY-AI-Lab/eco-impact-openwebui.git", "directory": "packages/cail-eco" },
   "sideEffects": false,
   "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js", "default": "./dist/index.js" } },
   "types": "./dist/index.d.ts",

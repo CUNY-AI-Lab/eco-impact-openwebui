@@ -135,9 +135,55 @@ bun run build   # emits dist/
 `tools/oxlint/anti-slop/`), so a vendored copy of `src/` passes the consuming
 repository's lint unchanged.
 
-## Distribution
+## Publishing
 
-Until npm trusted publishing is configured for `@cuny-ai-lab/cail-eco`,
-consumers vendor a copy of `src/` and record the commit they copied from.
-After that, a GitHub release tagged `cail-eco-v<version>` publishes the
-package through `.github/workflows/publish-cail-eco.yml`.
+Until the bootstrap below is done and a release has gone through the publish
+workflow, consumers vendor a copy of `src/` and record the commit they copied
+from.
+
+npm can only configure a trusted publisher for a package that already exists on
+the registry ([npm trust prerequisites](https://docs.npmjs.com/cli/v11/commands/npm-trust/#prerequisites)),
+and `@cuny-ai-lab/cail-eco` does not exist yet. The first version is therefore
+published by hand, once:
+
+1. **Create the package (once).** An owner of the `@cuny-ai-lab` npm
+   organization, with two-factor authentication enabled on the account and
+   signed in with `npm login`, publishes the version in `package.json` from a
+   clean clone of the current tip of `main`:
+
+   ```bash
+   cd packages/cail-eco
+   bun install --frozen-lockfile --ignore-scripts
+   bun audit --audit-level high
+   bun run check
+   bun run build
+   npm publish --access public
+   ```
+
+   Then push the tag `cail-eco-v<version>` for that commit without publishing
+   a GitHub release; a published release would start the workflow, which fails
+   because the version already exists.
+
+2. **Configure the trusted publisher (once).** With npm 11.15.0 or later, an
+   account with write access to the package and 2FA enabled (not a granular
+   token with 2FA bypass, and not legacy username and password credentials):
+
+   ```bash
+   npm trust github @cuny-ai-lab/cail-eco \
+     --repository CUNY-AI-Lab/eco-impact-openwebui \
+     --file publish-cail-eco.yml --allow-publish
+   ```
+
+   The same setting is available under the package's settings on npmjs.com.
+   Once it works, set the package's publishing access to require 2FA and
+   disallow tokens, so only the workflow and 2FA-authenticated owners can
+   publish.
+
+3. **Release from tags.** Bump `version` in `package.json` through a pull
+   request, merge it, and publish a GitHub release tagged
+   `cail-eco-v<version>` on the commit that is then the tip of `main`.
+   `.github/workflows/publish-cail-eco.yml` checks that the tag matches the
+   version and is the tip of `main`, runs the full test workflow on that
+   commit, and publishes with npm provenance. Publishing runs one at a time,
+   and the run fails if `main` or the tag moves before `npm publish`; in that
+   case, release again from the new tip.
