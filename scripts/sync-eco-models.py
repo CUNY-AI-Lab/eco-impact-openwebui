@@ -31,6 +31,7 @@ committing); anything else = failure.
 """
 import argparse
 import json
+import math
 import os
 import re
 import sys
@@ -112,6 +113,21 @@ def pattern_for(name):
     return base
 
 
+def _finite_number(v):
+    return isinstance(v, (int, float)) and not isinstance(v, bool) and math.isfinite(v)
+
+
+def timing_ok(entry):
+    """Same rule as the filter's _timing_ok: when present, tps must be a finite
+    number > 0 and ttft a finite number >= 0. Anything else makes the latency term
+    negative or infinite, so the entry must never be published."""
+    if "tps" in entry and not (_finite_number(entry["tps"]) and entry["tps"] > 0):
+        return False
+    if "ttft" in entry and not (_finite_number(entry["ttft"]) and entry["ttft"] >= 0):
+        return False
+    return True
+
+
 def norm_minmax(v):
     if isinstance(v, (int, float)):
         return {"min": float(v), "max": float(v)}
@@ -138,7 +154,7 @@ def build_patterns(eco_models):
     patterns = {}
     prio = {p: i for i, p in enumerate(PROVIDER_PRIORITY)}
     ordered = sorted(eco_models["models"], key=lambda m: prio.get(m["provider"], 99))
-    skipped = 0
+    skipped = bad_timing = 0
     for m in ordered:
         try:
             total, active = norm_params(m["architecture"])
@@ -157,6 +173,9 @@ def build_patterns(eco_models):
             entry["tps"] = dep["tps"]
         if dep.get("ttft"):
             entry["ttft"] = dep["ttft"]
+        if not timing_ok(entry):
+            bad_timing += 1
+            continue
         by_name[(m["provider"], m["name"])] = entry
         if pat not in patterns:
             patterns[pat] = entry
@@ -169,6 +188,8 @@ def build_patterns(eco_models):
             patterns[pat] = {**target, "match": pat}
     if skipped:
         print(f"note: skipped {skipped} EcoLogits entries with unparseable architecture")
+    if bad_timing:
+        print(f"note: skipped {bad_timing} EcoLogits entries with invalid tps/ttft")
     return patterns
 
 
@@ -436,9 +457,19 @@ def validate(registry, previous, catalog_ids):
             assert 0 < t["min"] <= t["max"] and 0 < a["min"] <= a["max"]
             assert a["max"] <= t["max"] * 1.001
             assert e.get("zone") in registry["zones"]
+            assert timing_ok(e)
         except (AssertionError, KeyError, TypeError):
             problems.append(f"`{key}`: invalid entry {json.dumps(e)}")
             invalid.add(key)
+    # Legacy substring patterns are published too and reach the filter the same way.
+    for p in registry.get("patterns", []):
+        try:
+            t, a = p["total"], p["active"]
+            assert 0 < t["min"] <= t["max"] and 0 < a["min"] <= a["max"]
+            assert timing_ok(p)
+        except (AssertionError, KeyError, TypeError):
+            problems.append(f"pattern `{p.get('match') if isinstance(p, dict) else p}`: "
+                            f"invalid entry {json.dumps(p)}")
     if not previous:
         return problems
     old_ids = {k: v for k, v in (previous.get("ids") or {}).items() if not v.get("skip")}

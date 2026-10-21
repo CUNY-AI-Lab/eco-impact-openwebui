@@ -356,3 +356,67 @@ def test_choose_ref_falls_back_to_previous_ref_on_drift():
         return {"sha": "0" * 40}
     ref, warning = sync.choose_ecologits_ref("latest", fetch, previous_ref="0.11.2")
     assert ref == "0.11.2" and "0.11.2" in warning
+
+
+# ---------- timing validation (review regression) ----------
+
+_TIMINGS = [{}, {"tps": 33.0}, {"tps": 33, "ttft": 0}, {"ttft": 0.5},
+            {"tps": 1, "ttft": -1000}, {"tps": 0}, {"tps": -1}, {"tps": float("nan")},
+            {"tps": float("inf")}, {"tps": "33"}, {"tps": None}, {"tps": True},
+            {"ttft": -0.01}, {"ttft": float("nan")}, {"ttft": float("inf")},
+            {"ttft": "0.5"}, {"ttft": None}]
+
+
+@pytest.mark.parametrize("timing", _TIMINGS)
+def test_timing_rule_matches_the_filter(timing):
+    sys.path.insert(0, HERE)
+    import eco_impact_filter as f
+    entry = dict(_e(10), **timing)
+    assert sync.timing_ok(entry) == f._usable(entry)
+
+
+def test_validate_flags_invalid_timing_in_ids():
+    bad = dict(_e(10), tps=1, ttft=-1000)
+    problems = sync.validate(_reg({"a": bad}), None, ["a"])
+    assert len(problems) == 1 and "`a`: invalid entry" in problems[0]
+    assert sync.validate(_reg({"a": dict(_e(10), tps=1, ttft=0)}), None, ["a"]) == []
+
+
+def test_validate_flags_invalid_timing_in_patterns():
+    ok = {"match": "m", "total": {"min": 8, "max": 8}, "active": {"min": 8, "max": 8}}
+    reg = dict(_reg({}), patterns=[ok, dict(ok, match="bad", tps=0)])
+    problems = sync.validate(reg, None, [])
+    assert len(problems) == 1 and "pattern `bad`" in problems[0]
+    assert sync.validate(dict(_reg({}), patterns=[dict(ok, tps=5, ttft=0.2)]), None, []) == []
+
+
+def test_build_patterns_drops_upstream_entries_with_invalid_timing(capsys):
+    arch = {"type": "dense", "parameters": 8}
+    eco = {"aliases": [{"provider": "p", "alias": "bad-model", "name": "bad-alias"}],
+           "models": [
+        {"provider": "p", "name": "good-model", "architecture": arch,
+         "deployment": {"tps": 50, "ttft": 0.4}},
+        {"provider": "p", "name": "bad-model", "architecture": arch,
+         "deployment": {"tps": 1, "ttft": -1000}},
+        {"provider": "p", "name": "inf-model", "architecture": arch,
+         "deployment": {"tps": float("inf")}}]}
+    patterns = sync.build_patterns(eco)
+    assert set(patterns) == {"good-model"}
+    assert patterns["good-model"]["tps"] == 50 and patterns["good-model"]["ttft"] == 0.4
+    assert "skipped 2 EcoLogits entries with invalid tps/ttft" in capsys.readouterr().out
+
+
+def test_cli_never_publishes_upstream_invalid_timing(tmp_path, eco_dir):
+    models = eco_dir / "ecologits" / "data" / "models.json"
+    data = json.loads(models.read_text())
+    data["models"].append({"provider": "huggingface_hub", "name": "acme/broken-timing-7b",
+                           "architecture": {"type": "dense", "parameters": 7},
+                           "deployment": {"tps": 1, "ttft": -1000}})
+    models.write_text(json.dumps(data))
+    p, out, report = _run_cli(tmp_path, eco_dir, [row("broken-timing-7b")])
+    assert p.returncode == 0, p.stdout + p.stderr
+    reg = json.loads(out.read_text())
+    assert all(sync.timing_ok(e) for e in list(reg["ids"].values()) + reg["patterns"])
+    assert "broken-timing-7b" not in reg["ids"]
+    assert reg["unresolved_ids"] == ["broken-timing-7b"]
+    assert "broken-timing-7b" in report.read_text()

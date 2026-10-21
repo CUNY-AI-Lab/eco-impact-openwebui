@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { EMBEDDED_REGISTRY } from "../src/embedded-registry.js";
+import { computeImpacts } from "../src/impacts.js";
 import { genericEntry, isRegistry, resolveEntry, zoneFor, type Registry } from "../src/registry.js";
 
 const registry: Registry = {
@@ -47,6 +48,46 @@ describe("resolveEntry", () => {
   });
   it("generic entry uses unknown_params", () => {
     expect(genericEntry(registry)).toEqual({ total: { min: 8, max: 440 }, active: { min: 8, max: 110 } });
+  });
+});
+
+describe("timing validation", () => {
+  const sized = { total: { min: 8, max: 8 }, active: { min: 8, max: 8 }, zone: "USA" };
+  const withIds = (ids: Registry["ids"]): Registry => ({ ...registry, ids });
+
+  it("treats a negative ttft as malformed so the range never inverts (review regression)", () => {
+    const reg = withIds({ bad: { ...sized, tps: 1, ttft: -1000 } });
+    expect(resolveEntry(["bad"], reg)).toBeNull();
+    // The caller's fallback for a null lookup: the generic estimate, which always yields a valid range.
+    const impacts = computeImpacts(genericEntry(reg), 1, zoneFor("bad", reg, null), reg.defaults);
+    expect(impacts.energyWh[0]).toBeGreaterThan(0);
+    expect(impacts.energyWh[0]).toBeLessThanOrEqual(impacts.energyWh[1]);
+    expect(impacts.gwpG[0]).toBeGreaterThan(0);
+    expect(impacts.gwpG[0]).toBeLessThanOrEqual(impacts.gwpG[1]);
+  });
+  it("rejects a zero, negative, non-finite or non-numeric tps", () => {
+    const reg = withIds({
+      zero: { ...sized, tps: 0 }, negative: { ...sized, tps: -1 }, nan: { ...sized, tps: Number.NaN },
+      inf: { ...sized, tps: Number.POSITIVE_INFINITY }, text: { ...sized, tps: "33" }, nil: { ...sized, tps: null },
+    });
+    for (const id of ["zero", "negative", "nan", "inf", "text", "nil"]) expect(resolveEntry([id], reg)).toBeNull();
+  });
+  it("rejects a negative, non-finite or non-numeric ttft", () => {
+    const reg = withIds({
+      negative: { ...sized, ttft: -0.01 }, nan: { ...sized, ttft: Number.NaN },
+      inf: { ...sized, ttft: Number.POSITIVE_INFINITY }, text: { ...sized, ttft: "0.5" }, nil: { ...sized, ttft: null },
+    });
+    for (const id of ["negative", "nan", "inf", "text", "nil"]) expect(resolveEntry([id], reg)).toBeNull();
+  });
+  it("keeps valid timing, including ttft 0 and absent fields", () => {
+    const reg = withIds({ both: { ...sized, tps: 33, ttft: 0 }, "tps-only": { ...sized, tps: 33 }, none: sized });
+    expect(resolveEntry(["both"], reg)).toMatchObject({ tps: 33, ttft: 0 });
+    expect(resolveEntry(["tps-only"], reg)).toMatchObject({ tps: 33 });
+    expect(resolveEntry(["none"], reg)).toMatchObject({ zone: "USA" });
+  });
+  it("applies the same check to legacy patterns", () => {
+    const reg: Registry = { ...registry, ids: {}, patterns: [{ match: "slow-model", total: { min: 8, max: 8 }, active: { min: 8, max: 8 }, tps: -5 }] };
+    expect(resolveEntry(["slow-model"], reg)).toBeNull();
   });
 });
 

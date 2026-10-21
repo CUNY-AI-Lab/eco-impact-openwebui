@@ -48,7 +48,10 @@ formatRange(estimate.totals.gwp_ug.min / 1e6, estimate.totals.gwp_ug.max / 1e6, 
 - `resolveEntry`, `zoneFor` and `genericEntry` mirror the filter's registry
   lookup: exact ids first, connection prefixes ending in `.` or `/`, no
   fallback to look-alike patterns for unresolved Gateway ids, and a generic
-  estimate for unknown or malformed entries.
+  estimate for unknown or malformed entries. An entry is malformed when its
+  ranges are not positive with `min <= max`, or when it carries a `tps` that is
+  not a finite number above 0 or a `ttft` that is not a finite number at or
+  above 0 (either would make the latency term negative or infinite).
 - `isRegistry` accepts only a version-2 registry in which every field the
   lookup reads is present and well-typed, so a malformed fetch is rejected
   rather than failing later.

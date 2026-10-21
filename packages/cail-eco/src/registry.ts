@@ -19,14 +19,24 @@ const own = <T>(record: Record<string, T>, key: string): T | undefined => (Objec
 
 export function isSkip(entry: RegistryEntry): entry is SkipEntry { return "skip" in entry && entry.skip === true; }
 
-/** Mirrors Python `_usable`: a skip marker, or positive numeric total/active ranges. */
+// Timing feeds the latency term (`tokens / tps + ttft`): a zero, negative or non-finite tps, or a negative ttft,
+// makes latency negative or infinite and the min/max range inverted, so such an entry is malformed.
+const validTps = (v: JsonValue | undefined): v is number => isNumber(v) && Number.isFinite(v) && v > 0;
+const validTtft = (v: JsonValue | undefined): v is number => isNumber(v) && Number.isFinite(v) && v >= 0;
+
+/**
+ * Mirrors Python `_usable`: a skip marker, or positive numeric total/active ranges whose optional timing is valid
+ * (finite `tps > 0`, finite `ttft >= 0`). Anything else is malformed and the caller uses the generic estimate.
+ */
 function usable(value: JsonValue | undefined): RegistryEntry | null {
   if (!isJsonObject(value)) return null;
   if (value.skip === true) return { skip: true };
   if (!positiveRange(value.total) || !positiveRange(value.active)) return null;
+  if (value.tps !== undefined && !validTps(value.tps)) return null;
+  if (value.ttft !== undefined && !validTtft(value.ttft)) return null;
   const entry: ModelEntry = { total: value.total, active: value.active };
-  if (isNumber(value.tps)) entry.tps = value.tps;
-  if (isNumber(value.ttft)) entry.ttft = value.ttft;
+  if (validTps(value.tps)) entry.tps = value.tps;
+  if (validTtft(value.ttft)) entry.ttft = value.ttft;
   if (isString(value.zone)) entry.zone = value.zone;
   if (isString(value.confidence)) entry.confidence = value.confidence;
   return entry;

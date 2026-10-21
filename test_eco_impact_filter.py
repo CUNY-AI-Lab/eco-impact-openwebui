@@ -415,6 +415,48 @@ def test_malformed_entry_treated_as_unknown(tmp_path):
     assert len(events) == 1 and "generic estimate" in events[0]["data"]["description"]
 
 
+# ---------- timing validation (review regression) ----------
+
+_SIZED = {"total": {"min": 8, "max": 8}, "active": {"min": 8, "max": 8}, "zone": "USA"}
+
+
+@pytest.mark.parametrize("timing", [
+    {"tps": 1, "ttft": -1000},  # the reviewed case: negative totals with min > max
+    {"tps": 0}, {"tps": -1}, {"tps": float("nan")}, {"tps": float("inf")},
+    {"tps": "33"}, {"tps": None}, {"tps": True},
+    {"ttft": -0.01}, {"ttft": float("nan")}, {"ttft": float("inf")},
+    {"ttft": "0.5"}, {"ttft": None},
+])
+def test_invalid_timing_is_malformed(timing):
+    from eco_impact_filter import _usable, resolve_entry
+    entry = dict(_SIZED, **timing)
+    assert not _usable(entry)
+    reg = {"ids": {"bad": entry}, "patterns": [dict(entry, match="slow-model")]}
+    assert resolve_entry(["bad"], reg) is None
+    assert resolve_entry(["slow-model"], reg) is None
+
+
+@pytest.mark.parametrize("timing", [{}, {"tps": 33.0}, {"tps": 33, "ttft": 0}, {"ttft": 0.5}])
+def test_valid_timing_is_kept(timing):
+    from eco_impact_filter import _usable
+    assert _usable(dict(_SIZED, **timing))
+
+
+def test_negative_ttft_entry_gets_generic_estimate_with_ordered_range(tmp_path):
+    reg = json.loads(json.dumps(GW_REG))
+    reg["ids"]["glm-4.7"].update(tps=1, ttft=-1000)
+    f = _filter_with(tmp_path, reg)
+    out, events = _run_outlet(f, _mk_body(model="glm-4.7", completion_tokens=1))
+    assert len(events) == 1 and "generic estimate" in events[0]["data"]["description"]
+
+    from eco_impact_filter import compute_impacts, zone_for
+    generic = {"total": reg["defaults"]["unknown_params"]["total"],
+               "active": reg["defaults"]["unknown_params"]["active"]}
+    imp = compute_impacts(generic, 1, zone_for("glm-4.7", reg), reg["defaults"])
+    for lo, hi in (imp["energy_wh"], imp["gwp_g"]):
+        assert 0 < lo <= hi
+
+
 def test_cache_write_uses_unique_temp_and_cleans_up(tmp_path, monkeypatch):
     import eco_impact_filter
     f = _filter_with(tmp_path)

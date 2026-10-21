@@ -83,7 +83,10 @@ WebUI**. The job:
    (US grid for Workers AI and Bedrock Mantle);
 4. checks the result against last week's (no served model may lose coverage, no
    active-parameter count may jump more than 3×, and EcoLogits' methodology must
-   still match the math vendored here) and publishes only if it passes;
+   still match the math vendored here), checks that every id and pattern entry
+   has positive ranges and valid timing (`tps` finite and above 0, `ttft` finite
+   and at least 0, when present; EcoLogits rows with invalid timing are dropped),
+   and publishes only if it passes;
 5. keeps one open issue labelled `eco-registry` listing models it could not
    resolve, with a stub to fill in.
 
