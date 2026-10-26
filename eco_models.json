@@ -1,7 +1,7 @@
 {
  "version": 2,
  "source": "mlco2/ecologits@0.11.3",
- "generated": "2026-10-19",
+ "generated": "2026-10-26",
  "defaults": {
   "zone": "WOR",
   "pue": {
@@ -1497,20 +1497,6 @@
    "skip": true,
    "source": "task:Text-to-Image"
   },
-  "gemma-2b-it-lora": {
-   "total": {
-    "min": 2.51,
-    "max": 2.51
-   },
-   "active": {
-    "min": 2.51,
-    "max": 2.51
-   },
-   "confidence": "published",
-   "source": "ecologits:gemma-2b-it",
-   "zone": "USA",
-   "provider": "workers-ai"
-  },
   "gemma-3-12b-it": {
    "total": {
     "min": 12.2,
@@ -1564,20 +1550,6 @@
    },
    "confidence": "published",
    "source": "name:gemma-4-26b-a4b-it",
-   "zone": "USA",
-   "provider": "workers-ai"
-  },
-  "gemma-7b-it-lora": {
-   "total": {
-    "min": 8.54,
-    "max": 8.54
-   },
-   "active": {
-    "min": 8.54,
-    "max": 8.54
-   },
-   "confidence": "published",
-   "source": "ecologits:gemma-7b-it",
    "zone": "USA",
    "provider": "workers-ai"
   },
@@ -1653,6 +1625,34 @@
    "zone": "USA",
    "provider": "workers-ai"
   },
+  "glm-5.3": {
+   "total": {
+    "min": 753.33,
+    "max": 753.33
+   },
+   "active": {
+    "min": 40,
+    "max": 40
+   },
+   "confidence": "published",
+   "source": "curated:glm-5-3",
+   "zone": "USA",
+   "provider": "workers-ai"
+  },
+  "glm-5.3-flash": {
+   "total": {
+    "min": 321.323,
+    "max": 321.323
+   },
+   "active": {
+    "min": 18,
+    "max": 18
+   },
+   "confidence": "published",
+   "source": "curated:glm-5-3-flash",
+   "zone": "USA",
+   "provider": "workers-ai"
+  },
   "google/gemma-3-12b-it": {
    "total": {
     "min": 12.2,
@@ -1711,29 +1711,29 @@
   },
   "gpt-oss-120b": {
    "total": {
-    "min": 117.0,
-    "max": 117.0
+    "min": 116.829,
+    "max": 116.829
    },
    "active": {
-    "min": 5.1,
-    "max": 5.1
+    "min": 4.6,
+    "max": 5.751
    },
-   "confidence": "published",
-   "source": "ecologits:gpt-oss-120b",
+   "confidence": "derived",
+   "source": "hf:openai/gpt-oss-120b@b5c939d",
    "zone": "USA",
    "provider": "workers-ai"
   },
   "gpt-oss-20b": {
    "total": {
-    "min": 21.0,
-    "max": 21.0
+    "min": 20.915,
+    "max": 20.915
    },
    "active": {
-    "min": 3.6,
-    "max": 3.6
+    "min": 3.355,
+    "max": 4.193
    },
-   "confidence": "published",
-   "source": "ecologits:gpt-oss-20b",
+   "confidence": "derived",
+   "source": "hf:openai/gpt-oss-20b@6cee5e8",
    "zone": "USA",
    "provider": "workers-ai"
   },
@@ -1821,34 +1821,6 @@
    "zone": "USA",
    "provider": "workers-ai"
   },
-  "llama-2-7b-chat-hf-lora": {
-   "total": {
-    "min": 6.74,
-    "max": 6.74
-   },
-   "active": {
-    "min": 6.74,
-    "max": 6.74
-   },
-   "confidence": "published",
-   "source": "ecologits:llama-2-7b-chat-hf",
-   "zone": "USA",
-   "provider": "workers-ai"
-  },
-  "llama-3.1-8b-instruct-fp8": {
-   "total": {
-    "min": 8.03,
-    "max": 8.03
-   },
-   "active": {
-    "min": 8.03,
-    "max": 8.03
-   },
-   "confidence": "published",
-   "source": "ecologits:llama-3-1-8b-instruct",
-   "zone": "USA",
-   "provider": "workers-ai"
-  },
   "llama-3.2-11b-vision-instruct": {
    "total": {
     "min": 10.6,
@@ -1919,20 +1891,6 @@
    "zone": "USA",
    "provider": "workers-ai"
   },
-  "llama-guard-3-8b": {
-   "total": {
-    "min": 8.03,
-    "max": 8.03
-   },
-   "active": {
-    "min": 8.03,
-    "max": 8.03
-   },
-   "confidence": "published",
-   "source": "ecologits:llama-guard-3-8b",
-   "zone": "USA",
-   "provider": "workers-ai"
-  },
   "magistral-small-2509": {
    "total": {
     "min": 24.011,
@@ -1947,6 +1905,10 @@
    "zone": "USA",
    "provider": "bedrock-mantle"
   },
+  "melotts": {
+   "skip": true,
+   "source": "task:Text-to-Speech"
+  },
   "meta/llama-3.2-11b-vision-instruct": {
    "total": {
     "min": 10.6,
@@ -1958,20 +1920,6 @@
    },
    "confidence": "published",
    "source": "curated:llama-3-2-11b-vision",
-   "zone": "USA",
-   "provider": "workers-ai"
-  },
-  "meta/llama-guard-3-8b": {
-   "total": {
-    "min": 8.03,
-    "max": 8.03
-   },
-   "active": {
-    "min": 8.03,
-    "max": 8.03
-   },
-   "confidence": "published",
-   "source": "ecologits:llama-guard-3-8b",
    "zone": "USA",
    "provider": "workers-ai"
   },
@@ -2058,20 +2006,6 @@
    "source": "curated:ministral-3-8b",
    "zone": "USA",
    "provider": "bedrock-mantle"
-  },
-  "mistral-7b-instruct-v0.2-lora": {
-   "total": {
-    "min": 7.24,
-    "max": 7.24
-   },
-   "active": {
-    "min": 7.24,
-    "max": 7.24
-   },
-   "confidence": "published",
-   "source": "ecologits:mistral-7b-instruct-v0-2",
-   "zone": "USA",
-   "provider": "workers-ai"
   },
   "mistral-large-3-675b-instruct": {
    "total": {
@@ -2257,29 +2191,29 @@
   },
   "openai/gpt-oss-120b": {
    "total": {
-    "min": 117.0,
-    "max": 117.0
+    "min": 116.829,
+    "max": 116.829
    },
    "active": {
-    "min": 5.1,
-    "max": 5.1
+    "min": 4.6,
+    "max": 5.751
    },
-   "confidence": "published",
-   "source": "ecologits:gpt-oss-120b",
+   "confidence": "derived",
+   "source": "hf:openai/gpt-oss-120b@b5c939d",
    "zone": "USA",
    "provider": "workers-ai"
   },
   "openai/gpt-oss-20b": {
    "total": {
-    "min": 21.0,
-    "max": 21.0
+    "min": 20.915,
+    "max": 20.915
    },
    "active": {
-    "min": 3.6,
-    "max": 3.6
+    "min": 3.355,
+    "max": 4.193
    },
-   "confidence": "published",
-   "source": "ecologits:gpt-oss-20b",
+   "confidence": "derived",
+   "source": "hf:openai/gpt-oss-20b@6cee5e8",
    "zone": "USA",
    "provider": "workers-ai"
   },
@@ -2506,14 +2440,45 @@
    "source": "ecologits:glm-5-2",
    "zone": "USA",
    "provider": "workers-ai"
+  },
+  "zhipuai/glm-5.3": {
+   "total": {
+    "min": 753.33,
+    "max": 753.33
+   },
+   "active": {
+    "min": 40,
+    "max": 40
+   },
+   "confidence": "published",
+   "source": "curated:glm-5-3",
+   "zone": "USA",
+   "provider": "workers-ai"
+  },
+  "zhipuai/glm-5.3-flash": {
+   "total": {
+    "min": 321.323,
+    "max": 321.323
+   },
+   "active": {
+    "min": 18,
+    "max": 18
+   },
+   "confidence": "published",
+   "source": "curated:glm-5-3-flash",
+   "zone": "USA",
+   "provider": "workers-ai"
   }
  },
  "unresolved_ids": [
-  "glm-5.3",
-  "glm-5.3-flash",
-  "melotts",
-  "zhipuai/glm-5.3",
-  "zhipuai/glm-5.3-flash"
+  "deepseek-v4.1-flash-1017",
+  "gemma-2b-it-lora",
+  "gemma-7b-it-lora",
+  "llama-2-7b-chat-hf-lora",
+  "llama-3.1-8b-instruct-fp8",
+  "llama-guard-3-8b",
+  "meta/llama-guard-3-8b",
+  "mistral-7b-instruct-v0.2-lora"
  ],
  "patterns": [
   {
@@ -2593,114 +2558,6 @@
    },
    "confidence": "estimated",
    "note": "successor, anchored to Aion-1.0 / R1 base"
-  },
-  {
-   "match": "aya-23-35b",
-   "total": {
-    "min": 34.98,
-    "max": 34.98
-   },
-   "active": {
-    "min": 34.98,
-    "max": 34.98
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "aya-23-8b",
-   "total": {
-    "min": 8.03,
-    "max": 8.03
-   },
-   "active": {
-    "min": 8.03,
-    "max": 8.03
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "c4ai-aya-expanse-32b",
-   "total": {
-    "min": 32.3,
-    "max": 32.3
-   },
-   "active": {
-    "min": 32.3,
-    "max": 32.3
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "c4ai-aya-vision-32b",
-   "total": {
-    "min": 33.1,
-    "max": 33.1
-   },
-   "active": {
-    "min": 33.1,
-    "max": 33.1
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "c4ai-command-r-plus",
-   "total": {
-    "min": 103.81,
-    "max": 103.81
-   },
-   "active": {
-    "min": 103.81,
-    "max": 103.81
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "c4ai-command-r-plus-4bit",
-   "total": {
-    "min": 55.05,
-    "max": 55.05
-   },
-   "active": {
-    "min": 55.05,
-    "max": 55.05
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "c4ai-command-r-v01",
-   "total": {
-    "min": 34.98,
-    "max": 34.98
-   },
-   "active": {
-    "min": 34.98,
-    "max": 34.98
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "c4ai-command-r-v01-4bit",
-   "total": {
-    "min": 19.05,
-    "max": 19.05
-   },
-   "active": {
-    "min": 19.05,
-    "max": 19.05
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "chat-latest",
-   "total": {
-    "min": 900.0,
-    "max": 900.0
-   },
-   "active": {
-    "min": 90.0,
-    "max": 300.0
-   },
-   "confidence": "estimated"
   },
   {
    "match": "claude-3-haiku",
@@ -3043,378 +2900,6 @@
    "note": "closed Anthropic mid tier, industry estimate"
   },
   {
-   "match": "codegemma-1-1-2b",
-   "total": {
-    "min": 2.51,
-    "max": 2.51
-   },
-   "active": {
-    "min": 2.51,
-    "max": 2.51
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codegemma-1-1-2b-gguf",
-   "total": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "active": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codegemma-1-1-2b-pytorch",
-   "total": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "active": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codegemma-1-1-7b-it",
-   "total": {
-    "min": 8.54,
-    "max": 8.54
-   },
-   "active": {
-    "min": 8.54,
-    "max": 8.54
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codegemma-1-1-7b-it-gguf",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codegemma-1-1-7b-it-pytorch",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codegemma-2b",
-   "total": {
-    "min": 2.51,
-    "max": 2.51
-   },
-   "active": {
-    "min": 2.51,
-    "max": 2.51
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codegemma-2b-gguf",
-   "total": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "active": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codegemma-2b-keras",
-   "total": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "active": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codegemma-2b-pytorch",
-   "total": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "active": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codegemma-7b",
-   "total": {
-    "min": 8.54,
-    "max": 8.54
-   },
-   "active": {
-    "min": 8.54,
-    "max": 8.54
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codegemma-7b-gguf",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codegemma-7b-it",
-   "total": {
-    "min": 8.54,
-    "max": 8.54
-   },
-   "active": {
-    "min": 8.54,
-    "max": 8.54
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codegemma-7b-it-gguf",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codegemma-7b-it-keras",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codegemma-7b-it-pytorch",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codegemma-7b-keras",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codegemma-7b-pytorch",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codellama-13b-hf",
-   "total": {
-    "min": 13.0,
-    "max": 13.0
-   },
-   "active": {
-    "min": 13.0,
-    "max": 13.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codellama-13b-instruct-hf",
-   "total": {
-    "min": 13.0,
-    "max": 13.0
-   },
-   "active": {
-    "min": 13.0,
-    "max": 13.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codellama-13b-python-hf",
-   "total": {
-    "min": 13.0,
-    "max": 13.0
-   },
-   "active": {
-    "min": 13.0,
-    "max": 13.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codellama-34b-hf",
-   "total": {
-    "min": 34.0,
-    "max": 34.0
-   },
-   "active": {
-    "min": 34.0,
-    "max": 34.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codellama-34b-instruct-hf",
-   "total": {
-    "min": 34.0,
-    "max": 34.0
-   },
-   "active": {
-    "min": 34.0,
-    "max": 34.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codellama-34b-python-hf",
-   "total": {
-    "min": 34.0,
-    "max": 34.0
-   },
-   "active": {
-    "min": 34.0,
-    "max": 34.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codellama-70b-hf",
-   "total": {
-    "min": 70.0,
-    "max": 70.0
-   },
-   "active": {
-    "min": 70.0,
-    "max": 70.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codellama-70b-instruct-hf",
-   "total": {
-    "min": 70.0,
-    "max": 70.0
-   },
-   "active": {
-    "min": 70.0,
-    "max": 70.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codellama-70b-python-hf",
-   "total": {
-    "min": 70.0,
-    "max": 70.0
-   },
-   "active": {
-    "min": 70.0,
-    "max": 70.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codellama-7b-hf",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codellama-7b-instruct-hf",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codellama-7b-python-hf",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "codestral-22b-v0-1",
-   "total": {
-    "min": 22.25,
-    "max": 22.25
-   },
-   "active": {
-    "min": 22.25,
-    "max": 22.25
-   },
-   "confidence": "published"
-  },
-  {
    "match": "codestral-2508",
    "total": {
     "min": 22.2,
@@ -3427,18 +2912,6 @@
    "confidence": "published",
    "tps": 98.0,
    "ttft": 0.38
-  },
-  {
-   "match": "codestral-latest",
-   "total": {
-    "min": 22.2,
-    "max": 22.2
-   },
-   "active": {
-    "min": 22.2,
-    "max": 22.2
-   },
-   "confidence": "published"
   },
   {
    "match": "cogito-v2-1-671b",
@@ -3493,42 +2966,6 @@
    "confidence": "estimated",
    "tps": 141.0,
    "ttft": 0.26
-  },
-  {
-   "match": "command-a-reasoning-08-2025",
-   "total": {
-    "min": 111.0,
-    "max": 111.0
-   },
-   "active": {
-    "min": 111.0,
-    "max": 111.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "command-a-translate-08-2025",
-   "total": {
-    "min": 111.0,
-    "max": 111.0
-   },
-   "active": {
-    "min": 111.0,
-    "max": 111.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "command-a-vision-07-2025",
-   "total": {
-    "min": 112.0,
-    "max": 112.0
-   },
-   "active": {
-    "min": 112.0,
-    "max": 112.0
-   },
-   "confidence": "estimated"
   },
   {
    "match": "command-r",
@@ -3599,18 +3036,6 @@
    "ttft": 0.24
   },
   {
-   "match": "command-r7b-arabic-02-2025",
-   "total": {
-    "min": 8.03,
-    "max": 8.03
-   },
-   "active": {
-    "min": 8.03,
-    "max": 8.03
-   },
-   "confidence": "published"
-  },
-  {
    "match": "cydonia-24b",
    "total": {
     "min": 24,
@@ -3622,30 +3047,6 @@
    },
    "confidence": "published",
    "note": "Mistral Small 24B finetune, HF card"
-  },
-  {
-   "match": "dbrx-base",
-   "total": {
-    "min": 132.0,
-    "max": 132.0
-   },
-   "active": {
-    "min": 36.0,
-    "max": 36.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "dbrx-instruct",
-   "total": {
-    "min": 132.0,
-    "max": 132.0
-   },
-   "active": {
-    "min": 36.0,
-    "max": 36.0
-   },
-   "confidence": "published"
   },
   {
    "match": "deepseek-chat",
@@ -3752,54 +3153,6 @@
    "note": "Devstral 2 123B, dense assumed (Large-2-class)"
   },
   {
-   "match": "dolly-v1-6b",
-   "total": {
-    "min": 6.0,
-    "max": 6.0
-   },
-   "active": {
-    "min": 6.0,
-    "max": 6.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "dolly-v2-12b",
-   "total": {
-    "min": 12.0,
-    "max": 12.0
-   },
-   "active": {
-    "min": 12.0,
-    "max": 12.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "dolly-v2-3b",
-   "total": {
-    "min": 3.0,
-    "max": 3.0
-   },
-   "active": {
-    "min": 3.0,
-    "max": 3.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "dolly-v2-7b",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
    "match": "dolphin-mistral-24b",
    "total": {
     "min": 24,
@@ -3840,19 +3193,6 @@
    "ttft": 1.14
   },
   {
-   "match": "gemini-2-5-flash-image",
-   "total": {
-    "min": 440.0,
-    "max": 440.0
-   },
-   "active": {
-    "min": 44.0,
-    "max": 132.0
-   },
-   "confidence": "estimated",
-   "ttft": 15.05
-  },
-  {
    "match": "gemini-2-5-flash-lite",
    "total": {
     "min": 8.0,
@@ -3881,18 +3221,6 @@
    "ttft": 2.67
   },
   {
-   "match": "gemini-3-1-flash-image-preview",
-   "total": {
-    "min": 1200.0,
-    "max": 1200.0
-   },
-   "active": {
-    "min": 120.0,
-    "max": 360.0
-   },
-   "confidence": "estimated"
-  },
-  {
    "match": "gemini-3-1-flash-lite",
    "total": {
     "min": 30.0,
@@ -3907,18 +3235,6 @@
    "ttft": 0.82
   },
   {
-   "match": "gemini-3-1-flash-lite-preview",
-   "total": {
-    "min": 30.0,
-    "max": 105.0
-   },
-   "active": {
-    "min": 30.0,
-    "max": 105.0
-   },
-   "confidence": "estimated"
-  },
-  {
    "match": "gemini-3-1-pro-preview",
    "total": {
     "min": 1200.0,
@@ -3931,18 +3247,6 @@
    "confidence": "estimated",
    "tps": 77.0,
    "ttft": 3.12
-  },
-  {
-   "match": "gemini-3-1-pro-preview-customtools",
-   "total": {
-    "min": 1200.0,
-    "max": 1200.0
-   },
-   "active": {
-    "min": 120.0,
-    "max": 360.0
-   },
-   "confidence": "estimated"
   },
   {
    "match": "gemini-3-5-flash",
@@ -4027,510 +3331,6 @@
    "confidence": "estimated",
    "tps": 86.0,
    "ttft": 1.64
-  },
-  {
-   "match": "gemini-3-pro-image-preview",
-   "total": {
-    "min": 1200.0,
-    "max": 1200.0
-   },
-   "active": {
-    "min": 120.0,
-    "max": 360.0
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "gemini-flash-latest",
-   "total": {
-    "min": 440.0,
-    "max": 440.0
-   },
-   "active": {
-    "min": 44.0,
-    "max": 132.0
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "gemini-flash-lite-latest",
-   "total": {
-    "min": 8.0,
-    "max": 28.0
-   },
-   "active": {
-    "min": 8.0,
-    "max": 28.0
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "gemini-pro-latest",
-   "total": {
-    "min": 2000.0,
-    "max": 2000.0
-   },
-   "active": {
-    "min": 200.0,
-    "max": 600.0
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "gemma-1-1-2b-it",
-   "total": {
-    "min": 2.51,
-    "max": 2.51
-   },
-   "active": {
-    "min": 2.51,
-    "max": 2.51
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-1-1-2b-it-gguf",
-   "total": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "active": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-1-1-2b-it-keras",
-   "total": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "active": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-1-1-2b-it-pytorch",
-   "total": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "active": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-1-1-2b-it-tflite",
-   "total": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "active": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-1-1-7b-it",
-   "total": {
-    "min": 8.54,
-    "max": 8.54
-   },
-   "active": {
-    "min": 8.54,
-    "max": 8.54
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-1-1-7b-it-gguf",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-1-1-7b-it-keras",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-1-1-7b-it-pytorch",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-2-27b",
-   "total": {
-    "min": 27.23,
-    "max": 27.23
-   },
-   "active": {
-    "min": 27.23,
-    "max": 27.23
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-2-27b-it",
-   "total": {
-    "min": 27.23,
-    "max": 27.23
-   },
-   "active": {
-    "min": 27.23,
-    "max": 27.23
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-2-27b-it-pytorch",
-   "total": {
-    "min": 27.0,
-    "max": 27.0
-   },
-   "active": {
-    "min": 27.0,
-    "max": 27.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-2-27b-pytorch",
-   "total": {
-    "min": 27.0,
-    "max": 27.0
-   },
-   "active": {
-    "min": 27.0,
-    "max": 27.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-2-2b",
-   "total": {
-    "min": 2.61,
-    "max": 2.61
-   },
-   "active": {
-    "min": 2.61,
-    "max": 2.61
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-2-2b-it",
-   "total": {
-    "min": 2.61,
-    "max": 2.61
-   },
-   "active": {
-    "min": 2.61,
-    "max": 2.61
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-2-2b-it-pytorch",
-   "total": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "active": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-2-2b-pytorch",
-   "total": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "active": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-2-9b",
-   "total": {
-    "min": 9.24,
-    "max": 9.24
-   },
-   "active": {
-    "min": 9.24,
-    "max": 9.24
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-2-9b-it",
-   "total": {
-    "min": 9.24,
-    "max": 9.24
-   },
-   "active": {
-    "min": 9.24,
-    "max": 9.24
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-2-9b-it-pytorch",
-   "total": {
-    "min": 9.0,
-    "max": 9.0
-   },
-   "active": {
-    "min": 9.0,
-    "max": 9.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-2-9b-keras",
-   "total": {
-    "min": 9.0,
-    "max": 9.0
-   },
-   "active": {
-    "min": 9.0,
-    "max": 9.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-2-9b-pytorch",
-   "total": {
-    "min": 9.0,
-    "max": 9.0
-   },
-   "active": {
-    "min": 9.0,
-    "max": 9.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-2-instruct-9b-keras",
-   "total": {
-    "min": 9.0,
-    "max": 9.0
-   },
-   "active": {
-    "min": 9.0,
-    "max": 9.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-2b",
-   "total": {
-    "min": 2.51,
-    "max": 2.51
-   },
-   "active": {
-    "min": 2.51,
-    "max": 2.51
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-2b-cpp",
-   "total": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "active": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-2b-flax",
-   "total": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "active": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-2b-gguf",
-   "total": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "active": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-2b-it",
-   "total": {
-    "min": 2.51,
-    "max": 2.51
-   },
-   "active": {
-    "min": 2.51,
-    "max": 2.51
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-2b-it-cpp",
-   "total": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "active": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-2b-it-flax",
-   "total": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "active": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-2b-it-gguf",
-   "total": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "active": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-2b-it-keras",
-   "total": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "active": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-2b-it-pytorch",
-   "total": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "active": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-2b-it-sfp-cpp",
-   "total": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "active": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-2b-it-tflite",
-   "total": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "active": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-2b-keras",
-   "total": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "active": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-2b-pytorch",
-   "total": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "active": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-2b-sfp-cpp",
-   "total": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "active": {
-    "min": 2.0,
-    "max": 2.0
-   },
-   "confidence": "published"
   },
   {
    "match": "gemma-3-12b",
@@ -4625,18 +3425,6 @@
    "note": "self-describing dense id"
   },
   {
-   "match": "gemma-4-31b-it",
-   "total": {
-    "min": 31.0,
-    "max": 31.0
-   },
-   "active": {
-    "min": 31.0,
-    "max": 31.0
-   },
-   "confidence": "estimated"
-  },
-  {
    "match": "gemma-4-e2b",
    "total": {
     "min": 4,
@@ -4648,198 +3436,6 @@
    },
    "confidence": "estimated",
    "note": "Gemma 4 E2B, ~2B effective, anchored to 3n"
-  },
-  {
-   "match": "gemma-7b",
-   "total": {
-    "min": 8.54,
-    "max": 8.54
-   },
-   "active": {
-    "min": 8.54,
-    "max": 8.54
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-7b-cpp",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-7b-flax",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-7b-gguf",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-7b-it",
-   "total": {
-    "min": 8.54,
-    "max": 8.54
-   },
-   "active": {
-    "min": 8.54,
-    "max": 8.54
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-7b-it-cpp",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-7b-it-flax",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-7b-it-gguf",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-7b-it-keras",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-7b-it-pytorch",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-7b-it-quant-pytorch",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-7b-it-sfp-cpp",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-7b-keras",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-7b-pytorch",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-7b-quant-pytorch",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gemma-7b-sfp-cpp",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
   },
   {
    "match": "glm-4-5",
@@ -4960,6 +3556,32 @@
    "ttft": 2.24
   },
   {
+   "match": "glm-5-3",
+   "total": {
+    "min": 753.33,
+    "max": 753.33
+   },
+   "active": {
+    "min": 40,
+    "max": 40
+   },
+   "confidence": "published",
+   "note": "GLM-5.3 uses the same base model as GLM-5.2; 753.33B safetensors and 40B active, official Z.ai HF card"
+  },
+  {
+   "match": "glm-5-3-flash",
+   "total": {
+    "min": 321.323,
+    "max": 321.323
+   },
+   "active": {
+    "min": 18,
+    "max": 18
+   },
+   "confidence": "published",
+   "note": "GLM-5.3-Flash 320B/18B MoE, official Z.ai HF card; 321.323B safetensors"
+  },
+  {
    "match": "glm-5-turbo",
    "total": {
     "min": 100,
@@ -5000,30 +3622,6 @@
    "ttft": 0.71
   },
   {
-   "match": "gpt-3-5-turbo-0125",
-   "total": {
-    "min": 20.0,
-    "max": 70.0
-   },
-   "active": {
-    "min": 20.0,
-    "max": 70.0
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "gpt-3-5-turbo-1106",
-   "total": {
-    "min": 20.0,
-    "max": 70.0
-   },
-   "active": {
-    "min": 20.0,
-    "max": 70.0
-   },
-   "confidence": "estimated"
-  },
-  {
    "match": "gpt-3-5-turbo-16k",
    "total": {
     "min": 20.0,
@@ -5036,30 +3634,6 @@
    "confidence": "estimated",
    "tps": 95.0,
    "ttft": 0.81
-  },
-  {
-   "match": "gpt-3-5-turbo-instruct",
-   "total": {
-    "min": 20.0,
-    "max": 70.0
-   },
-   "active": {
-    "min": 20.0,
-    "max": 70.0
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "gpt-3-5-turbo-instruct-0914",
-   "total": {
-    "min": 20.0,
-    "max": 70.0
-   },
-   "active": {
-    "min": 20.0,
-    "max": 70.0
-   },
-   "confidence": "estimated"
   },
   {
    "match": "gpt-35-turbo",
@@ -5076,30 +3650,6 @@
    "ttft": 0.71
   },
   {
-   "match": "gpt-35-turbo-0125",
-   "total": {
-    "min": 20.0,
-    "max": 70.0
-   },
-   "active": {
-    "min": 20.0,
-    "max": 70.0
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "gpt-35-turbo-1106",
-   "total": {
-    "min": 20.0,
-    "max": 70.0
-   },
-   "active": {
-    "min": 20.0,
-    "max": 70.0
-   },
-   "confidence": "estimated"
-  },
-  {
    "match": "gpt-35-turbo-16k",
    "total": {
     "min": 20.0,
@@ -5114,30 +3664,6 @@
    "ttft": 0.81
   },
   {
-   "match": "gpt-35-turbo-instruct",
-   "total": {
-    "min": 20.0,
-    "max": 70.0
-   },
-   "active": {
-    "min": 20.0,
-    "max": 70.0
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "gpt-35-turbo-instruct-0914",
-   "total": {
-    "min": 20.0,
-    "max": 70.0
-   },
-   "active": {
-    "min": 20.0,
-    "max": 70.0
-   },
-   "confidence": "estimated"
-  },
-  {
    "match": "gpt-4",
    "total": {
     "min": 1760.0,
@@ -5150,18 +3676,6 @@
    "confidence": "estimated",
    "tps": 46.0,
    "ttft": 0.89
-  },
-  {
-   "match": "gpt-4-0613",
-   "total": {
-    "min": 1760.0,
-    "max": 1760.0
-   },
-   "active": {
-    "min": 176.0,
-    "max": 528.0
-   },
-   "confidence": "estimated"
   },
   {
    "match": "gpt-4-1",
@@ -5360,126 +3874,6 @@
    "ttft": 0.53
   },
   {
-   "match": "gpt-4o-mini-search-preview",
-   "total": {
-    "min": 8.0,
-    "max": 28.0
-   },
-   "active": {
-    "min": 8.0,
-    "max": 28.0
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "gpt-4o-mini-search-preview-2025-03-11",
-   "total": {
-    "min": 8.0,
-    "max": 28.0
-   },
-   "active": {
-    "min": 8.0,
-    "max": 28.0
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "gpt-4o-mini-transcribe",
-   "total": {
-    "min": 8.0,
-    "max": 28.0
-   },
-   "active": {
-    "min": 8.0,
-    "max": 28.0
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "gpt-4o-mini-transcribe-2025-03-20",
-   "total": {
-    "min": 8.0,
-    "max": 28.0
-   },
-   "active": {
-    "min": 8.0,
-    "max": 28.0
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "gpt-4o-mini-transcribe-2025-12-15",
-   "total": {
-    "min": 8.0,
-    "max": 28.0
-   },
-   "active": {
-    "min": 8.0,
-    "max": 28.0
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "gpt-4o-mini-tts",
-   "total": {
-    "min": 8.0,
-    "max": 28.0
-   },
-   "active": {
-    "min": 8.0,
-    "max": 28.0
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "gpt-4o-mini-tts-2025-03-20",
-   "total": {
-    "min": 8.0,
-    "max": 28.0
-   },
-   "active": {
-    "min": 8.0,
-    "max": 28.0
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "gpt-4o-mini-tts-2025-12-15",
-   "total": {
-    "min": 8.0,
-    "max": 28.0
-   },
-   "active": {
-    "min": 8.0,
-    "max": 28.0
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "gpt-4o-search-preview",
-   "total": {
-    "min": 440.0,
-    "max": 440.0
-   },
-   "active": {
-    "min": 44.0,
-    "max": 132.0
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "gpt-4o-search-preview-2025-03-11",
-   "total": {
-    "min": 440.0,
-    "max": 440.0
-   },
-   "active": {
-    "min": 44.0,
-    "max": 132.0
-   },
-   "confidence": "estimated"
-  },
-  {
    "match": "gpt-5",
    "total": {
     "min": 300.0,
@@ -5522,54 +3916,6 @@
    "ttft": 0.97
   },
   {
-   "match": "gpt-5-1-chat-latest",
-   "total": {
-    "min": 300.0,
-    "max": 300.0
-   },
-   "active": {
-    "min": 30.0,
-    "max": 90.0
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "gpt-5-1-codex",
-   "total": {
-    "min": 300.0,
-    "max": 300.0
-   },
-   "active": {
-    "min": 30.0,
-    "max": 90.0
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "gpt-5-1-codex-max",
-   "total": {
-    "min": 300.0,
-    "max": 300.0
-   },
-   "active": {
-    "min": 30.0,
-    "max": 90.0
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "gpt-5-1-codex-mini",
-   "total": {
-    "min": 25.0,
-    "max": 70.0
-   },
-   "active": {
-    "min": 25.0,
-    "max": 70.0
-   },
-   "confidence": "estimated"
-  },
-  {
    "match": "gpt-5-2",
    "total": {
     "min": 420.0,
@@ -5596,30 +3942,6 @@
    "confidence": "estimated",
    "tps": 68.0,
    "ttft": 2.41
-  },
-  {
-   "match": "gpt-5-2-chat-latest",
-   "total": {
-    "min": 420.0,
-    "max": 420.0
-   },
-   "active": {
-    "min": 42.0,
-    "max": 126.0
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "gpt-5-2-codex",
-   "total": {
-    "min": 420.0,
-    "max": 420.0
-   },
-   "active": {
-    "min": 42.0,
-    "max": 126.0
-   },
-   "confidence": "estimated"
   },
   {
    "match": "gpt-5-2-pro",
@@ -5662,18 +3984,6 @@
    "confidence": "estimated",
    "tps": 59.0,
    "ttft": 5.13
-  },
-  {
-   "match": "gpt-5-3-chat-latest",
-   "total": {
-    "min": 420.0,
-    "max": 420.0
-   },
-   "active": {
-    "min": 42.0,
-    "max": 126.0
-   },
-   "confidence": "estimated"
   },
   {
    "match": "gpt-5-3-codex",
@@ -5830,30 +4140,6 @@
    "ttft": 4.03
   },
   {
-   "match": "gpt-5-5-pro",
-   "total": {
-    "min": 5400.0,
-    "max": 5400.0
-   },
-   "active": {
-    "min": 540.0,
-    "max": 1800.0
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "gpt-5-5-pro-2026-04-23",
-   "total": {
-    "min": 5400.0,
-    "max": 5400.0
-   },
-   "active": {
-    "min": 540.0,
-    "max": 1800.0
-   },
-   "confidence": "estimated"
-  },
-  {
    "match": "gpt-5-6-luna",
    "total": {
     "min": 180.0,
@@ -5894,30 +4180,6 @@
    "confidence": "estimated",
    "tps": 75.0,
    "ttft": 2.15
-  },
-  {
-   "match": "gpt-5-chat-latest",
-   "total": {
-    "min": 300.0,
-    "max": 300.0
-   },
-   "active": {
-    "min": 30.0,
-    "max": 90.0
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "gpt-5-codex",
-   "total": {
-    "min": 300.0,
-    "max": 300.0
-   },
-   "active": {
-    "min": 30.0,
-    "max": 90.0
-   },
-   "confidence": "estimated"
   },
   {
    "match": "gpt-5-mini",
@@ -6004,30 +4266,6 @@
    "ttft": 21.83
   },
   {
-   "match": "gpt-5-search-api",
-   "total": {
-    "min": 300.0,
-    "max": 300.0
-   },
-   "active": {
-    "min": 30.0,
-    "max": 90.0
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "gpt-5-search-api-2025-10-14",
-   "total": {
-    "min": 300.0,
-    "max": 300.0
-   },
-   "active": {
-    "min": 30.0,
-    "max": 90.0
-   },
-   "confidence": "estimated"
-  },
-  {
    "match": "gpt-6-1-sol",
    "total": {
     "min": 375.0,
@@ -6082,30 +4320,6 @@
    "confidence": "estimated",
    "tps": 74.0,
    "ttft": 1.93
-  },
-  {
-   "match": "gpt-oss-120b",
-   "total": {
-    "min": 117.0,
-    "max": 117.0
-   },
-   "active": {
-    "min": 5.1,
-    "max": 5.1
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "gpt-oss-20b",
-   "total": {
-    "min": 21.0,
-    "max": 21.0
-   },
-   "active": {
-    "min": 3.6,
-    "max": 3.6
-   },
-   "confidence": "published"
   },
   {
    "match": "gpt-oss-safeguard-120b",
@@ -6342,30 +4556,6 @@
    "note": "Kimi K2.7, anchored to K2 arch"
   },
   {
-   "match": "labs-leanstral-1-5",
-   "total": {
-    "min": 119.0,
-    "max": 119.0
-   },
-   "active": {
-    "min": 6.5,
-    "max": 6.5
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "labs-leanstral-1-5-1",
-   "total": {
-    "min": 119.0,
-    "max": 119.0
-   },
-   "active": {
-    "min": 6.5,
-    "max": 6.5
-   },
-   "confidence": "published"
-  },
-  {
    "match": "lfm-2-24b-a2b",
    "total": {
     "min": 24,
@@ -6416,246 +4606,6 @@
    },
    "confidence": "estimated",
    "note": "anchored to Ling-flash-2.0 100B/6B MoE"
-  },
-  {
-   "match": "llama-2-13b",
-   "total": {
-    "min": 13.0,
-    "max": 13.0
-   },
-   "active": {
-    "min": 13.0,
-    "max": 13.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "llama-2-13b-chat",
-   "total": {
-    "min": 13.0,
-    "max": 13.0
-   },
-   "active": {
-    "min": 13.0,
-    "max": 13.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "llama-2-13b-chat-hf",
-   "total": {
-    "min": 13.02,
-    "max": 13.02
-   },
-   "active": {
-    "min": 13.02,
-    "max": 13.02
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "llama-2-13b-hf",
-   "total": {
-    "min": 13.02,
-    "max": 13.02
-   },
-   "active": {
-    "min": 13.02,
-    "max": 13.02
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "llama-2-70b",
-   "total": {
-    "min": 70.0,
-    "max": 70.0
-   },
-   "active": {
-    "min": 70.0,
-    "max": 70.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "llama-2-70b-chat",
-   "total": {
-    "min": 70.0,
-    "max": 70.0
-   },
-   "active": {
-    "min": 70.0,
-    "max": 70.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "llama-2-70b-chat-hf",
-   "total": {
-    "min": 68.98,
-    "max": 68.98
-   },
-   "active": {
-    "min": 68.98,
-    "max": 68.98
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "llama-2-70b-hf",
-   "total": {
-    "min": 68.98,
-    "max": 68.98
-   },
-   "active": {
-    "min": 68.98,
-    "max": 68.98
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "llama-2-7b",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "llama-2-7b-chat",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "llama-2-7b-chat-hf",
-   "total": {
-    "min": 6.74,
-    "max": 6.74
-   },
-   "active": {
-    "min": 6.74,
-    "max": 6.74
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "llama-2-7b-hf",
-   "total": {
-    "min": 6.74,
-    "max": 6.74
-   },
-   "active": {
-    "min": 6.74,
-    "max": 6.74
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "llama-3-1-405b",
-   "total": {
-    "min": 405.85,
-    "max": 405.85
-   },
-   "active": {
-    "min": 405.85,
-    "max": 405.85
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "llama-3-1-405b-fp8",
-   "total": {
-    "min": 405.87,
-    "max": 405.87
-   },
-   "active": {
-    "min": 405.87,
-    "max": 405.87
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "llama-3-1-405b-instruct",
-   "total": {
-    "min": 405.85,
-    "max": 405.85
-   },
-   "active": {
-    "min": 405.85,
-    "max": 405.85
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "llama-3-1-405b-instruct-fp8",
-   "total": {
-    "min": 405.87,
-    "max": 405.87
-   },
-   "active": {
-    "min": 405.87,
-    "max": 405.87
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "llama-3-1-70b",
-   "total": {
-    "min": 70.55,
-    "max": 70.55
-   },
-   "active": {
-    "min": 70.55,
-    "max": 70.55
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "llama-3-1-70b-instruct",
-   "total": {
-    "min": 70.55,
-    "max": 70.55
-   },
-   "active": {
-    "min": 70.55,
-    "max": 70.55
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "llama-3-1-8b",
-   "total": {
-    "min": 8.03,
-    "max": 8.03
-   },
-   "active": {
-    "min": 8.03,
-    "max": 8.03
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "llama-3-1-8b-instruct",
-   "total": {
-    "min": 8.03,
-    "max": 8.03
-   },
-   "active": {
-    "min": 8.03,
-    "max": 8.03
-   },
-   "confidence": "published"
   },
   {
    "match": "llama-3-2-11b",
@@ -6710,54 +4660,6 @@
    "note": "Llama-3.3-70B dense, HF card"
   },
   {
-   "match": "llama-3-70b",
-   "total": {
-    "min": 70.55,
-    "max": 70.55
-   },
-   "active": {
-    "min": 70.55,
-    "max": 70.55
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "llama-3-70b-instruct",
-   "total": {
-    "min": 70.55,
-    "max": 70.55
-   },
-   "active": {
-    "min": 70.55,
-    "max": 70.55
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "llama-3-8b",
-   "total": {
-    "min": 8.03,
-    "max": 8.03
-   },
-   "active": {
-    "min": 8.03,
-    "max": 8.03
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "llama-3-8b-instruct",
-   "total": {
-    "min": 8.03,
-    "max": 8.03
-   },
-   "active": {
-    "min": 8.03,
-    "max": 8.03
-   },
-   "confidence": "published"
-  },
-  {
    "match": "llama-4-maverick",
    "total": {
     "min": 400,
@@ -6782,42 +4684,6 @@
    },
    "confidence": "published",
    "note": "Llama-4 Scout 109B/17B MoE, HF card"
-  },
-  {
-   "match": "llama-guard-2-8b",
-   "total": {
-    "min": 8.03,
-    "max": 8.03
-   },
-   "active": {
-    "min": 8.03,
-    "max": 8.03
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "llama-guard-3-8b",
-   "total": {
-    "min": 8.03,
-    "max": 8.03
-   },
-   "active": {
-    "min": 8.03,
-    "max": 8.03
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "llama-guard-3-8b-int8",
-   "total": {
-    "min": 8.03,
-    "max": 8.03
-   },
-   "active": {
-    "min": 8.03,
-    "max": 8.03
-   },
-   "confidence": "published"
   },
   {
    "match": "llama-guard-4-12b",
@@ -6976,42 +4842,6 @@
    "note": "Llama-4 Scout 109B/17B MoE (Bedrock naming), HF card"
   },
   {
-   "match": "llamaguard-7b",
-   "total": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "active": {
-    "min": 7.0,
-    "max": 7.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "magistral-medium-latest",
-   "total": {
-    "min": 70.0,
-    "max": 120.0
-   },
-   "active": {
-    "min": 70.0,
-    "max": 120.0
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "magistral-small-latest",
-   "total": {
-    "min": 23.6,
-    "max": 23.6
-   },
-   "active": {
-    "min": 23.6,
-    "max": 23.6
-   },
-   "confidence": "published"
-  },
-  {
    "match": "magnum-v4-72b",
    "total": {
     "min": 72.7,
@@ -7023,18 +4853,6 @@
    },
    "confidence": "published",
    "note": "Qwen2.5-72B finetune, HF card"
-  },
-  {
-   "match": "mathstral-7b-v0-1",
-   "total": {
-    "min": 7.25,
-    "max": 7.25
-   },
-   "active": {
-    "min": 7.25,
-    "max": 7.25
-   },
-   "confidence": "published"
   },
   {
    "match": "minimax-01",
@@ -7142,18 +4960,6 @@
    "ttft": 0.38
   },
   {
-   "match": "ministral-14b-latest",
-   "total": {
-    "min": 14.0,
-    "max": 14.0
-   },
-   "active": {
-    "min": 14.0,
-    "max": 14.0
-   },
-   "confidence": "published"
-  },
-  {
    "match": "ministral-3-14b",
    "total": {
     "min": 14,
@@ -7207,18 +5013,6 @@
    "ttft": 0.32
   },
   {
-   "match": "ministral-3b-latest",
-   "total": {
-    "min": 3.32,
-    "max": 3.32
-   },
-   "active": {
-    "min": 3.32,
-    "max": 3.32
-   },
-   "confidence": "published"
-  },
-  {
    "match": "ministral-8b-2512",
    "total": {
     "min": 8.02,
@@ -7233,18 +5027,6 @@
    "ttft": 0.32
   },
   {
-   "match": "ministral-8b-latest",
-   "total": {
-    "min": 8.02,
-    "max": 8.02
-   },
-   "active": {
-    "min": 8.02,
-    "max": 8.02
-   },
-   "confidence": "published"
-  },
-  {
    "match": "mistral-7b",
    "total": {
     "min": 7.25,
@@ -7256,90 +5038,6 @@
    },
    "confidence": "published",
    "note": "Mistral 7B dense, HF card"
-  },
-  {
-   "match": "mistral-7b-instruct-v0-1",
-   "total": {
-    "min": 7.24,
-    "max": 7.24
-   },
-   "active": {
-    "min": 7.24,
-    "max": 7.24
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "mistral-7b-instruct-v0-2",
-   "total": {
-    "min": 7.24,
-    "max": 7.24
-   },
-   "active": {
-    "min": 7.24,
-    "max": 7.24
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "mistral-7b-instruct-v0-3",
-   "total": {
-    "min": 7.25,
-    "max": 7.25
-   },
-   "active": {
-    "min": 7.25,
-    "max": 7.25
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "mistral-7b-v0-1",
-   "total": {
-    "min": 7.24,
-    "max": 7.24
-   },
-   "active": {
-    "min": 7.24,
-    "max": 7.24
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "mistral-7b-v0-2",
-   "total": {
-    "min": 7.24,
-    "max": 7.24
-   },
-   "active": {
-    "min": 7.24,
-    "max": 7.24
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "mistral-7b-v0-3",
-   "total": {
-    "min": 7.25,
-    "max": 7.25
-   },
-   "active": {
-    "min": 7.25,
-    "max": 7.25
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "mistral-code-fim-latest",
-   "total": {
-    "min": 22.2,
-    "max": 22.2
-   },
-   "active": {
-    "min": 22.2,
-    "max": 22.2
-   },
-   "confidence": "published"
   },
   {
    "match": "mistral-large",
@@ -7410,18 +5108,6 @@
    "ttft": 1.11
   },
   {
-   "match": "mistral-large-instruct-2407",
-   "total": {
-    "min": 122.61,
-    "max": 122.61
-   },
-   "active": {
-    "min": 122.61,
-    "max": 122.61
-   },
-   "confidence": "published"
-  },
-  {
    "match": "mistral-large-latest",
    "total": {
     "min": 675.0,
@@ -7434,30 +5120,6 @@
    "confidence": "estimated",
    "tps": 52.0,
    "ttft": 0.68
-  },
-  {
-   "match": "mistral-medium",
-   "total": {
-    "min": 70.0,
-    "max": 120.0
-   },
-   "active": {
-    "min": 70.0,
-    "max": 120.0
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "mistral-medium-2604",
-   "total": {
-    "min": 128.0,
-    "max": 128.0
-   },
-   "active": {
-    "min": 128.0,
-    "max": 128.0
-   },
-   "confidence": "estimated"
   },
   {
    "match": "mistral-medium-3",
@@ -7488,18 +5150,6 @@
    "ttft": 0.36
   },
   {
-   "match": "mistral-medium-latest",
-   "total": {
-    "min": 70.0,
-    "max": 120.0
-   },
-   "active": {
-    "min": 70.0,
-    "max": 120.0
-   },
-   "confidence": "estimated"
-  },
-  {
    "match": "mistral-nemo",
    "total": {
     "min": 12.2,
@@ -7511,30 +5161,6 @@
    },
    "confidence": "published",
    "note": "Mistral NeMo 12B dense, HF card"
-  },
-  {
-   "match": "mistral-nemo-base-2407",
-   "total": {
-    "min": 12.25,
-    "max": 12.25
-   },
-   "active": {
-    "min": 12.25,
-    "max": 12.25
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "mistral-nemo-instruct-2407",
-   "total": {
-    "min": 12.25,
-    "max": 12.25
-   },
-   "active": {
-    "min": 12.25,
-    "max": 12.25
-   },
-   "confidence": "published"
   },
   {
    "match": "mistral-saba",
@@ -7616,18 +5242,6 @@
    "note": "Mistral Small 3.2 24B dense, HF card"
   },
   {
-   "match": "mistral-small-latest",
-   "total": {
-    "min": 119.0,
-    "max": 119.0
-   },
-   "active": {
-    "min": 8.0,
-    "max": 8.0
-   },
-   "confidence": "published"
-  },
-  {
    "match": "mixtral-8x22b",
    "total": {
     "min": 141,
@@ -7641,114 +5255,6 @@
    "note": "Mixtral 8x22B MoE, HF card"
   },
   {
-   "match": "mixtral-8x22b-instruct-v0-1",
-   "total": {
-    "min": 140.6,
-    "max": 140.6
-   },
-   "active": {
-    "min": 39.1,
-    "max": 39.1
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "mixtral-8x22b-instruct-v0-1-4bit",
-   "total": {
-    "min": 140.6,
-    "max": 140.6
-   },
-   "active": {
-    "min": 39.1,
-    "max": 39.1
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "mixtral-8x22b-instruct-v0-3-original",
-   "total": {
-    "min": 140.6,
-    "max": 140.6
-   },
-   "active": {
-    "min": 39.1,
-    "max": 39.1
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "mixtral-8x22b-v0-1",
-   "total": {
-    "min": 140.6,
-    "max": 140.6
-   },
-   "active": {
-    "min": 39.1,
-    "max": 39.1
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "mixtral-8x22b-v0-1-4bit",
-   "total": {
-    "min": 140.6,
-    "max": 140.6
-   },
-   "active": {
-    "min": 39.1,
-    "max": 39.1
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "mixtral-8x22b-v0-1-awq",
-   "total": {
-    "min": 140.6,
-    "max": 140.6
-   },
-   "active": {
-    "min": 39.1,
-    "max": 39.1
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "mixtral-8x22b-v0-1-original",
-   "total": {
-    "min": 140.6,
-    "max": 140.6
-   },
-   "active": {
-    "min": 39.1,
-    "max": 39.1
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "mixtral-8x22b-v0-3",
-   "total": {
-    "min": 140.6,
-    "max": 140.6
-   },
-   "active": {
-    "min": 39.1,
-    "max": 39.1
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "mixtral-8x22b-v0-3-original",
-   "total": {
-    "min": 140.6,
-    "max": 140.6
-   },
-   "active": {
-    "min": 39.1,
-    "max": 39.1
-   },
-   "confidence": "published"
-  },
-  {
    "match": "mixtral-8x7b",
    "total": {
     "min": 46.7,
@@ -7760,30 +5266,6 @@
    },
    "confidence": "published",
    "note": "Mixtral 8x7B MoE, HF card"
-  },
-  {
-   "match": "mixtral-8x7b-instruct-v0-1",
-   "total": {
-    "min": 46.7,
-    "max": 46.7
-   },
-   "active": {
-    "min": 12.9,
-    "max": 12.9
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "mixtral-8x7b-v0-1",
-   "total": {
-    "min": 46.7,
-    "max": 46.7
-   },
-   "active": {
-    "min": 12.9,
-    "max": 12.9
-   },
-   "confidence": "published"
   },
   {
    "match": "mythomax-l2-13b",
@@ -8052,30 +5534,6 @@
    "ttft": 3.4
   },
   {
-   "match": "o4-mini-deep-research",
-   "total": {
-    "min": 8.0,
-    "max": 28.0
-   },
-   "active": {
-    "min": 8.0,
-    "max": 28.0
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "o4-mini-deep-research-2025-06-26",
-   "total": {
-    "min": 8.0,
-    "max": 28.0
-   },
-   "active": {
-    "min": 8.0,
-    "max": 28.0
-   },
-   "confidence": "estimated"
-  },
-  {
    "match": "olmo-3-32b",
    "total": {
     "min": 32,
@@ -8141,294 +5599,6 @@
    "note": "Writer Palmyra X5, undisclosed"
   },
   {
-   "match": "phi-1",
-   "total": {
-    "min": 1.42,
-    "max": 1.42
-   },
-   "active": {
-    "min": 1.42,
-    "max": 1.42
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "phi-1_5",
-   "total": {
-    "min": 1.42,
-    "max": 1.42
-   },
-   "active": {
-    "min": 1.42,
-    "max": 1.42
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "phi-3-medium-128k-instruct",
-   "total": {
-    "min": 13.96,
-    "max": 13.96
-   },
-   "active": {
-    "min": 13.96,
-    "max": 13.96
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "phi-3-medium-128k-instruct-onnx-cpu",
-   "total": {
-    "min": 13.96,
-    "max": 13.96
-   },
-   "active": {
-    "min": 13.96,
-    "max": 13.96
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "phi-3-medium-128k-instruct-onnx-cuda",
-   "total": {
-    "min": 13.96,
-    "max": 13.96
-   },
-   "active": {
-    "min": 13.96,
-    "max": 13.96
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "phi-3-medium-128k-instruct-onnx-directml",
-   "total": {
-    "min": 13.96,
-    "max": 13.96
-   },
-   "active": {
-    "min": 13.96,
-    "max": 13.96
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "phi-3-medium-4k-instruct",
-   "total": {
-    "min": 13.96,
-    "max": 13.96
-   },
-   "active": {
-    "min": 13.96,
-    "max": 13.96
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "phi-3-medium-4k-instruct-onnx-cpu",
-   "total": {
-    "min": 13.96,
-    "max": 13.96
-   },
-   "active": {
-    "min": 13.96,
-    "max": 13.96
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "phi-3-medium-4k-instruct-onnx-cuda",
-   "total": {
-    "min": 13.96,
-    "max": 13.96
-   },
-   "active": {
-    "min": 13.96,
-    "max": 13.96
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "phi-3-medium-4k-instruct-onnx-directml",
-   "total": {
-    "min": 13.96,
-    "max": 13.96
-   },
-   "active": {
-    "min": 13.96,
-    "max": 13.96
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "phi-3-mini-128k-instruct",
-   "total": {
-    "min": 3.82,
-    "max": 3.82
-   },
-   "active": {
-    "min": 3.82,
-    "max": 3.82
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "phi-3-mini-128k-instruct-onnx",
-   "total": {
-    "min": 3.82,
-    "max": 3.82
-   },
-   "active": {
-    "min": 3.82,
-    "max": 3.82
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "phi-3-mini-4k-instruct",
-   "total": {
-    "min": 3.82,
-    "max": 3.82
-   },
-   "active": {
-    "min": 3.82,
-    "max": 3.82
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "phi-3-mini-4k-instruct-gguf",
-   "total": {
-    "min": 3.82,
-    "max": 3.82
-   },
-   "active": {
-    "min": 3.82,
-    "max": 3.82
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "phi-3-mini-4k-instruct-onnx",
-   "total": {
-    "min": 3.82,
-    "max": 3.82
-   },
-   "active": {
-    "min": 3.82,
-    "max": 3.82
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "phi-3-mini-4k-instruct-onnx-web",
-   "total": {
-    "min": 3.82,
-    "max": 3.82
-   },
-   "active": {
-    "min": 3.82,
-    "max": 3.82
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "phi-3-small-128k-instruct",
-   "total": {
-    "min": 7.39,
-    "max": 7.39
-   },
-   "active": {
-    "min": 7.39,
-    "max": 7.39
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "phi-3-small-128k-instruct-onnx-cuda",
-   "total": {
-    "min": 7.39,
-    "max": 7.39
-   },
-   "active": {
-    "min": 7.39,
-    "max": 7.39
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "phi-3-small-8k-instruct",
-   "total": {
-    "min": 7.39,
-    "max": 7.39
-   },
-   "active": {
-    "min": 7.39,
-    "max": 7.39
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "phi-3-small-8k-instruct-onnx-cuda",
-   "total": {
-    "min": 7.39,
-    "max": 7.39
-   },
-   "active": {
-    "min": 7.39,
-    "max": 7.39
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "phi-3-vision-128k-instruct",
-   "total": {
-    "min": 4.15,
-    "max": 4.15
-   },
-   "active": {
-    "min": 4.15,
-    "max": 4.15
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "phi-3-vision-128k-instruct-onnx-cpu",
-   "total": {
-    "min": 4.15,
-    "max": 4.15
-   },
-   "active": {
-    "min": 4.15,
-    "max": 4.15
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "phi-3-vision-128k-instruct-onnx-cuda",
-   "total": {
-    "min": 4.15,
-    "max": 4.15
-   },
-   "active": {
-    "min": 4.15,
-    "max": 4.15
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "phi-3-vision-128k-instruct-onnx-directml",
-   "total": {
-    "min": 4.15,
-    "max": 4.15
-   },
-   "active": {
-    "min": 4.15,
-    "max": 4.15
-   },
-   "confidence": "estimated"
-  },
-  {
    "match": "phi-4",
    "total": {
     "min": 14.7,
@@ -8453,18 +5623,6 @@
    },
    "confidence": "published",
    "note": "Pixtral Large 124B dense, HF card"
-  },
-  {
-   "match": "prompt-guard-86m",
-   "total": {
-    "min": 0.28,
-    "max": 0.28
-   },
-   "active": {
-    "min": 0.28,
-    "max": 0.28
-   },
-   "confidence": "published"
   },
   {
    "match": "qwen-2-5-72b",
@@ -9091,54 +6249,6 @@
    "note": "Mistral NeMo 12B finetune, HF card"
   },
   {
-   "match": "voxtral-mini-2602",
-   "total": {
-    "min": 4.68,
-    "max": 4.68
-   },
-   "active": {
-    "min": 4.68,
-    "max": 4.68
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "voxtral-mini-latest",
-   "total": {
-    "min": 4.68,
-    "max": 4.68
-   },
-   "active": {
-    "min": 4.68,
-    "max": 4.68
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "voxtral-small-2507",
-   "total": {
-    "min": 24.3,
-    "max": 24.3
-   },
-   "active": {
-    "min": 24.3,
-    "max": 24.3
-   },
-   "confidence": "estimated"
-  },
-  {
-   "match": "voxtral-small-latest",
-   "total": {
-    "min": 24.3,
-    "max": 24.3
-   },
-   "active": {
-    "min": 24.3,
-    "max": 24.3
-   },
-   "confidence": "estimated"
-  },
-  {
    "match": "wizardlm-2-8x22b",
    "total": {
     "min": 141,
@@ -9150,54 +6260,6 @@
    },
    "confidence": "published",
    "note": "WizardLM-2 on Mixtral 8x22B base, HF card"
-  },
-  {
-   "match": "zai-glm-5",
-   "total": {
-    "min": 744.0,
-    "max": 744.0
-   },
-   "active": {
-    "min": 40.0,
-    "max": 40.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "zai-glm-5-2",
-   "total": {
-    "min": 744.0,
-    "max": 744.0
-   },
-   "active": {
-    "min": 40.0,
-    "max": 40.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "zai-glm-5-3",
-   "total": {
-    "min": 744.0,
-    "max": 744.0
-   },
-   "active": {
-    "min": 40.0,
-    "max": 40.0
-   },
-   "confidence": "published"
-  },
-  {
-   "match": "zai-glm-latest",
-   "total": {
-    "min": 744.0,
-    "max": 744.0
-   },
-   "active": {
-    "min": 40.0,
-    "max": 40.0
-   },
-   "confidence": "published"
   }
  ]
 }
