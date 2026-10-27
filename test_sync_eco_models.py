@@ -409,10 +409,14 @@ def test_build_patterns_drops_upstream_entries_with_invalid_timing(capsys):
         {"provider": "p", "name": "zero-ttft-model", "architecture": arch,
          "deployment": {"tps": 50, "ttft": 0}}]}
     patterns = sync.build_patterns(eco)
-    assert set(patterns) == {"good-model", "zero-ttft-model"}
+    assert set(patterns) == {"good-model", "zero-ttft-model", "null-tps-model",
+                             "null-ttft-model"}
     assert patterns["good-model"]["tps"] == 50 and patterns["good-model"]["ttft"] == 0.4
     assert patterns["zero-ttft-model"]["tps"] == 50 and patterns["zero-ttft-model"]["ttft"] == 0
-    assert "skipped 5 EcoLogits entries with invalid tps/ttft" in capsys.readouterr().out
+    # EcoLogits' null means "not measured": keep the model, publish no timing.
+    assert "tps" not in patterns["null-tps-model"] and "ttft" not in patterns["null-tps-model"]
+    assert patterns["null-ttft-model"]["tps"] == 50 and "ttft" not in patterns["null-ttft-model"]
+    assert "skipped 3 EcoLogits entries with invalid tps/ttft" in capsys.readouterr().out
 
 
 def test_cli_never_publishes_upstream_invalid_timing(tmp_path, eco_dir):
