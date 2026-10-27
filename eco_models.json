@@ -1,7 +1,7 @@
 {
  "version": 2,
  "source": "mlco2/ecologits@0.11.3",
- "generated": "2026-10-19",
+ "generated": "2026-10-27",
  "defaults": {
   "zone": "WOR",
   "pue": {
@@ -1409,6 +1409,10 @@
    "zone": "USA",
    "provider": "workers-ai"
   },
+  "black-forest-labs/flux-1-schnell": {
+   "skip": true,
+   "source": "task:Text-to-Image"
+  },
   "deepseek-r1-distill-qwen-32b": {
    "total": {
     "min": 32.5,
@@ -1448,6 +1452,20 @@
    },
    "confidence": "derived",
    "source": "hf:deepseek-ai/DeepSeek-V4-Pro-0813@72e1d32",
+   "zone": "USA",
+   "provider": "workers-ai"
+  },
+  "deepseek-v4.1-flash-1017": {
+   "total": {
+    "min": 552,
+    "max": 552
+   },
+   "active": {
+    "min": 13.5,
+    "max": 16.9
+   },
+   "confidence": "derived",
+   "source": "curated:deepseek-v4-1-flash-1017",
    "zone": "USA",
    "provider": "workers-ai"
   },
@@ -1650,6 +1668,34 @@
    "tps": 79.8,
    "ttft": 2.24,
    "source": "ecologits:glm-5-2",
+   "zone": "USA",
+   "provider": "workers-ai"
+  },
+  "glm-5.3": {
+   "total": {
+    "min": 753.33,
+    "max": 753.33
+   },
+   "active": {
+    "min": 40,
+    "max": 40
+   },
+   "confidence": "published",
+   "source": "curated:glm-5-3",
+   "zone": "USA",
+   "provider": "workers-ai"
+  },
+  "glm-5.3-flash": {
+   "total": {
+    "min": 321.323,
+    "max": 321.323
+   },
+   "active": {
+    "min": 18,
+    "max": 18
+   },
+   "confidence": "published",
+   "source": "curated:glm-5-3-flash",
    "zone": "USA",
    "provider": "workers-ai"
   },
@@ -1946,6 +1992,10 @@
    "source": "hf:mistralai/Magistral-Small-2509@a31cc96",
    "zone": "USA",
    "provider": "bedrock-mantle"
+  },
+  "melotts": {
+   "skip": true,
+   "source": "task:Text-to-Speech"
   },
   "meta/llama-3.2-11b-vision-instruct": {
    "total": {
@@ -2506,15 +2556,37 @@
    "source": "ecologits:glm-5-2",
    "zone": "USA",
    "provider": "workers-ai"
+  },
+  "zhipuai/glm-5.3": {
+   "total": {
+    "min": 753.33,
+    "max": 753.33
+   },
+   "active": {
+    "min": 40,
+    "max": 40
+   },
+   "confidence": "published",
+   "source": "curated:glm-5-3",
+   "zone": "USA",
+   "provider": "workers-ai"
+  },
+  "zhipuai/glm-5.3-flash": {
+   "total": {
+    "min": 321.323,
+    "max": 321.323
+   },
+   "active": {
+    "min": 18,
+    "max": 18
+   },
+   "confidence": "published",
+   "source": "curated:glm-5-3-flash",
+   "zone": "USA",
+   "provider": "workers-ai"
   }
  },
- "unresolved_ids": [
-  "glm-5.3",
-  "glm-5.3-flash",
-  "melotts",
-  "zhipuai/glm-5.3",
-  "zhipuai/glm-5.3-flash"
- ],
+ "unresolved_ids": [],
  "patterns": [
   {
    "match": "120b-a12b",
@@ -3711,6 +3783,19 @@
    },
    "confidence": "published",
    "note": "DeepSeek-V3/V3.1/V3.2 671B/37B MoE, HF card"
+  },
+  {
+   "match": "deepseek-v4-1-flash-1017",
+   "total": {
+    "min": 552,
+    "max": 552
+   },
+   "active": {
+    "min": 13.5,
+    "max": 16.9
+   },
+   "confidence": "derived",
+   "note": "DeepSeek-V4.1-Flash-1017: 552B backbone per the DeepSeek/Cloudflare description; active from HF config 1bae0e1 (40 MoE layers, 384 routed experts, 6 per token, hidden 5120, expert width 2304), 552B minus unselected experts, stored as 80-100%. Curated because HF safetensors (763B) count packed FP4 experts and Engram tables, which the automatic derivation would misread"
   },
   {
    "match": "deepseek-v4-flash",
@@ -4958,6 +5043,32 @@
    "confidence": "published",
    "tps": 79.8,
    "ttft": 2.24
+  },
+  {
+   "match": "glm-5-3",
+   "total": {
+    "min": 753.33,
+    "max": 753.33
+   },
+   "active": {
+    "min": 40,
+    "max": 40
+   },
+   "confidence": "published",
+   "note": "GLM-5.3 uses the same base model as GLM-5.2; 753.33B safetensors and 40B active, official Z.ai HF card"
+  },
+  {
+   "match": "glm-5-3-flash",
+   "total": {
+    "min": 321.323,
+    "max": 321.323
+   },
+   "active": {
+    "min": 18,
+    "max": 18
+   },
+   "confidence": "published",
+   "note": "GLM-5.3-Flash 320B/18B MoE, official Z.ai HF card; 321.323B safetensors"
   },
   {
    "match": "glm-5-turbo",
