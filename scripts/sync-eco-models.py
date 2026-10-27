@@ -169,11 +169,12 @@ def build_patterns(eco_models):
             "confidence": "published" if not m.get("warnings") else "estimated",
         }
         dep = m.get("deployment") or {}
-        # Copy by key presence so timing_ok sees falsey values (0, null) as
-        # malformed instead of having them dropped, and keeps a valid ttft of 0.
-        if "tps" in dep:
+        # EcoLogits writes null when it has no measurement, so null means absent
+        # and the filter falls back to its latency model. Any other value is
+        # copied, so timing_ok rejects 0 tps and keeps a valid ttft of 0.
+        if dep.get("tps") is not None:
             entry["tps"] = dep["tps"]
-        if "ttft" in dep:
+        if dep.get("ttft") is not None:
             entry["ttft"] = dep["ttft"]
         if not timing_ok(entry):
             bad_timing += 1
