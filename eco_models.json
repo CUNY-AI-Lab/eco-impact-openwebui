@@ -1,7 +1,7 @@
 {
  "version": 2,
  "source": "mlco2/ecologits@0.11.3",
- "generated": "2026-10-27",
+ "generated": "2026-11-02",
  "defaults": {
   "zone": "WOR",
   "pue": {
@@ -1494,6 +1494,20 @@
    },
    "confidence": "derived",
    "source": "hf:deepseek-ai/DeepSeek-V4-Pro-0813@72e1d32",
+   "zone": "USA",
+   "provider": "workers-ai"
+  },
+  "deepseek/deepseek-v4.1-flash-1017": {
+   "total": {
+    "min": 552,
+    "max": 552
+   },
+   "active": {
+    "min": 13.5,
+    "max": 16.9
+   },
+   "confidence": "derived",
+   "source": "curated:deepseek-v4-1-flash-1017",
    "zone": "USA",
    "provider": "workers-ai"
   },
