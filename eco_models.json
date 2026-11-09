@@ -1,7 +1,7 @@
 {
  "version": 2,
  "source": "mlco2/ecologits@0.11.3",
- "generated": "2026-11-02",
+ "generated": "2026-11-09",
  "defaults": {
   "zone": "WOR",
   "pue": {
@@ -1349,7 +1349,7 @@
     "max": 27.432
    },
    "confidence": "derived",
-   "source": "hf:aisingapore/Gemma-SEA-LION-v4-27B-IT@c41c291",
+   "source": "hf:aisingapore/Gemma-SEA-LION-v4-27B-IT@81dcc29",
    "zone": "USA",
    "provider": "workers-ai"
   },
@@ -1391,7 +1391,7 @@
     "max": 27.781
    },
    "confidence": "derived",
-   "source": "hf:Qwen/Qwen3.8-27B@1d4bf0f",
+   "source": "hf:Qwen/Qwen3.8-27B@3756181",
    "zone": "USA",
    "provider": "workers-ai"
   },
@@ -1623,7 +1623,7 @@
     "max": 27.432
    },
    "confidence": "derived",
-   "source": "hf:aisingapore/Gemma-SEA-LION-v4-27B-IT@c41c291",
+   "source": "hf:aisingapore/Gemma-SEA-LION-v4-27B-IT@81dcc29",
    "zone": "USA",
    "provider": "workers-ai"
   },
@@ -2441,7 +2441,7 @@
     "max": 27.781
    },
    "confidence": "derived",
-   "source": "hf:Qwen/Qwen3.8-27B@1d4bf0f",
+   "source": "hf:Qwen/Qwen3.8-27B@3756181",
    "zone": "USA",
    "provider": "workers-ai"
   },
