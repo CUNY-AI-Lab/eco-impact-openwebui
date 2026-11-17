@@ -1,7 +1,7 @@
 {
  "version": 2,
  "source": "mlco2/ecologits@0.11.3",
- "generated": "2026-11-16",
+ "generated": "2026-11-17",
  "defaults": {
   "zone": "WOR",
   "pue": {
@@ -1335,6 +1335,7 @@
  ],
  "provider_zones": {
   "bedrock-mantle": "USA",
+  "bedrock-runtime": "USA",
   "workers-ai": "USA",
   "openrouter": "USA"
  },
@@ -1839,6 +1840,20 @@
    "zone": "USA",
    "provider": "workers-ai"
   },
+  "inkling-2-small": {
+   "total": {
+    "min": 594,
+    "max": 594
+   },
+   "active": {
+    "min": 17,
+    "max": 17
+   },
+   "confidence": "published",
+   "source": "curated:inkling-2-small",
+   "zone": "USA",
+   "provider": "workers-ai"
+  },
   "kimi-k2.5": {
    "total": {
     "min": 1026.879,
@@ -1880,6 +1895,20 @@
    "source": "hf:moonshotai/Kimi-K2.7-Code@74797c9",
    "zone": "USA",
    "provider": "workers-ai"
+  },
+  "kimi-k3": {
+   "total": {
+    "min": 2800,
+    "max": 2800
+   },
+   "active": {
+    "min": 104,
+    "max": 104
+   },
+   "confidence": "published",
+   "source": "curated:kimi-k3",
+   "zone": "USA",
+   "provider": "bedrock-runtime"
   },
   "llama-2-7b-chat-hf-lora": {
    "total": {
@@ -2249,6 +2278,20 @@
    "zone": "USA",
    "provider": "workers-ai"
   },
+  "moonshotai/kimi-k3": {
+   "total": {
+    "min": 2800,
+    "max": 2800
+   },
+   "active": {
+    "min": 104,
+    "max": 104
+   },
+   "confidence": "published",
+   "source": "curated:kimi-k3",
+   "zone": "USA",
+   "provider": "bedrock-runtime"
+  },
   "nemotron-3-120b-a12b": {
    "total": {
     "min": 120.0,
@@ -2459,6 +2502,20 @@
    "zone": "USA",
    "provider": "workers-ai"
   },
+  "thinkingmachines/inkling-2-small": {
+   "total": {
+    "min": 594,
+    "max": 594
+   },
+   "active": {
+    "min": 17,
+    "max": 17
+   },
+   "confidence": "published",
+   "source": "curated:inkling-2-small",
+   "zone": "USA",
+   "provider": "workers-ai"
+  },
   "v3.2": {
    "total": {
     "min": 671,
@@ -2600,12 +2657,7 @@
    "provider": "workers-ai"
   }
  },
- "unresolved_ids": [
-  "inkling-2-small",
-  "kimi-k3",
-  "moonshotai/kimi-k3",
-  "thinkingmachines/inkling-2-small"
- ],
+ "unresolved_ids": [],
  "patterns": [
   {
    "match": "120b-a12b",
@@ -6368,6 +6420,19 @@
    "note": "Tencent Hunyuan 3, undisclosed MoE"
   },
   {
+   "match": "inkling-2-small",
+   "total": {
+    "min": 594,
+    "max": 594
+   },
+   "active": {
+    "min": 17,
+    "max": 17
+   },
+   "confidence": "published",
+   "note": "Thinking Machines Inkling 2 Small 594B/17B MoE (8 of 384 experts), model card https://thinkingmachines.ai/model-card/inkling-2-small/ and HF card; the Workers AI page says 18B active"
+  },
+  {
    "match": "jamba",
    "total": {
     "min": 52,
@@ -6470,6 +6535,19 @@
    },
    "confidence": "estimated",
    "note": "Kimi K2.7, anchored to K2 arch"
+  },
+  {
+   "match": "kimi-k3",
+   "total": {
+    "min": 2800,
+    "max": 2800
+   },
+   "active": {
+    "min": 104,
+    "max": 104
+   },
+   "confidence": "published",
+   "note": "Kimi K3 2.8T/104B MoE (16 of 896 experts), Moonshot HF card https://huggingface.co/moonshotai/Kimi-K3 (linked from the Bedrock model card)"
   },
   {
    "match": "labs-leanstral-1-5",
