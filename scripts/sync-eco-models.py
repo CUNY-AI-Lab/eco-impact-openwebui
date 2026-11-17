@@ -57,9 +57,12 @@ MAX_ACTIVE_CHANGE = 3.0
 # the catalog (an empty or truncated catalog response looks like mass retirement).
 MIN_CATALOG_KEPT = 0.5
 
-# Electricity zone per Gateway provider. Mantle runs in AWS us-east-1; Workers AI
-# serves from the nearest Cloudflare GPU location, which for CUNY users is the US.
-PROVIDER_ZONES = {"bedrock-mantle": "USA", "workers-ai": "USA", "openrouter": "USA"}
+# Electricity zone per Gateway provider. Mantle runs in AWS us-east-1; Gateway calls
+# bedrock-runtime through US geo inference profiles (us.*), which route only among
+# US Regions; Workers AI serves from the nearest Cloudflare GPU location, which for
+# CUNY users is the US.
+PROVIDER_ZONES = {"bedrock-mantle": "USA", "bedrock-runtime": "USA", "workers-ai": "USA",
+                  "openrouter": "USA"}
 
 # Catalog tasks that are not text generation get a "skip" entry (no status line).
 SKIP_TASKS = {"automatic speech recognition", "text embeddings", "translation",

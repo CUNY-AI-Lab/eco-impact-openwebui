@@ -65,6 +65,7 @@
  {"match": "kimi-k2-5", "total": {"min": 1000, "max": 1000}, "active": {"min": 32, "max": 32}, "confidence": "estimated", "note": "Kimi K2.5, anchored to K2 arch"},
  {"match": "kimi-k2-6", "total": {"min": 1000, "max": 1000}, "active": {"min": 32, "max": 32}, "confidence": "estimated", "note": "Kimi K2.6, anchored to K2 arch"},
  {"match": "kimi-k2-7", "total": {"min": 1000, "max": 1000}, "active": {"min": 32, "max": 32}, "confidence": "estimated", "note": "Kimi K2.7, anchored to K2 arch"},
+ {"match": "kimi-k3", "total": {"min": 2800, "max": 2800}, "active": {"min": 104, "max": 104}, "confidence": "published", "note": "Kimi K3 2.8T/104B MoE (16 of 896 experts), Moonshot HF card https://huggingface.co/moonshotai/Kimi-K3 (linked from the Bedrock model card)"},
 
  {"match": "llama3-8b", "total": {"min": 8, "max": 8}, "active": {"min": 8, "max": 8}, "confidence": "published", "note": "Llama-3-8B dense (Bedrock naming), HF card"},
  {"match": "llama3-70b", "total": {"min": 70, "max": 70}, "active": {"min": 70, "max": 70}, "confidence": "published", "note": "Llama-3-70B dense (Bedrock naming), HF card"},
@@ -195,6 +196,8 @@
 
  {"match": "hunyuan-a13b", "total": {"min": 80, "max": 80}, "active": {"min": 13, "max": 13}, "confidence": "published", "note": "Tencent Hunyuan-A13B 80B/13B MoE, HF card"},
  {"match": "hy3", "total": {"min": 80, "max": 400}, "active": {"min": 13, "max": 40}, "confidence": "estimated", "note": "Tencent Hunyuan 3, undisclosed MoE"},
+
+ {"match": "inkling-2-small", "total": {"min": 594, "max": 594}, "active": {"min": 17, "max": 17}, "confidence": "published", "note": "Thinking Machines Inkling 2 Small 594B/17B MoE (8 of 384 experts), model card https://thinkingmachines.ai/model-card/inkling-2-small/ and HF card; the Workers AI page says 18B active"},
 
  {"match": "reka-flash-3", "total": {"min": 21, "max": 21}, "active": {"min": 21, "max": 21}, "confidence": "published", "note": "Reka Flash 3 21B dense, HF card"},
  {"match": "reka-edge", "total": {"min": 7, "max": 7}, "active": {"min": 7, "max": 7}, "confidence": "published", "note": "Reka Edge 7B dense, Reka release"},
