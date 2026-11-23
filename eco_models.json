@@ -1,7 +1,7 @@
 {
  "version": 2,
  "source": "mlco2/ecologits@0.11.3",
- "generated": "2026-11-17",
+ "generated": "2026-11-23",
  "defaults": {
   "zone": "WOR",
   "pue": {
@@ -1396,65 +1396,9 @@
    "zone": "USA",
    "provider": "workers-ai"
   },
-  "alibaba/qwq-32b": {
-   "total": {
-    "min": 32.764,
-    "max": 32.764
-   },
-   "active": {
-    "min": 32.764,
-    "max": 32.764
-   },
-   "confidence": "derived",
-   "source": "hf:Qwen/QwQ-32B@976055f",
-   "zone": "USA",
-   "provider": "workers-ai"
-  },
   "black-forest-labs/flux-1-schnell": {
    "skip": true,
    "source": "task:Text-to-Image"
-  },
-  "deepseek-r1-distill-qwen-32b": {
-   "total": {
-    "min": 32.5,
-    "max": 32.5
-   },
-   "active": {
-    "min": 32.5,
-    "max": 32.5
-   },
-   "confidence": "published",
-   "source": "curated:deepseek-r1-distill-qwen-32b",
-   "zone": "USA",
-   "provider": "workers-ai"
-  },
-  "deepseek-v4-flash-0731": {
-   "total": {
-    "min": 304.18,
-    "max": 304.18
-   },
-   "active": {
-    "min": 26.918,
-    "max": 33.648
-   },
-   "confidence": "derived",
-   "source": "hf:deepseek-ai/DeepSeek-V4-Flash-0731@7872f01",
-   "zone": "USA",
-   "provider": "workers-ai"
-  },
-  "deepseek-v4-pro-0813": {
-   "total": {
-    "min": 1650.498,
-    "max": 1650.498
-   },
-   "active": {
-    "min": 101.824,
-    "max": 127.28
-   },
-   "confidence": "derived",
-   "source": "hf:deepseek-ai/DeepSeek-V4-Pro-0813@72e1d32",
-   "zone": "USA",
-   "provider": "workers-ai"
   },
   "deepseek-v4.1-flash-1017": {
    "total": {
@@ -1467,34 +1411,6 @@
    },
    "confidence": "derived",
    "source": "curated:deepseek-v4-1-flash-1017",
-   "zone": "USA",
-   "provider": "workers-ai"
-  },
-  "deepseek/deepseek-v4-flash-0731": {
-   "total": {
-    "min": 304.18,
-    "max": 304.18
-   },
-   "active": {
-    "min": 26.918,
-    "max": 33.648
-   },
-   "confidence": "derived",
-   "source": "hf:deepseek-ai/DeepSeek-V4-Flash-0731@7872f01",
-   "zone": "USA",
-   "provider": "workers-ai"
-  },
-  "deepseek/deepseek-v4-pro-0813": {
-   "total": {
-    "min": 1650.498,
-    "max": 1650.498
-   },
-   "active": {
-    "min": 101.824,
-    "max": 127.28
-   },
-   "confidence": "derived",
-   "source": "hf:deepseek-ai/DeepSeek-V4-Pro-0813@72e1d32",
    "zone": "USA",
    "provider": "workers-ai"
   },
@@ -1529,20 +1445,6 @@
   "flux-1-schnell": {
    "skip": true,
    "source": "task:Text-to-Image"
-  },
-  "gemma-2b-it-lora": {
-   "total": {
-    "min": 2.51,
-    "max": 2.51
-   },
-   "active": {
-    "min": 2.51,
-    "max": 2.51
-   },
-   "confidence": "published",
-   "source": "ecologits:gemma-2b-it",
-   "zone": "USA",
-   "provider": "workers-ai"
   },
   "gemma-3-12b-it": {
    "total": {
@@ -1597,20 +1499,6 @@
    },
    "confidence": "published",
    "source": "name:gemma-4-26b-a4b-it",
-   "zone": "USA",
-   "provider": "workers-ai"
-  },
-  "gemma-7b-it-lora": {
-   "total": {
-    "min": 8.54,
-    "max": 8.54
-   },
-   "active": {
-    "min": 8.54,
-    "max": 8.54
-   },
-   "confidence": "published",
-   "source": "ecologits:gemma-7b-it",
    "zone": "USA",
    "provider": "workers-ai"
   },
@@ -1670,22 +1558,6 @@
    "zone": "USA",
    "provider": "bedrock-mantle"
   },
-  "glm-5.2": {
-   "total": {
-    "min": 744.0,
-    "max": 744.0
-   },
-   "active": {
-    "min": 40.0,
-    "max": 40.0
-   },
-   "confidence": "published",
-   "tps": 79.8,
-   "ttft": 2.24,
-   "source": "ecologits:glm-5-2",
-   "zone": "USA",
-   "provider": "workers-ai"
-  },
   "glm-5.3": {
    "total": {
     "min": 753.33,
@@ -1697,20 +1569,6 @@
    },
    "confidence": "published",
    "source": "curated:glm-5-3",
-   "zone": "USA",
-   "provider": "workers-ai"
-  },
-  "glm-5.3-flash": {
-   "total": {
-    "min": 321.323,
-    "max": 321.323
-   },
-   "active": {
-    "min": 18,
-    "max": 18
-   },
-   "confidence": "published",
-   "source": "curated:glm-5-3-flash",
    "zone": "USA",
    "provider": "workers-ai"
   },
@@ -1864,37 +1722,9 @@
     "max": 33.333
    },
    "confidence": "derived",
-   "source": "hf:moonshotai/Kimi-K2.5@4d01dfe",
+   "source": "hf:moonshotai/Kimi-K2.5@94b44e5",
    "zone": "USA",
    "provider": "bedrock-mantle"
-  },
-  "kimi-k2.6": {
-   "total": {
-    "min": 1026.879,
-    "max": 1026.879
-   },
-   "active": {
-    "min": 26.666,
-    "max": 33.333
-   },
-   "confidence": "derived",
-   "source": "hf:moonshotai/Kimi-K2.6@7eb5002",
-   "zone": "USA",
-   "provider": "workers-ai"
-  },
-  "kimi-k2.7-code": {
-   "total": {
-    "min": 1026.879,
-    "max": 1026.879
-   },
-   "active": {
-    "min": 26.666,
-    "max": 33.333
-   },
-   "confidence": "derived",
-   "source": "hf:moonshotai/Kimi-K2.7-Code@74797c9",
-   "zone": "USA",
-   "provider": "workers-ai"
   },
   "kimi-k3": {
    "total": {
@@ -1910,34 +1740,6 @@
    "zone": "USA",
    "provider": "bedrock-runtime"
   },
-  "llama-2-7b-chat-hf-lora": {
-   "total": {
-    "min": 6.74,
-    "max": 6.74
-   },
-   "active": {
-    "min": 6.74,
-    "max": 6.74
-   },
-   "confidence": "published",
-   "source": "ecologits:llama-2-7b-chat-hf",
-   "zone": "USA",
-   "provider": "workers-ai"
-  },
-  "llama-3.1-8b-instruct-fp8": {
-   "total": {
-    "min": 8.03,
-    "max": 8.03
-   },
-   "active": {
-    "min": 8.03,
-    "max": 8.03
-   },
-   "confidence": "published",
-   "source": "ecologits:llama-3-1-8b-instruct",
-   "zone": "USA",
-   "provider": "workers-ai"
-  },
   "llama-3.2-11b-vision-instruct": {
    "total": {
     "min": 10.6,
@@ -1949,34 +1751,6 @@
    },
    "confidence": "published",
    "source": "curated:llama-3-2-11b-vision",
-   "zone": "USA",
-   "provider": "workers-ai"
-  },
-  "llama-3.2-1b-instruct": {
-   "total": {
-    "min": 1.23,
-    "max": 1.23
-   },
-   "active": {
-    "min": 1.23,
-    "max": 1.23
-   },
-   "confidence": "published",
-   "source": "curated:llama-3-2-1b",
-   "zone": "USA",
-   "provider": "workers-ai"
-  },
-  "llama-3.2-3b-instruct": {
-   "total": {
-    "min": 3.21,
-    "max": 3.21
-   },
-   "active": {
-    "min": 3.21,
-    "max": 3.21
-   },
-   "confidence": "published",
-   "source": "curated:llama-3-2-3b",
    "zone": "USA",
    "provider": "workers-ai"
   },
@@ -2035,10 +1809,6 @@
    "source": "hf:mistralai/Magistral-Small-2509@a31cc96",
    "zone": "USA",
    "provider": "bedrock-mantle"
-  },
-  "melotts": {
-   "skip": true,
-   "source": "task:Text-to-Speech"
   },
   "meta/llama-3.2-11b-vision-instruct": {
    "total": {
@@ -2246,37 +2016,9 @@
     "max": 33.333
    },
    "confidence": "derived",
-   "source": "hf:moonshotai/Kimi-K2.5@4d01dfe",
+   "source": "hf:moonshotai/Kimi-K2.5@94b44e5",
    "zone": "USA",
    "provider": "bedrock-mantle"
-  },
-  "moonshotai/kimi-k2.6": {
-   "total": {
-    "min": 1026.879,
-    "max": 1026.879
-   },
-   "active": {
-    "min": 26.666,
-    "max": 33.333
-   },
-   "confidence": "derived",
-   "source": "hf:moonshotai/Kimi-K2.6@7eb5002",
-   "zone": "USA",
-   "provider": "workers-ai"
-  },
-  "moonshotai/kimi-k2.7-code": {
-   "total": {
-    "min": 1026.879,
-    "max": 1026.879
-   },
-   "active": {
-    "min": 26.666,
-    "max": 33.333
-   },
-   "confidence": "derived",
-   "source": "hf:moonshotai/Kimi-K2.7-Code@74797c9",
-   "zone": "USA",
-   "provider": "workers-ai"
   },
   "moonshotai/kimi-k3": {
    "total": {
@@ -2291,20 +2033,6 @@
    "source": "curated:kimi-k3",
    "zone": "USA",
    "provider": "bedrock-runtime"
-  },
-  "nemotron-3-120b-a12b": {
-   "total": {
-    "min": 120.0,
-    "max": 120.0
-   },
-   "active": {
-    "min": 12.0,
-    "max": 12.0
-   },
-   "confidence": "published",
-   "source": "name:nemotron-3-120b-a12b",
-   "zone": "USA",
-   "provider": "workers-ai"
   },
   "nemotron-nano-12b-v2": {
    "total": {
@@ -2432,20 +2160,6 @@
    "zone": "USA",
    "provider": "workers-ai"
   },
-  "qwen3-30b-a3b-fp8": {
-   "total": {
-    "min": 30.5,
-    "max": 30.5
-   },
-   "active": {
-    "min": 3.3,
-    "max": 3.3
-   },
-   "confidence": "published",
-   "source": "curated:qwen3-30b-a3b",
-   "zone": "USA",
-   "provider": "workers-ai"
-  },
   "qwen3-coder-next": {
    "total": {
     "min": 79.7,
@@ -2485,20 +2199,6 @@
    },
    "confidence": "derived",
    "source": "hf:Qwen/Qwen3.8-27B@3756181",
-   "zone": "USA",
-   "provider": "workers-ai"
-  },
-  "qwq-32b": {
-   "total": {
-    "min": 32.764,
-    "max": 32.764
-   },
-   "active": {
-    "min": 32.764,
-    "max": 32.764
-   },
-   "confidence": "derived",
-   "source": "hf:Qwen/QwQ-32B@976055f",
    "zone": "USA",
    "provider": "workers-ai"
   },
@@ -2566,10 +2266,6 @@
    "skip": true,
    "source": "task:Automatic Speech Recognition"
   },
-  "whisper-tiny-en": {
-   "skip": true,
-   "source": "task:Automatic Speech Recognition"
-  },
   "zhipuai/glm-4.7": {
    "total": {
     "min": 355,
@@ -2612,22 +2308,6 @@
    "zone": "USA",
    "provider": "bedrock-mantle"
   },
-  "zhipuai/glm-5.2": {
-   "total": {
-    "min": 744.0,
-    "max": 744.0
-   },
-   "active": {
-    "min": 40.0,
-    "max": 40.0
-   },
-   "confidence": "published",
-   "tps": 79.8,
-   "ttft": 2.24,
-   "source": "ecologits:glm-5-2",
-   "zone": "USA",
-   "provider": "workers-ai"
-  },
   "zhipuai/glm-5.3": {
    "total": {
     "min": 753.33,
@@ -2639,20 +2319,6 @@
    },
    "confidence": "published",
    "source": "curated:glm-5-3",
-   "zone": "USA",
-   "provider": "workers-ai"
-  },
-  "zhipuai/glm-5.3-flash": {
-   "total": {
-    "min": 321.323,
-    "max": 321.323
-   },
-   "active": {
-    "min": 18,
-    "max": 18
-   },
-   "confidence": "published",
-   "source": "curated:glm-5-3-flash",
    "zone": "USA",
    "provider": "workers-ai"
   }
