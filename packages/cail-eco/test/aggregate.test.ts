@@ -79,6 +79,14 @@ describe("estimateRows", () => {
     for (const [actual, want] of pairs) expect(Math.abs(actual - want)).toBeLessThanOrEqual(Math.max(1, want * 1e-9));
     expect(registry.ids[timedId]).toEqual({ total: { min: 744, max: 744 }, active: { min: 40, max: 40 }, tps: 57.5, ttft: 0.64, zone: "USA" });
   });
+  it.each(["pdf-accessibility", "bibliography", "manifold-companion", "marginalia", "manuscript", "systems-mapping", "stem-splitter"] as const)(
+    "estimates %s usage under its own tool",
+    (tool) => {
+      const e = estimateRows([{ tool, model: knownId, requests: 1, output_tokens: 100 }], registry);
+      expect(e.tools).toEqual([{ tool, ...e.totals }]);
+      expect(e.totals.gwp_ug.max).toBeGreaterThan(0);
+    },
+  );
   it("orders tools by gwp max descending", () => {
     const e = estimateRows([
       { tool: "api-key", model: knownId, requests: 1, output_tokens: 10 },
