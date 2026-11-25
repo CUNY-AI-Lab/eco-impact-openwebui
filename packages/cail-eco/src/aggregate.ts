@@ -2,7 +2,11 @@ import { computeImpacts } from "./impacts.js";
 import { isString } from "./json.js";
 import { genericEntry, isSkip, resolveEntry, zoneFor, type ModelEntry, type Registry } from "./registry.js";
 
-export const TOOLS = ["sandbox", "agent-studio", "site-studio", "media-tools", "workbench", "api-key", "unattributed"] as const;
+export const TOOLS = [
+  "sandbox", "agent-studio", "site-studio", "media-tools", "workbench",
+  "pdf-accessibility", "bibliography", "manifold-companion", "marginalia", "manuscript", "systems-mapping", "stem-splitter",
+  "api-key", "unattributed",
+] as const;
 export type Tool = (typeof TOOLS)[number];
 export const isTool = <Value>(value: Value): value is Value & Tool => TOOLS.some((tool) => tool === value);
 

@@ -73,7 +73,9 @@ formatRange(estimate.totals.gwp_ug.min / 1e6, estimate.totals.gwp_ug.max / 1e6, 
   boundary; the TypeScript behavior matches the Model Access page.
 
 The tool enum is fixed: `sandbox`, `agent-studio`, `site-studio`,
-`media-tools`, `workbench`, `api-key`, `unattributed`.
+`media-tools`, `workbench`, `pdf-accessibility`, `bibliography`,
+`manifold-companion`, `marginalia`, `manuscript`, `systems-mapping`,
+`stem-splitter`, `api-key`, `unattributed`.
 
 ## Per-request latency
 
